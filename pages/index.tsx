@@ -5,12 +5,16 @@ type Props = {
     allPosts: PostType[]
 }
 
-const Home = ({ allPosts }: Props) => {
-    console.log("App", allPosts)
-    return allPosts.map(post => {
+const Home = ({allPosts}: Props) => {
+    const postLinks = allPosts.map(post => {
         const postUrl = `/posts/${post.slug}`
         return <a href={postUrl}>{post.title}</a>
     })
+
+    return <div>
+        <h1> Prasanna Blog </h1>
+        {postLinks}
+    </div>
 }
 
 export const getStaticProps = async () => {
@@ -23,7 +27,7 @@ export const getStaticProps = async () => {
     ])
 
     return {
-        props: { allPosts },
+        props: {allPosts},
     }
 }
 
