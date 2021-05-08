@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { join } from 'path'
+import {join} from 'path'
 import matter from 'gray-matter'
 
 const postsDirectory = join(process.cwd(), 'content', '_posts')
@@ -38,8 +38,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
 
 export function getAllPosts(fields: string[] = []) {
     const slugs = getPostSlugs()
-    const posts = slugs
+    return slugs
         .map((slug) => getPostBySlug(slug, fields))
         .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
-    return posts
 }

@@ -1,19 +1,16 @@
 import {getAllPosts} from "../lib/api";
-import PostType from "../types/post";
+import Post from "../types/post";
+import BlogList from "../components/BlogList";
+import SideBar from "../components/SideBar";
 
 type Props = {
-    allPosts: PostType[]
+    allPosts: Post[]
 }
 
 const Home = ({allPosts}: Props) => {
-    const postLinks = allPosts.map(post => {
-        const postUrl = `/posts/${post.slug}`
-        return <a href={postUrl}>{post.title}</a>
-    })
-
     return <div>
-        <h1> Prasanna Blog </h1>
-        {postLinks}
+        <SideBar/>
+        <BlogList allPosts={allPosts}/>
     </div>
 }
 

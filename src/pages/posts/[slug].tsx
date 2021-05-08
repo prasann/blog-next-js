@@ -1,17 +1,16 @@
-import {useRouter} from 'next/router'
 import Head from 'next/head'
-import PostType from "../../types/post";
+import Post from "../../types/post";
 import {getAllPosts, getPostBySlug} from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
 
 type Props = {
-    post: PostType
+    post: Post
 }
 
-const Post = ({post}: Props) => {
+const BlogPost = ({post}: Props) => {
     return <article>
         <Head>
-            Title of the post
+            {post.title}
         </Head>
         <div>
             <div
@@ -63,4 +62,4 @@ export async function getStaticPaths() {
     }
 }
 
-export default Post;
+export default BlogPost;
