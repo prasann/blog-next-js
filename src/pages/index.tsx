@@ -1,7 +1,7 @@
 import {getAllPosts} from "../lib/api";
 import Post from "../types/post";
-import BlogList from "../components/BlogList";
-import SideBar from "../components/SideBar";
+import Posts from "../components/Posts";
+import Bio from "../components/Bio";
 
 type Props = {
     allPosts: Post[]
@@ -9,8 +9,8 @@ type Props = {
 
 const Home = ({allPosts}: Props) => {
     return <div>
-        <SideBar/>
-        <BlogList allPosts={allPosts}/>
+        <Bio/>
+        <Posts entries={allPosts}/>
     </div>
 }
 

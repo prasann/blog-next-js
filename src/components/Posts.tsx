@@ -1,11 +1,11 @@
 import Post from "../types/post";
 
 type Props = {
-    allPosts: Post[]
+    entries: Post[]
 }
 
-const BlogList = ({allPosts}: Props) => {
-    const listOfBlogs = allPosts.map(post => {
+const Posts = ({entries}: Props) => {
+    const listOfBlogs = entries.map(post => {
         const postUrl = `/posts/${post.slug}`
         return <a key={post.slug} href={postUrl}>{post.title}</a>
     });
@@ -15,4 +15,4 @@ const BlogList = ({allPosts}: Props) => {
 
 }
 
-export default BlogList;
+export default Posts;
