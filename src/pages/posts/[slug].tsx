@@ -7,12 +7,12 @@ type Props = {
 }
 
 const BlogPost = ({post}: Props) => {
-    return <div className="bg-gray-700 text-white"><article className="container mx-auto">
+    return <div className="bg-black text-gray-300"><article className="container mx-auto">
         <div className="p-4">
             <div className="text-center font-bold text-2xl p-16">
                 {post.title}
             </div>
-            <div className="sample">
+            <div className="sample1">
                 <div
                     dangerouslySetInnerHTML={{__html: post.content}}
                 />
