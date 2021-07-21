@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Post from "../../types/post";
 import {getAllPosts, getPostBySlug} from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
@@ -8,16 +7,18 @@ type Props = {
 }
 
 const BlogPost = ({post}: Props) => {
-    return <article>
-        <Head>
-            {post.title}
-        </Head>
-        <div>
-            <div
-                dangerouslySetInnerHTML={{__html: post.content}}
-            />
+    return <div className="bg-gray-700 text-white"><article className="container mx-auto">
+        <div className="p-4">
+            <div className="text-center font-bold text-2xl p-16">
+                {post.title}
+            </div>
+            <div className="sample">
+                <div
+                    dangerouslySetInnerHTML={{__html: post.content}}
+                />
+            </div>
         </div>
-    </article>
+    </article></div>
 }
 
 type Params = {

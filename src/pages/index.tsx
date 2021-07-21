@@ -9,7 +9,7 @@ type Props = {
 }
 
 const Home = ({allPosts}: Props) => {
-    return <div className="flex flex-col h-screen">
+    return <div className="flex flex-col h-screen bg-indigo-50">
         <header className="h-60 bg-black"> Header</header>
         <div className="flex-1">
             <ContentArea/>
