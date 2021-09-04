@@ -1,24 +1,28 @@
 import FeaturedTalks from "./FeaturedTalks";
 import FeaturedPosts from "./FeaturedPosts";
+import GithubIcon from './../../images/icons8-github.svg'
+import LinkedInIcon from './../../images/icons8-linkedin.svg'
+import TwitterIcon from './../../images/icons8-twitter.svg'
 
 const AboutMe = () => {
-    return <div className="rounded shadow-xl p-4 w-full">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.
+    return <div className="rounded text-xl text-red-700 shadow-xl p-6 italic text-center">
+        A computer science engineer, with a master’s degree in software systems. Builds and runs web applications with
+        various stacks. Self taught geek, loves to work in teams and not a 10x programmer
     </div>
 }
 
 const Social = () => {
-    return <div className="w-full rounded shadow-xl p-4 h-32 border-4 mt-4">
-        Social
+    return <div className="w-full rounded p-4 mt-4">
+        <div className="flex flex-row justify-evenly">
+            <img src={GithubIcon} alt="Github icon"/>
+            <img src={TwitterIcon} alt="Twitter icon"/>
+            <img src={LinkedInIcon} alt="LinkedIn icon"/>
+        </div>
     </div>
 }
 
 const Container = () => {
-    return <div className="content-area bg-white shadow-xl rounded-xl">
+    return <div className="content-area bg-white rounded-xl">
         <AboutMe/>
         <div className="w-full">
             <div className="flex flex-wrap justify-evenly w-full rounded p-4 mt-4">

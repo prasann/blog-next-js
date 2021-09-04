@@ -9,11 +9,9 @@ type Props = {
 }
 
 const Home = ({allPosts}: Props) => {
-    return <div className="h-screen light-background">
+    return <div className="light-background">
         <header className="header dark-background"> Header</header>
-        <div>
-            <ContentArea/>
-        </div>
+        <ContentArea/>
         <footer className="py-5 text-center">
             Hey. I'm a footer.
         </footer>
