@@ -7,7 +7,7 @@ type Props = {
 }
 
 const BlogPost = ({post}: Props) => {
-    return <div className="bg-red-50">
+    return <div className="header-background">
         <article className="container mx-auto bg-gray-50">
         <div className="p-2">
             <div className="text-center font-bold text-4xl p-8 text-red-700">
@@ -34,7 +34,7 @@ export async function getStaticProps({ params }: Params) {
         'date',
         'slug',
         'content',
-        'subTitle',
+        'description',
         'category'
     ])
     const content = await markdownToHtml(post.content || '')

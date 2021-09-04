@@ -2,7 +2,7 @@ type Post = {
     slug: string
     title: string
     date: string
-    subTitle: string
+    description: string
     category: string
     content: string
 }

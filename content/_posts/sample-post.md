@@ -1,7 +1,6 @@
 ---
 title: Logging in Golang projects
-subTitle: Writing a generic log layer log common log information.
-postDescription: A log abstraction in go-lang projects, that can then be used to log common information. This also hides the log library inclusion, making it easier to swap out the library for a different one.
+description: A log abstraction in go-lang projects, that can then be used to log common information. This also hides the log library inclusion, making it easier to swap out the library for a different one.
 category: Go
 draft: false
 ---
@@ -146,4 +145,3 @@ func getCallerInfo() string {
 
 
 
-  
