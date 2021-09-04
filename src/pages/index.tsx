@@ -9,9 +9,9 @@ type Props = {
 }
 
 const Home = ({allPosts}: Props) => {
-    return <div className="flex flex-col h-screen bg-gradient-to-tr from-yellow-50 to-red-50">
-        <header className="h-60 header-background"> Header</header>
-        <div className="flex-1">
+    return <div className="h-screen light-background">
+        <header className="header dark-background"> Header</header>
+        <div>
             <ContentArea/>
         </div>
         <footer className="py-5 text-center">

@@ -1,5 +1,7 @@
+import Talks from "./Talks";
+
 const AboutMe = () => {
-    return <div className="rounded shadow-xl h-64 p-4 w-full">
+    return <div className="rounded shadow-xl p-4 w-full">
         Some text about me...
         Some text about me...
         Some text about me...
@@ -13,8 +15,9 @@ const AboutMe = () => {
 }
 
 const TalksAndBlogs = () => {
-    return <div className="w-1/2 rounded shadow-xl p-4 h-32 border-4 mt-4">
-        Talks & Blogs
+    return <div className="flex flex-wrap justify-evenly w-full rounded p-4 mt-4">
+        <Talks/>
+        <Talks/>
     </div>
 }
 
@@ -25,9 +28,9 @@ const Social = () => {
 }
 
 const Container = () => {
-    return <div className="p-6 -mt-20 mr-20 ml-20 bg-white shadow-xl rounded-xl flex flex-col items-center space-x-4">
+    return <div className="content-area bg-white shadow-xl rounded-xl">
         <AboutMe/>
-        <div className="flex flex-row justify-between w-full">
+        <div className="w-full">
             <TalksAndBlogs/>
             <TalksAndBlogs/>
         </div>

@@ -7,8 +7,8 @@ type Props = {
 }
 
 const BlogPost = ({post}: Props) => {
-    return <div className="header-background">
-        <article className="container mx-auto bg-gray-50">
+    return <div className="dark-background">
+        <article className="container mx-auto bg-gray-50 light-background">
         <div className="p-2">
             <div className="text-center font-bold text-4xl p-8 text-red-700">
                 {post.title}

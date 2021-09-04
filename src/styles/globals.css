@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.header-background {
-    @apply bg-gradient-to-tr from-pink-500 to-red-500
+.dark-background {
+    @apply bg-gradient-to-tr from-pink-500 to-red-500;
+}
+
+.light-background {
+    @apply bg-gradient-to-tr from-yellow-50 to-red-50;
 }

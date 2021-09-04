@@ -1,0 +1,17 @@
+.header {
+    @apply h-40;
+}
+
+.content-area {
+    @apply p-4 -mt-10 mr-5 ml-5 overflow-scroll;
+}
+
+@screen md {
+    .content-area {
+        @apply p-6 -mt-20 mr-20 ml-20
+    }
+    .header {
+        @apply h-60;
+    }
+
+}
