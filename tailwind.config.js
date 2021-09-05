@@ -21,6 +21,6 @@ module.exports = {
                 animation: ['hover']
             },
         },
-        plugins: [],
+        plugins: [require("@tailwindcss/typography")],
     }
 }

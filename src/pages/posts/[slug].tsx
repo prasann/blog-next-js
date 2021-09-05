@@ -1,67 +1,64 @@
+import fs from "fs";
+import matter from "gray-matter";
 import Post from "../../types/post";
-import {getAllPosts, getPostBySlug} from "../../lib/api";
-import markdownToHtml from "../../lib/markdownToHtml";
+import ReactMarkdown from "react-markdown";
 
 type Props = {
-    post: Post
+    posts: Post[]
 }
 
-const BlogPost = ({post}: Props) => {
-    return <div className="dark-background">
-        <article className="container mx-auto bg-gray-50 light-background">
-        <div className="p-2">
-            <div className="text-center font-bold text-4xl p-8 text-red-700">
-                {post.title}
-            </div>
-            <div className="post-content">
-                <div
-                    dangerouslySetInnerHTML={{__html: post.content}}
-                />
-            </div>
+export default function Home({posts}: Props) {
+    return (
+        <div>
+            {posts.map(({title, description, content}) => (
+                <article key={title} className="prose">
+                    <header>
+                        <h3>{title}</h3>
+                    </header>
+                    <section>
+                        <p>{description}</p>
+                    </section>
+
+                    <ReactMarkdown children={content}/>
+                </article>
+            ))}
         </div>
-    </article></div>
-}
-
-type Params = {
-    params: {
-        slug: string
-    }
-}
-
-export async function getStaticProps({ params }: Params) {
-    const post = getPostBySlug(params.slug, [
-        'title',
-        'date',
-        'slug',
-        'content',
-        'description',
-        'category'
-    ])
-    const content = await markdownToHtml(post.content || '')
-
-    return {
-        props: {
-            post: {
-                ...post,
-                content,
-            },
-        },
-    }
+    );
 }
 
 export async function getStaticPaths() {
-    const posts = getAllPosts(['slug'])
-
+    const files = fs.readdirSync("content/_posts");
+    const paths = files.map((filename) => ({
+        params: {
+            slug: filename.replace(".md", ""),
+        },
+    }));
     return {
-        paths: posts.map((posts) => {
-            return {
-                params: {
-                    slug: posts.slug,
-                },
-            }
-        }),
+        paths,
         fallback: false,
-    }
+    };
 }
 
-export default BlogPost;
+export async function getStaticProps() {
+    const files = fs.readdirSync(`${process.cwd()}/content/_posts`);
+
+    const posts = files.map((filename) => {
+        const markdownWithMetadata = fs
+            .readFileSync(`content/_posts/${filename}`)
+            .toString();
+
+        const {data, content} = matter(markdownWithMetadata);
+
+        return {
+            slug: filename.replace(".md", ""),
+            ...data,
+            content
+        };
+    });
+
+    return {
+        props: {
+            posts,
+        },
+    };
+}

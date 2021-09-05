@@ -5,7 +5,7 @@ const post = define<Post>({
     slug: "blog-slug",
     title: "sample-title-for-the-post",
     date: "20-Jan-2021",
-    subTitle: "contains the subtitle",
+    description: "contains the subtitle",
     category: "tech",
     content: "<p>some content</p>"
 });
