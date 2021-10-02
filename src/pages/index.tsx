@@ -1,7 +1,5 @@
 import {getAllPosts} from "../lib/api";
 import Post from "../types/post";
-import Posts from "../components/Posts";
-import Bio from "../components/Bio";
 import ContentArea from "../components/landing/ContentArea";
 
 type Props = {
@@ -9,7 +7,7 @@ type Props = {
 }
 
 const Home = ({allPosts}: Props) => {
-    return <div className="light-background">
+    return <div className="prose">
         <header className="header dark-background"> Header</header>
         <ContentArea/>
         <footer className="py-5 text-center">

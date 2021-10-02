@@ -9,7 +9,7 @@ type Props = {
 
 export default function Home({posts}: Props) {
     return (
-        <div>
+        <div className="prose">
             {posts.map(({title, description, content}) => (
                 <article key={title} className="prose">
                     <header>
