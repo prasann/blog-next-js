@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import CodeBlock from "./utils/CodeBlock";
 
 type Props = {
     title: string,
@@ -15,7 +16,8 @@ const Post = ({title, description, content}: Props) => {
                 <section>
                     <p>{description}</p>
                 </section>
-                <ReactMarkdown children={content}/>
+                {/*@ts-ignore*/}
+                <ReactMarkdown components={CodeBlock} children={content}/>
             </article>
     </div>
 }
