@@ -2,22 +2,27 @@ import fs from "fs";
 import matter from "gray-matter";
 import Post from "../../types/post";
 import PostComponent from "../../components/Post";
+import {useRouter} from "next/router";
 
 type Props = {
     posts: Post[]
 }
 
 export default function Home({posts}: Props) {
-    return (
-        <div>
-            <header className="header dark-background"> Header</header>
-            {posts.map(({title, description, content}) => (
-                <PostComponent title={title}
-                               description={description}
-                               content={content}/>
-            ))}
-        </div>
-    );
+    const router = useRouter()
+    const { slug } = router.query
+    const currentPost = posts.find(post => post.slug === slug)
+
+    if(currentPost){
+        return (
+            <div>
+                <header className="header dark-background"> Header</header>
+                <PostComponent title={currentPost.title}
+                               description={currentPost.description}
+                               content={currentPost.content}/>
+            </div>
+        );
+    }
 }
 
 export async function getStaticPaths() {
