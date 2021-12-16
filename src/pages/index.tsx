@@ -1,33 +1,19 @@
-import {getAllPosts} from "../lib/api";
 import Post from "../types/post";
 import ContentArea from "../components/landing/ContentArea";
+import Header from "../components/Header";
 
 type Props = {
     allPosts: Post[]
 }
 
-const Home = ({allPosts}: Props) => {
+const Home = () => {
     return <div className="prose max-w-none">
-        <header className="header dark-background"> Header</header>
+        <Header/>
         <ContentArea/>
         <footer className="py-5 text-center">
             Hey. I'm a footer.
         </footer>
     </div>
-}
-
-export const getStaticProps = async () => {
-    const allPosts = getAllPosts([
-        'title',
-        'date',
-        'slug',
-        'subTitle',
-        'category'
-    ])
-
-    return {
-        props: {allPosts},
-    }
 }
 
 export default Home;

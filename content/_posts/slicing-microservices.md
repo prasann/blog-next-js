@@ -1,7 +1,6 @@
 ---
 title: Slicing Microservices
-subTitle: Ideas to design micro-services
-postDescription: Some ideas to go about in designing micro-services. How to slice them and some general conventions
+description: Some ideas to go about in designing micro-services. How to slice them and some general conventions
 category: architecture
 draft: false
 ---
