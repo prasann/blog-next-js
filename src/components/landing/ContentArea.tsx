@@ -1,8 +1,7 @@
-import FeaturedTalks from "./FeaturedTalks";
-import FeaturedPosts from "./FeaturedPosts";
 import GithubIcon from './../../images/icons8-github.svg'
 import LinkedInIcon from './../../images/icons8-linkedin.svg'
 import TwitterIcon from './../../images/icons8-twitter.svg'
+import Card from "./Card";
 
 const AboutMe = () => {
     return <div className="rounded text-xl text-red-700 shadow-xl p-6 italic text-center">
@@ -25,11 +24,16 @@ const Container = () => {
     return <div className="content-area bg-white rounded-xl">
         <AboutMe/>
         <div className="w-full">
-            <div className="flex flex-wrap justify-evenly w-full rounded p-4 mt-4">
-                <FeaturedTalks/>
-            </div>
-            <div className="flex flex-wrap justify-evenly w-full rounded p-4 mt-4">
-                <FeaturedPosts/>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 mt-4 justify-items-center">
+                <Card title="Talks"
+                      description="My talks"
+                      color="variant1"/>
+                <Card title="Blog"
+                      description="My blog"
+                      color="variant2"/>
+                <Card title="Me"
+                      description="More about myself, my resume"
+                      color="variant3"/>
             </div>
         </div>
         <Social/>
