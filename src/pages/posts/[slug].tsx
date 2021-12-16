@@ -9,9 +9,9 @@ type Props = {
 
 export default function Home({posts}: Props) {
     return (
-        <div className="prose">
+        <div className="prose max-w-none">
             {posts.map(({title, description, content}) => (
-                <article key={title} className="prose">
+                <article key={title}>
                     <header>
                         <h3>{title}</h3>
                     </header>

@@ -7,7 +7,7 @@ type Props = {
 }
 
 const Home = ({allPosts}: Props) => {
-    return <div className="prose">
+    return <div className="prose max-w-none">
         <header className="header dark-background"> Header</header>
         <ContentArea/>
         <footer className="py-5 text-center">
