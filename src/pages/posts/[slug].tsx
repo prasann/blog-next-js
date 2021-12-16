@@ -1,7 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import Post from "../../types/post";
-import ReactMarkdown from "react-markdown";
+import PostComponent from "../../components/Post";
 
 type Props = {
     posts: Post[]
@@ -9,18 +9,12 @@ type Props = {
 
 export default function Home({posts}: Props) {
     return (
-        <div className="prose max-w-none">
+        <div>
+            <header className="header dark-background"> Header</header>
             {posts.map(({title, description, content}) => (
-                <article key={title}>
-                    <header>
-                        <h3>{title}</h3>
-                    </header>
-                    <section>
-                        <p>{description}</p>
-                    </section>
-
-                    <ReactMarkdown children={content}/>
-                </article>
+                <PostComponent title={title}
+                               description={description}
+                               content={content}/>
             ))}
         </div>
     );

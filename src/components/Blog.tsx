@@ -4,15 +4,15 @@ type Props = {
     entries: Post[]
 }
 
-const Posts = ({entries}: Props) => {
-    const listOfBlogs = entries.map(post => {
+const Blog = ({entries}: Props) => {
+    const listOfPosts = entries.map(post => {
         const postUrl = `/posts/${post.slug}`
         return <a key={post.slug} href={postUrl}>{post.title}</a>
     });
     return <>
-        {listOfBlogs}
+        {listOfPosts}
     </>
 
 }
 
-export default Posts;
+export default Blog;
