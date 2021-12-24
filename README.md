@@ -13,3 +13,9 @@ Pages
 [] /me
 [] /me/resume?
 
+Pending
+
+[] Header design
+[] Landing page color scheme
+[] Migrate data
+[] 
