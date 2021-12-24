@@ -27,13 +27,16 @@ const Container = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 mt-4 justify-items-center">
                 <Card title="Talks"
                       description="My talks"
-                      color="variant1"/>
+                      color="variant1"
+                path="/talks"/>
                 <Card title="Blog"
                       description="My blog"
-                      color="variant2"/>
+                      color="variant2"
+                      path="/blog"/>
                 <Card title="Me"
                       description="More about myself, my resume"
-                      color="variant3"/>
+                      color="variant3"
+                      path="/me"/>
             </div>
         </div>
         <Social/>

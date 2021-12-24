@@ -1,9 +1,12 @@
+import {useRouter} from "next/router";
+
 type ColorKey = keyof typeof colors;
 
 type Props = {
     title: string
     description: string
     color: ColorKey
+    path: string
 }
 
 const colors = {
@@ -13,9 +16,16 @@ const colors = {
     default: ""
 }
 
-const Card = ({title, description, color}: Props) => {
+
+const Card = ({title, description, color, path}: Props) => {
+    const router = useRouter()
+    function navigateTo(path: string) {
+        router.push(path).then(r => console.log("Redirected"));
+    }
+
     const bgColor: ColorKey = color;
-    return <div className={`transition duration-200 ease transform-gpu hover:scale-110
+    return <div onClick={() => navigateTo(path)}
+                className={`cursor-pointer transition duration-200 ease transform-gpu hover:scale-110
     max-w-xs min-w-0 w-full rounded overflow-hidden shadow-lg ${colors[bgColor]}`}>
         <div className="p-16">
             <div className="font-bold text-xl mb-2">{title}</div>
