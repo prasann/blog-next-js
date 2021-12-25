@@ -1,0 +1,26 @@
+[
+  {
+    "title": "My talk on Something",
+    "date": "21-12-2021",
+    "place": "Chennai",
+    "description": "This is a long description of the talk. This is a long description of the talk, and something will make some sense I hope",
+    "externalLinks": [
+      {
+        "name": "link1",
+        "link": "https://google.com"
+      }
+    ]
+  },
+  {
+    "title": "My talk on Something",
+    "date": "21-12-2021",
+    "place": "Chennai",
+    "description": "This is a long description of the talk. This is a long description of the talk, and something will make some sense I hope",
+    "externalLinks": [
+      {
+        "name": "link1",
+        "link": "https://google.com"
+      }
+    ]
+  }
+]

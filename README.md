@@ -19,3 +19,10 @@ Pending
 [] Landing page color scheme
 [] Migrate data
 [] 
+
+
+Ideas
+
+* https://lordicon.com/icons
+* https://lottiefiles.com/
+
