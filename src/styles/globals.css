@@ -10,3 +10,7 @@
 .light-background {
     @apply bg-gradient-to-tr from-yellow-50 to-red-50;
 }
+
+.icon-text{
+    @apply my-1 mr-1 h-5 w-5 text-blue-500;
+}

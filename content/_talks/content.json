@@ -7,7 +7,8 @@
     "externalLinks": [
       {
         "name": "link1",
-        "link": "https://google.com"
+        "link": "https://www.youtube.com/embed/OzOgCmO5AjI",
+        "embed": true
       }
     ]
   },
@@ -19,7 +20,26 @@
     "externalLinks": [
       {
         "name": "link1",
-        "link": "https://google.com"
+        "link": "https://www.slideshare.net/slideshow/embed_code/key/jPx5noSwpL5alt",
+        "embed": true
+      },
+      {
+        "name": "Link to the invite",
+        "link": "https://www.slideshare.net/slideshow/embed_code/key/jPx5noSwpL5alt",
+        "embed": false
+      }
+    ]
+  },
+  {
+    "title": "My talk on Something",
+    "date": "21-12-2021",
+    "place": "Chennai",
+    "description": "This is a long description of the talk. This is a long description of the talk, and something will make some sense I hope",
+    "externalLinks": [
+      {
+        "name": "Link to slideshare",
+        "link": "https://www.slideshare.net/slideshow/embed_code/key/jPx5noSwpL5alt",
+        "embed": false
       }
     ]
   }

@@ -1,6 +1,7 @@
-type ExternalLink = {
+export type ExternalLink = {
     name: string
     link: string
+    embed: boolean
 }
 
 type Talk = {
