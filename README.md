@@ -8,8 +8,8 @@ Pages
 
 [x] Landing page
 [x] /blog = List of posts
-[] /post/{post-name}
-[] /talks - List of talks
+[x] /post/{post-name}
+[x] /talks - List of talks
 [] /me
 [] /me/resume?
 
@@ -25,4 +25,4 @@ Ideas
 
 * https://lordicon.com/icons
 * https://lottiefiles.com/
-
+* Add framer motion to route transitions.
