@@ -3,7 +3,7 @@
 }
 
 .content-area {
-    @apply  p-2 -mt-10 mr-2 ml-2 border-2;
+    @apply  p-2 -mt-10 mr-2 ml-2;
 }
 
 @screen md {
@@ -13,5 +13,4 @@
     .header {
         @apply h-60;
     }
-
 }

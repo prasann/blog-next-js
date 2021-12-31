@@ -16,6 +16,7 @@ Pages
 Pending
 
 [] Header design
+[] clean up and structure CSS
 [] Landing page color scheme
 [] Migrate data
 [] 
