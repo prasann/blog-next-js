@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import talksJson from "../../content/_talks/content.json";
 import TalkListItem from "../components/TalkListItem";
 import Talk from "../types/talk";
@@ -6,8 +5,7 @@ import Talk from "../types/talk";
 const talks: Talk[] = talksJson;
 
 const Talks = () => {
-    return <div className="prose max-w-none">
-        <Header/>
+    return <div>
         <div className="prose max-w-none content-area bg-white rounded-xl">
             {talks.map(talk => <TalkListItem {...talk}/>)}
         </div>

@@ -3,7 +3,6 @@ import matter from "gray-matter";
 import Post from "../../types/post";
 import PostComponent from "../../components/Post";
 import {useRouter} from "next/router";
-import Header from "../../components/Header";
 
 type Props = {
     posts: Post[]
@@ -17,7 +16,6 @@ export default function Home({posts}: Props) {
     if(currentPost){
         return (
             <div>
-                <Header/>
                 <PostComponent title={currentPost.title}
                                description={currentPost.description}
                                content={currentPost.content}/>
