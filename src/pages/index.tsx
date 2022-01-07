@@ -8,9 +8,6 @@ type Props = {
 const Home = () => {
     return <div>
         <ContentArea/>
-        <footer className="py-5 text-center">
-            Hey. I'm a footer.
-        </footer>
     </div>
 }
 
