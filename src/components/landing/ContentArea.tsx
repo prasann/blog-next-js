@@ -33,7 +33,7 @@ const Container = () => {
                 path="/talks"/>
                 <Card title="Blog"
                       description="My blog"
-                      color="variant2"
+                      color="variant1"
                       path="/blog"/>
             </div>
         </div>

@@ -10,8 +10,8 @@ type Props = {
 }
 
 const colors = {
-    variant1: "bg-gradient-to-r from-sky-400 to-blue-500",
-    variant2: "bg-gradient-to-r from-sky-400 to-cyan-300",
+    variant1: "bg-gradient-to-br from-blue-gray-500 to-yellow-100",
+    variant2: "bg-gradient-to-l from-sky-400 to-cyan-300",
     variant3: "bg-gradient-to-r from-blue-500 to-blue-600",
     default: ""
 }
