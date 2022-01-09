@@ -3,6 +3,9 @@ module.exports = {
     darkMode: 'media',
     theme: {
         extend: {
+            fontFamily: {
+                'sans': ['Mulish', 'sans-serif']
+            },
             colors: {
                 'warm-black': '#0d1117'
             },
