@@ -5,7 +5,7 @@ import GmailIcon from './../../images/icons8-gmail.svg'
 import Card from "./Card";
 
 const AboutMe = () => {
-    return <div className="rounded text-xl text-red-700 shadow-xl p-6 italic text-center">
+    return <div className="rounded text-xl shadow-xl p-6 text-center">
         A computer science engineer, with a master’s degree in software systems. Builds and runs web applications with
         various stacks. Self taught geek, loves to work in teams and not a 10x programmer <a href="/about">Know more...</a>
     </div>

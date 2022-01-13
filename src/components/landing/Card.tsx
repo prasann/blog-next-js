@@ -10,9 +10,9 @@ type Props = {
 }
 
 const colors = {
-    variant1: "bg-gradient-to-br from-blue-gray-500 to-yellow-100",
+    variant1: "bg-gradient-to-bl from-gray-700 via-gray-900 to-black",
+    variant3: "bg-gradient-to-br from-blue-gray-500 to-yellow-100",
     variant2: "bg-gradient-to-l from-sky-400 to-cyan-300",
-    variant3: "bg-gradient-to-r from-blue-500 to-blue-600",
     default: ""
 }
 
@@ -28,8 +28,8 @@ const Card = ({title, description, color, path}: Props) => {
                 className={`cursor-pointer transition duration-200 ease transform-gpu hover:scale-110
     max-w-xs min-w-0 w-full rounded overflow-hidden shadow-lg ${colors[bgColor]}`}>
         <div className="p-16">
-            <div className="font-bold text-xl mb-2">{title}</div>
-            <p className="text-grey-darker text-base">
+            <div className="font-bold text-sky-400 text-xl mb-2">{title}</div>
+            <p className="text-sky-200 text-base">
                 {description}
             </p>
         </div>

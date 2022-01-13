@@ -7,9 +7,9 @@ type LayoutProps = {
 }
 
 const Layout: FC<LayoutProps> = ({children}) => {
-    return <div className="prose max-w-none flex flex-col justify-start min-h-screen bg-gradient-to-br from-gray-200 via-gray-300 to-gray-500">
+    return <div className="flex flex-col justify-start min-h-screen bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
         <Header/>
-        <main className="">
+        <main className="prose max-w-none">
             {children}
         </main>
         <Footer/>
