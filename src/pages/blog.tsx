@@ -7,9 +7,9 @@ type Props = {
 }
 
 const Blog = ({allPosts}: Props) => {
-    return <div className="prose max-w-none mx-12 content-area bg-white rounded-xl">
+    return <div><div className="prose max-w-none content-area bg-white rounded-xl">
             {allPosts.map(post => (<PostListItem {...post}/>))}
-        </div>
+        </div></div>
 }
 
 export const getStaticProps = async () => {
