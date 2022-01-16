@@ -1,4 +1,4 @@
-import talksJson from "../../content/_talks/content.json";
+import talksJson from "../../content/_meta/talks.json";
 import TalkListItem from "../components/TalkListItem";
 import Talk from "../types/talk";
 

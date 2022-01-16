@@ -20,7 +20,7 @@ const TalkListItem = (
     {
         title, description, date, place, externalLinks
     }: Talk) => {
-    return <div className="m-2 text-white grid md:grid-cols-2 rounded-xl shadow-xl p-2 border-2">
+    return <div key={title} className="m-2 text-white grid md:grid-cols-2 rounded-xl shadow-xl p-2 border-2">
         <div className="text-black m-2 p-2 md:p-6 bg-white">
             <div className="text-gray-500 text-2xl font-bold">{title}</div>
             <div className="grid grid-cols-2 mt-4">
@@ -35,7 +35,7 @@ const TalkListItem = (
         </div>
 
         <div className="text-black m-2 p-6 bg-white">
-            {externalLinks.map(link => <RenderLink {...link}/>)}
+            {externalLinks.map(link => <RenderLink key={link.name} {...link}/>)}
         </div>
     </div>
 }
