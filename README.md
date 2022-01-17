@@ -19,7 +19,8 @@ Pending
 [] clean up and structure CSS
 [x] Landing page color scheme
 [] Migrate data
-[] 
+[] Fix header with minimal things on scroll
+[] Engage buttons on the side.
 
 
 Ideas

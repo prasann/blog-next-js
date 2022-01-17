@@ -1,9 +1,10 @@
 import fs from "fs";
 import matter from "gray-matter";
 import Post from "../../types/post";
-import PostComponent from "../../components/Post";
+import PostComponent from "../../components/posts/Content";
 import {useRouter} from "next/router";
 import ReactMarkdown from "react-markdown";
+import Engage from "../../components/posts/Engage";
 
 type Props = {
     posts: Post[]
@@ -12,15 +13,15 @@ type Props = {
 
 export default function Home({posts, footer}: Props) {
     const router = useRouter()
-    const { slug } = router.query
+    const {slug} = router.query
     const currentPost = posts.find(post => post.slug === slug)
 
-    if(currentPost){
+    if (currentPost) {
         return (
             <div>
-                <PostComponent title={currentPost.title}
-                               description={currentPost.description}
-                               content={currentPost.content}/>
+                <div className="flex flex-row">
+                    <PostComponent {...currentPost}/>
+                </div>
                 <footer>
                     <ReactMarkdown children={footer}/>
                 </footer>
