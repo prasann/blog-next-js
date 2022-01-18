@@ -1,11 +1,17 @@
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
-import {faHeart} from "@fortawesome/free-solid-svg-icons";
+import {faHeart} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const Engage = () => {
     return <div className="bg-white flex flex-row">
-        <FontAwesomeIcon icon={faTwitter}/>
-        <FontAwesomeIcon icon={faHeart}/>
+        <div className="mx-2">
+            <FontAwesomeIcon className="cursor-pointer" icon={faTwitter} size="2x"/>
+            <span>Share</span>
+        </div>
+        <div className="mx-2">
+            <FontAwesomeIcon className="cursor-pointer" icon={faHeart} size="2x"/>
+            <span>Like</span>
+        </div>
     </div>
 }
 

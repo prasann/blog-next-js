@@ -5,13 +5,14 @@ import PostComponent from "../../components/posts/Content";
 import {useRouter} from "next/router";
 import ReactMarkdown from "react-markdown";
 import Engage from "../../components/posts/Engage";
+import FooterCard from "../../components/posts/FooterCard";
 
 type Props = {
     posts: Post[]
     footer: string
 }
 
-export default function Home({posts, footer}: Props) {
+export default function Home({posts}: Props) {
     const router = useRouter()
     const {slug} = router.query
     const currentPost = posts.find(post => post.slug === slug)
@@ -22,9 +23,7 @@ export default function Home({posts, footer}: Props) {
                 <div className="flex flex-row">
                     <PostComponent {...currentPost}/>
                 </div>
-                <footer>
-                    <ReactMarkdown children={footer}/>
-                </footer>
+                <FooterCard/>
             </div>
         );
     }
@@ -60,15 +59,10 @@ export async function getStaticProps() {
         };
     });
 
-    const footerMarkdown = fs
-        .readFileSync(`content/_meta/post-footer.md`)
-        .toString();
-    const footerContent = matter(footerMarkdown);
-
     return {
         props: {
             posts,
-            footer: footerContent.content
         },
     };
+
 }

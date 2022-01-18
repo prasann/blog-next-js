@@ -43,3 +43,7 @@
     width: 100%;
     height: 100%;
 }
+
+.highlight-animation {
+    @apply cursor-pointer transition duration-200 transform-gpu hover:scale-110;
+}

@@ -6,6 +6,7 @@
     @apply  p-2 -mt-10 mr-2 ml-2;
 }
 
+
 @screen md {
     .content-area {
         @apply p-6 -mt-20 mr-20 ml-20

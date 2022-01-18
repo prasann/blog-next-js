@@ -13,10 +13,10 @@ const AboutMe = () => {
 const Social = () => {
     return <div className="w-full rounded p-4 mt-4">
         <div className="flex flex-row justify-evenly">
-            <FontAwesomeIcon icon={faGithub} size="2x"/>
-            <FontAwesomeIcon icon={faTwitter} size="2x"/>
-            <FontAwesomeIcon icon={faLinkedin} size="2x"/>
-            <FontAwesomeIcon icon={faEnvelope} size="2x"/>
+            <FontAwesomeIcon className="highlight-animation" icon={faGithub} size="2x"/>
+            <FontAwesomeIcon className="highlight-animation" icon={faTwitter} size="2x"/>
+            <FontAwesomeIcon className="highlight-animation" icon={faLinkedin} size="2x"/>
+            <FontAwesomeIcon className="highlight-animation" icon={faEnvelope} size="2x"/>
         </div>
     </div>
 }
