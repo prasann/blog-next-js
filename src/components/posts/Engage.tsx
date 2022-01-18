@@ -1,9 +1,11 @@
-import TwitterIcon from "../../images/icons8-twitter.svg";
+import {faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {faHeart} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const Engage = () => {
     return <div className="bg-white flex flex-row">
-        <img src={TwitterIcon} alt="Twitter icon"/>
-        <img src={TwitterIcon} alt="Twitter icon"/>
+        <FontAwesomeIcon icon={faTwitter}/>
+        <FontAwesomeIcon icon={faHeart}/>
     </div>
 }
 

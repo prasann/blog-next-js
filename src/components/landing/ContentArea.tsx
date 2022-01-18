@@ -1,8 +1,7 @@
-import GithubIcon from './../../images/icons8-github.svg'
-import LinkedInIcon from './../../images/icons8-linkedin.svg'
-import TwitterIcon from './../../images/icons8-twitter.svg'
-import GmailIcon from './../../images/icons8-gmail.svg'
 import Card from "./Card";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTwitter, faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import {faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const AboutMe = () => {
     return <div className="rounded text-xl shadow-xl p-6 text-center">
@@ -14,10 +13,10 @@ const AboutMe = () => {
 const Social = () => {
     return <div className="w-full rounded p-4 mt-4">
         <div className="flex flex-row justify-evenly">
-            <img src={GithubIcon} alt="Github icon"/>
-            <img src={TwitterIcon} alt="Twitter icon"/>
-            <img src={LinkedInIcon} alt="LinkedIn icon"/>
-            <img src={GmailIcon} alt="Gmail icon"/>
+            <FontAwesomeIcon icon={faGithub} size="2x"/>
+            <FontAwesomeIcon icon={faTwitter} size="2x"/>
+            <FontAwesomeIcon icon={faLinkedin} size="2x"/>
+            <FontAwesomeIcon icon={faEnvelope} size="2x"/>
         </div>
     </div>
 }

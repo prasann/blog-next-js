@@ -1,6 +1,7 @@
 import Talk, {ExternalLink} from "../types/talk";
-import {CalendarIcon, LocationMarkerIcon} from "@heroicons/react/outline";
 import IconWithText from "./utils/IconWithText";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCalendar, faMapMarker, faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
 
 const RenderLink = (link: ExternalLink) => {
     if (link.embed) {
@@ -25,10 +26,10 @@ const TalkListItem = (
             <div className="text-gray-500 text-2xl font-bold">{title}</div>
             <div className="grid grid-cols-2 mt-4">
                 <IconWithText text={date}>
-                    <CalendarIcon className="icon-text"/>
+                    <FontAwesomeIcon icon={faCalendar} size="2x"/>
                 </IconWithText>
                 <IconWithText text={place}>
-                    <LocationMarkerIcon className="icon-text"/>
+                    <FontAwesomeIcon icon={faMapMarkerAlt} size="2x"/>
                 </IconWithText>
             </div>
             <div className="text-gray-700">{description}</div>
