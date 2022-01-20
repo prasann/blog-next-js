@@ -23,6 +23,9 @@
 .prose {
     overflow-wrap: break-word;
 }
+*{
+    outline: 1px red solid;
+}
 
 .iframe-container {
     overflow: hidden;

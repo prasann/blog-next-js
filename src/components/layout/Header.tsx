@@ -1,4 +1,5 @@
 import {useRouter} from "next/router";
+import Image from 'next/image';
 
 const Header = () => {
     const router = useRouter();
@@ -7,8 +8,10 @@ const Header = () => {
         return router.push(`/`)
     }
 
-    return <header className="header dark-background">
-        <h1 className="font-bold text-sky-400 text-2xl md:text-4xl mx-2 my-4 cursor-pointer" onClick={navigateToHome}>Prasanna's writings...</h1>
+    return <header className="header dark-background ">
+        <div onClick={navigateToHome} className="cursor-pointer mx-4 my-2">
+            <Image src="/logo.png" alt="logo" width="276" height="92" />
+        </div>
     </header>
 }
 

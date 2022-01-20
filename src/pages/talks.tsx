@@ -7,7 +7,7 @@ const talks: Talk[] = talksJson;
 const Talks = () => {
     return <div>
         <div className="prose max-w-none content-area bg-white rounded-xl">
-            {talks.map(talk => <TalkListItem {...talk}/>)}
+            {talks.map(talk => <TalkListItem key={talk.title} {...talk}/>)}
         </div>
     </div>
 }

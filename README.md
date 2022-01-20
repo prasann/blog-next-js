@@ -15,7 +15,7 @@ Pending
 
 [x] Header design
 [x] Landing page color scheme
-[] Header logo
+[x] Header logo
 [] /about
 [] Enable click on the buttons in landing page and in engage component
 [] Basic SEO setup. (Thumbnails, Meta tags for sharing)

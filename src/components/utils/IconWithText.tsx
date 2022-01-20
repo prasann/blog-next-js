@@ -8,7 +8,7 @@ type Props = {
 const IconWithText = ({children, text}: Props) => {
     return <div className="flex align-middle">
         {children}
-        <span>{text}</span>
+        <span className="mx-2 mt-1">{text}</span>
     </div>
 }
 
