@@ -10,15 +10,18 @@ Pages
 [x] /blog = List of posts
 [x] /post/{post-name}
 [x] /talks - List of talks
-[] /me
-[] /me/resume?
 
 Pending
 
 [x] Header design
-[] clean up and structure CSS
 [x] Landing page color scheme
+[] Header logo
+[] /about
+[] Enable click on the buttons in landing page and in engage component
+[] Basic SEO setup. (Thumbnails, Meta tags for sharing)
 [] Migrate data
+
+[] clean up and structure CSS
 [] Fix header with minimal things on scroll
 [] Engage buttons on the side.
 
