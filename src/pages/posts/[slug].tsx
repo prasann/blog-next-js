@@ -3,9 +3,7 @@ import matter from "gray-matter";
 import Post from "../../types/post";
 import PostComponent from "../../components/posts/Content";
 import {useRouter} from "next/router";
-import ReactMarkdown from "react-markdown";
-import Engage from "../../components/posts/Engage";
-import FooterCard from "../../components/posts/FooterCard";
+import Head from "next/head";
 
 type Props = {
     posts: Post[]
@@ -19,9 +17,13 @@ export default function Home({posts}: Props) {
 
     if (currentPost) {
         return (
+            <>
+            <Head>
+                <title>{currentPost.title}</title>
+            </Head>
             <div>
                 <PostComponent {...currentPost}/>
-            </div>
+            </div></>
         );
     }
 }
