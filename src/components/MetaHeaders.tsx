@@ -16,6 +16,8 @@ const MetaHeaders = (customMetaHeader: Meta) => {
         <meta property="og:image" content={metaHeader.image}/>
         {metaHeader.isArticle} && <meta property="og:type" content="article"/>
         <meta property="og:locale" content="en_IN"/>
+        <meta property="og:url" content={window.location.href}/>
+        <meta property="fb:app_id" content="670156599751120%"/>
 
         {/*    Twitter tags*/}
         <meta property="twitter:card" content="summary"/>
