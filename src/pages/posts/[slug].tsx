@@ -3,7 +3,9 @@ import matter from "gray-matter";
 import Post from "../../types/post";
 import PostComponent from "../../components/posts/Content";
 import {useRouter} from "next/router";
-import Head from "next/head";
+import MetaHeaders from "../../components/MetaHeaders";
+import React from "react";
+import Meta from "../../types/meta";
 
 type Props = {
     posts: Post[]
@@ -16,12 +18,14 @@ export default function Home({posts}: Props) {
     const currentPost = posts.find(post => post.slug === slug)
 
     if (currentPost) {
+        const metaDetails:Meta = {
+            title: currentPost.title,
+            description: currentPost.description
+        }
         return (
             <>
-            <Head>
-                <title>{currentPost.title}</title>
-            </Head>
-            <div>
+                <MetaHeaders {...metaDetails}/>
+                <div>
                 <PostComponent {...currentPost}/>
             </div></>
         );

@@ -1,5 +1,7 @@
 import Post from "../types/post";
 import ContentArea from "../components/landing/ContentArea";
+import MetaHeaders from "../components/MetaHeaders";
+import React from "react";
 
 type Props = {
     allPosts: Post[]
@@ -7,6 +9,7 @@ type Props = {
 
 const Home = () => {
     return <div>
+        <MetaHeaders/>
         <ContentArea/>
     </div>
 }

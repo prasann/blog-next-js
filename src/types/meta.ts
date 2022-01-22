@@ -8,7 +8,7 @@ type Meta = {
 export const defaultMeta: Meta = {
     title: "Random Presence",
     description: "Random presence of my thoughts and learning...",
-    image: "/assets/images/profile.jpg",
+    image: "https://blog-next-js-git-main-prasann1.vercel.app/assets/images/profile.jpg",
     isArticle: false
 }
 
