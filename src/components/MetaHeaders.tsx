@@ -16,7 +16,7 @@ const MetaHeaders = (customMetaHeader: Meta) => {
         <meta name="image" property="og:image" content={metaHeader.image}/>
         {metaHeader.isArticle} && <meta property="og:type" content="article"/>
         <meta property="og:locale" content="en_IN"/>
-        <meta property="og:url" content={window.location.href}/>
+        <meta property="og:url" content="https://prasans.info"/>
         <meta property="fb:app_id" content="670156599751120%"/>
 
         <meta name="author" content="Prasanna"/>

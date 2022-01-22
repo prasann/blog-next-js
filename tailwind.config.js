@@ -9,6 +9,7 @@ module.exports = {
             colors: {
                 'warm-black': '#0d1117',
                 'twitter-blue': '#00ACEE',
+                'linkedin-blue': '#0077B5',
                 'heart-red': '#FE251B'
             },
             keyframes: {
