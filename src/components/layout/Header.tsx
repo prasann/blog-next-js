@@ -10,7 +10,7 @@ const Header = () => {
 
     return <header className="header dark-background ">
         <div onClick={navigateToHome} className="cursor-pointer mx-4 my-2">
-            <Image src="/logo.png" alt="logo" width="276" height="92" />
+            <Image src="/assets/logo.png" alt="logo" width="276" height="92" />
         </div>
     </header>
 }

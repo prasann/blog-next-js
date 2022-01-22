@@ -1,13 +1,10 @@
-import {faUser} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Image from 'next/image'
 
 const FooterCard = () => {
-    return <footer className="prose max-w-none mx-20 my-10 text-center p-6 bg-white rounded-xl">
-        <div className="flex justify-between">
-            <div className="mx-10"> <FontAwesomeIcon className="cursor-pointer" icon={faUser} size="2x"/> </div>
-            <div> Prasanna is a full stack web developer, with exposure to various programming languages.
-                Uses mostly Java, Javascript these days and got ~13 years of architecting and coding enterprise software solutions. </div>
-        </div>
+    return <footer className="items-center flex flex-col md:flex-row justify-center justify-items-center my-4 display-block">
+        <Image className="rounded-full" src="/assets/profile.jpg" width="64" height="64" layout="fixed"/>
+        <div className="mt-4 md:mt-0 md:w-6/12 text-center"> Prasanna is a full stack web developer, with exposure to various programming languages.
+            Uses mostly Java, Javascript these days and got ~13 years of architecting and coding enterprise software solutions. </div>
     </footer>
 }
 

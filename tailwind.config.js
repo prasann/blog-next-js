@@ -7,7 +7,9 @@ module.exports = {
                 'sans': ['Mulish', 'sans-serif']
             },
             colors: {
-                'warm-black': '#0d1117'
+                'warm-black': '#0d1117',
+                'twitter-blue': '#00ACEE',
+                'heart-red': '#FE251B'
             },
             keyframes: {
                 wave: {

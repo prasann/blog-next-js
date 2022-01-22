@@ -20,10 +20,7 @@ export default function Home({posts}: Props) {
     if (currentPost) {
         return (
             <div>
-                <div className="flex flex-row">
-                    <PostComponent {...currentPost}/>
-                </div>
-                <FooterCard/>
+                <PostComponent {...currentPost}/>
             </div>
         );
     }

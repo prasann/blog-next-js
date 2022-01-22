@@ -16,7 +16,11 @@ Pending
 [x] Header design
 [x] Landing page color scheme
 [x] Header logo
+[] Fix Blog post CSS
+    [] Footer broke in the mobile
+    [] Align Date, Engage buttons
 [] /about
+[] Resume
 [] Enable click on the buttons in landing page and in engage component
 [] Basic SEO setup. (Thumbnails, Meta tags for sharing)
 [] Migrate data
