@@ -27,10 +27,7 @@ const Card = ({title, description, color, path}: Props) => {
     return <div onClick={() => navigateTo(path)}
                 className={`highlight-animation max-w-xs min-w-0 w-full rounded overflow-hidden shadow-lg ${colors[bgColor]}`}>
         <div className="p-16">
-            <div className="font-bold text-sky-400 text-xl mb-2">{title}</div>
-            <p className="text-sky-200 text-base">
-                {description}
-            </p>
+            <div className="font-bold text-sky-400 text-4xl text-center mb-2">{title}</div>
         </div>
     </div>
 }

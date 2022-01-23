@@ -21,9 +21,10 @@ Pending
     [x] Align Date, Engage buttons
 [] /about
 [] Resume
-[] Enable click on the buttons in landing page and in engage component
-[] Basic SEO setup. (Thumbnails, Meta tags for sharing)
+[x] Enable click on the buttons in landing page and in engage component
+[x] Basic SEO setup. (Thumbnails, Meta tags for sharing)
 [] Migrate data
+[] Like button in the post
 
 [] clean up and structure CSS
 [] Fix header with minimal things on scroll
