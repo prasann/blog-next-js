@@ -1,2 +1,6 @@
-const withImages = require('next-images')
-module.exports = withImages()
+module.exports = {
+    images: {
+        domains: ['dev-to-uploads.s3.amazonaws.com'],
+        formats: ['image/webp']
+    }
+}

@@ -1,8 +1,9 @@
 import ReactMarkdown from "react-markdown";
-import CodeBlock from "../utils/CodeBlock";
+import CustomComponentsForMarkdown from "../utils/CustomComponentsForMarkdown";
 import Engage from "./Engage";
 import Post from "../../types/post";
 import FooterCard from "./FooterCard";
+import RenderMarkdown from "../RenderMarkdown";
 
 const Content = ({title, description, content, date}: Post) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -16,7 +17,7 @@ const Content = ({title, description, content, date}: Post) => {
                 <div className="mt-2 mb-4 text-center text-gray-400 italic">{formattedDate}</div>
             </header>
             {/*@ts-ignore*/}
-            <ReactMarkdown components={CodeBlock} children={content}/>
+            <RenderMarkdown content={content}/>
         </article>
         <div className="flex justify-center items-center">
             <Engage/>
