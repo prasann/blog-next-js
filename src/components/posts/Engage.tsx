@@ -1,11 +1,19 @@
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
-// import {faHeart} from "@fortawesome/free-regular-svg-icons";
 import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const Engage = () => {
+type Props = {
+    description: string,
+}
+
+const shareOnTwitter = (description: string) => {
+    const url = window.location.href;
+    window.open(`https://twitter.com/intent/tweet?text=${description}&url=${url}`);
+}
+
+const Engage = ({description}: Props) => {
     return <div className="bg-white flex flex-row">
-        <div className="mx-2 flex flex-row highlight-animation">
+        <div className="mx-2 flex flex-row highlight-animation" onClick={() => shareOnTwitter(description)}>
             <FontAwesomeIcon className="cursor-pointer text-twitter-blue" icon={faTwitter} size="2x"/>
             <div className="align-middle mx-2 text-bold">Share</div>
         </div>

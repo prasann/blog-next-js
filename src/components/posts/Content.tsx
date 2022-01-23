@@ -20,7 +20,7 @@ const Content = ({title, description, content, date}: Post) => {
             <RenderMarkdown content={content}/>
         </article>
         <div className="flex justify-center items-center">
-            <Engage/>
+            <Engage description={description}/>
         </div>
         <div className="flex-grow border-t mx-4 md:mx-24 border-gray-300 mt-4"/>
         <FooterCard/>
