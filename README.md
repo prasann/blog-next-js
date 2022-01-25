@@ -24,8 +24,9 @@ Pending
 [x] Enable click on the buttons in landing page and in engage component
 [x] Basic SEO setup. (Thumbnails, Meta tags for sharing)
 [] Migrate data
-[] Like button in the post
+[] Setup redirects for the old ones
 
+[] Like button in the post
 [] clean up and structure CSS
 [] Fix header with minimal things on scroll
 [] Engage buttons on the side.

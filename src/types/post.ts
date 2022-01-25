@@ -5,6 +5,8 @@ type Post = {
     description: string
     category: string
     content: string
+    draft: boolean
+    outdated: boolean
 }
 
 export default Post

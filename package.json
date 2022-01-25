@@ -19,29 +19,29 @@
     "nprogress": "^0.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-markdown": "^7.1.1",
+    "react-markdown": "^8.0.0",
     "react-syntax-highlighter": "^15.4.5",
-    "tailwindcss": "^3.0.5"
+    "tailwindcss": "^3.0.16"
   },
   "devDependencies": {
-    "@testing-library/dom": "^8.11.1",
+    "@testing-library/dom": "^8.11.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "^17.0.37",
+    "@types/react": "^17.0.38",
     "@types/react-syntax-highlighter": "^13.5.2",
     "@types/remark-prism": "^1.3.0",
-    "autoprefixer": "^10.4.0",
-    "babel-jest": "^27.4.5",
+    "autoprefixer": "^10.4.2",
+    "babel-jest": "^27.4.6",
     "cooky-cutter": "^1.5.4",
     "gray-matter": "^4.0.3",
-    "jest": "^27.4.5",
+    "jest": "^27.4.7",
     "jest-dom": "^4.0.0",
     "postcss": "^8.4.5",
-    "prismjs": "^1.25.0",
+    "prismjs": "^1.26.0",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "remark-prism": "^1.3.6",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.5"
   }
 }
