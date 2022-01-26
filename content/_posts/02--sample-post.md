@@ -1,8 +1,8 @@
 ---
 title: Logging in Golang projects
 description: A log abstraction in go-lang projects, that can then be used to log common information. This also hides the log library inclusion, making it easier to swap out the library for a different one.
-category: Go
-date: 12-01-2020
+category: go-lang
+date: 21-01-2020
 draft: false
 ---
 
