@@ -2,6 +2,7 @@
 title: First Post
 description: An introductory post to start off my blog.
 date: 30-01-2008
+minutesToRead: 1
 ---
 So after writing lots of shits and craps in various blogs now I have decided to have my own blog (another one :P) to continue writing those same shits and craps.
 

@@ -3,6 +3,7 @@ type PostMeta = {
     title: string
     description: string
     date: string
+    minutesToRead: string
 }
 
 interface Post extends PostMeta  {

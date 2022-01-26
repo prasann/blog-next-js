@@ -28,6 +28,9 @@ export function getPostByFileName(fileName: string, withContent: boolean = true)
     if (withContent) {
         post.content = content
     }
+    if (data.minutesToRead){
+        post.minutesToRead = pluralize(data.minutesToRead)
+    }
     return post
 }
 
@@ -70,4 +73,8 @@ function sortDesc(leftPost: Post, rightPost: Post): number {
 
 function formatStringToDate(date: string, format: string = 'dd-MM-yyyy'): Date {
     return parse(date, format, new Date());
+}
+
+function pluralize(minutesToRead: number = 1) {
+    return minutesToRead === 1 ? "1 minute read" : `${minutesToRead} minutes read`
 }

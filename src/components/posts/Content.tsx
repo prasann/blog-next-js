@@ -5,7 +5,7 @@ import Post from "../../types/post";
 import FooterCard from "./FooterCard";
 import RenderMarkdown from "../RenderMarkdown";
 
-const Content = ({title, description, content, date}: Post) => {
+const Content = ({title, description, content, date, minutesToRead}: Post) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     // @ts-ignore
     // const formattedDate = new Date(date).toLocaleDateString(undefined, options) ;
@@ -14,7 +14,10 @@ const Content = ({title, description, content, date}: Post) => {
         <article key={title}>
             <header>
                 <div className="text-4xl font-bold text-center mt-2">{title}</div>
-                <div className="mt-2 mb-4 text-center text-gray-400 italic">{date}</div>
+                <div className="flex flex-row justify-between">
+                    <div className="mt-2 mb-4 text-center text-gray-400 italic">{date}</div>
+                    <div className="mt-2 mb-4 text-center text-gray-400 italic">{minutesToRead}</div>
+                </div>
             </header>
             {/*@ts-ignore*/}
             <RenderMarkdown content={content}/>
