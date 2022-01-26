@@ -16,15 +16,12 @@ const Social = () => {
         <div className="flex flex-row justify-evenly">
             <a className="text-black highlight-animation text-center" href="https://github.com/prasann" target="_blank">
                 <FontAwesomeIcon icon={faGithub} size="2x"/>
-                <span className="mx-1">@prasann</span>
             </a>
             <a className="highlight-animation text-center" href="https://twitter.com/pvenk" target="_blank">
                 <FontAwesomeIcon className="text-twitter-blue" icon={faTwitter} size="2x"/>
-                <span className="mx-1">@pvenk</span>
             </a>
             <a className="highlight-animation text-center" href="https://www.linkedin.com/in/pvenk" target="_blank">
                 <FontAwesomeIcon className="text-linkedin-blue" icon={faLinkedin} size="2x"/>
-                <span className="mx-1">@pvenk</span>
             </a>
             <a className="text-center hidden md:inline" href="mailto:mail@prasanna.dev" target="_blank">
                 <FontAwesomeIcon className="highlight-animation text-green-600" icon={faEnvelope} size="2x"/>

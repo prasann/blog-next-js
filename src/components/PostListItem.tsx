@@ -5,7 +5,7 @@ const PostListItem = ({title, description, slug}: Post) => {
     const router = useRouter();
 
     function navigateTo(slug: string) {
-        router.push(`posts/${slug}`).then(r => console.log("redirected"))
+        router.push(`posts/${slug}`)
     }
 
     return <div key={slug}

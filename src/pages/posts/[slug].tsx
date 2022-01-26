@@ -1,43 +1,40 @@
-import fs from "fs";
-import matter from "gray-matter";
 import Post from "../../types/post";
 import PostComponent from "../../components/posts/Content";
-import {useRouter} from "next/router";
 import MetaHeaders from "../../components/MetaHeaders";
 import React from "react";
 import Meta from "../../types/meta";
+import {getAllUrlSlugs, getPostBySlug} from "../../lib/api";
+import {ParsedUrlQuery} from 'querystring'
 
 type Props = {
-    posts: Post[]
-    footer: string
+    post: Post
 }
 
-export default function Home({posts}: Props) {
-    const router = useRouter()
-    const {slug} = router.query
-    const currentPost = posts.find(post => post.slug === slug)
+interface IParams extends ParsedUrlQuery {
+    slug: string
+}
 
-    if (currentPost) {
-        const metaDetails:Meta = {
-            title: currentPost.title,
-            description: currentPost.description
+export default function Home({post}: Props) {
+    if (post) {
+        const metaDetails: Meta = {
+            title: post.title,
+            description: post.description
         }
         return (
             <>
                 <MetaHeaders {...metaDetails}/>
                 <div>
-                <PostComponent {...currentPost}/>
-            </div></>
+                    <PostComponent {...post}/>
+                </div>
+            </>
         );
     }
 }
 
 export async function getStaticPaths() {
-    const files = fs.readdirSync("content/_posts");
-    const paths = files.map((filename) => ({
-        params: {
-            slug: filename.replace(".md", ""),
-        },
+    const slugs = getAllUrlSlugs();
+    const paths = slugs.map((slug) => ({
+        params: {slug},
     }));
     return {
         paths,
@@ -45,27 +42,13 @@ export async function getStaticPaths() {
     };
 }
 
-export async function getStaticProps() {
-    const files = fs.readdirSync(`${process.cwd()}/content/_posts`);
-
-    const posts = files.map((filename) => {
-        const markdownWithMetadata = fs
-            .readFileSync(`content/_posts/${filename}`)
-            .toString();
-
-        const {data, content} = matter(markdownWithMetadata);
-
-        return {
-            slug: filename.replace(".md", ""),
-            ...data,
-            content
-        };
-    });
-
+export async function getStaticProps(context: { params: IParams; }) {
+    const {slug} = context.params as IParams;
     return {
         props: {
-            posts,
+            post: {
+                ...(getPostBySlug(slug)),
+            },
         },
-    };
-
+    }
 }

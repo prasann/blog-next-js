@@ -2,6 +2,7 @@
 title: Slicing Microservices
 description: Some ideas to go about in designing micro-services. How to slice them and some general conventions
 category: architecture
+date: 12-01-2021
 draft: false    
 ---
 

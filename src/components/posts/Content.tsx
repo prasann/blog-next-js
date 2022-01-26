@@ -8,13 +8,13 @@ import RenderMarkdown from "../RenderMarkdown";
 const Content = ({title, description, content, date}: Post) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     // @ts-ignore
-    const formattedDate = new Date(date).toLocaleDateString(undefined, options) ;
+    // const formattedDate = new Date(date).toLocaleDateString(undefined, options) ;
 
     return <div className="prose max-w-none mx-12 content-area bg-white rounded-xl">
         <article key={title}>
             <header>
                 <div className="text-4xl font-bold text-center mt-2">{title}</div>
-                <div className="mt-2 mb-4 text-center text-gray-400 italic">{formattedDate}</div>
+                <div className="mt-2 mb-4 text-center text-gray-400 italic">{date}</div>
             </header>
             {/*@ts-ignore*/}
             <RenderMarkdown content={content}/>

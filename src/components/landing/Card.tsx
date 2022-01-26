@@ -20,7 +20,7 @@ const colors = {
 const Card = ({title, description, color, path}: Props) => {
     const router = useRouter()
     function navigateTo(path: string) {
-        router.push(path).then(r => console.log("Redirected"));
+        router.push(path);
     }
 
     const bgColor: ColorKey = color;

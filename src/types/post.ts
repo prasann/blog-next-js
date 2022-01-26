@@ -1,12 +1,13 @@
-type Post = {
+type PostMeta = {
     slug: string
     title: string
-    date: string
     description: string
-    category: string
+    date: string
+}
+
+interface Post extends PostMeta  {
+    category?: string
     content: string
-    draft: boolean
-    outdated: boolean
 }
 
 export default Post
