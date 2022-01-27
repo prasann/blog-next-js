@@ -1,16 +1,10 @@
-import ReactMarkdown from "react-markdown";
-import CustomComponentsForMarkdown from "../utils/CustomComponentsForMarkdown";
 import Engage from "./Engage";
 import Post from "../../types/post";
 import FooterCard from "./FooterCard";
 import RenderMarkdown from "../RenderMarkdown";
 
 const Content = ({title, description, content, date, minutesToRead}: Post) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    // @ts-ignore
-    // const formattedDate = new Date(date).toLocaleDateString(undefined, options) ;
-
-    return <div className="prose max-w-screen-lg mx-12 content-area bg-white rounded-xl">
+    return <div className="prose max-w-screen-xl mx-12 content-area bg-white rounded-xl">
         <article key={title}>
             <header>
                 <div className="text-4xl font-bold text-center mt-2">{title}</div>

@@ -11,7 +11,7 @@ type Props = {
 const Blog = ({allPosts}: Props) => {
     return <div>
         <MetaHeaders/>
-        <div className="prose max-w-none content-area bg-white rounded-xl">
+        <div className="prose max-w-screen-xl content-area bg-white rounded-xl">
             {allPosts.map(post => (<PostListItem key={post.title} {...post}/>))}
         </div>
     </div>
