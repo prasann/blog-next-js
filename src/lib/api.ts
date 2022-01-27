@@ -17,6 +17,7 @@ export function getPostByFileName(fileName: string, withContent: boolean = true)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const {data, content} = matter(fileContents)
     const post: Post = <Post>{};
+    console.log("***", data)
     post.slug = fileNameToSlug(fileName)
     post.title = data.title
     post.description = data.description
@@ -36,9 +37,10 @@ export function getPostByFileName(fileName: string, withContent: boolean = true)
 
 export function getAllPosts(): Post[] {
     const fileNames = getPostFileNames();
-    return fileNames
+    let allPosts = fileNames
         .map((fileName) => getPostByFileName(fileName, false))
-        .sort(sortDesc)
+        .sort(sortDesc);
+    return allPosts
 }
 
 export function getAllUrlSlugs(): string[] {
@@ -62,7 +64,12 @@ function fileNameToSlug(fileName: string): string {
 }
 
 function formattedDateString(date: string): string {
-    return format(formatStringToDate(date), 'dd-MMMM-yyyy')
+    try{
+        return format(formatStringToDate(date), 'dd-MMMM-yyyy')
+    }catch (e){
+        console.log("Error", date)
+    }
+    return "12-10-2011";
 }
 
 function sortDesc(leftPost: Post, rightPost: Post): number {

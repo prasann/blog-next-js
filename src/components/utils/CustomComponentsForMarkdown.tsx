@@ -29,19 +29,23 @@ const CustomComponentsForMarkdown = {
             const alt = image.properties.alt?.replace(/ *\{[^)]*\} */g, "")
             const isPriority = image.properties.alt?.toLowerCase().includes('{priority}')
             const metaWidth = image.properties.alt.match(/{([^}]+)x/)
-            const metaHeight = image.properties.alt.match(/x([^}]+)}/)
+            console.log("Metawidth", metaWidth)
+            const metaHeight = image.properties.alt.match(/xx([^}]+)}/)
+            console.log("metaHeight", metaHeight)
             const width = metaWidth ? metaWidth[1] : "768"
             const height = metaHeight ? metaHeight[1] : "432"
 
             return (
-                <Image
-                    src={image.properties.src}
-                    width={width}
-                    height={height}
-                    className="postImg"
-                    alt={alt}
-                    priority={isPriority}
-                />
+                <div className="text-center">
+                    <Image
+                        src={image.properties.src}
+                        width={width}
+                        height={height}
+                        className="postImg"
+                        alt={alt}
+                        priority={isPriority}
+                    />
+                </div>
             )
         }
         return <p>{paragraph.children}</p>
