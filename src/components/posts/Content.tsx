@@ -10,7 +10,7 @@ const Content = ({title, description, content, date, minutesToRead}: Post) => {
     // @ts-ignore
     // const formattedDate = new Date(date).toLocaleDateString(undefined, options) ;
 
-    return <div className="prose max-w-none mx-12 content-area bg-white rounded-xl">
+    return <div className="prose max-w-screen-lg mx-12 content-area bg-white rounded-xl">
         <article key={title}>
             <header>
                 <div className="text-4xl font-bold text-center mt-2">{title}</div>
