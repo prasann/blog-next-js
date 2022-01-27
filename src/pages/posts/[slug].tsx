@@ -23,9 +23,7 @@ export default function Home({post}: Props) {
         return (
             <>
                 <MetaHeaders {...metaDetails}/>
-                <div className="flex justify-items-center">
-                    <PostComponent {...post}/>
-                </div>
+                <PostComponent {...post}/>
             </>
         );
     }

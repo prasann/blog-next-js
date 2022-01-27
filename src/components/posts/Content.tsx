@@ -4,7 +4,7 @@ import FooterCard from "./FooterCard";
 import RenderMarkdown from "../RenderMarkdown";
 
 const Content = ({title, description, content, date, minutesToRead}: Post) => {
-    return <div className="prose max-w-screen-xl mx-12 content-area bg-white rounded-xl">
+    return <div className="prose lg:max-w-screen-xl mx-12 content-area bg-white rounded-xl">
         <article key={title}>
             <header>
                 <div className="text-4xl font-bold text-center mt-2">{title}</div>
