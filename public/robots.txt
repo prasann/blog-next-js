@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://prasanna.dev
+
+# Sitemaps
+Sitemap: https://prasanna.dev/sitemap.xml
+Sitemap: https://prasanna.dev/sitemap-0.xml
