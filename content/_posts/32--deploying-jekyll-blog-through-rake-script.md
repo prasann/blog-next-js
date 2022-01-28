@@ -1,7 +1,7 @@
 ---
 title: Deploying Jekyll site for Github pages through rake script
 description: Deploying jekyll blog or site for Github pages using rake script.
-category: tech
+category: tech, ruby
 date: 31-08-2014
 minutesToRead: 3
 ---
