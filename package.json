@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -38,6 +39,7 @@
     "gray-matter": "^4.0.3",
     "jest": "^27.4.7",
     "jest-dom": "^4.0.0",
+    "next-sitemap": "^2.0.7",
     "postcss": "^8.4.5",
     "prismjs": "^1.26.0",
     "remark": "^14.0.2",

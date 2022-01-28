@@ -7,7 +7,8 @@ const post = define<Post>({
     date: "20-Jan-2021",
     description: "contains the subtitle",
     category: "tech",
-    content: "<p>some content</p>"
+    content: "<p>some content</p>",
+    minutesToRead: "2"
 });
 
 export default post;
