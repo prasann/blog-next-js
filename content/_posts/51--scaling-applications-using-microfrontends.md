@@ -6,7 +6,7 @@ date: 22-01-2021
 minutesToRead: 10
 ---
 
-> *Cross posted from [Archimydes blog] (https://archimydes.dev/fourthact/blog/scaling-applications-using-micro-frontends)*
+> *Cross posted from [Archimydes blog](https://archimydes.dev/fourthact/blog/scaling-applications-using-micro-frontends)*
 
 This blog post is a summary of a presentation that I made at the Archimydes Mastermind Event that happened on 17th Dec 2020.
 

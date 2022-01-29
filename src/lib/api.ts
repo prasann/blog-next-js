@@ -17,7 +17,6 @@ export function getPostByFileName(fileName: string, withContent: boolean = true)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const {data, content} = matter(fileContents)
     const post: Post = <Post>{};
-    console.log("***", data)
     post.slug = fileNameToSlug(fileName)
     post.title = data.title
     post.description = data.description
