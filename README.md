@@ -20,17 +20,20 @@ Pending
     [x] Footer broke in the mobile
     [x] Align Date, Engage buttons
 [] /about
-[] Resume
 [x] Enable click on the buttons in landing page and in engage component
 [x] Basic SEO setup. (Thumbnails, Meta tags for sharing)
 [] Migrate data
+    [x] Migrate blogs
+    [] Migrate talks
 [] Setup redirects for the old ones
+[] rss feeds - https://www.daan.fyi/writings/rss
+[] manifest json for PWA
 
+[] Resume
 [] Like button in the post
 [] clean up and structure CSS
 [] Fix header with minimal things on scroll
 [] Engage buttons on the side.
-
 
 Ideas
 
