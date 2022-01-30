@@ -1,8 +1,9 @@
 import {Feed, Item} from 'feed';
 import fs from "fs";
-import {getAllPosts, getAllUrlSlugs, getPostBySlug} from "./api";
+import {getAllPosts} from "./api";
 import Post from "../types/post";
 import parse from "date-fns/parse";
+import showdown from 'showdown';
 
 const baseUrl = "https://prasanna.dev";
 
@@ -36,13 +37,14 @@ function formatStringToDate(date: string, format: string = 'dd-MMMM-yyyy'): Date
 
 function makeItem(postData: Post): Item {
     const url = `${baseUrl}/posts/${postData.slug}`
+    const converter = new showdown.Converter();
     return {
         title: postData.title,
         link: url,
         id: url,
         date: formatStringToDate(postData.date),
         description: postData.description,
-        content: postData.content,
+        content: converter.makeHtml(postData.content),
     };
 }
 
