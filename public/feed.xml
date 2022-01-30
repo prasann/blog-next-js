@@ -1,0 +1,3214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Random Presence</title>
+        <link>https://prasanna.dev</link>
+        <description>Random presence of my thoughts and learning...</description>
+        <lastBuildDate>Sun, 30 Jan 2022 08:03:21 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>npm feed package</generator>
+        <language>en</language>
+        <image>
+            <title>Random Presence</title>
+            <url>https://prasanna.dev/assets/logo.png</url>
+            <link>https://prasanna.dev</link>
+        </image>
+        <copyright>Copyright - Prasanna</copyright>
+        <item>
+            <title><![CDATA[What I did to become AWS certified 😎]]></title>
+            <link>https://prasanna.dev/posts/experience-with-aws-saa</link>
+            <guid>https://prasanna.dev/posts/experience-with-aws-saa</guid>
+            <pubDate>Fri, 03 Dec 2021 18:30:00 GMT</pubDate>
+            <description><![CDATA[My experiences and learnings when i worked on to get my AWS certification. I recently passed the AWS SAA certification. Penned down my learnings and experiences along the way]]></description>
+            <content:encoded><![CDATA[
+I recently passed the AWS SAA certification 🎉, penning my experience here.
+
+I have been working with AWS for the past ~3 years on and off based on the projects and client needs. One of the challenges for me is that I was always reactive. Usually the needs are EC2, ECS, S3, Cloudfront, Cloudwatch and RDS and that's it. I haven't tried lots of their services, and I wasn't even aware of the optimisations that can be done on both cost as well as in the architecture front.
+
+Decided to pick up this certification AWS SAA to proactively design and build secured, resilient and cost optimised architectures upfront and not to wait for the issues to pop up and then optimise. This is my first certification and certainly re-lived my college exam days while preparing for this exam.
+
+## Preparation
+
+Started this around ~3 months back, but was very much overwhelmed with the amount of materials (courses/ notes) that's on the internet. Eventually settled on the following things,
+
+1. [Udemy course](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c02/) by **[Stephane Maarek](https://www.udemy.com/user/stephane-maarek/) 🎥** This is the longest course (~27hours) I have ever signed up for. This is an excellent start if you are looking to get this certification. This gives an intro and decent depth on all (almost) the AWS services. If you follow the hands-on approach along with Stephen, you will be equally confident in managing these services.
+2. This [Github notes](https://github.com/keenanromain/AWS-SAA-C02-Study-Guide) 📝 Though the videos are exhaustive, it's impossible to remember everything that's in there. That's where these Github notes helped me. Whenever I had some 15 mins, i goto a section in here and read through that.
+3. [Anki Cards:](https://apps.ankiweb.net/) 📇 Using flashcards to revise and memorise is my habit for a long time. Thanks to this [reddit user](https://www.notion.so/AWS-SAA-Certification-1c3d99ed38ab494ea8ea467cd27ca725), there is an excellent summary of all the services. You can import them to the anki app and you are good to go. 20 cards a day and your certification isn't far away 😁
+4. Took the [practice exams in Udemy](https://www.udemy.com/course/aws-certified-solutions-architect-associate-amazon-practice-exams-saa-c02/). ✍🏼 This is an eye opener for me. I can understand and relate to most of the questions (thanks to the course and notes) but this is where we need to apply the knowledge we learnt and it wasn't easy. I decided to take all the tests in the course as open book types. After a couple of tests, I realised an open book takes a lot of time and decided to make some guesses and mark those guess questions for later review.
+
+## On the day experience
+
+- I took the exam through Pearson Vue online. Make sure to keep the work desk (wherever the laptop/computer is placed) clean. They do check that 😅
+- You can check in 30 mins before the scheduled time, and likely the exam will also start early.
+- One day before the exam, go through the system check and keep things ready.
+- You will have your video and mic turned on throughout the exam, you can't mute or turn off the video.
+- My guess on the evaluation part. There are lots of questions where they offer partial marks. So the score isn't binary (right or wrong). so don't give up halfway, if you have done the preparations well you are likely to pass the exam.
+
+## Some tips if i want to re-do this
+
+- **Book the exam dates upfront.** There isn't enough motivation to run through the gazillion notes, so have a milestone. It isn't a big problem, since you can amend the dates twice.
+- **Pair with a like minded person.** Again not to drop the ball on the certification and have someone to talk to.
+- You can't master concepts along with the details in one go. accept that. so **don't spend too much time on one thing**.
+- **Spend more time on model exams/tests**. From a time perspective, split it 50-50 roughly. Spend 50% time to go over the video courses, understanding the concepts and the remaining 50 to go over the model tests.
+- For non native english speakers, there is a provision to **get 30 mins extra time for the exam.** [](https://aws.amazon.com/certification/policies/before-testing/) [(ESL+30)](https://aws.amazon.com/certification/policies/before-testing/). It's good to take this time, i cut close to the finishing 140 mins.
+
+Happy preparing, and all the best !!
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Micro-services Patterns. Saga - to music or to dance?]]></title>
+            <link>https://prasanna.dev/posts/microservices-pattern-sagas</link>
+            <guid>https://prasanna.dev/posts/microservices-pattern-sagas</guid>
+            <pubDate>Wed, 09 Jun 2021 18:30:00 GMT</pubDate>
+            <description><![CDATA[Saga pattern is useful to trace a distributed transaction across various micro-services. This post summarizes the 2 patterns of saga and explains a event storming for a sample use-case]]></description>
+            <content:encoded><![CDATA[
+> *Cross posted from [Dev.to blog] (https://dev.to/prasann/micro-services-patterns-saga-to-music-or-to-dance-4hio)*
+
+## What is a Saga pattern
+
+Saga design pattern is a way to manage a single business transaction that spans across various micro services. Saga pattern breaks a single business transaction into a sequence of local transactions that updates each service and publishes a message or event to trigger the next local transaction step. If any of these local transaction fails, saga will execute the subsequent flows to  rollback and cleanup the transaction.
+
+## Why do we need this
+
+In a micro-services architecture, it's hard to trace where the transaction has failed and what needs to be rolled back etc. Saga brings in a structure to deal with this problem and also allows the micro-services to act within the specified boundaries.
+
+## Implementing Saga
+
+Saga is implemented by adding a `transactionId` to all the local transactions. A `transactionId` represent a single business transactions, so with that as an identifier it is possible to trace all the corresponding service interactions.
+
+This managing of local transactions can be done in 2 styles.
+
+- Orchestration style
+- Choreography style
+
+## Orchestration Style Sagas
+
+Orchestration pattern mimics an Orchestra, where each person (system in this case) waits for the conductor (another system) to give instructions on what needs to be done.
+
+![Orchestration style saga {800xx972}](/assets/posts/images/saga-patterns/orchestration.png "Orchestration style saga")
+
+I don't prefer this design usually for the following reasons,
+
+- Tight coupling between the conductor and the other systems in the ecosystem.
+- Conductor is a single point of failure.
+
+## Choreography Style Sagas
+
+Choreography pattern mimics a dance performance where each dancer knows their role and can perform it independently. Hence, there is no need of centralised conductor role.
+
+![Choreography style saga {800xx972}](/assets/posts/images/saga-patterns/choreography.png "Choreography style saga")
+
+Some benefits of this pattern are,
+
+- Faster development. Teams can build independently, with defined contracts.
+- Loose coupling, easier to change systems.
+- Better fault tolerance. There is no single point of failure here
+
+## A Sample Scenario
+
+Let us walk through a sample use case and see how we can go about solving it using choreography style sagas.
+
+Since we are talking about music and dance, let me take a use case of booking a movie ticket.
+
+- A customer can purchase a movie ticket by paying online.
+- Once the payment is successful, the movie ticket is confirmed to that customer.
+- If there is a payment failure, no ticket will be issued, and the order stands cancelled.
+- If the show is cancelled, the customer will be fully refunded.
+- If the customer choses to cancel a ticket, then they will be refunded a partial amount only.
+
+## Identifying Events and Commands
+
+Now, to implement them independently by various services, we need to identify the boundaries of various services and also their resposibilities.
+
+[Event storming](https://www.eventstorming.com/) is one activity that the team can do to identify these events aka boundaries of responsibilities.
+
+**Results of the event storming looks like this:**
+
+I will be using the following notion to illustrate various commands and events involved in the above use-case.
+
+![legend {800xx272}](/assets/posts/images/saga-patterns/legend.png "legend")
+
+![booking-flow {800xx850}](/assets/posts/images/saga-patterns/booking-flow.png "booking-flow")
+
+![cancel-flow {800xx850}](/assets/posts/images/saga-patterns/cancel-flow.png "cancel-flow")
+
+Once these events and commands are identified, teams independently can go ahead and start implementing them. Rollbacks are just another events mapped to a different command.
+
+This gives a power to the team to act independently and reduces the bottleneck on a single service.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Slicing Microservices]]></title>
+            <link>https://prasanna.dev/posts/slicing-microservices</link>
+            <guid>https://prasanna.dev/posts/slicing-microservices</guid>
+            <pubDate>Thu, 01 Apr 2021 18:30:00 GMT</pubDate>
+            <description><![CDATA[Some ideas to go about in designing micro-services. How to slice them and some general conventions]]></description>
+            <content:encoded><![CDATA[
+> *Cross posted from [Dev.to blog] (https://dev.to/prasann/slicing-microservices-1agj)*
+
+Building applications using micro-services are becoming a default go-to architecture these days. I have been part of few teams that build and deploy micro-services in a large scale.
+
+> One pertinent question that often asked is "***Did we slice it right?***"
+
+## What is slicing a service mean
+
+Slicing a micro-service refers to defining the boundaries of the micro-service.
+
+- What should the service be responsible for
+- What kind of data should it hold
+- When it should delegate it's responsibility to another micro-service.
+
+Below are some of my experiences, that i have seen working.
+
+## When to do it
+
+One of the common behaviour we did in the teams I worked so far, is to let micro-services **evolve** organically. We add feature/capabilities to the existing service and later trim down the service by spawning a new one.
+
+![organic slicing of micro-service](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fz8fj6jt4y0z5rlp1irs.png)
+
+
+Some of the benefits,
+
+- **No need of upfront discussion**. Most likely we will have lesser information about the feature, then likely that our design might reflect the incompetencies.
+- **Spawning a new service will have it's own cost**. How much ever you automate, it still adds up the infrastructure cost, maintenance cost. If we are wrong about the slicing then we had to spend some more time and effort to unify it with some other service.
+- Once we have built a feature, most of the **people in the team will understand the use-case and will appreciate the need of a separate service**. It doesn't become a single person's decision or a group of architect's decision. But a decision that comes from ground up. There  is a better chance for the service the retain it's shape when it grew this way.
+
+This approach does require a good discipline in having a constant check on the growth of a service. A highly coupled service is very hard to break down later. And if we are too late to cut down a service, it might become an expensive operation too.
+
+## How to do it
+
+Here are some of the themes i have come across. I will try to explain my thoughts using a bare minimum add-to-cart like domain problem.
+
+### Entity based slicing
+
+Very common and obvious start for a new service.
+
+Example: `UserService` dealing with the CRUD of a `User` entity in the system.
+
+It's easy to conclude **entities (domain models)** as boundaries, since it's intuitive for people to see the separation. But whether it's right? is highly questionable and depends a lot, on the use case.
+
+> It's simple, easy and often end up in chaos
+
+One of the significant problems, i have seen is that these services will be very much in demand by other service. They entire network becomes very chatty. One can assume the `User` entity will be needed at each and every step of the application and will have lots of interaction. Worst, is when the services decided to retain their copy of the data to enhance the performance of the application.
+
+Orchestrator will become a monolith. Since there will be lots of entity services to do mundane operation, orchestrator will become the one service to hold the business logic.
+
+![entity based slicing {336xx271}](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/si5fohmhiv4aqoa1h7xi.png)
+
+### Journey based slicing
+
+Slicing services based on **user journeys and behaviour**. This is quite popular, especially among the product people. Mostly, the product evolution happens on a feature/journey based. So whenever a new journey is identified it's time to build a new service.
+
+Ex: `RatingService` a service that allows you to rate an entity. It can be products, people or article etc. Behaviours can include to make sure you don't rate same article twice, compute average ratings etc.
+
+One of the advantage of this technique is that usually the teams i have worked in the past, they own the journey and hence it's clear for them what needs to be the part of this service
+
+Huge drawback I have seen with this approach, is that it forces the data being duplicated across services. In order to maintain the true flavour of Microservice, we will end up having independent databases and eventually having duplicate data
+
+### Best of both worlds
+
+It makes a lot of sense to combine the above 2 approaches. Identify the core entities (domain models) of the system, and have them as either independent or logically grouped service. Apply journey based slicing on top of this entity services. So, the teams will own the journey service and the entity services can be maintained by group of teams.
+
+![best of both worlds {336xx271}](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/degdriqsoudx0xhr4pgt.png)
+
+Some of the conventions that i have seen/worked while slicing Micro-services
+
+**Entity services should be thin and lenient.**
+
+Entity services should be merely act as APIs to the database operations. Do not try bringing in business logic here.
+
+For example, making the email-address non updatable in the entity service level. It makes sense to not to allow the end-user to allow update the email addresses, but often that might be a need from a back office personnel (admin user). So restricting such operation in the entity level might not be worth it. **Journeys should take care of validations.**
+
+> It's hard to predict the future requirements so keep EntityServices simple and open for extension.
+
+**Avoid journey service calling other journey services**
+
+Journey services, should be independent of others. Store data that are necessary for the journey and use entity services to collaborate with common data.
+
+**Build composite entities wherever needed**
+
+- Now, to answer the immediate question that will raise due to the above constraint. How to manage the duplicate business logic.  To be honest, **DRY principle is overrated in my opinion.** But in case if you are looking for such thing, then try adding another layer of composite entities.
+- These composite entities, will encapsulate multiple entities and some business logic around this. One classic example from the app we built is a tax computation service. It involves the product, and the location of the buyer to calculate the tax.
+
+All these things are from my past experience, I'm sure I'm going to learn more and course correct myself in this journey. But one thing that i feel will always help in evolving micro-services is to constantly question the slicing decision to get it at a right state. And also a good knowledge on the [Domain driven design](https://martinfowler.com/bliki/DomainDrivenDesign.html) helps a lot to take these decisions.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Scaling Applications Using Micro-Frontends]]></title>
+            <link>https://prasanna.dev/posts/scaling-applications-using-microfrontends</link>
+            <guid>https://prasanna.dev/posts/scaling-applications-using-microfrontends</guid>
+            <pubDate>Thu, 21 Jan 2021 18:30:00 GMT</pubDate>
+            <description><![CDATA[When starting a project with Micro-Frontends, here are some typical problem that require solving and some possible solutions.]]></description>
+            <content:encoded><![CDATA[
+> *Cross posted from [Archimydes blog](https://archimydes.dev/fourthact/blog/scaling-applications-using-micro-frontends)*
+
+This blog post is a summary of a presentation that I made at the Archimydes Mastermind Event that happened on 17th Dec 2020.
+
+Modern web applications tend to have complex and feature-heavy Frontends when compared to backends.
+
+With so many choices for frameworks and programming paradigms, building a consistent Frontend to scale is a challenging problem to solve. We cover ways in which you can scale your Frontend application and your development teams by using a Micro-Frontends design pattern.
+
+I'll start by introducing the pattern of Micro-frontends first. Then we'll be looking into some of the key decisions that need to be taken while starting a Micro-frontend project. Finally, we will see the circumstances where this pattern will be effective.
+
+## **1. Scaling Applications**
+
+![Scaling applications](/assets/posts/images/scaling-microfrontends/Twitter_post_-_1.png "Scaling applications")
+
+In general, scaling applications implies scaling backend applications to serve an increasing number of users. Usually, it's about how to:
+
+- Increase Performance
+- Reduce Latency
+- Sustain load
+- Manage compute costs
+
+All these parameters are typically applicable for the backend applications.
+
+For frontend applications, we typically stop with a good CDN to deliver static assets efficiently. However,
+
+> Scaling frontend apps is also about scaling development teams, both by size (growing a size of a single team) or count (multiple teams)
+
+Additionally, applications are getting more frontend heavy because:
+
+- backends are getting easier to deploy and get off the ground
+- end-user compute is getting cheaper and more powerful everyday
+- more functionality is being pushed to end-user interfaces and devices
+
+As a result of this, product teams need to figure out an efficient way to build and deliver frontend applications with multiple development teams working at scale. Product teams need to execute this while reducing bottlenecks in the development process.
+
+## **2. Monoliths, Microservices and Micro-frontends**
+
+> Monoliths are not a bad design choice
+
+It's always best to start any application as a monolith. Upfront slicing of module boundaries is very hard and tends to go wrong. As the application grows, it's better to identify module boundaries and split them up.
+
+**Microservices**
+
+From monoliths, the best choice to evolve the backend services as microservices. We can then guarantee:
+
+- Strong module boundaries
+- Independent deployment
+- Polyglot development and tech diversity
+
+However, most of the microservices I have seen are as follows
+
+![Microservices](/assets/posts/images/scaling-microfrontends/Twitter_post_-_2.png "Microservices")
+> Independent deployments ! == Independent releases
+
+Teams are able to develop and deploy backends independently. However, they need to wait for the frontend to be developed and deployed.
+
+**Enter Micro-frontends**
+
+Micro-frontends are nothing but taking the concept of micro-services to the frontend. Slice the frontend of the application to respect the module boundaries of the backend, and create an end-end independent release path.
+
+![Microfrontends](/assets/posts/images/scaling-microfrontends/Twitter_post_-_3.png "Microfrontends")
+> All of Microservices' promises + Independent releases
+
+## **Gains with Micro-frontends**
+
+- Independent teams
+- Independent releases
+- Simple, decoupled codebases
+- Incremental upgrades
+
+### **Problems that need solving**
+
+- T***o 'share, or not to share'?*** - Code reusability is one of the most overrated principles in software development. The problems of reusability are often ignored or not shared. In going the micro-frontend way, this needs to be discussed among the teams. Out of the gate, a duplicate first strategy works since it allows teams to execute faster initially.
+- **Application loading performance** - Micro-frontends can cause an impact on the loading performance of the application. There are ways to mitigate it, but the effort it takes has to be taken into consideration.
+- **Design consistency across the application -** Having a larger number of people working on an application will lead to inconsistencies. Again, there are ways to mitigate this, however, the effort involved in mitigation needs to be considered.
+
+## **3. Key decisions while doing Micro-frontends**
+
+Let's go over some of the major decisions that we need to take during the early stages of a micro-frontend application. I will try to cover the solution(s) that we took while building an application with distributed teams across 3 regions for 2 years. The decisions can vary based on the project context but nevertheless these problems need to be solved.
+
+In order to explain the challenges and decision, I will take up the following use-case:
+
+**Building an application to allow user to configure and buy a laptop. Similar to that of Apple's.**
+
+A user can ***configure*** a laptop with various components, accessories, protection plans, etc. The user should be able to ***search*** for accessories, or maybe built-in models, and then finally should be able to ***order*** the product and get it fulfilled.
+
+Apart from the 3 services - configure, search, and order, I will have another service called "Frame" merely to hold the application together.
+
+- **Frame**: A business logic agnostic orchestrator service that knows how to download the rest of the services' frontend
+
+**A) Composing multiple front-ends into a single application**
+
+> End users don't care about the tech used. Their experience should not be affected due to tech.
+
+Composing multiple frontends into a single application is one of the first problems that needs solving when choosing micro-frontends.
+
+![Composing frontends into single app](/assets/posts/images/scaling-microfrontends/Twitter_post_-_4.png "Composing frontends into single app")
+**Composing front-ends**
+
+We can achieve this composition in 2 ways, let's go over the pros and cons of these approaches.
+
+## **Build-time Composition vs Run-time Composition**
+
+**Build-time composition** is where multiple frontend applications are built as a single big application and served. This can be accomplished using **npm** or **yarn** packages.
+
+![Build time composition {800xx235}](/assets/posts/images/scaling-microfrontends/build-time-composition.png "Build time composition")
+
+**Pros:**
+
+- Good dependency management, resulting in smaller bundles
+- Independent cross team development
+
+**Cons:**
+
+- A monolith built by different teams
+- Non atomic deployments
+
+**A Run-time composition** is where the frontends get integrated into the browser directly when the user requests a page. This may be done on the "Server-Side" or in the "Client-Side"
+
+![Run-time composition {800xx373}](/assets/posts/images/scaling-microfrontends/run_time_frontend_composition_f5076854e1.png "Run-time composition")
+
+**Pros:**
+
+- Independent teams with independent deployments
+- Atomic deployments, so no versioning issues
+
+**Cons:**
+
+- Too many API requests from Client(?), with increased bundle size
+
+**Toolkit options for Runtime composition**
+
+**Server side:**
+
+- SSI (Server Side Includes)
+- Tailor (from Zalando)
+
+**Client Side:**
+
+- JSPM
+- SystemJS
+- FrintJS
+- Single-Spa
+
+***We chose Run-time composition for the project we worked on. Since our app was rendered on the client-side, it was simpler for us to achieve this.***
+
+## **B) Communication between the frontends**
+
+Multiple frontends need to share data with each other. Though this needs to be minimal, it's unavoidable. A couple of options to achieve this is by:
+
+- **State management tools**
+
+A global store in the application and all frontends using the same library to access the store.
+
+![State management tools {800xx153}](/assets/posts/images/scaling-microfrontends/state_management_tools_604f976fa9.png "State management tools")
+
+- **Window events**
+
+Another approach could be to utilize the window (DOMs) eventing capability. Below is a sample event.
+
+![Window events {800xx250}](/assets/posts/images/scaling-microfrontends/window_events_46783b22ad.png "Window events")
+
+***We used to communicate through common redux store and redux events as all the apps in our micro-frontends were using Redux.***
+
+## **C) Design Consistency**
+
+One of the hardest problem to solve for is design consistency.
+
+In our team, we addressed this challenge by forming guilds. Consider that there are three teams, and each team has a designer assigned to it.
+
+![Actual team structure](/assets/posts/images/scaling-microfrontends/Twitter_post_-_5.png "Actual team structure")
+
+We formed a guild comprising of all designers and some interested developers. They encompass a virtual team. They take all the design decisions and make sure their respective teams are abiding by the central design tenets.
+
+![Guild1](/assets/posts/images/scaling-microfrontends/Twitter_post_-_6.png "Guild1")
+
+Initially, the guild created a style guide for the application. Mainly CSS and the application teams copy-pasted it from the style guide to build components.
+
+As we developed more features, we started pulling out Higher-order JS components and made them sharable. This is more of an evolution and works well once you have a stable design system in place.
+
+![Styleguide {800xx400}](/assets/posts/images/scaling-microfrontends/Twitter_post_-_7.png "Styleguide")
+
+And also, since the teams were using the same frontend framework (React) it was easier for us to build this component library.
+
+## **D) Testing Strategy**
+
+Deciding on "How to test" is important. Since it's a relatively newer paradigm and there are lots of moving parts in the application.
+
+Primarily we will be discussing the "Integration tests" and "Functional tests" from the testing strategy, as there won't be much difference in the way the "Unit tests" are done.
+
+- **Integration tests**
+
+Having a lightweight "Consumer Driven Contracts" (CDC) helped us a lot.
+
+![Integration tests](/assets/posts/images/scaling-microfrontends/testing_strategy_1776956c37.png "Integration tests")
+
+A CDC is where the consumer services' give some tests to the provider service. A provider has to run all of its consumer services before publishing an artifact for deployment.
+
+This doesn't need to be very complex and can be done quickly using some lightweight options without using any big frameworks. But then, it's all case by case.
+
+In our scenario, Frame was the consumer of all the services and it shared a simple JSON contract and a small JS test with all of its providers. This ensured that the frame wasn't broken when a service deployed automatically.
+
+![Frame test {800xx333}](/assets/posts/images/scaling-microfrontends/sample_of_frames_contract_025a143c30.png "Frame test")
+
+- **Functional tests**
+
+This is one of my least favorite testing methods, however, like everything else in tech, it does have some staunch supporters and followers. In our case, we only had a few critical and successful user journeys automated using Selenium for functional testing.
+
+![Functional tests {800xx400}](/assets/posts/images/scaling-microfrontends/functional_tests_6cdcf7c24a.png "Functional tests")
+
+These journeys cut across multiple services and hence are harder to develop and maintain. Some of the FAQs I usually get on these tests are
+
+## **FAQs**
+
+- **Who owns functional tests?**
+
+Ans. The product team and business analysts. They define the scenarios for automation.
+
+- **Who writes functional tests?**
+
+Ans. Guild containing QAs from all teams and a few developers.
+
+- **Who fixes functional tests?**
+
+Ans. Team which breaks it.
+
+## **When should you opt for Micro-frontends?**
+
+Micro frontends are not for everyone. It adds significant overhead with development and maintenance.
+
+- **A. Distributed self-contained teams, with a need for parallelization**
+
+If your development teams aren't co-located, and there is a decent amount of parallelization that needs to be done, this could be a reason to implement micro-frontends.
+
+- **B. Collaborate with different frameworks in the frontend**
+
+Imagine you are inheriting a legacy application but want to build a new feature with modern design elements, then micro-frontends gives you a good head start.
+
+- **C. Teams that have experience building Microservices application, and are willing to take it to the next step**
+
+Most of the points mentioned here are forward-thinking practices. Micro-frontends needs a good solid understanding of the domain and good discipline to contain things within one's boundary.
+
+Finally, it's worth remembering that:
+
+> It's not a sprint. It's a marathon.
+
+Micro-frontends adds significant overhead to the overall application. This isn't desired for smaller applications or for the application that will be built and managed by a single team. The above mentioned challenges are worth solving, only if you are up for a longer run with multiple teams.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[ACE with React]]></title>
+            <link>https://prasanna.dev/posts/ace-with-react</link>
+            <guid>https://prasanna.dev/posts/ace-with-react</guid>
+            <pubDate>Fri, 31 Jul 2020 18:30:00 GMT</pubDate>
+            <description><![CDATA[Atlassian connect express comes by default with handlebars, this post describes how to make it work with a SPA.]]></description>
+            <content:encoded><![CDATA[## Atlassian Connect Express (ACE)
+
+ACE is a toolkit in node.js to build atlassian connect apps. Like a JIRA, Confluence plugins.
+
+Best way to start with ACE is to bootstrap from `atlas-connect` Y[ou can follow the documentation here to get a sample app up and running in few minutes.](https://bitbucket.org/atlassian/atlassian-connect-express/src/master/)
+
+## ACE and handlebars
+
+ACE is a wrapper on top of the [expressjs](https://expressjs.com/) and hence the application is pretty much an express application. The bootstrapped application will have both the frontend and the backend part.  For the frontend, ACE by default uses [handlebars](https://handlebarsjs.com/) as templating option.
+
+When you make a API call, the server converts the handlebar templates into HTML and returns.
+
+## Replace Handlebars views with a SPA
+
+As you can see, the above mechanism isn't tailored to use any single page application. Luckily, ACE doesn't change lots of things from express and hence we can use the same technique to achieve the goal.
+
+***In this example I'm choosing [React](https://reactjs.org/), however the technique is fairly the same for any SPA framework.*** Since the idea is fairly simple. Using the framework build the app and deliver it to the browser on the init api call. From then on, the app will be controlled by the browser.
+
+## Up and running with React.
+
+**1. Add a route to serve static files.**
+
+To the already bootstrapped ACE project, i added a folder called client, and inside that I used [CRA](https://github.com/facebook/create-react-app) to bootstrap my React project. This will be my SPA. Make sure to keep  the built artifact within this folder. In my case it was `{ProjectRoot}/client/build/*`
+
+Now in the express application's index.js need to modify the route to serve this page. In my case, i used [generalPages module](https://developer.atlassian.com/cloud/jira/software/modules/page/) of ACE. In `atlassian-connect.json` I have mentioned `url` to be `/init`
+
+Here is the modified `/init` to serve the react app.
+
+```jsx
+app.get('/init', addon.authenticate(), (req, res) => {
+  res.sendFile(path.join(__dirname, '/../client/build/', 'index.html'));
+});
+```
+
+you can import the path like this `import path from 'path';`
+
+2**. Configure static directories for express server.**
+
+Next is to set the path variable for the express. You need to define the static directory for the express server to fetch the files from.
+
+in `app.js` you can configure this.
+
+```jsx
+const app = express();
+const addon = ace(app);
+
+/* more config */
+
+const staticDir = path.join(__dirname, 'public');
+//*** This line is important **********//
+
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
+//*** This line is important **********//
+app.use(express.static(staticDir));
+```
+
+Now, we have configured express to look into 2 different directories for static files.
+
+**3. Include atlassian JS API as part of the SPA**
+
+Lastly, we need to make a change in the client app. Jira/Confluence when they load their plugin, they expect the plugin to have `all.js` . This is the client side logic of ace. So, we need to include this as part of our React's `index.html` without this, ***the loader in Jira will never disappear***
+
+In `client/public/index.html` add the script tag just below the body.
+
+```jsx
+<script
+    src="https://connect-cdn.atl-paas.net/all.js"
+    type="text/javascript"
+    data-options="sizeToParent:true;resize:false"
+></script>
+```
+
+You can read about more `data-options` [here](https://developer.atlassian.com/cloud/jira/software/about-the-javascript-api/).
+
+That's it, you will now see the React application in the connect app.
+
+***Note:** In development mode, there isn't any hot reload in this case. If you make any changes to the react app, need to build the app manually. Ofcourse, you can modify the `package.json` to automate this, but `webpack-dev-server` isn't much helpful.*
+
+## Authentication within the connect app
+
+If you are planning to bundle few APIs along with the react app, then one of the harder thing to crack is authentication. This isn't documented very clearly anywhere.
+
+ACE uses a JWT to authenticate api's and unfortunately the token isn't accessible for React application since it is running inside a iframe by default. If you are using the default Handlebars, ACE provides  helper methods to access the JWT.
+
+### Workaround
+
+The first call from JIRA/Confluence call will carry the JWT. In the above code snippet `addon.authenticate()` will validate the JWT executes the callback. In this place, we can create a JWT and set it as cookie header. Post that, in all the API calls made from React app, we can validate the JWT against our secret, and it will sort out the issue of authentication.
+
+Here is a sample code for a Hello world with ACE and React. [Github Source.](https://github.com/prasann/ace-with-react)
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Centralized error handling in Express applications.]]></title>
+            <link>https://prasanna.dev/posts/centralized-error-handling-express</link>
+            <guid>https://prasanna.dev/posts/centralized-error-handling-express</guid>
+            <pubDate>Thu, 09 Apr 2020 18:30:00 GMT</pubDate>
+            <description><![CDATA[Handling exceptions in an express application, responding back with standard error response.]]></description>
+            <content:encoded><![CDATA[
+_**Note: All my examples are in typescript and there are million other ways to achieve similar result, this is just my way of doing things.**_
+
+If you are looking to start a new application in express, go over to the express site, use [express-generator](https://expressjs.com/en/starter/generator.html) to create an application.
+
+## Error handling
+
+By default, any errors that are thrown within your application, will be sent as a 500 response code, along with the error stack trace in the body. This was inconvenient for me since,
+
+* I don't want the end-user to know the system stack trace.
+* I want to use exceptions for errors like `BadRequest` `AuthExceptions` etc.
+
+So, i decided to tweak the default behaviour and take control of error handling. If your use case is similar, then proceed with further steps.
+
+### Custom error handler
+Create your own custom ErrorHandler class (`error_handler.ts`), this will extend the node's [Error](https://nodejs.org/api/errors.html#errors_class_error) class.
+
+```typescript
+//error_handler.ts
+export class AppError extends Error {
+    statusCode: number;
+    message: string;
+
+    constructor(statusCode, message) {
+        super(message);
+        this.statusCode = statusCode;
+        this.message = message;
+    }
+}
+```
+
+Now in your application you can invoke this custom error handler by calling,
+
+```typescript
+new AppError(404, 'Unable to find the resource');
+//or
+new AppError(403, 'You are not authorized to perform this action');
+
+```
+
+### Wiring error interceptor into express application
+
+Once you start throwing exceptions within your application, next step is to convert those errors into a meaningful response for the end-user. Express app provides a way to hook up a custom error
+handler into your application. A middleware that takes in 4 parameters is your way to add your custom error handler.
+
+Let's add the custom error handler function in the same `error_handler.ts` class and export. This generic function will parse the thrown error and constructs appropriate response.
+
+```typescript
+//error_handler.ts
+export const customErrorHandler = (err, res) => {
+    const { statusCode, message } = err;
+    res.status(statusCode).json({error: {message}});
+};
+```
+
+```typescript
+import express from 'express';
+import customErrorHandler from 'error_handler';
+const app = express();
+
+// Other middlewares, routes... 
+
+// Adding your custom error handler.
+app.use((err, req, res, next) => {
+  customErrorHandler(err, res);
+});
+```
+
+Now, whenever any error that is thrown in the application will be caught by this error handler. This will in turn respond back with appropriate status code.
+
+### Dealing with unknown errors
+
+As you can see, the `customErrorHandler` has a limitation of handling only the errors that are of type `AppError` since it expects `statusCode` to be present in the error.
+However, there will be `RuntimeExceptions` that will occur in the application. It's kind of hard to catch all these sort of errors in the application and re-throw them as custom errors.
+
+So, we will improve our `customErrorHandler` to handle such `RuntimeExceptions`.
+
+```typescript
+//error_handler.ts
+const handleKnownExceptions = (err, res) => {
+    //log it
+    const { statusCode, message } = err;
+    res.status(statusCode).json({error: {message});
+};
+
+const handleUnknownExceptions = (err, res) => {
+    //log it
+    res.status(500).json({ error: {message: 'Something went wrong.' }});
+};
+
+export const customErrorHandler = (err, res) => {
+    err instanceof AppError ? handleKnownExceptions(err, res) : handleUnknownExceptions(err, res);
+};
+```
+
+Now, we introduced one more way of handling errors. If the caught error is not that of ours (`AppError`) then we respond back with a 500 response.
+We don't want our end user to know about the system internals and hence respond with a static message.
+
+
+### Dealing with asynchronous routes
+
+This centralized error handling will not work for the errors that are thrown in the `await` methods i.e, any error that are thrown in an async block will not reach our `customErrorHandler`.
+This is a limitation with respect to express 4.x.
+
+As a workaround, you have to make the routes to be synchronous. Instead of changing all the routes to synchronous blocks i used this
+[middleware](https://github.com/Abazhenov/express-async-handler) to achieve a similar effect. Post wrapping my routes with this middleware, all the errors in async block will then reach our  `customErrorHandler`
+
+Here is the [gist](https://gist.github.com/prasann/b6ad07b3962b6ea2953fef027df5d10b) to the final `error_handler.ts`
+
+
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Logging in Golang projects]]></title>
+            <link>https://prasanna.dev/posts/logging-in-golang-projects</link>
+            <guid>https://prasanna.dev/posts/logging-in-golang-projects</guid>
+            <pubDate>Thu, 17 Oct 2019 18:30:00 GMT</pubDate>
+            <description><![CDATA[A log abstraction in go-lang projects, that can then be used to log common information. This also hides the log library inclusion, making it easier to swap out the library for a different one.]]></description>
+            <content:encoded><![CDATA[
+One of the common requirement in any project is to have some additional context while logging. And most of us aren't consuming the logs directly these days.
+We use either ELK stack or some other proprietary tools to consume the logged information.
+In these cases, it's important to know where those logs specifically came from and also important to log it in a format that's easy to parse and index.
+
+In our case, we were using splunk and we have built a lots of dashboards based on Splunk logs. So our convention is to log in JSON format and also to log machine information and some more environment based information.
+
+Here is the post describing how we achieved it using go-lang.
+
+
+## Setting up an abstraction for logging
+
+We decided to go with logrus as our logging library. Instead of using and importing logrus in all the places, we wrote a layer of abstraction.
+
+This layer, then exposes various public functions to be consumed by the actual callers. So the logrus usage, is hidden and can be later changed too
+
+In this layer, we can then inject common variables that needs to be logged as part of all log statements.
+
+## Logging the caller
+
+The moment we introduce the abstraction, we have introduced a problem of losing the actual log position. logrus will log the abstraction layer as the log position for all log statement.
+
+So, here we are logging the caller as "ContextLogTag". The caller will be then identified using the  go runtime. We can navigate through the stack in the go runtime to log the caller.
+
+Here is the code for does that
+
+```go
+func getCallerInfo() string {
+	_, filePath, lineNo, isOk := runtime.Caller(2)
+	if isOk {
+		pathArray := strings.Split(filePath, "/")
+		fileName := pathArray[len(pathArray)-1]
+		return fmt.Sprintf("%s#%d", fileName, lineNo)
+	} else {
+		return ""
+	}
+}
+```
+
+
+Here is our abstraction layer.
+
+```go
+package logger
+
+import (
+	"fmt"
+	"github.com/sirupsen/logrus"
+	"log"
+	"os"
+	"runtime"
+	"strings"
+)
+
+var logger *logrus.Logger
+
+type Fields map[string]interface{}
+
+const (
+	contextLogTag     string = "ContextLogTag"
+	errorLogTag       string = "ErrorLogTag"
+	deviceLogTag      string = "Device ID"
+)
+
+var logEntry *logrus.Entry
+
+func Setup() {
+	level, err := logrus.ParseLevel("<<loglevel from env>>")
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
+
+	logger = &logrus.Logger{
+		Out:   os.Stdout,
+		Level: level,
+	}
+	logger.Formatter = &logrus.JSONFormatter{}
+
+	logEntry = logger.WithFields(logrus.Fields{
+		deviceLogTag:      "<<deviceId from env>>",
+	})
+}
+
+func Error(errMessage string, err error, fields map[string]interface{}) {
+
+	if fields != nil {
+		for key, val := range fields {
+			logEntry = logEntry.WithField(key, val)
+		}
+	}
+	logEntry.
+		WithField(contextLogTag, getCallerInfo()).
+		WithField(errorLogTag, err).
+		Error(errMessage)
+}
+
+func Fatal(errMessage string, err error, fields map[string]interface{}) {
+	if fields != nil {
+		for key, val := range fields {
+			logEntry = logEntry.WithField(key, val)
+		}
+	}
+	logEntry.
+		WithField(contextLogTag, getCallerInfo()).
+		WithField(errorLogTag, err).
+		Fatal(errMessage)
+}
+
+func Info(msg string, fields map[string]interface{}) {
+	if fields != nil {
+		for key, val := range fields {
+			logEntry = logEntry.WithField(key, val)
+		}
+	}
+	logEntry.WithField(contextLogTag, getCallerInfo()).Info(msg)
+}
+
+func Warn(fields map[string]interface{}, args ...interface{}) {
+	if fields != nil {
+		for key, val := range fields {
+			logEntry = logEntry.WithField(key, val)
+		}
+	}
+	logEntry.Warn(args...)
+}
+
+func getCallerInfo() string {
+	_, filePath, lineNo, isOk := runtime.Caller(2)
+	if isOk {
+		pathArray := strings.Split(filePath, "/")
+		fileName := pathArray[len(pathArray)-1]
+		return fmt.Sprintf("%s#%d", fileName, lineNo)
+	} else {
+		return ""
+	}
+}
+```
+
+
+
+
+  
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Add Redux custom middleware dynamically]]></title>
+            <link>https://prasanna.dev/posts/add-redux-middleware-dynamically</link>
+            <guid>https://prasanna.dev/posts/add-redux-middleware-dynamically</guid>
+            <pubDate>Wed, 11 Apr 2018 18:30:00 GMT</pubDate>
+            <description><![CDATA[Redux provides options to add behaviour through middlewares. Here is an example of dynamically adding middleware to the store.]]></description>
+            <content:encoded><![CDATA[[Redux middlewares](https://redux.js.org/advanced/middleware) can be used for a variety of things. You can basically tap into a redux event and perform some action with it. Logging and analytics are very common use cases for Redux middleware.
+
+In my case, I have a middleware component, that needs to be injected while initializing the Redux store. The middleware component will be served dynamically when the app loads.
+
+### Exporting the middleware component
+
+This middleware detects a specific redux action and persist an information to the local storage. It's a custom middleware with a minimal change. This custom function takes in `middlewareAPI` as the parameter instead of having the state.
+```js
+  const persistInfo = middlewareAPI => next => (action) => {
+    if (action.type === "SOME_ACTION") {
+      const result = next(action);
+      const state =
+            JSON.stringify(middlewareAPI.getState().listen.value);
+      window.localStorage.setItem('PERSIST_THIS_INFO', state);
+      return result;
+    }
+    return next(action);
+  };
+  
+  export default persistInfo;
+  
+```
+
+### Loading the custom middleware
+
+Here is a small utility function that can take in a custom middleware and initialize the store.
+```js
+  import { createStore, compose } from 'redux';
+  import reducers from './reducers';
+  
+  class Store {
+      constructor() {
+        const composeEnhancers =
+          typeof window === 'object' &&
+          window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+            window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+  
+        this.store = createStore(reducers);
+      }
+    
+      instance() {
+        return this.store;
+      }
+    
+      addMiddleware(middleware) {
+        const middlewareAPI = {
+          getState: this.store.getState,
+          dispatch: action => this.store.dispatch(action),
+        };
+        this.store.dispatch = compose(middleware(middlewareAPI))(this.store.dispatch);
+      }
+    }
+    export default new Store();
+```      
+
+
+This is my store class with the store initialization happens in the constructor. Simply, importing this store class and calling the `addMiddleware` function it's possible to inject the custom middleware component to your redux store.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Start nginx when upstream is unavailable]]></title>
+            <link>https://prasanna.dev/posts/start-nginx-when-upstream-unavailable</link>
+            <guid>https://prasanna.dev/posts/start-nginx-when-upstream-unavailable</guid>
+            <pubDate>Wed, 21 Mar 2018 18:30:00 GMT</pubDate>
+            <description><![CDATA[nginx will not start if one of the defined upstreams is not available. Here is a workaround to get through with those situations.]]></description>
+            <content:encoded><![CDATA[### Upstreams in Nginx
+
+`upstream` is an nginx directive to define groups of servers. Servers can listen on differnt ports, and it is possible to mix and match the UNIX-domain sockets and TCP connections. You can read about it [here.](http://nginx.org/en/docs/http/ngx_http_upstream_module.html)
+
+### Issue with upstream
+
+If you are using proxy\_pass with upstream definitions in nginx config, then nginx checks for the server availability during the startup phase. A sample nginx.conf with upstream is here, lots of the .conf file is redacted to focus on the point in discussion.
+```nginx
+    http {
+        ...
+        upstream service-a {
+            server service-a-ip-or-name:3000;
+        }
+        
+        server {
+            ...
+            location /service-a/ {
+                proxy_pass http://service-a/;
+            }
+        }
+    }
+```    
+
+In the above mentioned scenario, nginx server will check for service-a while start-up phase. If service-a is down, you will see an error like host not found in upstream service-a
+
+### The Workaround
+
+This workaround is for services running in local setup in different docker containers. So, instead of using `upstream` directive you can directly point your service-discoverable-name in the proxy pass. The only thing while running docker containers, you need to add an additional nginx directive `resolver` and make it point to docker's internal DNS resolver. 127.0.0.11 The above mentioned config can be re-written as mentioned.
+```nginx
+    http {
+        ...
+        resolver 127.0.0.11;
+        
+        server {
+            ...
+            location /service-a/ {
+                proxy_pass http://service-a-ip-or-name:3000/;
+            }
+        }
+    }
+```    
+
+_Note: nginx approach is very valid in production like setups. However, in developer boxes it may not be possible to have all the services running while nginx starts. The workaround mentioned here should be mostly used in local or in dev setup and not advisable to use in prodcution like setup._
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Dealing with SOAP in clojure]]></title>
+            <link>https://prasanna.dev/posts/soap-call-in-clojure-compojure-with-saaj</link>
+            <guid>https://prasanna.dev/posts/soap-call-in-clojure-compojure-with-saaj</guid>
+            <pubDate>Thu, 15 Feb 2018 18:30:00 GMT</pubDate>
+            <description><![CDATA[Dealing with SOAP in clojure is not very straight-forward due to the lack of framework support. This post explains how to perform SOAP call using basic Java libraries.]]></description>
+            <content:encoded><![CDATA[### Simple Object Access Protocol (SOAP)
+
+SOAP brings its own protocol and focuses on exposing pieces of application logic (not data) as services. SOAP is focused on accessing named operations, each implements some business logic through different interfaces. This image below expresses the difference between a SOAP and normal REST/JSON endpoint very well.
+
+![SOAP explanation](/assets/posts/images/soap-primer.png "Soap Primer")
+
+Source: [Stack overflow](https://stackoverflow.com/a/44713574/419448)
+
+### Soap With Attachment API for Java (SAAJ)
+
+[SAAJ](https://docs.oracle.com/javaee/5/tutorial/doc/bnbhg.html) is a lower level API in Java that express SOAP messages. Java developers rarely use SAAJ since the JAX WS and Spring WS provides better abstraction over SAAJ.
+
+### SOAP in Clojure
+
+#### 1\. Prerequisite
+
+As a one-time step, convert the WSDL into Java objects. This can be done using \`wsimport\` or \`xjc\`
+```bash
+xjc -wsdl wsdl-file-name
+```
+
+or
+```bash
+wsimport wsdl-file-name
+```
+
+#### 2\. Build SOAP Message
+
+First step is to build a soap message with header and body. The root element of the SOAP body is one of the Java object created in the first step. Construct the Java object with the necessary data. Finally convert the SOAP Message into string.
+
+#### 3\. Perform POST
+
+A simple HTTP POST need to be performed with `Content-Type` header set to `text/xml`. This can be done using normal `clj-http` methods.Authentication should be covered ideally in the SOAP header.
+
+#### 4\. Parse response into Java Object
+
+Finally the response string has to be converted into a SOAP Message again. This is required to parse the SOAP Response Body into one of the generated object.
+
+### Code in action
+
+Here is my [Github repository](https://github.com/prasann/soap-clj) with a small working application.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Asynchronous calls in React component]]></title>
+            <link>https://prasanna.dev/posts/using-network-call-in-react</link>
+            <guid>https://prasanna.dev/posts/using-network-call-in-react</guid>
+            <pubDate>Sun, 10 Sep 2017 18:30:00 GMT</pubDate>
+            <description><![CDATA[React documentation suggests to use componentDidMount for async calls. Here is the explanation of why you shouldn't do in constructor or in componentWillMount.]]></description>
+            <content:encoded><![CDATA[All network calls that are necessary to load data needed by the component should go inside `componentDidMount()`
+
+> ##### [From React docs](https://facebook.github.io/react/docs/react-component.html#componentdidmount)
+>
+> componentDidMount() is invoked immediately after a component is mounted. Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request. Setting state in this method will trigger a re-rendering.
+
+#### Why not inside `constructor()`?
+
+*   If you make a fetch for a component in constructor, and the user navigates away from the page containing that component before the request completes, it will still try to setState on that component despite being unmounted, and React will throw an error.
+*   If your component fails to load, still you will end up making an unnecessary server-request.
+
+#### Why not in `componenentWillMount()`?
+
+This function is invoked immediately before mounting occurs. So, obviously this appears to be a best place to place the call to load data. However that's not the case.
+
+*   Even if you add the network call in componentWillMount, your request will almost certainly not finish before the component is rendered. There is no way to pause the rendering till the request returns. So you will end up re-rendering the component anyways.
+*   This is the only lifecycle hook called on server rendering. So, if you are serving from the backend, this will be executed twice.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Flyway migrations in lein clojure]]></title>
+            <link>https://prasanna.dev/posts/flyway-migrations-in-lein-clojure</link>
+            <guid>https://prasanna.dev/posts/flyway-migrations-in-lein-clojure</guid>
+            <pubDate>Sat, 15 Jul 2017 18:30:00 GMT</pubDate>
+            <description><![CDATA[Integrating flyway migrations to compojure apps. Flyway is a popular Java based database migration tool. This post describes about integrating flyway seamlessly with lein compojure ring stack in clojure.]]></description>
+            <content:encoded><![CDATA[
+[Leiningen](https://leiningen.org/) is the easiest way to start with clojure project automation. The project under discussion is a webservices written in clojure with [compojure-api](https://github.com/metosin/compojure-api) and [ring](https://github.com/ring-clojure/ring) middleware.
+
+When it came to Database migrations, I didn't find anything straightforward amongst the lein plugins. So, decided to use [flyway](https://flywaydb.org/). I have worked with flyway in the past with Java applications. But, this is the first time with clojure, leiningen combination.
+
+### Migration utility in clojure
+
+Here is the small migration helper written in Clojure
+
+```clojure
+(ns app.migration
+  (:require [environ.core :refer [env]])
+  (:import org.flywaydb.core.Flyway
+           org.flywaydb.core.internal.info.MigrationInfoDumper))
+
+;; Build DB String from the Environment Variables
+(def db-url (str "jdbc:postgresql://"
+                 (env :pg-db-host) ":"
+                 (env :pg-db-port) "/" (env :pg-db-name)))
+
+;; Initialize Flyway object
+(def flyway
+  (let [locations (into-array String ["classpath:db/migration"])]
+    (doto (new Flyway)
+      (.setDataSource db-url (env :pg-db-user) (env :pg-db-password) (into-array String []))
+      (.setLocations locations))))
+
+(defn migrate [] (.migrate flyway))
+
+(defn clean [] (.clean flyway))
+
+(defn reset [] (clean) (migrate))
+
+(defn info []
+  (println (MigrationInfoDumper/dumpToAsciiTable (.all (.info flyway)))))
+```
+
+### Running migration during deployment
+
+I'm using [lein-ring](https://github.com/weavejester/lein-ring) plugin, this provided an option to execute function before the handler starts. So, I wired app.migrate to the init block of the handler.
+
+This helps to run migration everytime before the application deploys. Ofcourse, flyway will take care of what migrations need to run based on the migration version.
+
+### Running migrations for local development
+
+The above method works perfectly for the application deployment scenarios. However, in local it will be better to execute​ ​migration and clean databases as and when required, rather than re-deploying the application. lein-exec plugin offers​ ​a way to create and execute clojure code from project.clj files. With the above-mentioned migration present, all ​I​​ ha​ve to do is to create some aliases as shown below.
+```clojure
+:aliases { 
+    "db-clean"   ["exec" "-ep" "(use 'deal-picker.migration) (clean)"]
+    "db-migrate" ["exec" "-ep" "(use 'deal-picker.migration) (migrate)"]
+    "db-info"    ["exec" "-ep" "(use 'deal-picker.migration) (info)"]
+    "db-reset"   ["exec" "-ep" "(use 'deal-picker.migration) (reset)"]
+}
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Card slider using CSS Keyframes]]></title>
+            <link>https://prasanna.dev/posts/card-slider-using-css3</link>
+            <guid>https://prasanna.dev/posts/card-slider-using-css3</guid>
+            <pubDate>Thu, 25 May 2017 18:30:00 GMT</pubDate>
+            <description><![CDATA[Slider animation using css keyframes]]></description>
+            <content:encoded><![CDATA[[CSS Keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/%40keyframes) is a powerful feature to create animations in CSS.
+
+Below is a small snippet I created for slider like animation.
+
+```html
+<div id="card">Click me to animate</div>
+```
+
+```css
+.animate {
+    opacity: 1;
+    animation: slider 1s linear;
+}
+
+@keyframes slider {
+    0% {
+        margin-left: 0;
+        opacity: 1;
+    }
+    25% {
+        margin-left: -200px;
+        opacity: 0;
+    }
+    50% {
+        margin-left: 200px;
+        opacity: 0;
+    }
+    100% {
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+
+#card {
+    background: #1f1f1f;
+    margin: 10px;
+    display: block;
+    border: 1px dashed white;
+    height: 200px;
+    width: 200px;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+```
+
+```js
+$("#card").on("click", () => {
+  $("#card").addClass("animate");
+  setTimeout(() => $("#card").removeClass("animate"), 1000);
+});
+```
+Here is the [link to the codepen](https://codepen.io/prasann/pen/ppNLNL)
+
+Most of the browsers do support keyframes now. [Here](https://caniuse.com/#feat=css-animation) is the "Can I Use" page for keyframes.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Storing a function in the Redux store]]></title>
+            <link>https://prasanna.dev/posts/store-function-inside-redux-store</link>
+            <guid>https://prasanna.dev/posts/store-function-inside-redux-store</guid>
+            <pubDate>Wed, 17 May 2017 18:30:00 GMT</pubDate>
+            <description><![CDATA[Redux state can be very useful to share data across the application. This post is about storing a function inside the redux store.]]></description>
+            <content:encoded><![CDATA[[Redux](https://redux.js.org/) is a predictable state container for Javascript. Redux state has to be serializable all the time.
+
+Object serialization is the process of converting an object's state to a string from which it can later be restored.
+
+So, if you are trying to store a   inside the Redux state, you need to serialize them before persisting.
+
+> Storing functions inside redux state is not a best practice in general. So try to avoid it.
+
+Javascript functions can be serialized quite easily, the challenge is in retrieving them from the store to execute.
+
+Below are the helper functions for persisting functions inside Redux state.
+
+```js
+  //Returns a string
+  export const serializeFunction = (func) => (func.toString());
+  //serializeFunction(()=>console.log('Hello!!'))
+  // Output ==> "()=>console.log('Hello!!')"
+```  
+
+The function to be stored in the state should be converted into string using serializeFunction.
+
+```js
+  //Returns a function
+  export const deserializeFunction = (funcString) => (new Function(\`return ${funcString}\`)());
+```
+
+Convert the string from the redux store into a function using deserializeFunction
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Mock toLocaleString in Jest]]></title>
+            <link>https://prasanna.dev/posts/jest-test-toLocaleString-javasscript</link>
+            <guid>https://prasanna.dev/posts/jest-test-toLocaleString-javasscript</guid>
+            <pubDate>Tue, 31 Jan 2017 18:30:00 GMT</pubDate>
+            <description><![CDATA[Found an issue while testing toLocaleString and other related JS prototype function. Described here is the way to mock them.]]></description>
+            <content:encoded><![CDATA[We had to use `toLocaleString` with a specific country-code. `toLocaleString('de')`. This works perfectly in all the browsers. However, not in jest tests.
+
+Our Jest tests were running with `--env=jsdom` I got to know that jsdom and phantomJS aren't supporting multiple locale implementations.
+
+[PhantomJS support locale-specific.](https://github.com/ariya/phantomjs/issues/12327)
+
+So, the only solution I found is to mock these methods and test rest of the logic. Here is a sample mock behaviour.
+
+```js
+import * as helpers from '../src/helpers';
+describe('formatDate', () => {
+it('should invoke localString implementation to format date ', () => {
+    const localStringMock = jest.fn();
+    const mockDate = { toLocaleString: localStringMock };
+    helpers.formatDate(mockDate);
+    expect(localStringMock).toHaveBeenCalledWith('de-DE', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+    });
+});
+```
+
+**Note:** This behaviour is applicable for toLocaleDateString() toLocaleTimeString()
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Spring security session timeouts]]></title>
+            <link>https://prasanna.dev/posts/expire-session-after-timeout-spring</link>
+            <guid>https://prasanna.dev/posts/expire-session-after-timeout-spring</guid>
+            <pubDate>Sat, 24 Sep 2016 18:30:00 GMT</pubDate>
+            <description><![CDATA[Setup session timeouts in spring security. This will explain how to setup the idle timeout and also the max timeout for separate sessions.]]></description>
+            <content:encoded><![CDATA[
+Using Spring security we were building an application which has 2 types of users Internal and External. Our requirement was
+
+1.  Internal and External users have different idle timeouts.
+2.  External user's session should be invalidated after 30 mins. Irrespective of whether the user is active or not.
+
+#### Setting up Idle timeout in Spring security
+
+Spring provides out of box option to configure an idle timeout value. This invalidation is done by Spring security and happens while making a request after specified amount of time.
+
+We were able to achieve this by setting up setMaxInactiveIntervalInSeconds on the session object while creation.
+
+#### Setting up Max timeout in Spring security
+
+The above technique can be used only for setting the idle time. But our second scenario is to invalidate the session irrespective of whether the user is active or not.
+
+We ended up writing a custom filter which to invalidate the session manually whenever the session age is greater than the specified value.
+
+This filter will invalidate the session when the maximum time has reached for that session.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Angular resource and http interceptor]]></title>
+            <link>https://prasanna.dev/posts/angular-resource-and-interceptors</link>
+            <guid>https://prasanna.dev/posts/angular-resource-and-interceptors</guid>
+            <pubDate>Sun, 17 Jul 2016 18:30:00 GMT</pubDate>
+            <description><![CDATA[This post describe about the use of angular resource library along with http interceptor.]]></description>
+            <content:encoded><![CDATA[
+Once you set up your project with angular and [ngResource](https://docs.angularjs.org/api/ngResource) you will be able to access $resource object.
+
+$resource will serve as a factory which creates a resource object that lets you interact with RESTful services. You can call HTTP methods directly on this resource object.
+
+In our application we will have a custom wrapper on top of the angular resource. This wrapper will provide ability for us to transform the object differently on success and error response.
+
+All adapters will use the wrapper and all end points will overwrite the transform logic on success and error response.
+
+```js
+'profile': {
+    method: 'GET',
+        params: {accountId: '@accountId'},
+    transformRequest: (data) => {
+        const moreParams = {newParams: data};
+        return angular.toJson(moreParams);
+    },
+        successTransformResponse: (data, headers, status) => {
+        // Handle parsing for HTTP status 200.
+    },
+        errorTransformResponse: (data, headers, status) => {
+        // Depending on the status code handle transform logic.
+    }
+}
+```
+
+#### Handling generic error codes
+
+So, next we have to handle generic error responses across the application. Error codes like 401 (Unauthorized), 503 (Service Unavailable) needs to be redirected to different pages.
+
+The interceptors are service factories that are registered with the $httpProvider by adding them to the $httpProvider.interceptors array. The factory is called and injected with dependencies (if specified) and returns the interceptor.
+
+```js
+$provide.factory('myHttpInterceptor', function($q, dep1, dep2) {
+    return {
+        'request': function(config) {
+            // do something on success
+            return config;
+        },
+        'responseError': function(rejection) {
+            // do something on error
+            if (canRecover(rejection)) {
+                return responseOrNewPromise
+            }
+            return $q.reject(rejection);
+        }
+    }
+}
+
+```
+
+In the responseError method block, we used to handle all the generic error response code across the application.
+
+#### Observation
+
+I was expecting the code in HttpInterceptor to be executed before my transform logic in the resource wrapper. But i was wrong. Only after the resource transformation http interceptors are called. (Refer this [issue.](https://github.com/angular/angular.js/issues/7594 ))
+
+So, whenever a service responds with 500 error, Http interceptor will redirect the user to a different page. However, this will not happen if there is an error in transformation logic. In order to circumvent this problem, we started writing our error transform response specifically for the error codes. This means that, our transformation logic will not be executed for our generic error codes and eventually it reaches http interceptor.
+
+```bash
+{{ site.data.comments }}
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Post browser logs to server in an Angular app]]></title>
+            <link>https://prasanna.dev/posts/post-errors-to-an-endpoint-angular</link>
+            <guid>https://prasanna.dev/posts/post-errors-to-an-endpoint-angular</guid>
+            <pubDate>Fri, 24 Jun 2016 18:30:00 GMT</pubDate>
+            <description><![CDATA[This post describes about posting all the browser errors in an angular application to an endpoint. This will be helpful to analyse or debug issues.]]></description>
+            <content:encoded><![CDATA[
+We were looking for an efficient way of capturing all the Javascript errors from browsers in our backend so it appears in our Kibana dashboard along with the server logs
+
+We had a Angular 1.5.8 application in front of multiple micro-services endpoint. Any error in the angular application will appear in the browser console and we planned to push these logs back to the server.
+
+#### Angular's _$exceptionHandler_
+
+In order to catch all the exceptions, we have to override the $exceptionHandler component provided by angular. Only catch here is that, since we are overriding angular component we may not be able to inject $http or any other angular component in our overrides and doing so will throw a cyclic dependency issue.
+
+#### Initial solution
+
+We came up with an idea of injecting $injector and fetching $http using the same.
+
+```js
+factory('$exceptionHandler', \['$log', '$window', '$injector',
+    ($log, $window, $injector)=> {
+        return (exception, cause) => {
+            $log.error(exception, cause);
+            try {
+                const $http = $injector.get('$http');
+                const logMessage = \[{
+                    level: 'error',
+                    message: exception.toString(),
+                    url: $window.location.href,
+                    stackTrace: exception.stack,
+                    currentTimestamp: Date.now()
+                }\];
+                $http.post('/log/message', logMessage);
+            } catch (loggingError) {
+                $log.log(loggingError);
+            }
+        );
+
+```
+
+The above piece of code will work perfectly and will be able to post all the errors generated to an exposed endpoint.
+
+But the problem is, if the $http.post throws any exception then it causes unrecoverable recursion and browser will hung.
+
+In order to come out of that issue, we re wrote our http post logic using native JS syntax.
+
+#### Final solution
+
+Same code re written using native JS functions.
+
+```js
+factory('$exceptionHandler', \['$log', '$window', '$injector', ($log, $window, $injector)=> {
+    return (exception, cause) => {
+        $log.error(exception, cause);
+        try {
+            let commonHeaders = $injector.get('$http').defaults.headers.common;
+            const logMessage = \[{
+                level: 'error',
+                message: exception.toString(),
+                url: $window.location.href,
+                stackTrace: exception.stack,
+                currentTimestamp: Date.now()
+            }\];
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.open('POST', '/log/message');
+            xmlhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            for (let header in commonHeaders) {
+                if (commonHeaders.hasOwnProperty(header)) {
+                    let headerValue = commonHeaders\[header\];
+                    if (angular.isFunction(headerValue)) {
+                        headerValue = headerValue();
+                    }
+                    xmlhttp.setRequestHeader(header, headerValue);
+                }
+            }
+            xmlhttp.send(angular.toJson(logMessage));
+        } catch (loggingError) {
+            $log.log(loggingError);
+        }
+    };
+});
+
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Expanding Amazon EBS Volume in a EC2 instance.]]></title>
+            <link>https://prasanna.dev/posts/expanding-amazon-ebs-volumes</link>
+            <guid>https://prasanna.dev/posts/expanding-amazon-ebs-volumes</guid>
+            <pubDate>Wed, 03 Feb 2016 18:30:00 GMT</pubDate>
+            <description><![CDATA[Even after increasing the size of the EBS volume in the AWS console, the actual size of the EBS wasn't increased. Have to follow the following steps to grow the EBS size.]]></description>
+            <content:encoded><![CDATA[I had an AWS image which was created using an EC2 instance of size 8 GB. Whenever i try to launch an instance i usually change the storage size to something say 20 GB. But once the system is launched when i do a
+```bash
+df -h
+```
+i still see 8 GB and not 20 GB.
+
+On further reading i understood i need to resize the disk size. So i did the same using
+```bash
+sudo resize2fs /dev/xvde1
+```
+But i was getting the following error:
+
+The filesystem is already \*\*\* blocks long. Nothing to do!
+
+Then to reolve this issue i have to perform the following steps.
+
+*   SSH to the machine.
+```bash
+fdisk /dev/xvde
+```
+*   You should be seeing this message.
+
+WARNING: DOS-compatible mode is deprecated. It's strongly recommended to switch off the mode (command 'c') and change display units to sectors (command 'u')
+
+*   Enter 'u' to change display units
+*   Enter 'p' to view the current paritions.
+*   Enter 'd' to delete current partitions.
+*   Enter 'n' to create a new partition.
+*   Enter 'p' to set it as primary partitions.
+*   Enter '1' to set it as primary partitions.
+*   Set the desired space. If nothing is given the entire space is allotted.
+*   Enter 'a' to make it bootable.
+*   Enter '1' and 'w' to write and save the changes.
+*   Reboot the instance from AWS console.
+*   Now if you resize the parition it worked all fine.
+```bash
+sudo resize2fs /dev/xvde1
+```
+Check the partition size, it should be all set with more space.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Set deployed Git revision using Capistrano 3]]></title>
+            <link>https://prasanna.dev/posts/capistrano-set-deployed-revision</link>
+            <guid>https://prasanna.dev/posts/capistrano-set-deployed-revision</guid>
+            <pubDate>Sat, 02 Jan 2016 18:30:00 GMT</pubDate>
+            <description><![CDATA[While deploying Rails application using Capistrano 3, recording the current deployed git revision to be used by Rails applicaiton.]]></description>
+            <content:encoded><![CDATA[
+We use Capistrano to deploy our Rails application. Recently i upgraded our capistrano version from 2 to 3
+
+Capistrano 3 has a complete DSL changeover. Apart from this one other major change I figured out was the way a Git repository is been deployed.
+
+Previously a Git repository is cloned in the deploy location. Now in Cap 3 a Git archive is been downloaded to the deploy location. This means the deploy directory is no more a Git repository. During Cap 2 times, we used to run a 'git log' command in the deployed driectory to find the deployed revision. Now after upgrade I am unable to do this.
+
+Cap 3 has got a REVISION file, which contain the SHA of the deployed commit. This wasn't useful in our case, as we show this message in our web application.
+
+So i ended up writing a Cap task using a similar logic to create a REVISION file with our custom formatted Git message.
+```ruby
+    namespace :deploy do
+      task :add\_revision\_file do
+        on roles(:app) do
+          within repo\_path do
+            execute(:git, :'log', :"--pretty=format:'%h | %ai | %d %s'", :'-1',
+            :"#{fetch(:branch)}", ">#{release\_path}/REVISION")
+          end
+        end
+      end
+    end
+  
+
+    after 'deploy:updating', 'deploy:add\_revision\_file'
+
+```
+This will overwrite the REVISION file created by Cap with our custom message. Which will be consumed by our application.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[UrlGenerationError after upgrading to Rails 4.2]]></title>
+            <link>https://prasanna.dev/posts/url-generation-error-after-upgrading-rails</link>
+            <guid>https://prasanna.dev/posts/url-generation-error-after-upgrading-rails</guid>
+            <pubDate>Tue, 08 Dec 2015 18:30:00 GMT</pubDate>
+            <description><![CDATA[On a REST model new action, form_for tag breaks and raises UrlGenerationError after upgrading to Rails 4.2]]></description>
+            <content:encoded><![CDATA[On upgrading my rails app from 4.0 to 4.2.5 i steeped onto a wierd issue where my form\_for tag breaks and starts throwing exception.
+
+A REST model on new action raised an UrlGenerationError exception because of the form\_for tag.
+
+For ex: if User is a model my form\_for looked like this
+```ruby
+    form\_for(@user, url: user\_path(@user)) do |f|
+```
+
+Raised exception was
+```bash
+    No route matches {:action=>"show", :controller=>"users", :id=>nil} missing required keys: \[:id\]
+```
+
+The @user object’s id is nil since it’s not yet saved in the database. Previously if it was nil that is been skipped by the the url generation. All these occurrences started throwing errors.
+
+I have to change the form\_for tag to
+```ruby
+    form\_for(@user) do |f|
+```
+
+This posts the form to default users\_path.
+
+### Nested objects:
+```ruby
+    form\_for(@user, url: user\_address\_path(@user, @address)) do |f|
+```
+
+was changed to
+```ruby
+    form\_for(\[@user, @address\]) do |f|
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Integrating CKEditor with Rails asset pipeline.]]></title>
+            <link>https://prasanna.dev/posts/add-ckeditor-to-rails-pipeline</link>
+            <guid>https://prasanna.dev/posts/add-ckeditor-to-rails-pipeline</guid>
+            <pubDate>Tue, 26 May 2015 18:30:00 GMT</pubDate>
+            <description><![CDATA[Integrating CKEditor plugin into rails asset pipeline.]]></description>
+            <content:encoded><![CDATA[
+We are using [ckeditor](http://ckeditor.com/) in our rails application (Rails 4.2).
+
+Number of network calls made by the ckeditor and its plugins are quite alot and we were facing difficulty in integrating them with the Rails asset pipeline.
+
+My initial approach is to use a [ckeditor rails gem](https://github.com/tsechingho/ckeditor-rails). However getting it to work was complicated. On top of it we had some custom plugins written for ckeditor and making it to work with ckeditor rails gem was almost impossible.
+
+Taking some pointers from this [issue](https://github.com/galetahub/ckeditor/issues/307) finally could get into some working solution.
+
+1.  Move all the CKEditor files into vendor/assets/javascript/ckeditor
+2.  In application.js add
+
+    //= require ckeditor/ckeditor
+
+3.  ckeditor.js looks up for other ckeditor relative to CKEDITOR\_BASEPATH location. So before loading ckeditor in JS add a line to set that environment variable.
+
+    window.CKEDITOR\_BASEPATH = '/assets/ckeditor/';
+
+4.  Add
+
+    config.assets.precompile << \['ckeditor/\*'\]
+
+    to your application.rb file.
+5.  Finally add a file called precompile\_hook.rake This rake task will help in compiling the ckeditor files and add it to the assets folder. The content of the rake task is here. [precompile\_hook.rake](https://gist.github.com/prasann/c8978041777cb443fb77)
+
+
+
+Here is the screenshot of the network calls before and after adding ckeditor to asset pipeline.
+
+
+
+[![Before adding to asset pipeline](/assets/images/posts/add_ckeditor_to_rails/thumbs/before.png)](/assets/images/posts/add_ckeditor_to_rails/full/before.png "Before adding to asset pipeline") [![After adding to asset pipeline](/assets/images/posts/add_ckeditor_to_rails/thumbs/after.png)](/assets/images/posts/add_ckeditor_to_rails/full/after.png "After adding to asset pipeline")
+
+Even after adding ckeditor to asset pipeline the it did not effectively reduce all calls into one. Still the ckeditor's plugin calls are been fired separately.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Deploying Jekyll site for Github pages through rake script]]></title>
+            <link>https://prasanna.dev/posts/deploying-jekyll-blog-through-rake-script</link>
+            <guid>https://prasanna.dev/posts/deploying-jekyll-blog-through-rake-script</guid>
+            <pubDate>Sat, 30 Aug 2014 18:30:00 GMT</pubDate>
+            <description><![CDATA[Deploying jekyll blog or site for Github pages using rake script.]]></description>
+            <content:encoded><![CDATA[
+This blog is powered by Jekyll and I use Github pages as web server.
+
+#### Branch structure in Github
+
+Github by default publish the contents of the master branch as a github page. So i have created two branches in the repository.
+
+**source:** contains Jekyll based folder structure. \_drafts, \_posts, \_site etc. All the new posts are added in the drafts folder first and then once its written fully it is then moved to \_posts folder and are then ready to be published.
+
+**master:** is simply a generated content from the rake script. This branch has all the HTML files that are generated using Jekyll gem.
+
+#### Folder structure in Dev box
+
+I have both the branches checked out in different folders. Both these folders are present in the same level (will be useful while generating output)
+
+#### Rake script
+
+##### To generate HTML
+
+I have the Rakefile in the root level of my source branch. The rake task mentioned below will create HTML equivalent inside the \_site folder.
+
+```ruby
+task :generate do
+Jekyll::Site.new(Jekyll.configuration({
+    "source"      => ".",
+    "destination" => "\_site"
+    })).process
+end
+```
+
+##### To publish in Github
+
+This task copies the entire \_site folder into the master branch (locally). This is why i need to checkout both master and source branches separately and keep them in the same level.
+
+After copying the contents, simply it switches to the master branch and does a git push.
+
+Once the changes are pushed into github's master branch the changes are then reflected in your site immediately.
+
+```ruby
+task :publish => \[:generate\] do
+    cp\_r "\_site/.", LOCAL\_DIR\_NAME
+    cp ".travis.yml", LOCAL\_DIR\_NAME
+    pwd = Dir.pwd
+    Dir.chdir LOCAL\_DIR\_NAME
+    system "git add --all"
+    message = "Site updated at #{Time.now.utc}"
+    system "git commit -m #{message.inspect}"
+    system "git push origin master:refs/heads/master"
+    Dir.chdir pwd
+end
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Integrating Netflix Hystrix to a Spring Application]]></title>
+            <link>https://prasanna.dev/posts/integrating-netflix-hystrix-to-a-spring-application</link>
+            <guid>https://prasanna.dev/posts/integrating-netflix-hystrix-to-a-spring-application</guid>
+            <pubDate>Mon, 14 Jul 2014 18:30:00 GMT</pubDate>
+            <description><![CDATA[Hystrix is a latency and fault-tolerance library from Netflix. This post describes how to integrate it with Spring Aspects to make the implementation simpler.]]></description>
+            <content:encoded><![CDATA[
+After reading Martin Fowler's [Circuit breaker post](http://martinfowler.com/bliki/CircuitBreaker.html) i thought of implementing the same to my application. While looking for possible approaches to this solution i stepped onto Hystrix.
+
+[Hystrix](https://github.com/Netflix/Hystrix) is a latency and fault tolerance library designed to isolate points of access to remote systems, services and 3rd party libraries, stop cascading failure. Using this implementing CircuitBreakers are quite straight forward.
+
+To start with i wanted to measure the latency of the 3rd party calls that goes through my application. Mine was Java Spring applcation running in Tomcat. As per Hystrix documentation all the third party calls that need to be monitored are to be wrapped within a command. This command will be executed in a separate thread. Since all the 3rd party calls go through this layer it is easy to monitor those calls. It is also possible to define a fallback approach when a particular service call fails. And there by isolating these scenarios from the application code. More of how this works is explained in detail on [Hystrix wiki](https://github.com/Netflix/Hystrix/wiki)
+
+The problem i had was i already have my application up and running. And all i need to do is just monitoring the 3rd party calls (as of now) Now integrating Hystrix meant i need to re design the 3rd party calls to introduce a middle layer to wrap them up.
+
+I was thinking of writing Aspect based solution to wrap these calls throughout my application with an annotation.
+
+To do this, make sure you have included Spring AOP in your application. Declare and define an annotation as shown below.
+
+```java
+@Aspect
+@Component
+public class CircuitBreakerAspect {
+    @Around("@annotation(com.example.Monitor)")
+    public Object monitoringAround(final ProceedingJoinPoint aJoinPoint) throws Throwable {
+        String theShortName = aJoinPoint.getSignature().toShortString();
+        HystrixCommand.Setter theSetter =
+                HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey(theShortName));
+        theSetter = theSetter.andCommandKey(HystrixCommandKey.Factory.asKey(theShortName));
+        HystrixCommand theCommand = new HystrixCommand(theSetter) {
+            @Override
+            protected Object run() throws Exception {
+                try {
+                    return aJoinPoint.proceed();
+                } catch (Exception e) {
+                    throw e;
+                } catch (Throwable e) {
+                    throw new Exception(e);
+                }
+            }
+        };
+        return theCommand.execute();
+    }
+}
+```
+
+Using Hystrix dashboard you can able to wire the views and could able to monitor the application. More about this is written [here](http://www.mirkosertic.de/doku.php/architecturedesign/springhystrix)
+
+However this annotation approach can be used only for monitoring purposes or when you need to do similar actions for all the services. When i moved onto writing circuit breakers this cannor be done since all the service calls need its own fallback approaches. So in that case it was better to implement them as separate commands so all the code will fit within.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Testing APIary using Dredd.]]></title>
+            <link>https://prasanna.dev/posts/testing-apiary-using-github-travis</link>
+            <guid>https://prasanna.dev/posts/testing-apiary-using-github-travis</guid>
+            <pubDate>Tue, 01 Jul 2014 18:30:00 GMT</pubDate>
+            <description><![CDATA[Test API blueprint mardown files by simply hosting them on GitHub and setting up a pipeline in Travis CI.]]></description>
+            <content:encoded><![CDATA[
+[API Blueprint](http://apiblueprint.org/) is a documentation-oriented API description language. A couple of semantical assumptions over the plain Markdown.
+
+[Dredd](https://github.com/apiaryio/dredd) is a command-line tool for testing API documentation written in API Blueprint format against its backend implementation.
+
+I could able to setup dredd quite easily on my Mac by installing Node and npm. However its not quite straight forward in Windows. I faced lots of difficulties while installing node, npm and dredd.
+
+So i decided to use [Travis](http://travis-ci.org/) to setup the testing pipeline for my jobs. All i needed to do is to have a .travis.yml file to install node\_js and install dredd using npm.
+
+Added a simple script file to run the dredd tool inside the job. And that's it. As part of the code i also checked in the API markdown files which will run againt the APIs
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Making HTTPS call using Apache HttpClient.]]></title>
+            <link>https://prasanna.dev/posts/making-https-call-using-apache-httpclient</link>
+            <guid>https://prasanna.dev/posts/making-https-call-using-apache-httpclient</guid>
+            <pubDate>Thu, 26 Jun 2014 18:30:00 GMT</pubDate>
+            <description><![CDATA[Perform Https calls from server using Apache HttpClient library.]]></description>
+            <content:encoded><![CDATA[
+This post details about making Secure HTTP(HTTPs) call from a server using Apache HTTPClient library.
+
+The simplest will be to ignore the ssl certificates and to trust any connection. This approach is not acceptable for production code as it defeat the purpose of using HTTPS. However in some use cases if you want to try out something quickly you can go with this route.
+
+#### Trust any certificate approach (Simple, not recommended for production code.)
+```java
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.X509TrustManager;
+
+import org.apache.http.client.HttpClient;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.SSLContexts;
+
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+
+import java.security.SecureRandom;
+
+public class HttpClientFactory {
+
+    private static CloseableHttpClient client;
+
+    public static HttpClient getHttpsClient() throws Exception {
+
+        if (client != null) {
+            return client;
+        }
+        SSLContext sslcontext = SSLContexts.custom().useSSL().build();
+        sslcontext.init(null, new X509TrustManager\[\]{new HttpsTrustManager()}, new SecureRandom());
+        SSLConnectionSocketFactory factory = new SSLConnectionSocketFactory(sslcontext,
+                SSLConnectionSocketFactory.BROWSER\_COMPATIBLE\_HOSTNAME\_VERIFIER);
+        client = HttpClients.custom().setSSLSocketFactory(factory).build();
+
+        return client;
+    }
+
+    public static void releaseInstance() {
+        client = null;
+    }
+}
+```
+The above method will return httpClient object which can be used to make any HTTPS calls. Performing HTTPS call is no different from making HTTP call from now on. So you can have a factory with two methods, one for secure and one for non-secure.
+
+Here we have used HttpsTrustManager, which will do nothing more than trusing all clients. This is done by simply implementing X509TrustManager and auto generating all the methods.
+```java
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.X509TrustManager;
+
+public class HttpsTrustManager implements X509TrustManager {
+
+	@Override
+	public void checkClientTrusted(X509Certificate\[\] arg0, String arg1)
+			throws CertificateException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void checkServerTrusted(X509Certificate\[\] arg0, String arg1)
+			throws CertificateException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public X509Certificate\[\] getAcceptedIssuers() {
+		return new X509Certificate\[\]{};
+	}
+
+}
+```
+#### Importing a keystore (Recommended)
+
+If you are writing produciton quality code, then you should be looking at this approach. Have a all the keys in your application and create a SSLContext using those keystores. The created SSLContext can then be injected to SSLConnectionSocketFactory and remaining steps will be the same.
+```java
+import javax.net.ssl.SSLContext;
+
+import org.apache.http.client.HttpClient;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.SSLContexts;
+
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
+import java.security.KeyManagementException;
+
+public class HttpClientFactory {
+
+    private static CloseableHttpClient client;
+
+    public static HttpClient getHttpsClient() throws Exception {
+
+        if (client != null) {
+            return client;
+        }
+        SSLContext sslcontext = getSSLContext();
+        SSLConnectionSocketFactory factory = new SSLConnectionSocketFactory(sslcontext,
+                SSLConnectionSocketFactory.BROWSER\_COMPATIBLE\_HOSTNAME\_VERIFIER);
+        client = HttpClients.custom().setSSLSocketFactory(factory).build();
+
+        return client;
+    }
+
+    public static void releaseInstance() {
+        client = null;
+    }
+
+    private SSLContext getSSLContext() throws KeyStoreException, 
+    NoSuchAlgorithmException, CertificateException, IOException, KeyManagementException {
+        KeyStore trustStore  = KeyStore.getInstance(KeyStore.getDefaultType());
+        FileInputStream instream = new FileInputStream(new File("my.keystore"));
+        try {
+            trustStore.load(instream, "nopassword".toCharArray());
+        } finally {
+            instream.close();
+        }
+        return SSLContexts.custom()
+                .loadTrustMaterial(trustStore)
+                .build();
+    }
+}
+```
+The only difference between the two approaches are the way the SSLContext been created.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Gradle, Spring MVC App.]]></title>
+            <link>https://prasanna.dev/posts/skeleton-gradle-spring-mvc-app</link>
+            <guid>https://prasanna.dev/posts/skeleton-gradle-spring-mvc-app</guid>
+            <pubDate>Sat, 14 Jun 2014 18:30:00 GMT</pubDate>
+            <description><![CDATA[A skeleton sample app demostrating gradle set up with Spring MVC along with basic logging and deployment in tomcat environment.]]></description>
+            <content:encoded><![CDATA[
+Will try to list down few of my learnings to set up a Spring MVC app with Gradle. And also this time i tried using Servlet 3.0 spec which means no .xml files for Spring configuration.
+
+Refer to the [GitHub repo](https://github.com/prasann/GradleSpringApp) for the source code. I will be giving some notes on the code.
+
+#### Create build.gradle file
+
+build.gradle can be pretty much simple to start with. I started with adding java and war plugin followed by adding dependencies to the Spring artifacts. I have to define
+
+runtime 'javax.servlet:jstl:1.2'
+
+to make sure it doesn't get packaged as part of the war.
+
+Then thought it will be awesome to start the application in one command instead of building the war and deploying it in local instance. After some initial searching landed onto this [Cargo plugin](https://github.com/bmuschko/gradle-cargo-plugin) This lets you to configure the server of your choice and get it working. So after doing some basic configuration got this working.
+
+Now
+
+gradle war cargoRunLocal
+
+since the task name is not so user friendly, just added an alias to it.
+
+task serve(dependsOn: cargoRunLocal) << {
+}
+
+
+#### Setup Spring
+
+I decided to play around with Servlet 3.0 style of Spring configuration. This means that i do not need to create web.xml or applicationContext.xml files. Instead i can go with complete Java style configuration.
+
+Application containers (tomcat 7+ in my case) will look for implementation of WebApplicationInitializer and will load that class on the startup. Initializer.java in my src will be equivalent for web.xml
+
+MvcConfig.java will be equivalent to applicationContext.xml file. This contains all the bean initialization, property place holders and more.
+
+As you can see most of the configurations are handled by annotations.
+
+#### Setup Unit Tests
+
+Setting up Unit tests are no different to Gradle. As i mentioned i have used Java style configuration for my Spring classes. So the style of testing my controllers will also be different.
+
+InitControllerTest.java will be my controller test. I have initialized a mock web application in the
+
+@Before
+
+method and the rest of the stuff are handled by annotations.
+
+#### Setup Logging
+
+Setting up slf4j is quite straight forward. You have to add slf4j-log4j, log4j jars and add a log4j.properties to the
+
+src/main/resources
+
+In the log4j.properties you can define the way your appenders should work.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Cross Site HTTP(S) Requests - CORS Issue]]></title>
+            <link>https://prasanna.dev/posts/cross-site-http-requests</link>
+            <guid>https://prasanna.dev/posts/cross-site-http-requests</guid>
+            <pubDate>Sun, 01 Jun 2014 18:30:00 GMT</pubDate>
+            <description><![CDATA[Some tried out solutions for the cross site request issue. Should be a good place to look out for which solution to be used under a circumstance.]]></description>
+            <content:encoded><![CDATA[
+Browsers have a default security mechanism to prevent http(s) request from one domain to other. Since there are tons of possibilities to misuse them.
+
+The same origin policy prevents a document or script loaded from one origin from getting or setting properties of a document from another origin. This policy dates all the way back to Netscape Navigator 2.0.
+
+However, there are lots of genuine use cases for this scenario to occur which got to be handled by the application and the browsers.
+
+I had to face one such genuine case, and got to deal with one of the miserable browser of my time IE :(
+
+Just documenting few techniques to overcome this problem. I am not elaborating the techniques since that can be figured out, all i wanted is to document the possible solutions and when to use them.
+
+#### 1\. CORS - Cross Origin Resource sharing
+
+A detailed description of how to implement is on this [Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
+
+This is a very common and an elegant solution that you can find on the net for this problem. All you will need is to add few headers on the application server. This will allow application to allow requests from other application (domain). And also all the response from the parent application will include a header
+
+Access-Control-Allow-Origin:
+
+Which will tell the browser to allow those specified domains to talk to the application.
+
+This solution works well with most of the modern browsers. Check out for the CORS browser support [here.](http://caniuse.com/cors)
+
+**Limitations with IE:**
+
+As you can see the browser compatibility chart, IE8 and IE9 has a partial implementation to CORS.
+
+Modern browsers will be able to support CORS for XMLHttpRequest. However IE8 and IE9 supports CORS using XDomainRequest object. What this means is that they have few limitations of their own.
+
+Some of the most important constraints are,
+
+*   Your requests should be only GET, POST HTTP methods and not PUT, DELETE etc.
+*   Both the domain (the calling and the caller) uses the same protocol. Either HTTP or HTTPS.
+*   Your request should not have any custom headers.
+
+The exhaustive list is been detailed out in this [MSDN blog](http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx).
+
+**Workaround for IE**
+
+If you think you can live with the constraints mentioned above, then the workaround is quite simple. You got to change all the XHR to XDR to make it work. Luckily if you are using jQuery you don't need to go through changing all the requests. Instead you can use this [jQuery plugin](https://github.com/MoonScript/jQuery-ajaxTransport-XDomainRequest) . I guess there are more of these available just check out before breaking your brains.
+
+#### 2\. JSONP Solution
+
+Using [JSONP](http://json-p.org/) response instead of JSON response.
+
+**Advantage:** No need of any specific workaround for IE8.
+
+**Limitation:** Works only for HTTP(S) GET request. If you are planning to use POST/PUT/DELETE this solution is not for you.
+
+#### 3\. iFrame Hack.
+
+This is a creepy hack. Lets say, if you want to make a call from appA to appB. In appA's landing page load a hidden iFrame with some URL of appB. Then perform all the requests to appB from that iFrame. Since iFrame's domain is appB browsers' will not complain.
+
+**Limitation:** Here the challenge is to consume the response. Your landing page should wait for an even in the iFrame and should consume the iFrame content. Don't even think of this solution if you want to make more than 1 cross site request in a page.
+
+#### 4\. Reverse Proxy solution
+
+If you want your appA to make a call to appB. Set up a simple reverse proxy to the appA. And use relative paths for the Ajax requests, while the server would be acting as a proxy to any remote location.
+
+So in appA the relative path of the request will be _/cors-ajax_. The browser will not complain since this is not pointing to a different domain. And the reverse proxy rule will redirect anything of _cors-ajax_ to appB.
+
+More reference to this implementation:
+
+*   [Configuring the Proxy](http://www.askapache.com/htaccess/reverse-proxy-apache.html#Configuring_Proxy)
+*   [Configuring Mod Proxy - SO](http://stackoverflow.com/questions/7807600/apache-mod-proxy-configuring-proxypass-proxypassreverse-for-cross-domain-ajax)
+
+**Limitation:** The server config are quite hard (at least for me) to understand and perform.
+
+#### 5\. App based solution
+
+This solution is very similar to that of the reverse proxy but you don't need to make any server config changes. The initial CORS approach sounds reasonable, but few limitations like same protocol might stop us from using it. Applications like [AnyOrigin](http://anyorigin.com/), [WhateverOrigin](http://whateverorigin.org/) does that for you. They support http and https so you can use the protocol of the main window and consume the response. If you feel unsafe of using a different domain, you can deploy it in your own infrastructure.
+
+**Limitation:** One more app to maintain :(
+
+#### 6\. Add a generic controller/servlet in your parent domain.
+
+Have a controller/servlet in your app which actually does the external domain call. Have only one GET, POST method. Keep posting all your requests to the same end-point with an additional header containing the actual end-point. Inside the method extract the header, make a call and go around about it. This means that browser doesn't know its an external domain call as your app will serve as a wrapper to that external domain call.
+
+**Limitation:** Multiple HTTP calls for single request/response.
+
+**More on:** [How to circumvent same origin policy?](
+http://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy)
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Re running testNG failed times n times.]]></title>
+            <link>https://prasanna.dev/posts/re-running-testng-failed-tests</link>
+            <guid>https://prasanna.dev/posts/re-running-testng-failed-tests</guid>
+            <pubDate>Wed, 30 Apr 2014 18:30:00 GMT</pubDate>
+            <description><![CDATA[Steps to set up re-runn of testNG failed tests for n number of times, using ant task.]]></description>
+            <content:encoded><![CDATA[We were running our Selenium functional tests using [testNG](http://testng.org/doc/index.html) runner in [Jenkins](http://jenkins-ci.org/). However the problem was we were having too many failures on our initial run, and lot of these failures were classified as random or not reproducable. Mainly these are test script issues. Some times the testers tend to put some static wait conditions which might work on their machine but not in the Jenkins agent. Sometimes the environment against which our tests run might be a bit slow which pushes our pass percentage well behind. The ideal appropriate fix will be is to go through the failed test cases and figure out the randomness and fix it. But we thought of adding a re run mechanism to our test job to identify these random failures. As the no. of test cases grew, we ended up in re running the failed tests multiple times, something like this.
+
+Name Total Failed
+
+InitialRun  100 30
+
+ReRun1 30 20
+
+ReRun2 20 10
+
+In this case we will interpret the last 10 failures as a legitimate failures and rest as intermittent ones.
+
+Please note that this is not a correct approach to reduce the failure count. This make the testers more lazy since they always analyse only the failed tests in the final run. And this increases the running time of the job inadvertently since the sure fail cases runs for n times and failing always.
+
+### Re Running testNG failed tests using ANT
+
+After every test run, testng will create a file called testng-failed.xml in the report directory which will contain the failed tests of that run. There was an issue with this file however. If you define multiple suites in your initial test suite file then this outer testng-failed.xml will contain the failed tests of the first run alone. The remaining suite's failed tests will be in the inner directories under their corresponding suite names.
+
+This testng-failed.xml will also inherit all the properties from the original test suite file. For example if we have defined thread-count value then the same value will be retained.
+
+So what I did was copied this file to a location and fed this to the testng task to run again. This can be achieved by any means, since we were using ant as our build tool i configured this in our build.xml file itself.
+```xml
+	<target name="runTests" depends="compile" description="Running tests">
+		<echo>Running Tests...</echo>
+		<taskdef resource="testngtasks" classpath="lib/testng-6.8.jar" />
+		<testng outputDir="${report.dir}" useDefaultListeners="true" classpathref="build.classpath" 
+			listeners="org.uncommons.reportng.HTMLReporter,org.uncommons.reportng.JUnitXMLReporter">
+			<classpath location="${class.dir}" />
+			<xmlfileset dir="." includes="testng-suite.xml" />
+			<sysproperty key="org.uncommons.reportng.title" value=" Test report" />
+			<sysproperty key="properties" value="${properties}" />
+		</testng>
+		<copy file="${report.dir}/testng-failed.xml" todir="${basedir}/test-output-rerun/0"/>
+		
+		<antcall target="multiReRun"/>
+	</target>
+	<target name="multiReRun" description="Multiple rerun tests">
+		<antcall target="runFailedTests">
+			<param name="rerun.report.dir" value="${rerun.base.dir}/1"/>
+			<param name="src.rerun.dir" value="${rerun.base.dir}/0"/>
+		</antcall>
+		<antcall target="runFailedTests">
+			<param name="rerun.report.dir" value="${rerun.base.dir}/2"/>
+			<param name="src.rerun.dir" value="${rerun.base.dir}/1"/>
+		</antcall>
+	</target>
+```
+
+Here output folder of the init run will be test-output. And am copying testng-failed.xml from test-output to test-output-rerun/0 . This is just to make my multiReRun more convenient. Now i have repeated the block of code for two times. This is due to the fact that ant doesn't support the regular for..counter loop.
+
+When i went through some ant docs figured out that ant script supports JavaScript!! May be i can use that to constuct a string like "1,2,3,4,5" and pass it onto the for loop of ant.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Wiring Jasmine 2.0 with Phantom JS]]></title>
+            <link>https://prasanna.dev/posts/wiring-jasmine2-with-phantom</link>
+            <guid>https://prasanna.dev/posts/wiring-jasmine2-with-phantom</guid>
+            <pubDate>Mon, 28 Apr 2014 18:30:00 GMT</pubDate>
+            <description><![CDATA[This post describes the steps that are necessary for to wire Jasmine 2.0 test suites with phantomJS.]]></description>
+            <content:encoded><![CDATA[
+Briefed out the steps that i did to run my Jasmine test suite in my CI.
+
+1.  Download phantomjs.exe (Our CI server was running in a Windows server). [Download link](http://phantomjs.org/download.html)
+2.  Use [run-jasmine.js](https://gist.github.com/prasann/9972777). This runner code is taken from phantomJS example and modified to run Jasmine 2.0 and to format the output as we needed.
+3.  Assuming phantomjs.exe, run-jasmine.js and SpecRunner.html (Specrunner file) are in the same level in a directory, execute this command
+```bash
+ phantomjs.exe run-jasmine.js SpecRunner.html \[--debug\]
+```
+
+The --debug is optional. If run on the debug mode it will print the stack trace of the failed specs and also prints all the specs that are been executed.
+
+SpecRunner.html is very similar to the one that comes along with Jasmine 2.0 samples. The SpecRunner.html that comes with Jasmine 1.3 will not work, as the way of booting Jasmine is changed in the latest version. The only changes I made to the SpecRunner.html is to modify my src and spec file locations.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[UTC time in Android device. With NTP server sync.]]></title>
+            <link>https://prasanna.dev/posts/utc-time-android-device-ntp-server-sync</link>
+            <guid>https://prasanna.dev/posts/utc-time-android-device-ntp-server-sync</guid>
+            <pubDate>Thu, 13 Feb 2014 18:30:00 GMT</pubDate>
+            <description><![CDATA[Using NTP time in the anroid application. This involves calling the SNTP server and also converting the time to UTC format.]]></description>
+            <content:encoded><![CDATA[
+I had a requirement to persist the current UTC time of a request in Android device for future reference.
+
+Getting the time from the Android device and converting it to UTC will not be efficient since, user might have set wrong time in the device and it might mislead the data.  
+So we decided to sync the device with NTP server before converting the time to UTC.
+
+**Step 1 :** Copy this [SntpClient.java](https://gist.github.com/prasann/9003350 "SntpClient.java") into your source.  
+**Step 2 :** The SntpService.java to compute the current UTC is here below.
+
+```java
+public String getUTCTime(){
+        long nowAsPerDeviceTimeZone = 0;
+        SntpClient sntpClient = new SntpClient();
+        if (sntpClient.requestTime("0.africa.pool.ntp.org", 30000)) {
+            nowAsPerDeviceTimeZone = sntpClient.getNtpTime();
+            Calendar cal = Calendar.getInstance();
+            TimeZone timeZoneInDevice = cal.getTimeZone();
+            int differentialOfTimeZones = timeZoneInDevice.getOffset(System.currentTimeMillis());
+            nowAsPerDeviceTimeZone -= differentialOfTimeZones;
+        }
+        return DateUtils.getFormattedDateTime(new Date(nowAsPerDeviceTimeZone));
+    }
+```
+Some more details on SntpService code:
+
+Connect to any of the prominent ntp servers. There were lots of recommendation to place this in config file, however i thought it doesn't make sense for Android since i have to repackage this anyways.
+
+```
+sntpClient.getNtpTime()
+```
+
+gives you the current NTP time as per the device time zone.
+
+Then identify the device's time zone,
+```
+cal.getTimeZone()
+```
+and calculate the offset difference between UTC and the current device time.
+
+```
+DateUtils.getFormattedDateTime(date)
+```
+
+is our custom method to format date into String.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[What's new in Apple Passbook iOS7]]></title>
+            <link>https://prasanna.dev/posts/whats-new-in-apple-passbook-ios7</link>
+            <guid>https://prasanna.dev/posts/whats-new-in-apple-passbook-ios7</guid>
+            <pubDate>Tue, 06 Aug 2013 18:30:00 GMT</pubDate>
+            <description><![CDATA[New features in passbook application in the iOS7.]]></description>
+            <content:encoded><![CDATA[
+I'm currently working in a project that integrated with iOS Passbook application to deliver digital passes to their users. Spent some time in investigating the changes to passbook application in iOS7 (beta 4). Here is a quick summary of it.
+
+Apple listened to its user's feedback and have come with some features which increases the usability of the application.
+
+**Add multiple passes to Passbook.**
+
+Yes, you can able to add multiple passes to the Passbook application in one go. So, if you are issuing multiple passes to your users, probably have a page with all the passes and you can have download all link, which downloads all the passes in one shot.
+
+**Delivery through Barcode.**
+
+Apple have added one more delivery mechanism to the passbook. Currently you can deliver a pass through Safari browser (with vnd.apple.pkpass as header) or Through email attachment or to stream from your native iOS application. Now in the new passbook app they have added a barcode scanner. So the content of the pass can be crisped into a barcode and can be delivered to the Passbook application.
+
+**Anchor tags at the back of the pass.**
+
+Currently you can have links, but you cannot have link text. For example if you want to link [http://www.google.com](http://google.com) to 'Click here' it is not possible. But it will be possible from iOS7
+
+**Expiration date for Passes.**
+
+Now passes can have its own expiration date. It's a meta data that you can set and after that the passes will be destroyed from the Apple passbook automatically.
+
+**Usage restriction by Geo location.**
+
+You can restrict the usage of passes, within a specific geo location. For example if you are issuing a coupon, then you can make sure that your users could able to access the coupons within a specific geo co-ordinates.
+
+All these are nice features that are provided in iOS7. So far i was happy with all these news, until i read that, ([Dev forum link](https://devforums.apple.com/thread/190987?tstart=0))
+
+**The rendering algorithms are significantly different from the previous versions.**
+
+This seems to be a major issue to me, since i have to now test the appearance of my pass with new version. And have to think about optimising the design across all the versions.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Setting up Cucumber-jvm]]></title>
+            <link>https://prasanna.dev/posts/setting-up-cucumber-jvm</link>
+            <guid>https://prasanna.dev/posts/setting-up-cucumber-jvm</guid>
+            <pubDate>Tue, 09 Jul 2013 18:30:00 GMT</pubDate>
+            <description><![CDATA[Setting up cucumber BDD framework in your Java project.]]></description>
+            <content:encoded><![CDATA[
+[Cucumber JVM](https://github.com/cucumber/cucumber-jvm "Cucumber JVM") is Java implementation of Cucumber BDD.
+
+### **Integrating into the Project**
+
+The installation using maven is super simple, just add the dependency and you are ready to go. Make sure you add both command line interface (cucumber-core) and the IDE interface (cucumber-junit)
+
+I was using Intellij and add Intellij Cucumber plugin, to make the navigations easier.
+
+One thing i liked very much is the ability to add custom annotations to the feature. You can add a custom annotation and can create Before and After hook for them.
+
+In `.feature` file
+```
+@Email
+Feature:
+```
+In the step definitions file.
+```
+@Before({"@Email"})
+@After({"@Email"})
+```
+### **Integrating with Spring**
+
+For Spring integration you need to add one more component of the cucumber-jvm _(cucumber-spring)_
+
+It is advisable to have a test runner class which can run all the feature files in one go especially when you are runnning in the CI.
+
+The structure of the test runner class will be :
+```java
+@RunWith(Cucumber.class)
+public class CucumberAdapterTest {
+}
+```
+Make sure to place all the feature files in the same package as of this Runner class. Or you can specify the path using the cucumber options, like this.
+```java
+@RunWith(Cucumber.class)
+@Cucumber.Options(features = "classpath:\*\*/\*.feature")
+public class CucumberAdapterTest {
+}
+```
+
+If you are placing all the step definition in other package you can add that to the annotation using glue attribute.
+```java
+@RunWith(Cucumber.class)
+@Cucumber.Options(features = "classpath:\*\*/\*", glue = {"path of the step definitions"})
+public class CucumberAdapterTest {
+}
+```
+This will look up for cucumber.xml file in the classpath. This xml file can hold all the bean definitions. My cucumber.xml was super simple.
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <import resource="classpath\*:/application-context.xml"/>
+
+    <context:component-scan base-package="path of the step definition"/>
+    <context:annotation-config/>
+</beans>
+```
+
+The step defnitions can lie in a different package and make sure you use glue attribute to wire them in the Runner class.
+
+```java
+public class StepDefinitions {
+@Autowired
+EntityRepository entityRepository;
+
+	@Given("^Register a user$")
+	public void registerUser() throws Throwable {
+
+	}
+}
+```
+### **Integrating with Spring Transactions**
+
+One last thing that i wanted to do is to hook up Spring transactions. So all the data created by the features have to be removed after the test completes. So you can write independent tests without bothering about the data.
+
+You can use '_txn_' annotation that comes with Cucumber-JVM. All you need to do is to wire up that package along with your adapter class.
+```java
+@RunWith(Cucumber.class)
+@Cucumber.Options(glue = {"cucumber.api.spring"})
+public class CucumberAdapterTest {
+}
+```
+
+and
+
+```
+@txn
+Scenario: Some scenario to test
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Link your Sublime Text 2 instances with Dropbox]]></title>
+            <link>https://prasanna.dev/posts/link-your-sublime-text-2-instances-with-dropbox</link>
+            <guid>https://prasanna.dev/posts/link-your-sublime-text-2-instances-with-dropbox</guid>
+            <pubDate>Wed, 09 Jan 2013 18:30:00 GMT</pubDate>
+            <description><![CDATA[Sublime text has a key mapping file where it stores all the shortcut. Here is a way to share your preferences and key maps across two machines using a dropbox account.]]></description>
+            <content:encoded><![CDATA[
+After started using **Sublime Text 2 (ST2)**, was completely head over heels for it. After using it for some time, figured out that ST2 uses a settings file to remember the plugins, open tabs etc. I was using my laptop (Mac) and sometimes uses my PC (Windows) do type blog post or some other stuff. So thought of giving a try in syncing these two using Dropbox folder.
+
+The idea is to have the settings file in the Dropbox folder and to have a symlink in the OS to point to. This means whatever changes i did to a ST2 instance will reflect in my other instance too.
+
+**Prerequisites:**
+
+*   Install ST2 in both the machines.
+*   Have a DropBox account and install the software in both the machines.
+
+### **In Mac:**
+
+Move the entire Sublime Text folder into the Dropbox folder.
+
+```bash
+mv '~/Library/Application\\ Support/Sublime\\ Text\\ 2/' '~/Dropbox/Sublime\\ Text\\ 2'
+```
+Next step is to create a symlink in the original location so that it the folder in the Dropbox will be used to store the settings.
+
+```bash
+ln -s '~/Library/Application\\ Support/Sublime\\ Text\\ 2' '~/Dropbox/Sublime\\ Text\\ 2'
+```
+### **In Windows:**
+
+Windows don't have symlink concept. So we have to settle with [NTFS symbolic link](http://en.wikipedia.org/wiki/NTFS_symbolic_link "NTFS Junction Point")
+
+```bash
+mklink /J 'C:/Users/user\_name/Dropbox/Sublime Text 2' 'C:/User/user\_name/Applications/Sublime Text 2'
+```
+
+That's it, now you don't need to worry about the sync between these two instances.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Scribblings on Socket.io]]></title>
+            <link>https://prasanna.dev/posts/scribblings-socket-io</link>
+            <guid>https://prasanna.dev/posts/scribblings-socket-io</guid>
+            <pubDate>Mon, 03 Dec 2012 18:30:00 GMT</pubDate>
+            <description><![CDATA[When i tried out socket.io for the first time, it was quite an interesting learning of few new paradigms and techniques.]]></description>
+            <content:encoded><![CDATA[
+I was trying my hands on socket.io. On my first glance it looked extremely simple to get going. The app i was working was on node.js, so i had no trouble in including socket.io into my project.
+
+My app had client and server component. For the server component i could able to do the npm install and got the socket.io working. Whereas for the client component i couldn't able to find the stand alone js available for download. Basically the js comes in along with the npm which means you got to take it out separately if you want to use it. Then i used the js file from their [Github repo](https://github.com/learnboost/socket.io).
+
+By default Socket.io doesn't perform broadcast
+----------------------------------------------
+
+This is my first learning. Though it seems to be obvious after taking a good look onto the API, it wasn't very clear for me in the beginning.
+
+_For example:_
+
+**Server**
+
+```js
+var app = require('express')(),
+    server = require('http').createServer(app),
+    io = require('socket.io').listen(server);
+
+server.listen(80);
+
+io.sockets.on('connection', function(socket) {
+    socket.on('first\_msg', function(data) {
+        socket.emit('reply', {
+            hello: 'world'
+        });
+    });
+});
+```
+**Client 1:**
+
+```js
+<script src = "/socket.io/socket.io.js" > </script>
+<script>
+	var socket = io.connect('http:/ / localhost ');
+	socket.emit('first\_msg ', { my: 'data1 ' });
+</script>
+```
+
+**Client 2:**
+
+```js
+<script src = "/socket.io/socket.io.js" > </script>
+<script>
+	var socket = io.connect('http:/ / localhost ');
+	socket.on('reply ', function (data){
+		console.log("Client1 had pinged server.");
+	}
+</script>
+```
+
+In this case i was expecting my _Client2_ console.log to execute but that never happened. Reason being whenever _Client1_ emits '_first\_msg_' it was _Client1_ who was receiving the reply too (obvious i know !!).
+
+So in these cases socket.io provides an API to broadcast messages.Hence instead of
+```js
+socket.emit('reply', { hello: 'world' });
+```
+it should have been
+
+socket.broadcast.emit('reply', { hello: 'world' });
+
+Exposed events in socketIO are just defined for socket.on methods
+-----------------------------------------------------------------
+
+I was trying to emit a custom message from my client. I need to perform some actions on its success and failure. Now i need to attach success and error callbacks. For this i found this [Exposed events](https://github.com/LearnBoost/socket.io/wiki/Exposed-events "Exposed Events") doc. The funda is that all these exposed events are defined only for socket.on which means while emitting a message i cannot bind any callbacks to it.
+
+For error callback it is straight forward. We have
+```js
+socket.on('error', () -> console.log("Error Occured"))
+```
+which can be bound on the socket so whenever an error is been thrown on the socket the defined behaviour gets executed.
+
+**Client** emits the custom message and sends JSON data to the socket via socket.emit, also he gets an update function that handles the success callback
+```js
+socket.emit ('message', {hello: 'world'});
+socket.on ('messageSuccess', function (data) {
+//do something
+});
+```
+**Server**\-side Gets a call from the message emit from the client and emits the messageSuccess back to the client
+```js
+socket.on ('message', function (data) {
+    io.sockets.emit ('messageSuccess', data);
+});
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Hamcrest conflict in jUnit.]]></title>
+            <link>https://prasanna.dev/posts/hamcrest-conflict-junit</link>
+            <guid>https://prasanna.dev/posts/hamcrest-conflict-junit</guid>
+            <pubDate>Tue, 26 Jun 2012 18:30:00 GMT</pubDate>
+            <description><![CDATA[Hamcrest matchers are used in jUnit for assertions. There is a weird problem with the version conflict between Hamcrest and jUnit. The solution is been discussed here.]]></description>
+            <content:encoded><![CDATA[
+Using jUnit 4.8 i got into an issue when testing the few [lambda](http://code.google.com/p/lambdaj/ "LambdaJ") expressions. I was constantly getting this error while testing code involving Hamcrest matchers.
+
+java.lang.NoSuchMethodError: org.hamcrest.core.AllOf.allOf(Lorg/hamcrest/Matcher;Lorg/hamcrest/Matcher;)Lorg/hamcrest/Matcher;
+
+However when i ran the application it was all fine. So i could sense the issue with the jUnit.
+
+The problem is due to hamcrest versioning issue with jUnit. jUnit uses an old version while other libraries (in my case LambdaJ) was using the latest version. The fix will be to download the junit-dep-4.\*.jar from the jUnit [download](https://github.com/KentBeck/junit/downloads "gitHub kent beck") page. Since you app already have Hamcrest class the test will run smoothly.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Handle MaxUpload SizeExceededException in Spring]]></title>
+            <link>https://prasanna.dev/posts/handle-maxuploadsizeexceededexception-spring</link>
+            <guid>https://prasanna.dev/posts/handle-maxuploadsizeexceededexception-spring</guid>
+            <pubDate>Sat, 23 Jun 2012 18:30:00 GMT</pubDate>
+            <description><![CDATA[Handling MaxUploadExceedException in Ajax call with Spring controllers. This exception occurs when the file size greate than what is expected is been uploaded by the user.]]></description>
+            <content:encoded><![CDATA[
+I was doing a AJAX file upload using jQuery and Spring 3. Spring provides a way to limit the file being uploaded and this can be configured while creating the multipart bean by specifying the maxUploadSize parameter.
+
+So whenever an user tries to upload a file with size size greater than that of the specified one then Spring will throw _'MaxUploadSizeExceededException'_ exception and returns back. The problem for me is that i was doing the file upload using AJAX so i wanted a custom error to be thrown rather than the Spring's default error.
+
+And also because of this exception the control will not even reach your specified controller so there is no chance to catch it in your Controller. After some lookup i found this simple fix for it.
+
+FileUploadController: Controller which will handle the file upload request.
+
+_**Make this FileUploadController to implement HandlerExceptionResolver. This will force you to define resolveException() method.**_
+
+```java
+@ResponseBody
+public ModelAndView resolveException(HttpServletRequest httpServletRequest,
+        HttpServletResponse httpServletResponse, Object o, Exception e) {
+    if (e instanceof MaxUploadSizeExceededException) {
+        ModelAndView modelAndView = new ModelAndView("inline-error");
+        modelAndView.addObject("error", 
+        "Error: Your file size is too large to upload. Please upload a file of size < 5 MB and  continue. ");
+    return modelAndView;
+    }
+    e.printStackTrace();
+    return new ModelAndView("500");
+}
+```
+** How to show the error on the same page:**
+
+The call to the controller is from a jQuery ajax method. But the problem here is that even with this approach your jQuery POST method is going to receive a HTTP\_OK message from the controller. Hence if you are waiting at the error callback then you have no chance of catching this error.
+
+So what i have done here is to return inline-error view back as the response. On the success callback of the jQuery i check for the presence of the error\_div in the response and display the field in the page. Else show the success message.
+
+_inline-error.jsp_
+```html
+<div class="error" id="error\_div">${error}</div>
+```
+
+_PS: This is definitely not the cleanest approach, but this solved my problem :)_
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Make your NTFS drive writable under Mac Lion]]></title>
+            <link>https://prasanna.dev/posts/make-ntfs-write-mac-lion</link>
+            <guid>https://prasanna.dev/posts/make-ntfs-write-mac-lion</guid>
+            <pubDate>Mon, 26 Dec 2011 18:30:00 GMT</pubDate>
+            <description><![CDATA[Make your NTFS drive writabe under mac lion.]]></description>
+            <content:encoded><![CDATA[
+Just now i got my new Mac book pro, pre loaded with Lion OSX and one of the surprises i stepped onto is NTFS write issue on the Mac.
+
+Based on a few blog posts and comments I managed to find a way that worked for me, so I thought I’d put it all here in one place for others.
+
+**Pre requisites:**
+
+Get [HomeBrew](http://mxcl.github.com/homebrew/ "homebrew") installed in your machine. And of course this needs XCode tools to be installed.
+
+**Steps:**
+
+1) Install latest Fuse4X (a fork of MacFUSE) and NTFS-3G packages:
+```bash
+brew install fuse4x
+brew install ntfs-3g
+```
+2) Type brew info fuse4x-kext in the terminal. You will be shown a message similar to this:
+
+In order for FUSE-based filesystems to work, the fuse4x kernel extension
+must be installed by the root user:
+```bash
+sudo cp -rfX /usr/local/Cellar/fuse4x-kext/0.8.13/Library/Extensions/fuse4x.kext /System/Library/Extensions
+sudo chmod +s /System/Library/Extensions/fuse4x.kext/Support/load\_fuse4x
+```
+Perform both the operation.
+3) And after this i simply followed this [blog post entry](http://fernandoff.posterous.com/ntfs-write-support-on-osx-lion-with-ntfs-3g-f). Since you have already installed Fuse4x and ntfs-3g you can directly jump to
+
+> "Ok, at this point you should have a functional fuse4x and ntfs-3g install."
+
+and create an alternative
+```bash
+/sbin/ntfs\_mount
+```
+script as described there.  
+And at last you got make one change to get things working.  
+The script in the bog post is for MacPort users. For HomveBrew users you got to make this change.  
+replace
+```bash
+/opt/local/bin/ntfs-3g
+```
+with
+
+```bash
+/usr/local/bin/ntfs-3g
+```
+And that's it. Just try mounting a NTFS drive and you should have write permissions to your drive. If you face any issues check out the log @
+```bash
+/var/log/ntfsmnt.log
+```
+or try re-booting the machine in the worst case.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Slot machine effect using jQuery]]></title>
+            <link>https://prasanna.dev/posts/slot-machine-effect-jquery</link>
+            <guid>https://prasanna.dev/posts/slot-machine-effect-jquery</guid>
+            <pubDate>Sat, 24 Sep 2011 18:30:00 GMT</pubDate>
+            <description><![CDATA[A cool widget that looks like a slot machine. Small piece of code and a nice trick to animate the numbers to achieve a slot machine effect.]]></description>
+            <content:encoded><![CDATA[
+**Slot Machine Effect:**
+
+**Requisite:**
+
+*   jQuery 1.5+
+
+**Idea:**
+
+*   Create an element to display the animation.
+*   Next create an empty element say <div></div> and set its position: 'fixed'
+*   Set the position of the empty element to the Start Value of the slot.
+*   Now use jQuery animate to move the empty element from Start value to the specified End Value in a given duration.
+*   jQuery animate has a step() method which gives you the current position of the div for every unit of time.
+*   Now inside this step() method set the display element's text to the current position value of the empty element.
+*   Since empty element moves from start value to end value, you will see the numbers changing from start value to end value in the display area.
+
+**Javascript Code:**
+
+```js
+$('#animate\_btn').click(function() {
+    cashFlow($('.value'), $('#startVal').val(), $('#endVal').val(),
+        $('#duration').val() \* 1000, $('#decimal').val());
+});
+
+cashFlow = function(elem, from, to, duration, decimal) {
+    var magicObject;
+    if (typeof magicObject === 'undefined') {
+        magicObject = $('<div></div>').appendTo('body');
+    }
+    magicObject.css({
+        position: "fixed",
+        left: from
+    }).animate({
+        left: to
+    }, {
+        duration: duration,
+        step: function(currentLeft) {
+            elem.html(Number(currentLeft).toFixed(decimal));
+        },
+        complete: function() {
+            magicObject.remove();
+        }
+    });
+};
+
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Writing Custom Tags for JSTLs]]></title>
+            <link>https://prasanna.dev/posts/writing-custom-tags-for-jstls</link>
+            <guid>https://prasanna.dev/posts/writing-custom-tags-for-jstls</guid>
+            <pubDate>Sat, 10 Sep 2011 18:30:00 GMT</pubDate>
+            <description><![CDATA[Writing a custom JSTL tag and integrating with the application. A sample code to do the same.]]></description>
+            <content:encoded><![CDATA[
+First start with writing a tag library descriptor(TLD). A TLD is a XML document that contains information about a library as a whole and about each tag contained in the library.  
+The structure of the TLD file is pretty readalbe.
+
+Below is an implementation of tag which takes in a section name(value) of a web page and checks whether the logged-in user has rights to view the section.
+
+**Step 1:** custom.tld
+```xml
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary\_1\_1.dtd">
+<taglib xmlns="http://java.sun.com/j2ee/dtds/web-jsptaglibrary\_1\_1.dtd">
+    <tlibversion>1.0</tlibversion>
+    <jspversion>1.1</jspversion>
+    <shortname>custom</shortname>
+    <info>Custom tag library</info>
+    <tag>
+        <name>permission</name>
+        <tagclass>com.prasans.PermissionTag</tagclass>
+        <info>
+            Checks the User Permission to access the content.
+        </info>
+        <attribute>
+            <name>value</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>invertCondition</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+</taglib>
+```
+Here we have implemented a tag called permission within the 'custom' tag library.
+
+Usage: _<custom:permission value="">{section}</custom:permission>_  
+Similarly you can add more tags to your library by adding more <tag> nodes.
+
+After done with defining TLD, next step is to implement the conditional logic. Below is a piece of Java code that does the implementation of the TLD.
+
+**Step 2:** PermissionTag.java
+
+```java
+package com.prasans;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.jstl.core.ConditionalTagSupport;
+
+public class PermissionTag extends ConditionalTagSupport {
+private String value = null;
+private boolean invertCondition;
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public boolean isInvertCondition() {
+        return invertCondition;
+    }
+
+    public void setInvertCondition(boolean invertCondition) {
+        this.invertCondition = invertCondition;
+    }
+
+    @Override
+    protected boolean condition() {
+        // If needed you can access Request Object like this.
+        HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
+        boolean permission = checkForThePermission(value);
+        return invertCondition ? !permission : permission;
+    }
+}
+```
+**Explanation:**
+
+\* Since the expectation of this tag is to return true or false, we are extending the _ConditionalTagSupport_ class. Based on the need you can choose upon your class implementation.
+
+\*Note that all tag attributes are member variables of the class and all of them should have getters and setters.
+
+\*Here we have overridden the condition() from ConditionalTagSupport to return the needed boolean result.
+
+\* InvertCondition is an attribute that helps us in simulating negative scenarios.
+
+For ex: "Show the section _If User A do not have 'X' permission_"
+
+After building the TLD and its corresponding logic, the next step is to integrate with your application.  
+Add the custome tag library to your web.xml to integrate with your web app.
+
+**Step 3:** web.xml
+
+```xml
+<jsp-config>
+    <taglib>
+        <taglib-uri>/custom</taglib-uri>
+        <taglib-location>/WEB-INF/tags/custom.tld</taglib-location>
+    </taglib>
+</jsp-config>
+```
+The taglib-uri is the _<shortname>_ defined in the TLD file. And _<taglib-location>_ is the location of the tld. Make sure that you are bundling the TLD along with your WAR.
+
+Thats it. You can start using your custom tags in your JSPs now.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Reloading an activity in Android]]></title>
+            <link>https://prasanna.dev/posts/reloading-an-activity-in-android</link>
+            <guid>https://prasanna.dev/posts/reloading-an-activity-in-android</guid>
+            <pubDate>Tue, 12 Jul 2011 18:30:00 GMT</pubDate>
+            <description><![CDATA[Refreshing or reloading activity in Android application. This might be important in the case of refreshing data in the activity.]]></description>
+            <content:encoded><![CDATA[
+More often i wanted to reload an activity to refresh the contents of an page. I have seen many ways to do this in Android world and i always puzzled about the best approach.
+
+However these are some of the approaches that i took . I found the following two approaches a lot cleaner as they kill the existing intent and restart.
+
+**Approach 1:**
+
+```java
+Intent intent = getIntent();
+finish();
+startActivity(intent);
+```
+
+**Approach 2:**
+```java
+Intent intent = getIntent();
+overridePendingTransition(0, 0);
+intent.addFlags(Intent.FLAG\_ACTIVITY\_NO\_ANIMATION);
+finish();
+overridePendingTransition(0, 0);
+startActivity(intent);
+```
+_**Note:** The second approach works only from API 5+_
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Configuring Context name for an application]]></title>
+            <link>https://prasanna.dev/posts/configuring-context-name-for-an-applicationtomcat-war</link>
+            <guid>https://prasanna.dev/posts/configuring-context-name-for-an-applicationtomcat-war</guid>
+            <pubDate>Fri, 08 Jul 2011 18:30:00 GMT</pubDate>
+            <description><![CDATA[Setting up a different context name than the WAR name for the Java application deployed in Tomcat server.]]></description>
+            <content:encoded><![CDATA[
+Many times i have faced this necessity of  having a different Context name than that of the WAR name. Especially when i use Maven. And i also found that it is quite simple in Tomcat. While looking for it i found two approached for doing it. One using Context.xml and the other using Server.xml
+
+**Problem Statement:** I have a WAR file myapp-build123.war and the app can be referred using _http://localhost:8080/myapp-build123_ but i need to refer my application as _http://localhost:8080/myapp_ So here is what im gonna do.
+
+**Approach 1: _Context.xml_ (Recommended way)**
+
+*   Create a Context file in ${TOMCAT\_HOME}/conf/Catalina/localhost directory. Name the file as myapp.xml (The file name should be the same as desired context name) The content of the file is given below.
+
+```bash
+<Context path="/somepath" docBase="/home/myapp-build123"/>
+```
+
+_Basically the path attribute is been ignored by Tomcat so if you want you can ignore it too._
+
+_The docBase will contain the path of the WAR. Here i have placed my WAR file in the home directory._
+
+*   An important thing to note here is that the WAR file cannot be placed inside the ${TOMCAT\_HOME}/webapps folder. If you place the WAR in the webapps folder then the war will get exploded with the same name as the WAR file and after that it is not possible to configure the Context name. So place the WAR anywhere in the system apart from ${TOMCAT\_HOME}/webapps folder.
+
+
+*   Now its time to start the server and you will see a folder named myapp in the ${TOMCAT\_HOME}/webapps folder, containing the application files.
+
+
+**Approach 2: Server.xml ( [Not Recommended](http://tomcat.apache.org/tomcat-6.0-doc/config/context.html) after Tomcat 4.x )**
+
+*   Open the Server.xml file from ${TOMCAT\_HOME}/conf folder. Search for the Host tag and place the Context tag inside it.
+
+```xml
+<Host name="localhost"  appBase="webapps"
+    unpackWARs="true" autoDeploy="true"
+    xmlValidation="false" xmlNamespaceAware="false">
+    <Context path="/myapp" docBase="/myapp-build123"/>
+</Host>
+```
+*   In this scenario you can place the WAR file in the ${TOMCAT\_HOME}/webapps folder itself. And also it is possible to access the application by both the URLs, http://localhost:8080/myapp-build123 and http://localhost:8080/myapp.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Primary-key @OneToOne mapping in Hibernate]]></title>
+            <link>https://prasanna.dev/posts/primary-key-onetoone-mapping-in-hibernate</link>
+            <guid>https://prasanna.dev/posts/primary-key-onetoone-mapping-in-hibernate</guid>
+            <pubDate>Tue, 17 May 2011 18:30:00 GMT</pubDate>
+            <description><![CDATA[Joining two tables using Primary keys in Hibernate.]]></description>
+            <content:encoded><![CDATA[
+Today was trying to join two tables using its Primary keys using Hibernate. Here is what I tried to do:
+
+```java
+@Table(name = "customer")
+@Entity
+public class Customer {
+    @Id
+    @OneToOne
+    @JoinColumn(name = "customer\_id", updatable = false)
+    private Credentials credentials;
+}
+```
+
+I was constantly getting an error stating invalid column name. Later then I realized that its not possible have Join in the Primary-Key and bind to a custom object. This forced me to have a Auto-generated Id as a key to the table and named it as the primary key. This is how my code looked after modification.
+
+```java
+@Table(name = "customer")
+@Entity
+public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @OneToOne
+    @JoinColumn(name = "customer\_id",updatable = false)
+    private Credentials credentials;
+}
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Age Of Empires (AOE) Fix in Windows 7]]></title>
+            <link>https://prasanna.dev/posts/play-age-of-empires-aoe-in-windows-7</link>
+            <guid>https://prasanna.dev/posts/play-age-of-empires-aoe-in-windows-7</guid>
+            <pubDate>Wed, 27 Apr 2011 18:30:00 GMT</pubDate>
+            <description><![CDATA[Age of Empires (a popular strategy game) has got some problems with color rendering while played in Window 7. A quick harmless solution for that is here.]]></description>
+            <content:encoded><![CDATA[
+Due to an issue in the Windows 7 Aero theme , the map of the Age Of Empires (AOE) actually renders poorly. The playing area will be laid in patches and the small map in the bottom right won't show the correct player's color.
+
+The fix for this issue is pretty simple.
+
+* Start the AOE game.
+
+* Get back to your desktop without closing the game,(by pressing the Windows Key (or) Show Desktop key).
+
+* Start your task manager . Select the Processes tab. Look for process explorer.exe and kill it.
+
+* This will hide your desktop icons, taskbar and all other opened windows.
+
+* Using Alt +Tab get back to the Game. Now the map will be rendered nicely. Enjoy Playing :)
+
+* After finishing the game , Start Task Manager again. Choose File -> New Task and type explorer.exe in the dialog box.
+
+*Everything is back to normal.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Add EditText(s) dynamically and retrieve values - Android]]></title>
+            <link>https://prasanna.dev/posts/add-edittexts-dynamically-and-retrieve-values-android</link>
+            <guid>https://prasanna.dev/posts/add-edittexts-dynamically-and-retrieve-values-android</guid>
+            <pubDate>Mon, 21 Mar 2011 18:30:00 GMT</pubDate>
+            <description><![CDATA[Adding multiple edit text boxes to the android application dynamically through code and controlling them.]]></description>
+            <content:encoded><![CDATA[
+Adding EditText to your Android application is no different from adding any other form elements except for one thing. Retrieving values from them is slightly different and of course nothing impossible. Just a little more bit of coding and thats it.
+
+![Android-EditText {307xx578}](/assets/posts/images/android-edittext.png "Android-EditText")
+
+Following code snippet creates a series of EditTexts and also let you to access its values.
+
+```java
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.view.ViewGroup.LayoutParams.FILL\_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP\_CONTENT;
+import static android.widget.LinearLayout.VERTICAL;
+
+public class Sample extends Activity {
+    private List<EditText> editTextList = new ArrayList<EditText>();
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        LinearLayout linearLayout = new LinearLayout(this);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(FILL\_PARENT, WRAP\_CONTENT);
+        linearLayout.setLayoutParams(params);
+        linearLayout.setOrientation(VERTICAL);
+
+        int count = 10;
+        linearLayout.addView(tableLayout(count));
+        linearLayout.addView(submitButton());
+        setContentView(linearLayout);
+    }
+
+    private Button submitButton() {
+        Button button = new Button(this);
+        button.setHeight(WRAP\_CONTENT);
+        button.setText("Submit");
+        button.setOnClickListener(submitListener);
+        return button;
+    }
+
+    // Access the value of the EditText
+
+    private View.OnClickListener submitListener = new View.OnClickListener() {
+        public void onClick(View view) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (EditText editText : editTextList) {
+                stringBuilder.append(editText.getText().toString());
+            }
+        }
+    };
+
+    // Using a TableLayout as it provides you with a neat ordering structure
+
+    private TableLayout tableLayout(int count) {
+        TableLayout tableLayout = new TableLayout(this);
+        tableLayout.setStretchAllColumns(true);
+        int noOfRows = count / 5;
+        for (int i = 0; i < noOfRows; i++) {
+            int rowId = 5 \* i;
+            tableLayout.addView(createOneFullRow(rowId));
+        }
+        int individualCells = count % 5;
+        tableLayout.addView(createLeftOverCells(individualCells, count));
+        return tableLayout;
+    }
+
+    private TableRow createLeftOverCells(int individualCells, int count) {
+        TableRow tableRow = new TableRow(this);
+        tableRow.setPadding(0, 10, 0, 0);
+        int rowId = count - individualCells;
+        for (int i = 1; i <= individualCells; i++) {
+            tableRow.addView(editText(String.valueOf(rowId + i)));
+        }
+        return tableRow;
+    }
+
+    private TableRow createOneFullRow(int rowId) {
+        TableRow tableRow = new TableRow(this);
+        tableRow.setPadding(0, 10, 0, 0);
+        for (int i = 1; i <= 5; i++) {
+            tableRow.addView(editText(String.valueOf(rowId + i)));
+        }
+        return tableRow;
+    }
+
+    private EditText editText(String hint) {
+        EditText editText = new EditText(this);
+        editText.setId(Integer.valueOf(hint));
+        editText.setHint(hint);
+        editTextList.add(editText);
+        return editText;
+    }
+}
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Test your Controller's ModelAttribute methods.]]></title>
+            <link>https://prasanna.dev/posts/test-your-controllers-modelattribute-methods</link>
+            <guid>https://prasanna.dev/posts/test-your-controllers-modelattribute-methods</guid>
+            <pubDate>Wed, 19 Jan 2011 18:30:00 GMT</pubDate>
+            <description><![CDATA[Injecting a ModelAttribute to the controller's method in Unit tests using Spring and jUnit.]]></description>
+            <content:encoded><![CDATA[
+I was about to write some unit tests around my Spring’s controller classes and also i wanted to write the test using MockHttpRequest and MockHttpResponse.
+
+My controller had a method to which i was using ModelAttribute as one of the parameter. I just want to simulate the same scenario in my Unit Tests.
+
+Unfortunately i could not see any methods in MockHttpRequest to help me with this. So i had to take a simple different approach as an workaround for this.
+
+My Controller code looks similar to this:
+
+```java
+@Controller
+@RequestMapping(value = "/register")
+public class MyController {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public ModelAndView save(@ModelAttribute User user) {
+        //Code to save the User object
+        return new ModelAndView();
+    }
+}
+```
+My Unit Tests:
+
+```java
+public class MyControllerTest {
+MockHttpServletResponse response;
+MockHttpServletRequest request;
+AnnotationMethodHandlerAdapter handler;
+
+    @Before
+    public final void init() {
+        response = new MockHttpServletResponse();
+        request = new MockHttpServletRequest();
+        handler = new AnnotationMethodHandlerAdapter();
+    }
+
+    @Test
+    public void shouldTestSaveUser() {
+        final User mockUser = new UserTestBuilder().withName("John").build();
+        request.setMethod("POST");
+        request.setRequestURI("/register/save");
+
+        MyController myController = new MyController() {
+            @ModelAttribute
+            public User mockModel() {
+                return user;
+            }
+        }
+        ModelAndView model = handler.handle(request, response, myController);
+    }
+}
+```
+_**Explanation:**_
+
+Whenever a method in a controller is annotated with @ModelAttribute , it will be invoked for every request made to that controller. So while creating the mycontroller object i am overriding a sample method which has this annotation and returns a User object as a ModelAttribute.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Hadoop Version in AWS Map Reduce]]></title>
+            <link>https://prasanna.dev/posts/hadoop-version-in-aws-map-reduce</link>
+            <guid>https://prasanna.dev/posts/hadoop-version-in-aws-map-reduce</guid>
+            <pubDate>Sun, 14 Nov 2010 18:30:00 GMT</pubDate>
+            <description><![CDATA[Performing Map Reduce operation using Amazon AWS interface.]]></description>
+            <content:encoded><![CDATA[Creating job flows using AWS MapReduce's GUI is pretty simple and very straight forward. But i wanted to use Java SDK to create/run jobs in MapReduce. I could successfully able set up the job and configured all the parameters except for a weird error.
+```java
+java.lang.NoSuchMethodError:
+org.apache.hadoop.mapred.JobConf.
+setBooleanIfUnset(Ljava/lang/String;Z)
+```
+I was constantly getting this error while running the job. Initially i had no idea why this error occurs and none of the forum talks about it either. Then i figured out that the default Hadoop version used by the Ec2 instances was 0.18 and i was expecting 0.20. Interestingly i didn't face this issue when i did it through GUI.
+
+As a solution i need to explicitly set the version number as 0.20 to the Instances object so that it will use the same while running the job.
+```java
+JobFlowInstancesConfig instances = new JobFlowInstancesConfig();
+instances.setHadoopVersion("0.20");
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[SAX parser characters() method.]]></title>
+            <link>https://prasanna.dev/posts/sax-parser-characters-method</link>
+            <guid>https://prasanna.dev/posts/sax-parser-characters-method</guid>
+            <pubDate>Wed, 06 Oct 2010 18:30:00 GMT</pubDate>
+            <description><![CDATA[Implementing `characters()` method for SAX parsing huge files. With a sample code in Java]]></description>
+            <content:encoded><![CDATA[Was playing around SAX parsing some Gigs of XML file 😅 Here are few learnings from the game.
+
+My intention was to read values between a corresponding tag. I initially went after using characters() in SAX parser which actually worked fine for initial feeds. But as i keep increasing the size of the XMLs and if the size of the tagContent was large the problem arises. characters() function not always gives back the entire value in a single shot. It may return the value in multiple chunks. So need to be careful in assigning and using the values from characters() method.
+
+So the better way to use characters() method is to keep appending all the values to a buffer and use the value in the corresponding end tag section. Also need to make sure that the buffer has to be flushed in the corresponding start element.
+
+**Sample Xml:**
+```xml
+<Sample>
+    <StudentCollection>
+        <Student>
+            <Name>Jack</Name>
+            <Age>12</Age>
+        </Student>
+        <Student>
+            <Name>Jill</Name>
+            <Age>13</Age>
+        </Student>
+        <Student>
+            <Name>Rose</Name>
+            <Age>14</Age>
+        </Student>
+    </StudentCollection>
+</Sample>
+```
+**Sample SAX handler code to print the Names:**
+
+**Initial Code: (Works fine for small values & small files)**
+```java
+
+public void startElement(String uri, String tag, String qName, Attributes attributes) {
+}
+
+public void characters(char ch[], int start, int length) {
+  System.out.println("Name of a student: " + new String(ch, start, length));
+}
+
+public void endElements(String uri, String tag, String qName) {
+}
+```
+**Final Code:**
+
+```java
+
+public void startElement(String uri, String tag, String qName, Attributes attributes) {
+  if ("Name".equals(tag)) {
+    tagContentBuffer = new StringBuffer();
+  }
+}
+
+public void characters(char ch[], int start, int length) {
+  tagContentBuffer.append(new String(ch, start, length));
+}
+
+public void endElements(String uri, String tag, String qName) {
+  if ("Name".equals(tag)) {
+    System.out.println("Name of a student: " +
+       tagContentBuffer.toString());
+  }
+}
+```
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[FTP Client (Ubuntu)]]></title>
+            <link>https://prasanna.dev/posts/ftp-client-ubuntu</link>
+            <guid>https://prasanna.dev/posts/ftp-client-ubuntu</guid>
+            <pubDate>Mon, 30 Aug 2010 18:30:00 GMT</pubDate>
+            <description><![CDATA[Download multiple files from authenticated FTP server in Ubuntu.]]></description>
+            <content:encoded><![CDATA[Today was about to download multiple files from an authenticated FTP server. The native ftp client of Ubuntu didn't help me as expected. I was trying to log into the FTP server and was constantly getting disconnected when trying to perform some operation. When browsed for some alternative found this ncftp client. This actually worked instantly and was pretty easy in installing.
+
+**_Install NCFTP:_**  
+`sudo apt-get install ncftp`
+
+**_Log into FTP server:_ **  
+`ncftp -u username hostname -p`
+
+it will prompt for password enter it. Type '?' in the terminal for the list of commands and there you go :)
+
+Check out the NCFTP client for other platforms.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Stop halting at Assertions]]></title>
+            <link>https://prasanna.dev/posts/stop-halting-at-assertions</link>
+            <guid>https://prasanna.dev/posts/stop-halting-at-assertions</guid>
+            <pubDate>Thu, 04 Mar 2010 18:30:00 GMT</pubDate>
+            <description><![CDATA[Generally assertions cause the test to halt. But sometimes we need to continue further and evaluate all the asserts and expect a comprehensive report of all the asserts.]]></description>
+            <content:encoded><![CDATA[When I was writing functional tests i stepped into a scenario where i have to continue with the test even after an assertion failure. The idea here is that you find an assertion failing, still you may need to go ahead and check out all the assertions as these tests generally take long time to complete. At the end of the test it will be good to have the summary of all the failures along with the stack trace. I was looking for some testing framework to help out with this functionality but unfortunately cant find any.
+
+Finally using TestNg I implemented this feature. All you need is to write a listener that listens whenever a test fails and simply logs the stack trace without failing the test. There is a neat step by step tutorial given [here ](http://seleniumexamples.com/blog/guide/using-soft-assertions-in-testng)
+
+Though this example has some specific information for Selenium based tests, it works fine with normal functional tests too.
+
+Happy Testing :)
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Printing multiple divs in a page.]]></title>
+            <link>https://prasanna.dev/posts/printing-multiple-divs-in-a-page</link>
+            <guid>https://prasanna.dev/posts/printing-multiple-divs-in-a-page</guid>
+            <pubDate>Wed, 10 Feb 2010 18:30:00 GMT</pubDate>
+            <description><![CDATA[When an user tries to print a HTML page, allow multiple divs from the page to appear in the print and not the entire page. Not using media CSS query]]></description>
+            <content:encoded><![CDATA[I stumbled upon a situation where i have to print multiple sections of a page into a single document. I actually tried out my own javascript to render only the required divs into an iframe and then the idea is to print that iframe calling _window.print()_ in that iframe.
+
+Having limited Javascript knowledge the above mentioned task was a bit tedious to me , then i sat upon googling to get a ready made plugin that implements this feature and my search ended upon [Jqprint](http://plugins.jquery.com/project/jqPrint). Jqprint is a plugin written in Jquery and it does the same that i mentioned above. Using this jqprint was really very easy. what all you need to do is that just mark all the divs that you want to print with a specific class name or with id. If your classname is printdiv then all you need to do is just call  _$(".printdiv").jqprint();_
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Install Inconsolata.ttf in Ubuntu(Jaunty).]]></title>
+            <link>https://prasanna.dev/posts/install-inconsolata-ttf-in-ubuntujaunty</link>
+            <guid>https://prasanna.dev/posts/install-inconsolata-ttf-in-ubuntujaunty</guid>
+            <pubDate>Thu, 10 Dec 2009 18:30:00 GMT</pubDate>
+            <description><![CDATA[Inconsolata is dev friendly font used by devs for their code. This post is about installing Inconsolata tru type in Ubuntu - Jaunty.]]></description>
+            <content:encoded><![CDATA[As developers tend to spend most of the time in front of IDEs it makes sense to pick up the best suited font for development. And i have seen most of the developers prefer to use monochrome fonts as it yields better feel while looking at the code. It is been now widely accepted by many developers to use Inconsolata as their development font. So better start using it and prove yourself geeky ;)  
+When i tried to use Inconsolata with my IntellijIDEA i couldn't find the ttf type inconsolata. And Intellij supports only ttf types. After a long search i downloaded thr ODf type and converted it to ttf using a converter and then i had the issue of installing it to my Jaunty. And i took help of my dev friends out here to resolve stuffs. So thought of consolidating the steps together as it may reduce someone else's pain.
+
+**Steps to install Inconsolata.ttf in Ubuntu(Jaunty).**
+
+**Step 1:** Start with downloading inconsolata font. [Inconsolata.ttf](http://www.4shared.com/file/xnMYNL0w/Inconsolata.html)
+
+**Step 2:**
+
+mkdir /usr/share/fonts/truetype
+
+cd /usr/share/fonts/truetype
+
+sudo mkdir  ttf-inconsolata
+
+**Step 3:** Copy the Inconsolata.ttf into the directory.
+
+sudo cp ~/Desktop/Inconsolata.ttf ttf-inconsolata
+
+**Step 4:** Now modify the permissions to allow it to be accessed by IDE's
+
+cd ttf-inconsolata
+
+sudo chmod 777 Inconsolata.ttf
+
+**Step 5:**Its not over yet. Finally before going to the IDE you need to cache the font to make it accessible.
+
+sudo fc-cache -f -v
+
+This will show a list of fonts cached recently. Check whether Inconsolata.ttf is been cached.
+
+Now you can keep staring at your code for a long time as it feels a lot better :)
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Test SMTP server]]></title>
+            <link>https://prasanna.dev/posts/test-smtp-server</link>
+            <guid>https://prasanna.dev/posts/test-smtp-server</guid>
+            <pubDate>Tue, 20 Oct 2009 18:30:00 GMT</pubDate>
+            <description><![CDATA[How can you set up an SMTP server in your local environment for testing purpose.]]></description>
+            <content:encoded><![CDATA[I came across testing a feature that ends up sending a mail. And to my misfortune i do not have access to the smtp server from my test environment. So i was looking out for a mock smtp server kind of stuff and ended up happily with test smtp server.
+
+[Devnull SMTP server](http://www.aboutmyip.com/AboutMyXApp/DevNullSmtp.jsp) is a dummy SMTP server that can be used for testing purposes. It helps you see all communication between a client and the server and is very useful if you are trying to find problems with your email server or a client that you wrote. And the best part is it is very simple to use and it is free of cost too. So if you have any such necessity do try this out.
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[First Post]]></title>
+            <link>https://prasanna.dev/posts/first-post</link>
+            <guid>https://prasanna.dev/posts/first-post</guid>
+            <pubDate>Fri, 28 Aug 2009 18:30:00 GMT</pubDate>
+            <description><![CDATA[An introductory post to start off my blog.]]></description>
+            <content:encoded><![CDATA[So after writing lots of shits and craps in various blogs now I have decided to have my own blog (another one :P) to continue writing those same shits and craps.
+
+**Disclaimer:** All the writings made in this blog are my own thoughts, opinions, views, suggestions, impressions, feelings, beliefs, faiths, sentiments, notions, thinking and ideas. In short this blog is written by me considering myself as its only reader. If you accidently landed on any of the posts here I’m not responsible for its consequences.
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>

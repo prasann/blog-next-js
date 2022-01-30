@@ -34,10 +34,10 @@ export function getPostByFileName(fileName: string, withContent: boolean = true)
     return post
 }
 
-export function getAllPosts(): Post[] {
+export function getAllPosts(withContent: boolean = false): Post[] {
     const fileNames = getPostFileNames();
     let allPosts = fileNames
-        .map((fileName) => getPostByFileName(fileName, false))
+        .map((fileName) => getPostByFileName(fileName, withContent))
         .sort(sortDesc);
     return allPosts
 }
