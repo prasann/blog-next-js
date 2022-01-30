@@ -52,10 +52,10 @@ const generateMainFeeds = async (): Promise<void> => {
     const feed = buildFeed();
     let allPosts = getAllPosts(true);
     allPosts.map(post => feed.addItem(makeItem(post)))
-
-    fs.writeFileSync('public/feed.xml', feed.rss2());
-    fs.writeFileSync('public/feed.json', feed.json1());
-    fs.writeFileSync('public/atom.xml', feed.atom1());
+    fs.mkdirSync('public/feeds/', {recursive: true});
+    fs.writeFileSync('public/feeds/feed.xml', feed.rss2());
+    fs.writeFileSync('public/feeds/feed.json', feed.json1());
+    fs.writeFileSync('public/feeds/atom.xml', feed.atom1());
 }
 
 export default generateMainFeeds;
