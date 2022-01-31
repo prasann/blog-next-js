@@ -26,8 +26,13 @@ Pending
     [x] Migrate blogs
     [] Migrate talks
 [] Setup redirects for the old ones
-[] rss feeds - https://www.daan.fyi/writings/rss
-[] manifest json for PWA
+[x] rss feeds - https://www.daan.fyi/writings/rss
+[x] manifest json for PWA
+[] setup analytics
+[] use prasanna.dev as main URL
+[] setup rel="canonical" in prasans.info
+[] activate lambda
+[] start indexing.
 
 [] Resume
 [] Like button in the post

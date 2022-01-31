@@ -6,8 +6,9 @@ import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
 
 const AboutMe = () => {
     return <div className="rounded text-xl shadow-xl p-6 text-center">
-        A computer science engineer, with a master’s degree in software systems. Builds and runs web applications with
-        various stacks. Self taught geek, loves to work in teams and not a 10x programmer <Link href="/about">Know
+        A computer science engineer, with a master’s degree in software systems.
+        A full-stack developer with experience in building and leading development teams that build high-performance enterprise platforms and products.
+        Loves to work in teams and not a 10x programmer <Link href={"/about"}>Know
         more...</Link>
     </div>
 }
