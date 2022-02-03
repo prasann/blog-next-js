@@ -30,6 +30,7 @@
     "@testing-library/dom": "^8.11.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
+    "@types/gtag.js": "0.0.8",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.38",
     "@types/react-syntax-highlighter": "^13.5.2",

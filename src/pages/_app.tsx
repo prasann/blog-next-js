@@ -8,9 +8,13 @@ import NProgress from 'nprogress';
 
 import type { AppProps  } from 'next/app'
 import Layout from "../components/layout";
+import {pageView} from "../lib/googleTag";
 
 Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeComplete', (url) => {
+  NProgress.done();
+  pageView(url);
+});
 Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
