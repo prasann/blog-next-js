@@ -1,5 +1,31 @@
 [
   {
+    "title": "Scaling Applications Using Micro-Frontends",
+    "date": "16-12-2020",
+    "place": "Remote",
+    "description": "Modern web applications tend to have complex and feature-heavy Frontends when compared to backends.\n\n\nWith so many choices for frameworks and programming paradigms, building a consistent Frontend to scale is a challenging problem to solve. We cover ways in which you can scale your Frontend application and your development teams by using a Micro-Frontends design pattern.",
+    "externalLinks": [
+      {
+        "name": "Video",
+        "link": "https://www.youtube.com/embed/ozEI0-5zMro",
+        "embed": true
+      }
+    ]
+  },
+  {
+    "title": "What's up with Platform Engineering",
+    "date": "04-11-2020",
+    "place": "Bengaluru",
+    "description": "I was part of platform team, and there was one question that was constantly asked to us. 'How different are we from devops'. So, in this talk tried to break some myths that surrounds platform engineering.",
+    "externalLinks": [
+      {
+        "name": "Presentation Deck",
+        "link": "https://www.slideshare.net/slideshow/embed_code/key/JaKVATp5xiJY1Y",
+        "embed": true
+      }
+    ]
+  },
+  {
     "title": "Coroutines in Kotlin",
     "date": "30-05-2019",
     "place": "Chennai",
