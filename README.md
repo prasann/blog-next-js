@@ -19,12 +19,12 @@ Pending
 [x] Fix Blog post CSS
     [x] Footer broke in the mobile
     [x] Align Date, Engage buttons
-[x  ] /about
+[x] /about
 [x] Enable click on the buttons in landing page and in engage component
 [x] Basic SEO setup. (Thumbnails, Meta tags for sharing)
-[] Migrate data
+[x] Migrate data
     [x] Migrate blogs
-    [] Migrate talks
+    [x] Migrate talks
 [x] Setup redirects for the old ones
 [x] rss feeds - https://www.daan.fyi/writings/rss
 [x] manifest json for PWA
