@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
     //TODO: Remove this, and make typography work without cdn
     render() {
         return (
-            <Html>
+            <Html lang={"en-us"}>
                 <Head>
                     <link rel="apple-touch-icon" href="/assets/favicons/apple-icon-180x180.png" sizes="180x180"/>
                     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png"/>
