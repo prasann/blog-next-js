@@ -16,7 +16,7 @@ const likeThePost = () => {
     const postName = window.location.href.split("posts/")[1]
     const gTagEvent = {
         action: "post_likes",
-        category: postName,
+        category: "LikeButton",
         label: postName,
         value: 1
     }

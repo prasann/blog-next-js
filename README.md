@@ -28,8 +28,8 @@ Pending
 [x] Setup redirects for the old ones
 [x] rss feeds - https://www.daan.fyi/writings/rss
 [x] manifest json for PWA
-[] setup analytics
-[] use prasanna.dev as main URL
+[x] setup analytics
+[x] use prasanna.dev as main URL
 [] setup rel="canonical" in prasans.info
 [] activate lambda
 [] start indexing.

@@ -7,7 +7,7 @@ const MetaHeaders = (customMetaHeader: Meta) => {
         <meta charSet="UTF-8"/>
         <title>{metaHeader.title}</title>
         <meta name="description" content={metaHeader.description}/>
-        <meta name="robots" content="noindex, nofollow"/>
+        <meta name="robots" content="index, nofollow"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         {/*  OG Meta Tags  */}
