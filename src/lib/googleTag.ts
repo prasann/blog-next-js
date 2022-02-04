@@ -6,7 +6,7 @@ export const pageView = (url: URL): void => {
     });
 };
 
-type GTagEvent = {
+export type GTagEvent = {
     action: string;
     category: string;
     label: string;

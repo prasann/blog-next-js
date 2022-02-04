@@ -7,6 +7,7 @@ const RenderLink = (link: ExternalLink) => {
     if (link.embed) {
         return <div key={link.name} className="my-4 iframe-container">
             <iframe src={link.link} frameBorder="0"
+                    loading="lazy"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen/>
         </div>

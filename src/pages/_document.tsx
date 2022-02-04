@@ -2,7 +2,7 @@ import Document, {Html, Head, Main, NextScript} from "next/document";
 import {GA_TRACKING_ID} from "../lib/googleTag";
 
 const GoogleAnalytics = () => {
-    const isProduction = process.env.NODE_ENV === "production";
+    const isProduction = true;
     if (isProduction) {
         return <>
             <script
