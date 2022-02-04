@@ -30,12 +30,12 @@ Pending
 [x] manifest json for PWA
 [x] setup analytics
 [x] use prasanna.dev as main URL
-[] setup rel="canonical" in prasans.info
-[] activate lambda
-[] start indexing.
+[x] setup rel="canonical" in prasans.info
+[x] activate lambda
+[x] start indexing.
 
 [] Resume
-[] Like button in the post
+[x] Like button in the post
 [] clean up and structure CSS
 [] Fix header with minimal things on scroll
 [] Engage buttons on the side.
