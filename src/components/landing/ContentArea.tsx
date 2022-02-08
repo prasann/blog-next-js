@@ -58,6 +58,7 @@ const Container = () => {
                       path="/blog"/>
             </div>
         </div>
+        {/*<img src="http://ghchart.rshah.org/prasann" alt="prasann's Github chart" />*/}
         <Social/>
     </div>
 }
