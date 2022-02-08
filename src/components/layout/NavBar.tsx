@@ -56,11 +56,11 @@ const NavBar = () => {
                 </div>
             </div>
         </header>
-        <section className="block fixed md:hidden inset-x-0 bottom-0 z-10 bg-white shadow">
+        <section className="block fixed md:hidden inset-x-0 bottom-0 z-10 bg-white border-t-2 border-gray-400 shadow">
             <div id="tabs" className="flex justify-between">
                 <MobileNavIcon iconName={faAddressCard} displayName="About" location="/about"/>
                 <MobileNavIcon iconName={faBookOpen} displayName="Blog" location="/blog"/>
-                <MobileNavIcon iconName={faVolumeUp} displayName="About" location="/talks"/>
+                <MobileNavIcon iconName={faVolumeUp} displayName="Talks" location="/talks"/>
             </div>
         </section>
     </nav>
