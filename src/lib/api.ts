@@ -7,6 +7,7 @@ import format from "date-fns/format"
 import {compareDesc} from "date-fns";
 
 const postsDirectory = join(process.cwd(), 'content', '_posts')
+const talksDirectory = join(process.cwd(), 'content', '_talks')
 
 export function getPostFileNames(): string[] {
     return fs.readdirSync(postsDirectory)
@@ -28,7 +29,7 @@ export function getPostByFileName(fileName: string, withContent: boolean = true)
     if (withContent) {
         post.content = content
     }
-    if (data.minutesToRead){
+    if (data.minutesToRead) {
         post.minutesToRead = pluralize(data.minutesToRead)
     }
     return post
@@ -54,6 +55,13 @@ export function getPostBySlug(slug: string): Post {
     return getPostByFileName(currentFileName);
 }
 
+export function getTalkDescription(fileName: string) {
+    const fullPath = join(talksDirectory, `${fileName}`)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const {content} = matter(fileContents)
+    return content;
+}
+
 function fileNameToSlug(fileName: string): string {
     let regExMatcher = fileName.match(/.*--(.*).md/);
     if (regExMatcher === null) {
@@ -63,9 +71,9 @@ function fileNameToSlug(fileName: string): string {
 }
 
 function formattedDateString(date: string): string {
-    try{
+    try {
         return format(formatStringToDate(date), 'dd-MMMM-yyyy')
-    }catch (e){
+    } catch (e) {
         console.log("Error", date)
     }
     return "12-10-2011";
@@ -84,3 +92,4 @@ function formatStringToDate(date: string, format: string = 'dd-MM-yyyy'): Date {
 function pluralize(minutesToRead: number = 1) {
     return minutesToRead === 1 ? "1 minute read" : `${minutesToRead} minutes read`
 }
+

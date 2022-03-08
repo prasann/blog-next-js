@@ -3,7 +3,7 @@
     "title": "Scaling Applications Using Micro-Frontends",
     "date": "16-12-2020",
     "place": "Remote",
-    "description": "Modern web applications tend to have complex and feature-heavy Frontends when compared to backends.\n\n\nWith so many choices for frameworks and programming paradigms, building a consistent Frontend to scale is a challenging problem to solve. We cover ways in which you can scale your Frontend application and your development teams by using a Micro-Frontends design pattern.",
+    "descriptionFile": "01-scaling-micro-frontends.md",
     "externalLinks": [
       {
         "name": "Video",
@@ -39,7 +39,7 @@
       {
         "name": "Talk Video",
         "link": "https://www.youtube.com/embed/OzOgCmO5AjI",
-        "embed": true
+        "embed": false
       }
     ]
   },
@@ -70,7 +70,7 @@
       {
         "name": "Link to the Video",
         "link": "https://www.youtube.com/embed/8dzh9byoDo4",
-        "embed": true
+        "embed": false
       }
     ]
   },

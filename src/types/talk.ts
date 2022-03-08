@@ -8,7 +8,8 @@ type Talk = {
     title: string
     date: string
     place: string
-    description: string
+    description?: string
+    descriptionMarkdown?: string
     externalLinks: ExternalLink[]
 }
 
