@@ -1,5 +1,18 @@
 [
   {
+    "title": "Kafka 101",
+    "date": "16-12-2020",
+    "place": "Remote",
+    "descriptionFile": "02-kafka-101.md",
+    "externalLinks": [
+      {
+        "name": "Deck",
+        "link": "https://docs.google.com/presentation/d/e/2PACX-1vRkX-53_D5WJoXdaD6dCAcQPEaOh9Qce72qwCj_Lt8r5_lLVNNb8-NQh4ze2jURwbOVn38yE5uL_avx/pub?start=false&loop=false&delayms=3000",
+        "embed": true
+      }
+    ]
+  },
+  {
     "title": "Scaling Applications Using Micro-Frontends",
     "date": "16-12-2020",
     "place": "Remote",
