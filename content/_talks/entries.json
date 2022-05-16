@@ -1,7 +1,33 @@
 [
   {
+    "title": "Demystifying Micro-frontends",
+    "date": "28-04-2022",
+    "place": "Remote",
+    "descriptionFile": "04-microfrontend-webinar.md",
+    "externalLinks": [
+      {
+        "name": "Deck",
+        "link": "https://docs.google.com/presentation/d/e/2PACX-1vSWEX7tUaa6KOk1HdqhKNShhJF9fkhf1Hb3JICJn_iQ9fl5SsznF57J_LPT3VwBbrSBfjUx8629kVnb/embed?start=false&loop=false&delayms=3000",
+        "embed": true
+      }
+    ]
+  },
+  {
+    "title": "Strangler fig pattern with CDC",
+    "date": "20-04-2022",
+    "place": "Remote",
+    "descriptionFile": "03-fig-cdc.md",
+    "externalLinks": [
+      {
+        "name": "Deck",
+        "link": "https://docs.google.com/presentation/d/e/2PACX-1vSfaOPPCXU18hEWlDj35VC1nHOu0_JvFg7kzsjRCrZtHgmDc9aIck7HloqW0phQxpVovZUBft0IiTJG/embed?start=false&loop=false&delayms=3000",
+        "embed": true
+      }
+    ]
+  },
+  {
     "title": "Kafka 101",
-    "date": "16-12-2020",
+    "date": "12-08-2021",
     "place": "Remote",
     "descriptionFile": "02-kafka-101.md",
     "externalLinks": [
