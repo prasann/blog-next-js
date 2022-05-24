@@ -45,7 +45,7 @@ const NavBar = () => {
             <div className="flex flex-row justify-between">
                 <div onClick={navigateToHome} className="cursor-pointer mx-4 my-2">
                     <div className="mt-2 w-6/12 md:w-4/12 xl:w-3/12">
-                        <Image sizes="20vw" src={logoImage} alt="logo"/>
+                        <Image src={logoImage} alt="logo"/>
                     </div>
                 </div>
                 <div className="hidden md:mr-8 md:flex items-center space-x-2">

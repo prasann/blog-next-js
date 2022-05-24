@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://prasanna.dev</id>
     <title>Random Presence</title>
-    <updated>2022-05-24T04:21:37.520Z</updated>
+    <updated>2022-05-24T04:39:43.415Z</updated>
     <generator>npm feed package</generator>
     <author>
         <name>Prasanna Venkatesan</name>
@@ -19,7 +19,7 @@
         <title type="html"><![CDATA[Experiences with Strangler fig approach using Change Data Capture]]></title>
         <id>https://prasanna.dev/posts/strangler-fig-pattern-with-cdc</id>
         <link href="https://prasanna.dev/posts/strangler-fig-pattern-with-cdc"/>
-        <updated>2022-01-02T18:30:00.000Z</updated>
+        <updated>2022-02-28T18:30:00.000Z</updated>
         <summary type="html"><![CDATA[Summarizing my experiences in one of my re-platforming project. Keeping the monolith application in tact, we had to slice out a new service and keep the data in sync.]]></summary>
         <content type="html"><![CDATA[<h2 id="businesscontext">Business Context</h2>
 <p>Client is an  e-commerce platform shipping to 130+countries around the globe. 
@@ -57,7 +57,7 @@ This means, the old system will not have stock details for the new warehouse(s).
 <p>We deployed Debezium as <a href="https://debezium.io/documentation/reference/stable/architecture.html">Kafka connectors</a>. They generate Kafka events whenever the configured table(s) has any changes. 
 The events were in <a href="https://avro.apache.org/">Apache Avro</a> format and were published to an underlying Kafka instance. 
 We will then have a sink connector which listens to configured events and then posts it back to Couchbase.</p>
-<p><img src="./../_images/cdc-post/img-stock-service.png" alt="Stock service architecture" title="Stock service architecture" /></p>
+<p><img src="/assets/posts/images/strangler-with-cdc/img-stock-service.png" alt="Stock service architecture {700xx602}" title="Stock service architecture" /></p>
 <p>Few more things that needed additional care for this change data capture setup.</p>
 <h2 id="transformingnormalizedtableintoadenormalizedstructure">Transforming normalized table into a denormalized structure</h2>
 <p>One of the challenges that we need to address while setting up the CDC is the compatibility of source and destination data structures. 
@@ -68,7 +68,7 @@ In couchbase we had these records in a flat structure. So, multiple records in M
 In our couchbase, we had them as documents so we will need to perform a join operation with other tables to create a document.</p>
 <p>This join operation was the tricky part to solve. Initially our approach was to use a RDBMS data store, to store the denormalized structure. 
 So every CDC event will update this table and from there another CDC event will help us to update the couchbase instance.</p>
-<p><img src="./../_images/cdc-post/img-initial-setup.png" alt="Initial setup with interim database" title="Initial setup with interim database" /></p>
+<p><img src="/assets/posts/images/strangler-with-cdc/img-initial-setup.png" alt="Initial setup with interim database {700xx350}" title="Initial setup with interim database" /></p>
 <p>This approach meant an overhead of maintaining an additional database, additional CDC setup.</p>
 <p>So, eventually we moved to Kafka streams to solve this problem of joins. 
 We did explore <a href="https://ksqldb.io/">KsqlDB</a> that’s built on Kafka streams but then felt Kafka streams api was sufficient for us to get going. 
