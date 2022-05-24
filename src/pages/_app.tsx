@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import '../styles/landing.css'
 import '../styles/loader.css'
 import "../styles/prism/themes/prism-atom-dark.css";
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import Router from 'next/router';
 import NProgress from 'nprogress';
