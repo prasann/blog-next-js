@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://prasanna.dev</id>
     <title>Random Presence</title>
-    <updated>2022-07-12T15:20:19.380Z</updated>
+    <updated>2022-07-12T15:50:11.041Z</updated>
     <generator>npm feed package</generator>
     <author>
         <name>Prasanna Venkatesan</name>
@@ -86,14 +86,6 @@ Though it took time to clear all the messages in our kafka queue, it avoided an 
 <p>CDC is a useful technique when doing a microservices migration using a strangler fig pattern. 
 In cases where you need to maintain multiple databases with different structures. 
 In my opinion, Debezium seems to be the best open source solution available right now.</p>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[My gitconfig hacks]]></title>
-        <id>https://prasanna.dev/posts/git-config-hacks</id>
-        <link href="https://prasanna.dev/posts/git-config-hacks"/>
-        <updated>2022-02-28T18:30:00.000Z</updated>
-        <summary type="html"><![CDATA[Summarizing my experiences in one of my re-platforming project. Keeping the monolith application in tact, we had to slice out a new service and keep the data in sync.]]></summary>
-        <content type="html"><![CDATA[<hr />]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[What I did to become AWS certified 😎]]></title>
