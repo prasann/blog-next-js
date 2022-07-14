@@ -1,35 +1,30 @@
-import {useRouter} from "next/router";
-
-type ColorKey = keyof typeof colors;
+import { useRouter } from "next/router";
+import Image from 'next/image'
+import blogImage from './../../images/blog.jpg';
+import speakImage from './../../images/speak.jpg';
 
 type Props = {
     title: string
     description: string
-    color: ColorKey
     path: string
 }
 
-const colors = {
-    variant1: "bg-gradient-to-bl from-gray-700 via-gray-900 to-black",
-    variant3: "bg-gradient-to-br from-blue-gray-500 to-yellow-100",
-    variant2: "bg-gradient-to-l from-sky-400 to-cyan-300",
-    default: ""
-}
-
-
-const Card = ({title, description, color, path}: Props) => {
+const Card = ({ title, description, path }: Props) => {
     const router = useRouter()
+
     function navigateTo(path: string) {
         router.push(path);
     }
 
-    const bgColor: ColorKey = color;
-    return <div onClick={() => navigateTo(path)}
-                className={`highlight-animation max-w-xs min-w-0 w-full rounded overflow-hidden shadow-lg ${colors[bgColor]}`}>
-        <div className="p-16">
-            <div className="font-bold text-sky-400 text-4xl text-center mb-2">{title}</div>
+    return <div className="flex">
+        <div className="w-1/2 highlight-animation text-center mr-4 p-2">
+            <Image className="rounded" src={blogImage} width="160" height="160" />
+            <div className="font-bold text-2xl">Blog</div>
         </div>
-    </div>
+        <div className="w-1/2 highlight-animation text-center ml-4">
+            <Image className="rounded" src={speakImage} width="160" height="160" />
+            <div className="font-bold text-2xl">Talks</div>
+        </div></div>
 }
 
 export default Card;
