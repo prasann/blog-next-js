@@ -8,8 +8,8 @@ import ProfileImage from "./../../images/profile.jpeg";
 
 const AboutMe = () => {
     return <div className="rounded text-xl shadow-xl p-2 leading-relaxed">
-        <div className='flex flex-col lg:flex-row mb-4'>
-            <div className='inline text-center lg:w-1/4 lg:mt-12'>
+        <div className='flex flex-col lg:flex-row mb-4 items-center justify-center'>
+            <div className='ml-2 w-2/3 flex flex-row items-center justify-center lg:w-1/4 lg:mt-12'>
                 <div className='w-2/3 lg:w-full text-center'>
                     <Image layout="responsive" placeholder='blur'
                         sizes='120vw'
@@ -19,8 +19,8 @@ const AboutMe = () => {
             <div className='lg:w-3/4 p-4 lg:ml-8 lg:mr-4'>
                 <div className="inline-block animate-wave text-2xl lg:text-6xl origin-[70%_70%]">👋🏽</div>
                 <span className="text-2xl lg:text-6xl font-bold ml-4 mt-2">Hi, I'm Prasanna !!</span>
-                <div className='text-justify'>
-                <div className='mt-8'>
+                <div className='lg:text-justify'>
+                <div className='mt-4 lg:mt-8'>
                     I’m a full-stack developer based out of Bengaluru (India) with experience in building and leading development teams that build high-performance enterprise platforms and products.
                 </div>
                 <div className='mt-2'>
