@@ -17,11 +17,11 @@ const Card = ({ title, description, path }: Props) => {
     }
 
     return <div className="flex">
-        <div className="w-1/2 highlight-animation text-center mr-4 p-2">
+        <div className="w-1/2 highlight-animation text-center mr-4 p-2" onClick={() => navigateTo("/blog")}>
             <Image className="rounded" src={blogImage} width="160" height="160" />
             <div className="font-bold text-2xl">Blog</div>
         </div>
-        <div className="w-1/2 highlight-animation text-center ml-4">
+        <div className="w-1/2 highlight-animation text-center ml-4" onClick={() => navigateTo("/talks")}>
             <Image className="rounded" src={speakImage} width="160" height="160" />
             <div className="font-bold text-2xl">Talks</div>
         </div></div>
