@@ -9,7 +9,7 @@
 }
 
 .dark-background {
-    @apply bg-gradient-to-l from-gray-700 via-gray-900 to-black
+    @apply bg-gradient-to-l from-black via-gray-700 to-black
 }
 
 .light-background {
