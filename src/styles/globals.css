@@ -4,49 +4,58 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "Muli";
-    src: local("Muli"), url("/fonts/Muli-Regular.ttf") format("ttf");
+  font-family: "Muli";
+  src: local("Muli"), url("/fonts/Muli-Regular.ttf") format("ttf");
 }
 
 .dark-background {
-    @apply bg-gradient-to-l from-black via-gray-700 to-black
+  @apply bg-gradient-to-l from-black via-gray-700 to-black;
 }
 
 .light-background {
-    @apply bg-gradient-to-tr from-yellow-50 to-red-50;
+  @apply bg-gradient-to-tr from-yellow-50 to-red-50;
 }
 
-.icon-text{
-    @apply my-1 mr-1 h-5 w-5 text-blue-500;
+.icon-text {
+  @apply my-1 mr-1 h-5 w-5 text-blue-500;
 }
 
 .prose {
-    overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
-*{
-    /*outline: 1px red solid;*/
+* {
+  /*outline: 1px red solid;*/
 }
 
 .iframe-container {
-    overflow: hidden;
-    position: relative;
-    width:100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
 .iframe-container::after {
-    padding-top: 56.25%;
-    display: block;
-    content: '';
+  padding-top: 56.25%;
+  display: block;
+  content: "";
 }
 
 .iframe-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .highlight-animation {
-    @apply cursor-pointer transition duration-200 transform-gpu hover:scale-110;
+  @apply cursor-pointer transition duration-200 transform-gpu hover:scale-110;
+}
+
+.prose {
+  code::before {
+    content: none;
+  }
+  code::after {
+    content: none;
+  }
 }
