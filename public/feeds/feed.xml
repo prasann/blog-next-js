@@ -4,7 +4,7 @@
         <title>Random Presence</title>
         <link>https://prasanna.dev</link>
         <description>Random presence of my thoughts and learning...</description>
-        <lastBuildDate>Fri, 12 Aug 2022 13:38:36 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 03 Feb 2023 13:25:07 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>npm feed package</generator>
         <language>en</language>
@@ -18,7 +18,7 @@
             <title><![CDATA[My productivity hacks - gitconfig]]></title>
             <link>https://prasanna.dev/posts/git-config-hacks</link>
             <guid>https://prasanna.dev/posts/git-config-hacks</guid>
-            <pubDate>Thu, 28 Jul 2022 18:30:00 GMT</pubDate>
+            <pubDate>Tue, 09 Aug 2022 18:30:00 GMT</pubDate>
             <description><![CDATA[Summarizing some of the configuration that i like and follow in managing my git repositories.]]></description>
             <content:encoded><![CDATA[<p>There are zillions of <a href="https://git-scm.com/docs/git-config">git-configs</a> present, and certainly, all of us have our favorites. Here are some of the configs that I use currently. I use GitHub (private repo) and manually synchronize these git-configs (and other configs) across devices.</p>
 <h3 id="folderlevelconfiguration">Folder level configuration</h3>
@@ -79,7 +79,8 @@ In my case <code>~/projects/work</code> isn't a git repo. so if i check for <cod
     name = Prasanna
     email = mail.prasanna.v@gmail.com
     signingkey = &lt;GPG Key Signature&gt;
-</code></pre>]]></content:encoded>
+</code></pre>
+<p>These are on my list for a while now. And i keep experimenting with new configs as i read along.</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Experiences with Strangler fig approach using Change Data Capture]]></title>
