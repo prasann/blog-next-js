@@ -43,7 +43,7 @@ const ImageLink = ({
   };
   return (
     <div
-      className="w-1/2 highlight-animation text-center mr-4 p-2"
+      className="w-1/2 highlight-animation mr-4 p-2 flex flex-col items-center"
       onClick={() => navigateTo(navigateLink)}
     >
       <Image
@@ -52,7 +52,10 @@ const ImageLink = ({
         src={srcImg}
         width="160"
         height="160"
-      />
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
       <div className="font-bold text-2xl">{linkText}</div>
     </div>
   );
@@ -99,13 +102,15 @@ const Picture = () => {
   return (
     <div className="pic-wrapper">
       <Image
-        layout="responsive"
         placeholder="blur"
-        sizes="120vw"
         className="rounded-full"
         src={ProfileImage}
         alt="profile pic"
-      />
+        sizes="120vw"
+        style={{
+          width: "100%",
+          height: "auto"
+        }} />
     </div>
   );
 };

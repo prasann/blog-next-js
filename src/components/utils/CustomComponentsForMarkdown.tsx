@@ -20,7 +20,7 @@ const CustomComponentsForMarkdown = {
             <code className={className} {...props}>
                 {children}
             </code>
-        )
+        );
     },
     // @ts-ignore
     p(paragraph) {
@@ -43,9 +43,12 @@ const CustomComponentsForMarkdown = {
                         className="postImg"
                         alt={alt}
                         priority={isPriority}
-                    />
+                        style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                        }} />
                 </div>
-            )
+            );
         }
         return <p>{paragraph.children}</p>
     }
