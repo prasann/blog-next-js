@@ -10,13 +10,13 @@ When you run [Docker desktop On Mac](https://www.docker.com/products/docker-desk
 
 The size of this file is defined in the user settings. 
 
-> Settings -> Resources -> Virtual disk limit
+`Settings -> Resources -> Virtual disk limit`
 
 **What is this docker.raw?**
 
 Recently, the [docker faq](https://docs.docker.com/desktop/faqs/macfaqs/#where-does-docker-desktop-store-linux-containers-and-images) section is updated with this explanation
 
-> *" Docker Desktop stores Linux containers and images in a single, large “disk image” file in the Mac filesystem."*
+> *Docker Desktop stores Linux containers and images in a single, large “disk image” file in the Mac filesystem.*
 
 **What's strange about this?**
 
