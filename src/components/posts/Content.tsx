@@ -16,10 +16,10 @@ const Content = ({
         <header>
           <div className="text-4xl font-bold text-center mt-2">{title}</div>
           <div className="flex flex-row justify-between">
-            <div className="mt-2 mb-4 text-center text-gray-400 italic">
+            <div className="mt-2 mb-4 text-center text-gray-600 italic">
               {date}
             </div>
-            <div className="mt-2 mb-4 text-center text-gray-400 italic">
+            <div className="mt-2 mb-4 text-center text-gray-600 italic">
               {minutesToRead}
             </div>
           </div>
