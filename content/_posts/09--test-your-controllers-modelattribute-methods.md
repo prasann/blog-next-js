@@ -25,6 +25,7 @@ public class MyController {
     }
 }
 ```
+
 My Unit Tests:
 
 ```java
@@ -56,6 +57,7 @@ AnnotationMethodHandlerAdapter handler;
     }
 }
 ```
+
 _**Explanation:**_
 
 Whenever a method in a controller is annotated with @ModelAttribute , it will be invoked for every request made to that controller. So while creating the mycontroller object i am overriding a sample method which has this annotation and returns a User object as a ModelAttribute.

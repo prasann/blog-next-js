@@ -5,11 +5,12 @@ category: tech, javascript
 date: 18-05-2017
 minutesToRead: 2
 ---
+
 [Redux](https://redux.js.org/) is a predictable state container for Javascript. Redux state has to be serializable all the time.
 
 Object serialization is the process of converting an object's state to a string from which it can later be restored.
 
-So, if you are trying to store a   inside the Redux state, you need to serialize them before persisting.
+So, if you are trying to store a inside the Redux state, you need to serialize them before persisting.
 
 > Storing functions inside redux state is not a best practice in general. So try to avoid it.
 
@@ -18,11 +19,11 @@ Javascript functions can be serialized quite easily, the challenge is in retriev
 Below are the helper functions for persisting functions inside Redux state.
 
 ```js
-  //Returns a string
-  export const serializeFunction = (func) => (func.toString());
-  //serializeFunction(()=>console.log('Hello!!'))
-  // Output ==> "()=>console.log('Hello!!')"
-```  
+//Returns a string
+export const serializeFunction = (func) => func.toString();
+//serializeFunction(()=>console.log('Hello!!'))
+// Output ==> "()=>console.log('Hello!!')"
+```
 
 The function to be stored in the state should be converted into string using serializeFunction.
 

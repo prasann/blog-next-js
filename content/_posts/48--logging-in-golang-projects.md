@@ -14,7 +14,6 @@ In our case, we were using splunk and we have built a lots of dashboards based o
 
 Here is the post describing how we achieved it using go-lang.
 
-
 ## Setting up an abstraction for logging
 
 We decided to go with logrus as our logging library. Instead of using and importing logrus in all the places, we wrote a layer of abstraction.
@@ -27,7 +26,7 @@ In this layer, we can then inject common variables that needs to be logged as pa
 
 The moment we introduce the abstraction, we have introduced a problem of losing the actual log position. logrus will log the abstraction layer as the log position for all log statement.
 
-So, here we are logging the caller as "ContextLogTag". The caller will be then identified using the  go runtime. We can navigate through the stack in the go runtime to log the caller.
+So, here we are logging the caller as "ContextLogTag". The caller will be then identified using the go runtime. We can navigate through the stack in the go runtime to log the caller.
 
 Here is the code for does that
 
@@ -43,7 +42,6 @@ func getCallerInfo() string {
 	}
 }
 ```
-
 
 Here is our abstraction layer.
 
@@ -142,8 +140,3 @@ func getCallerInfo() string {
 	}
 }
 ```
-
-
-
-
-  

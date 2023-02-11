@@ -4,7 +4,7 @@
         <title>Random Presence</title>
         <link>https://prasanna.dev</link>
         <description>Random presence of my thoughts and learning...</description>
-        <lastBuildDate>Fri, 10 Feb 2023 05:49:34 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 11 Feb 2023 04:04:57 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>npm feed package</generator>
         <language>en</language>
@@ -20,8 +20,8 @@
             <guid>https://prasanna.dev/posts/docker-raw-issue-on-mac</guid>
             <pubDate>Mon, 07 Nov 2022 18:30:00 GMT</pubDate>
             <description><![CDATA[Docker desktop on Mac creates a huge file (`docker.raw`) in it's data folder. I spent some time in unravelling the mystery, so documenting for future me.]]></description>
-            <content:encoded><![CDATA[<p>When you run <a href="https://www.docker.com/products/docker-desktop/">Docker desktop On Mac</a>,  you will notice a single huge <code>docker.raw</code> file inside the data directory (<code>~/Library/Containers/com.docker.docker/Data/vms/0/data</code>) of Docker. </p>
-<p>The size of this file is defined in the user settings. </p>
+            <content:encoded><![CDATA[<p>When you run <a href="https://www.docker.com/products/docker-desktop/">Docker desktop On Mac</a>, you will notice a single huge <code>docker.raw</code> file inside the data directory (<code>~/Library/Containers/com.docker.docker/Data/vms/0/data</code>) of Docker.</p>
+<p>The size of this file is defined in the user settings.</p>
 <p><code>Settings -&gt; Resources -&gt; Virtual disk limit</code></p>
 <p><strong>What is this docker.raw?</strong></p>
 <p>Recently, the <a href="https://docs.docker.com/desktop/faqs/macfaqs/#where-does-docker-desktop-store-linux-containers-and-images">docker faq</a> section is updated with this explanation</p>
@@ -29,12 +29,11 @@
   <p><em>Docker Desktop stores Linux containers and images in a single, large “disk image” file in the Mac filesystem.</em></p>
 </blockquote>
 <p><strong>What's strange about this?</strong></p>
-<p>When you do <code>ls -alh</code> inside this directory, you will see the size of the file to be this maximum 
-size that's defined in the docker desktop preferences. It will be a constant number, and doesn't depend on the number of local containers and images you have in there. </p>
+<p>When you do <code>ls -alh</code> inside this directory, you will see the size of the file to be this maximum
+size that's defined in the docker desktop preferences. It will be a constant number, and doesn't depend on the number of local containers and images you have in there.</p>
 <pre><code class="shell language-shell">32G&amp;nbsp; Docker.raw
 </code></pre>
-<p>&nbsp;
-Even a fresh installation of Docker without any images or containers will also have the same effect and running <code>docker system prune</code> will have no impact on the size you see here.</p>
+<p>Even a fresh installation of Docker without any images or containers will also have the same effect and running <code>docker system prune</code> will have no impact on the size you see here.</p>
 <p>However, if you check the disk usage,&nbsp; it will be much lesser.</p>
 <p><code>du -h .</code></p>
 <p>In my case, it was</p>
@@ -58,8 +57,8 @@ Even a fresh installation of Docker without any images or containers will also h
             <description><![CDATA[Summarizing some of the configuration that i like and follow in managing my git repositories.]]></description>
             <content:encoded><![CDATA[<p>There are zillions of <a href="https://git-scm.com/docs/git-config">git-configs</a> present, and certainly, all of us have our favorites. Here are some of the configs that I use currently. I use GitHub (private repo) and manually synchronize these git-configs (and other configs) across devices.</p>
 <h3 id="folderlevelconfiguration">Folder level configuration</h3>
-<p>This is one of the handy features that was introduced in git 2.13. 
-I usually have a root level folder for <code>personal</code> and <code>work</code> separately. Within work, there could be multiple <code>clients</code> directory. Each of these directories will have its <code>.gitconfig</code>-{personal/work/client}` file within it. These directory level gitconfig can contain any valid git-config and will be used to override the global ones at the directory level. </p>
+<p>This is one of the handy features that was introduced in git 2.13.
+I usually have a root level folder for <code>personal</code> and <code>work</code> separately. Within work, there could be multiple <code>clients</code> directory. Each of these directories will have its <code>.gitconfig</code>-{personal/work/client}` file within it. These directory level gitconfig can contain any valid git-config and will be used to override the global ones at the directory level.</p>
 <p>A sample from my work level git-config</p>
 <pre><code class="git language-git">[user]
     name = Prasanna
@@ -73,7 +72,7 @@ I usually have a root level folder for <code>personal</code> and <code>work</cod
 <p><strong>Pro tips in managing the folder level configs</strong></p>
 <ol>
 <li><strong>End <code>gitdir</code> with a <code>/</code>:</strong> The <code>gitdir</code> should end with a <code>/</code> otherwise the config won't be picked up inside the directory.</li>
-<li><strong>Config will work only within a git repo:</strong> 
+<li><strong>Config will work only within a git repo:</strong>
 In my case <code>~/projects/work</code> isn't a git repo. so if i check for <code>git config user.email</code> it will be the one defined globally. However, i have git repos as subfolder <code>~/projects/work/proj-a</code> inside these git repos the email i configured in <code>.gitconfig-work</code> will take effect.</li>
 </ol>
 <h3 id="alias">alias</h3>
@@ -84,12 +83,12 @@ In my case <code>~/projects/work</code> isn't a git repo. so if i check for <cod
     delete-local-merged = "!git fetch &amp;&amp; git branch --merged | egrep -v 'main' | xargs git branch -d"
 </code></pre>
 <h3 id="editor">editor</h3>
-<p>setup the git's default editor to <code>vscode</code>. </p>
+<p>setup the git's default editor to <code>vscode</code>.</p>
 <pre><code class="git language-git">[core]
     editor = code --wait
 </code></pre>
 <h3 id="pushstyle">push style</h3>
-<p><code>push.default</code> strategy to <code>current</code>. this push the current branch to update a branch with the same name on the receiving end. </p>
+<p><code>push.default</code> strategy to <code>current</code>. this push the current branch to update a branch with the same name on the receiving end.</p>
 <pre><code class="git language-git">[push]
     default = current
 </code></pre>
@@ -139,26 +138,26 @@ In my case <code>~/projects/work</code> isn't a git repo. so if i check for <cod
 <p>Another significant challenge here is that you will have to run and manage N such servers (where N is the number of POS you support). this is certainly an operation nightmare with regards to monitoring.</p>
 <h3 id="keydecisionsthatwehadtotake">Key decisions that we had to take</h3>
 <ul>
-<li><strong>How to deliver data</strong><ul>
+<li><strong>How to deliver data</strong></li>
 <li>POS are built as offline first servers. It will need lots of amount of product/pricing and promotions data upfront. They can store them there will be enough storage, however to deliver them efficiently will be a key factor.</li>
 <li>Serve data that's needed for that POS and not the universal data</li>
 <li>Most of the e-commerce apps on mobile aren't offline first. We can demand the user to have good/decent internet. However in case of POS it's store network and the expectation we can't close the store just because it's not having a good network.</li>
-<li>Try to look out for "Download once and share" technique. Alternate could be torrent like mechanism (p2p downloads)</li></ul></li>
-<li><strong>How to deliver software and upgrades</strong><ul>
+<li>Try to look out for "Download once and share" technique. Alternate could be torrent like mechanism (p2p downloads)</li>
+<li><strong>How to deliver software and upgrades</strong></li>
 <li>Decide on a mechanism to deliver the software, upgrades and the security patches.</li>
 <li>What's the difference? Need to make sure that the terminals are upgraded. Unlike mobile, these aren't personal devices and hence need to control them automatically.</li>
 <li>Delivery mechanism shouldn't physical (or manual). Remote upgrades only. convenient to apply patches</li>
-<li>again lookout for "Download once and share" techniques.</li></ul></li>
-<li><strong>Securing server</strong><ul>
+<li>again lookout for "Download once and share" techniques.</li>
+<li><strong>Securing server</strong></li>
 <li>You are exposing a server in front of the end user.</li>
 <li>These aren't personal devices and hence more concern about security.</li>
-<li>What if POS is shop lifted? can't compromise all the data inside it. can't allow it to transact.</li></ul></li>
-<li><strong>Integration with hardware</strong><ul>
+<li>What if POS is shop lifted? can't compromise all the data inside it. can't allow it to transact.</li>
+<li><strong>Integration with hardware</strong></li>
 <li>huge concern, due to the availability of range of hardwares and</li>
-<li>options: build an unified hardware interface so you can mock it while testing the rest.</li></ul></li>
-<li><strong>Monitoring Driven development</strong><ul>
+<li>options: build an unified hardware interface so you can mock it while testing the rest.</li>
+<li><strong>Monitoring Driven development</strong></li>
 <li>Monitoring is key, need to know how many systems are rolled out, and which versions they are running.</li>
-<li>Monitors for errors. Use metrics as smoke detector and logs on demand forwarding.</li></ul></li>
+<li>Monitors for errors. Use metrics as smoke detector and logs on demand forwarding.</li>
 </ul>]]></content:encoded>
         </item>
         <item>
@@ -168,8 +167,8 @@ In my case <code>~/projects/work</code> isn't a git repo. so if i check for <cod
             <pubDate>Mon, 28 Feb 2022 18:30:00 GMT</pubDate>
             <description><![CDATA[Summarizing my experiences in one of my re-platforming project. Keeping the monolith application in tact, we had to slice out a new service and keep the data in sync.]]></description>
             <content:encoded><![CDATA[<h2 id="businesscontext">Business Context</h2>
-<p>Client is an  e-commerce platform shipping to 130+countries around the globe. 
-Their order fulfillment for all the countries was happening out of their local warehouse in western asia. 
+<p>Client is an e-commerce platform shipping to 130+countries around the globe.
+Their order fulfillment for all the countries was happening out of their local warehouse in western asia.
 Since most of their revenues come from the European Union (EU) region, they chose to set up a new warehouse within the EU.</p>
 <h2 id="problemsthatneedstobesolved">Problems that needs to be solved</h2>
 <ul>
@@ -179,7 +178,7 @@ Since most of their revenues come from the European Union (EU) region, they chos
 </ul>
 <h2 id="designdecision">Design Decision</h2>
 <p>Focussing on the above-mentioned problems, we decided to go with a new Stock service that integrates with the 3PL company and becomes the source of truth for the stock data.</p>
-<p>But then the old system is hard to decommission in one go, so the decision was made to keep the Monolith along with the new service. 
+<p>But then the old system is hard to decommission in one go, so the decision was made to keep the Monolith along with the new service.
 The current workflows involving their current warehouse will be done via the old Monolith and the newer warehouses will start using the new Stock service.</p>
 <blockquote>
   <p>"New stock service will co-exist with the monolith”</p>
@@ -187,11 +186,11 @@ The current workflows involving their current warehouse will be done via the old
 <h2 id="responsibilitiesofmonolith">Responsibilities of Monolith</h2>
 <p>The monolith system with the Aurora database had the stock information for their current warehouse and whenever a buyer buys items from the current warehouse, it was handled by this system and stock count reflected in its database.</p>
 <h2 id="responsibilitiesofnewstockservice">Responsibilities of New stock service</h2>
-<p>The new stock service will have couchbase as its database and become the source of truth with respect to all the stock data. The new service will integrate with the new third party logistics (3PL) to manage the stocks in the new warehouse. 
+<p>The new stock service will have couchbase as its database and become the source of truth with respect to all the stock data. The new service will integrate with the new third party logistics (3PL) to manage the stocks in the new warehouse.
 The new service will have a more granular level of stock information of non-sellable stocks. Any business intelligence reporting tool related to stock will be connected only with the new stock service.</p>
 <h2 id="continuoussynchronizationofdataacrossdatabases">Continuous synchronization of data across databases</h2>
-<p>This architecture opens up with a problem of continuous synchronization of data between the Aurora database and the Couchbase instance. 
-Since the new service will be the source of truth, and the old one will be decommissioned eventually, it was decided that the synchronization will be one way between Aurora to Couchbase only. 
+<p>This architecture opens up with a problem of continuous synchronization of data between the Aurora database and the Couchbase instance.
+Since the new service will be the source of truth, and the old one will be decommissioned eventually, it was decided that the synchronization will be one way between Aurora to Couchbase only.
 This means, the old system will not have stock details for the new warehouse(s).</p>
 <p>In order to achieve the data synchronization we opted in for <em><a href="https://en.wikipedia.org/wiki/Change_data_capture">Change data capture pattern</a></em>. We went with <a href="https://debezium.io/">Debezium</a>, to implement the change data capture.</p>
 <h2 id="reasonstogowithdebezium">Reasons to go with Debezium</h2>
@@ -200,37 +199,37 @@ This means, the old system will not have stock details for the new warehouse(s).
 <li>It can be easily used alongside Kafka. We had kafka already in our ecosystem. So the operational overhead was minimum</li>
 <li>There are a wide variety of connectors present for Debezium to connect to source and sink.</li>
 </ul>
-<p>We deployed Debezium as <a href="https://debezium.io/documentation/reference/stable/architecture.html">Kafka connectors</a>. They generate Kafka events whenever the configured table(s) has any changes. 
-The events were in <a href="https://avro.apache.org/">Apache Avro</a> format and were published to an underlying Kafka instance. 
+<p>We deployed Debezium as <a href="https://debezium.io/documentation/reference/stable/architecture.html">Kafka connectors</a>. They generate Kafka events whenever the configured table(s) has any changes.
+The events were in <a href="https://avro.apache.org/">Apache Avro</a> format and were published to an underlying Kafka instance.
 We will then have a sink connector which listens to configured events and then posts it back to Couchbase.</p>
 <p><img src="/assets/posts/images/strangler-with-cdc/img-stock-service.png" alt="Stock service architecture {700xx602}" title="Stock service architecture" /></p>
 <p>Few more things that needed additional care for this change data capture setup.</p>
 <h2 id="transformingnormalizedtableintoadenormalizedstructure">Transforming normalized table into a denormalized structure</h2>
-<p>One of the challenges that we need to address while setting up the CDC is the compatibility of source and destination data structures. 
-Aurora being a RDBMS database, the schemas are designed with normalization. 
+<p>One of the challenges that we need to address while setting up the CDC is the compatibility of source and destination data structures.
+Aurora being a RDBMS database, the schemas are designed with normalization.
 In couchbase we had these records in a flat structure. So, multiple records in MySQL will be mapped to a single record in the couchbase.</p>
 <p>Let me take an example here. Consider the following tables with the columns.</p>
-<p>For any change in the above tables, a CDC event will be created with a content of old data and the modified data. 
+<p>For any change in the above tables, a CDC event will be created with a content of old data and the modified data.
 In our couchbase, we had them as documents so we will need to perform a join operation with other tables to create a document.</p>
-<p>This join operation was the tricky part to solve. Initially our approach was to use a RDBMS data store, to store the denormalized structure. 
+<p>This join operation was the tricky part to solve. Initially our approach was to use a RDBMS data store, to store the denormalized structure.
 So every CDC event will update this table and from there another CDC event will help us to update the couchbase instance.</p>
 <p><img src="/assets/posts/images/strangler-with-cdc/img-initial-setup.png" alt="Initial setup with interim database {700xx350}" title="Initial setup with interim database" /></p>
 <p>This approach meant an overhead of maintaining an additional database, additional CDC setup.</p>
-<p>So, eventually we moved to Kafka streams to solve this problem of joins. 
-We did explore <a href="https://ksqldb.io/">KsqlDB</a> that’s built on Kafka streams but then felt Kafka streams api was sufficient for us to get going. 
+<p>So, eventually we moved to Kafka streams to solve this problem of joins.
+We did explore <a href="https://ksqldb.io/">KsqlDB</a> that’s built on Kafka streams but then felt Kafka streams api was sufficient for us to get going.
 Another alternative we started exploring and eventually dropped due to the learning curve was <a href="https://flink.apache.org/">Apache Flink</a>.</p>
 <h2 id="scaleandmonitoringaspects">Scale and monitoring aspects</h2>
-<p>We had ~1.5million records of product data, ~5.3 million records of product variants in the database that need to be synced. 
+<p>We had ~1.5million records of product data, ~5.3 million records of product variants in the database that need to be synced.
 There were a few more tables that we needed to consume data from. On an average we were having ~60-75 CDC events per second related to our tables coming into our queue.</p>
-<p>Monitoring CDC wasn’t very different from monitoring our kafka queues. For Kafka monitoring, we had <a href="https://grafana.com/grafana/dashboards/12460">this dashboard</a> and extended it. 
+<p>Monitoring CDC wasn’t very different from monitoring our kafka queues. For Kafka monitoring, we had <a href="https://grafana.com/grafana/dashboards/12460">this dashboard</a> and extended it.
 Additionally, to this we had a dashboard to monitor the health of the connectors.</p>
 <h2 id="firsttimeloadmigration">First time load/migration</h2>
-<p>In our case we used the exact CDC setup for the initial load as well. 
-Debezium sink connectors offered throttling ability, so the spiked load on our couchbase instances were avoided. 
+<p>In our case we used the exact CDC setup for the initial load as well.
+Debezium sink connectors offered throttling ability, so the spiked load on our couchbase instances were avoided.
 Though it took time to clear all the messages in our kafka queue, it avoided an additional solution for the first time load.</p>
 <h2 id="whentogoforcdc">When to go for CDC?</h2>
-<p>CDC is a useful technique when doing a microservices migration using a strangler fig pattern. 
-In cases where you need to maintain multiple databases with different structures. 
+<p>CDC is a useful technique when doing a microservices migration using a strangler fig pattern.
+In cases where you need to maintain multiple databases with different structures.
 In my opinion, Debezium seems to be the best open source solution available right now.</p>]]></content:encoded>
         </item>
         <item>
@@ -278,7 +277,7 @@ In my opinion, Debezium seems to be the best open source solution available righ
   <p><em>Cross posted from <a href="https://dev.to/prasann/micro-services-patterns-saga-to-music-or-to-dance-4hio">Dev.to blog</a></em></p>
 </blockquote>
 <h2 id="whatisasagapattern">What is a Saga pattern</h2>
-<p>Saga design pattern is a way to manage a single business transaction that spans across various micro services. Saga pattern breaks a single business transaction into a sequence of local transactions that updates each service and publishes a message or event to trigger the next local transaction step. If any of these local transaction fails, saga will execute the subsequent flows to  rollback and cleanup the transaction.</p>
+<p>Saga design pattern is a way to manage a single business transaction that spans across various micro services. Saga pattern breaks a single business transaction into a sequence of local transactions that updates each service and publishes a message or event to trigger the next local transaction step. If any of these local transaction fails, saga will execute the subsequent flows to rollback and cleanup the transaction.</p>
 <h2 id="whydoweneedthis">Why do we need this</h2>
 <p>In a micro-services architecture, it's hard to trace where the transaction has failed and what needs to be rolled back etc. Saga brings in a structure to deal with this problem and also allows the micro-services to act within the specified boundaries.</p>
 <h2 id="implementingsaga">Implementing Saga</h2>
@@ -354,7 +353,7 @@ In my opinion, Debezium seems to be the best open source solution available righ
 <ul>
 <li><strong>No need of upfront discussion</strong>. Most likely we will have lesser information about the feature, then likely that our design might reflect the incompetencies.</li>
 <li><strong>Spawning a new service will have it's own cost</strong>. How much ever you automate, it still adds up the infrastructure cost, maintenance cost. If we are wrong about the slicing then we had to spend some more time and effort to unify it with some other service.</li>
-<li>Once we have built a feature, most of the <strong>people in the team will understand the use-case and will appreciate the need of a separate service</strong>. It doesn't become a single person's decision or a group of architect's decision. But a decision that comes from ground up. There  is a better chance for the service the retain it's shape when it grew this way.</li>
+<li>Once we have built a feature, most of the <strong>people in the team will understand the use-case and will appreciate the need of a separate service</strong>. It doesn't become a single person's decision or a group of architect's decision. But a decision that comes from ground up. There is a better chance for the service the retain it's shape when it grew this way.</li>
 </ul>
 <p>This approach does require a good discipline in having a constant check on the growth of a service. A highly coupled service is very hard to break down later. And if we are too late to cut down a service, it might become an expensive operation too.</p>
 <h2 id="howtodoit">How to do it</h2>
@@ -388,7 +387,7 @@ In my opinion, Debezium seems to be the best open source solution available righ
 <p>Journey services, should be independent of others. Store data that are necessary for the journey and use entity services to collaborate with common data.</p>
 <p><strong>Build composite entities wherever needed</strong></p>
 <ul>
-<li>Now, to answer the immediate question that will raise due to the above constraint. How to manage the duplicate business logic.  To be honest, <strong>DRY principle is overrated in my opinion.</strong> But in case if you are looking for such thing, then try adding another layer of composite entities.</li>
+<li>Now, to answer the immediate question that will raise due to the above constraint. How to manage the duplicate business logic. To be honest, <strong>DRY principle is overrated in my opinion.</strong> But in case if you are looking for such thing, then try adding another layer of composite entities.</li>
 <li>These composite entities, will encapsulate multiple entities and some business logic around this. One classic example from the app we built is a tax computation service. It involves the product, and the location of the buyer to calculate the tax.</li>
 </ul>
 <p>All these things are from my past experience, I'm sure I'm going to learn more and course correct myself in this journey. But one thing that i feel will always help in evolving micro-services is to constantly question the slicing decision to get it at a right state. And also a good knowledge on the <a href="https://martinfowler.com/bliki/DomainDrivenDesign.html">Domain driven design</a> helps a lot to take these decisions.</p>]]></content:encoded>
@@ -603,18 +602,18 @@ In my opinion, Debezium seems to be the best open source solution available righ
 <p>ACE is a toolkit in node.js to build atlassian connect apps. Like a JIRA, Confluence plugins.</p>
 <p>Best way to start with ACE is to bootstrap from <code>atlas-connect</code> Y<a href="https://bitbucket.org/atlassian/atlassian-connect-express/src/master/">ou can follow the documentation here to get a sample app up and running in few minutes.</a></p>
 <h2 id="aceandhandlebars">ACE and handlebars</h2>
-<p>ACE is a wrapper on top of the <a href="https://expressjs.com/">expressjs</a> and hence the application is pretty much an express application. The bootstrapped application will have both the frontend and the backend part.  For the frontend, ACE by default uses <a href="https://handlebarsjs.com/">handlebars</a> as templating option.</p>
+<p>ACE is a wrapper on top of the <a href="https://expressjs.com/">expressjs</a> and hence the application is pretty much an express application. The bootstrapped application will have both the frontend and the backend part. For the frontend, ACE by default uses <a href="https://handlebarsjs.com/">handlebars</a> as templating option.</p>
 <p>When you make a API call, the server converts the handlebar templates into HTML and returns.</p>
 <h2 id="replacehandlebarsviewswithaspa">Replace Handlebars views with a SPA</h2>
 <p>As you can see, the above mechanism isn't tailored to use any single page application. Luckily, ACE doesn't change lots of things from express and hence we can use the same technique to achieve the goal.</p>
 <p><strong><em>In this example I'm choosing <a href="https://reactjs.org/">React</a>, however the technique is fairly the same for any SPA framework.</em></strong> Since the idea is fairly simple. Using the framework build the app and deliver it to the browser on the init api call. From then on, the app will be controlled by the browser.</p>
 <h2 id="upandrunningwithreact">Up and running with React.</h2>
 <p><strong>1. Add a route to serve static files.</strong></p>
-<p>To the already bootstrapped ACE project, i added a folder called client, and inside that I used <a href="https://github.com/facebook/create-react-app">CRA</a> to bootstrap my React project. This will be my SPA. Make sure to keep  the built artifact within this folder. In my case it was <code>{ProjectRoot}/client/build/*</code></p>
+<p>To the already bootstrapped ACE project, i added a folder called client, and inside that I used <a href="https://github.com/facebook/create-react-app">CRA</a> to bootstrap my React project. This will be my SPA. Make sure to keep the built artifact within this folder. In my case it was <code>{ProjectRoot}/client/build/*</code></p>
 <p>Now in the express application's index.js need to modify the route to serve this page. In my case, i used <a href="https://developer.atlassian.com/cloud/jira/software/modules/page/">generalPages module</a> of ACE. In <code>atlassian-connect.json</code> I have mentioned <code>url</code> to be <code>/init</code></p>
 <p>Here is the modified <code>/init</code> to serve the react app.</p>
-<pre><code class="jsx language-jsx">app.get('/init', addon.authenticate(), (req, res) =&gt; {
-  res.sendFile(path.join(__dirname, '/../client/build/', 'index.html'));
+<pre><code class="jsx language-jsx">app.get("/init", addon.authenticate(), (req, res) =&gt; {
+  res.sendFile(path.join(__dirname, "/../client/build/", "index.html"));
 });
 </code></pre>
 <p>you can import the path like this <code>import path from 'path';</code></p>
@@ -626,10 +625,10 @@ const addon = ace(app);
 
 /* more config */
 
-const staticDir = path.join(__dirname, 'public');
+const staticDir = path.join(__dirname, "public");
 //*** This line is important **********//
 
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 //*** This line is important **********//
 app.use(express.static(staticDir));
@@ -639,17 +638,17 @@ app.use(express.static(staticDir));
 <p>Lastly, we need to make a change in the client app. Jira/Confluence when they load their plugin, they expect the plugin to have <code>all.js</code> . This is the client side logic of ace. So, we need to include this as part of our React's <code>index.html</code> without this, <strong><em>the loader in Jira will never disappear</em></strong></p>
 <p>In <code>client/public/index.html</code> add the script tag just below the body.</p>
 <pre><code class="jsx language-jsx">&lt;script
-    src="https://connect-cdn.atl-paas.net/all.js"
-    type="text/javascript"
-    data-options="sizeToParent:true;resize:false"
+  src="https://connect-cdn.atl-paas.net/all.js"
+  type="text/javascript"
+  data-options="sizeToParent:true;resize:false"
 &gt;&lt;/script&gt;
 </code></pre>
 <p>You can read about more <code>data-options</code> <a href="https://developer.atlassian.com/cloud/jira/software/about-the-javascript-api/">here</a>.</p>
 <p>That's it, you will now see the React application in the connect app.</p>
-<p><strong><em>Note:</strong> In development mode, there isn't any hot reload in this case. If you make any changes to the react app, need to build the app manually. Ofcourse, you can modify the <code>package.json</code> to automate this, but <code>webpack-dev-server</code> isn't much helpful.</em></p>
+<p><strong>*Note:</strong> In development mode, there isn't any hot reload in this case. If you make any changes to the react app, need to build the app manually. Ofcourse, you can modify the <code>package.json</code> to automate this, but <code>webpack-dev-server</code> isn't much helpful.*</p>
 <h2 id="authenticationwithintheconnectapp">Authentication within the connect app</h2>
 <p>If you are planning to bundle few APIs along with the react app, then one of the harder thing to crack is authentication. This isn't documented very clearly anywhere.</p>
-<p>ACE uses a JWT to authenticate api's and unfortunately the token isn't accessible for React application since it is running inside a iframe by default. If you are using the default Handlebars, ACE provides  helper methods to access the JWT.</p>
+<p>ACE uses a JWT to authenticate api's and unfortunately the token isn't accessible for React application since it is running inside a iframe by default. If you are using the default Handlebars, ACE provides helper methods to access the JWT.</p>
 <h3 id="workaround">Workaround</h3>
 <p>The first call from JIRA/Confluence call will carry the JWT. In the above code snippet <code>addon.authenticate()</code> will validate the JWT executes the callback. In this place, we can create a JWT and set it as cookie header. Post that, in all the API calls made from React app, we can validate the JWT against our secret, and it will sort out the issue of authentication.</p>
 <p>Here is a sample code for a Hello world with ACE and React. <a href="https://github.com/prasann/ace-with-react">Github Source.</a></p>]]></content:encoded>
@@ -673,20 +672,20 @@ app.use(express.static(staticDir));
 <p>Create your own custom ErrorHandler class (<code>error_handler.ts</code>), this will extend the node's <a href="https://nodejs.org/api/errors.html#errors_class_error">Error</a> class.</p>
 <pre><code class="typescript language-typescript">//error_handler.ts
 export class AppError extends Error {
-    statusCode: number;
-    message: string;
+  statusCode: number;
+  message: string;
 
-    constructor(statusCode, message) {
-        super(message);
-        this.statusCode = statusCode;
-        this.message = message;
-    }
+  constructor(statusCode, message) {
+    super(message);
+    this.statusCode = statusCode;
+    this.message = message;
+  }
 }
 </code></pre>
 <p>Now in your application you can invoke this custom error handler by calling,</p>
-<pre><code class="typescript language-typescript">new AppError(404, 'Unable to find the resource');
+<pre><code class="typescript language-typescript">new AppError(404, "Unable to find the resource");
 //or
-new AppError(403, 'You are not authorized to perform this action');
+new AppError(403, "You are not authorized to perform this action");
 </code></pre>
 <h3 id="wiringerrorinterceptorintoexpressapplication">Wiring error interceptor into express application</h3>
 <p>Once you start throwing exceptions within your application, next step is to convert those errors into a meaningful response for the end-user. Express app provides a way to hook up a custom error
@@ -694,15 +693,15 @@ handler into your application. A middleware that takes in 4 parameters is your w
 <p>Let's add the custom error handler function in the same <code>error_handler.ts</code> class and export. This generic function will parse the thrown error and constructs appropriate response.</p>
 <pre><code class="typescript language-typescript">//error_handler.ts
 export const customErrorHandler = (err, res) =&gt; {
-    const { statusCode, message } = err;
-    res.status(statusCode).json({error: {message}});
+  const { statusCode, message } = err;
+  res.status(statusCode).json({ error: { message } });
 };
 </code></pre>
-<pre><code class="typescript language-typescript">import express from 'express';
-import customErrorHandler from 'error_handler';
+<pre><code class="typescript language-typescript">import express from "express";
+import customErrorHandler from "error_handler";
 const app = express();
 
-// Other middlewares, routes... 
+// Other middlewares, routes...
 
 // Adding your custom error handler.
 app.use((err, req, res, next) =&gt; {
@@ -736,7 +735,7 @@ We don't want our end user to know about the system internals and hence respond 
 <p>This centralized error handling will not work for the errors that are thrown in the <code>await</code> methods i.e, any error that are thrown in an async block will not reach our <code>customErrorHandler</code>.
 This is a limitation with respect to express 4.x.</p>
 <p>As a workaround, you have to make the routes to be synchronous. Instead of changing all the routes to synchronous blocks i used this
-<a href="https://github.com/Abazhenov/express-async-handler">middleware</a> to achieve a similar effect. Post wrapping my routes with this middleware, all the errors in async block will then reach our  <code>customErrorHandler</code></p>
+<a href="https://github.com/Abazhenov/express-async-handler">middleware</a> to achieve a similar effect. Post wrapping my routes with this middleware, all the errors in async block will then reach our <code>customErrorHandler</code></p>
 <p>Here is the <a href="https://gist.github.com/prasann/b6ad07b3962b6ea2953fef027df5d10b">gist</a> to the final <code>error_handler.ts</code></p>]]></content:encoded>
         </item>
         <item>
@@ -756,7 +755,7 @@ In these cases, it's important to know where those logs specifically came from a
 <p>In this layer, we can then inject common variables that needs to be logged as part of all log statements.</p>
 <h2 id="loggingthecaller">Logging the caller</h2>
 <p>The moment we introduce the abstraction, we have introduced a problem of losing the actual log position. logrus will log the abstraction layer as the log position for all log statement.</p>
-<p>So, here we are logging the caller as "ContextLogTag". The caller will be then identified using the  go runtime. We can navigate through the stack in the go runtime to log the caller.</p>
+<p>So, here we are logging the caller as "ContextLogTag". The caller will be then identified using the go runtime. We can navigate through the stack in the go runtime to log the caller.</p>
 <p>Here is the code for does that</p>
 <pre><code class="go language-go">func getCallerInfo() string {
     _, filePath, lineNo, isOk := runtime.Caller(2)
@@ -875,49 +874,48 @@ func getCallerInfo() string {
 <p>In my case, I have a middleware component, that needs to be injected while initializing the Redux store. The middleware component will be served dynamically when the app loads.</p>
 <h3 id="exportingthemiddlewarecomponent">Exporting the middleware component</h3>
 <p>This middleware detects a specific redux action and persist an information to the local storage. It's a custom middleware with a minimal change. This custom function takes in <code>middlewareAPI</code> as the parameter instead of having the state.</p>
-<pre><code class="js language-js">  const persistInfo = middlewareAPI =&gt; next =&gt; (action) =&gt; {
-    if (action.type === "SOME_ACTION") {
-      const result = next(action);
-      const state =
-            JSON.stringify(middlewareAPI.getState().listen.value);
-      window.localStorage.setItem('PERSIST_THIS_INFO', state);
-      return result;
-    }
-    return next(action);
-  };
+<pre><code class="js language-js">const persistInfo = (middlewareAPI) =&gt; (next) =&gt; (action) =&gt; {
+  if (action.type === "SOME_ACTION") {
+    const result = next(action);
+    const state = JSON.stringify(middlewareAPI.getState().listen.value);
+    window.localStorage.setItem("PERSIST_THIS_INFO", state);
+    return result;
+  }
+  return next(action);
+};
 
-  export default persistInfo;
+export default persistInfo;
 </code></pre>
 <h3 id="loadingthecustommiddleware">Loading the custom middleware</h3>
 <p>Here is a small utility function that can take in a custom middleware and initialize the store.</p>
-<pre><code class="js language-js">  import { createStore, compose } from 'redux';
-  import reducers from './reducers';
+<pre><code class="js language-js">import { createStore, compose } from "redux";
+import reducers from "./reducers";
 
-  class Store {
-      constructor() {
-        const composeEnhancers =
-          typeof window === 'object' &amp;&amp;
-          window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-            window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+class Store {
+  constructor() {
+    const composeEnhancers =
+      typeof window === "object" &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+        ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+        : compose;
 
-        this.store = createStore(reducers);
-      }
+    this.store = createStore(reducers);
+  }
 
-      instance() {
-        return this.store;
-      }
+  instance() {
+    return this.store;
+  }
 
-      addMiddleware(middleware) {
-        const middlewareAPI = {
-          getState: this.store.getState,
-          dispatch: action =&gt; this.store.dispatch(action),
-        };
-        this.store.dispatch = compose(middleware(middlewareAPI))(this.store.dispatch);
-      }
-    }
-    export default new Store();
-</code></pre>
-<pre><code>  
+  addMiddleware(middleware) {
+    const middlewareAPI = {
+      getState: this.store.getState,
+      dispatch: (action) =&gt; this.store.dispatch(action),
+    };
+    this.store.dispatch = compose(middleware(middlewareAPI))(
+      this.store.dispatch
+    );
+  }
+}
+export default new Store();
 </code></pre>
 <p>This is my store class with the store initialization happens in the constructor. Simply, importing this store class and calling the <code>addMiddleware</code> function it's possible to inject the custom middleware component to your redux store.</p>]]></content:encoded>
         </item>
@@ -945,8 +943,6 @@ func getCallerInfo() string {
         }
     }
 </code></pre>
-<pre><code>
-</code></pre>
 <p>In the above mentioned scenario, nginx server will check for service-a while start-up phase. If service-a is down, you will see an error like host not found in upstream service-a</p>
 <h3 id="theworkaround">The Workaround</h3>
 <p>This workaround is for services running in local setup in different docker containers. So, instead of using <code>upstream</code> directive you can directly point your service-discoverable-name in the proxy pass. The only thing while running docker containers, you need to add an additional nginx directive <code>resolver</code> and make it point to docker's internal DNS resolver. 127.0.0.11 The above mentioned config can be re-written as mentioned.</p>
@@ -961,8 +957,6 @@ func getCallerInfo() string {
             }
         }
     }
-</code></pre>
-<pre><code>
 </code></pre>
 <p><em>Note: nginx approach is very valid in production like setups. However, in developer boxes it may not be possible to have all the services running while nginx starts. The workaround mentioned here should be mostly used in local or in dev setup and not advisable to use in prodcution like setup.</em></p>]]></content:encoded>
         </item>
@@ -1059,7 +1053,7 @@ func getCallerInfo() string {
 <p>This helps to run migration everytime before the application deploys. Ofcourse, flyway will take care of what migrations need to run based on the migration version.</p>
 <h3 id="runningmigrationsforlocaldevelopment">Running migrations for local development</h3>
 <p>The above method works perfectly for the application deployment scenarios. However, in local it will be better to execute​ ​migration and clean databases as and when required, rather than re-deploying the application. lein-exec plugin offers​ ​a way to create and execute clojure code from project.clj files. With the above-mentioned migration present, all ​I​​ ha​ve to do is to create some aliases as shown below.</p>
-<pre><code class="clojure language-clojure">:aliases { 
+<pre><code class="clojure language-clojure">:aliases {
     "db-clean"   ["exec" "-ep" "(use 'deal-picker.migration) (clean)"]
     "db-migrate" ["exec" "-ep" "(use 'deal-picker.migration) (migrate)"]
     "db-info"    ["exec" "-ep" "(use 'deal-picker.migration) (info)"]
@@ -1078,41 +1072,41 @@ func getCallerInfo() string {
 <pre><code class="html language-html">&lt;div id="card"&gt;Click me to animate&lt;/div&gt;
 </code></pre>
 <pre><code class="css language-css">.animate {
-    opacity: 1;
-    animation: slider 1s linear;
+  opacity: 1;
+  animation: slider 1s linear;
 }
 
 @keyframes slider {
-    0% {
-        margin-left: 0;
-        opacity: 1;
-    }
-    25% {
-        margin-left: -200px;
-        opacity: 0;
-    }
-    50% {
-        margin-left: 200px;
-        opacity: 0;
-    }
-    100% {
-        margin-left: 0;
-        opacity: 1;
-    }
+  0% {
+    margin-left: 0;
+    opacity: 1;
+  }
+  25% {
+    margin-left: -200px;
+    opacity: 0;
+  }
+  50% {
+    margin-left: 200px;
+    opacity: 0;
+  }
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
 }
 
 #card {
-    background: #1f1f1f;
-    margin: 10px;
-    display: block;
-    border: 1px dashed white;
-    height: 200px;
-    width: 200px;
-    color: white;
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
+  background: #1f1f1f;
+  margin: 10px;
+  display: block;
+  border: 1px dashed white;
+  height: 200px;
+  width: 200px;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
 }
 </code></pre>
 <pre><code class="js language-js">$("#card").on("click", () =&gt; {
@@ -1131,16 +1125,16 @@ func getCallerInfo() string {
             <description><![CDATA[Redux state can be very useful to share data across the application. This post is about storing a function inside the redux store.]]></description>
             <content:encoded><![CDATA[<p><a href="https://redux.js.org/">Redux</a> is a predictable state container for Javascript. Redux state has to be serializable all the time.</p>
 <p>Object serialization is the process of converting an object's state to a string from which it can later be restored.</p>
-<p>So, if you are trying to store a   inside the Redux state, you need to serialize them before persisting.</p>
+<p>So, if you are trying to store a inside the Redux state, you need to serialize them before persisting.</p>
 <blockquote>
   <p>Storing functions inside redux state is not a best practice in general. So try to avoid it.</p>
 </blockquote>
 <p>Javascript functions can be serialized quite easily, the challenge is in retrieving them from the store to execute.</p>
 <p>Below are the helper functions for persisting functions inside Redux state.</p>
-<pre><code class="js language-js">  //Returns a string
-  export const serializeFunction = (func) =&gt; (func.toString());
-  //serializeFunction(()=&gt;console.log('Hello!!'))
-  // Output ==&gt; "()=&gt;console.log('Hello!!')"
+<pre><code class="js language-js">//Returns a string
+export const serializeFunction = (func) =&gt; func.toString();
+//serializeFunction(()=&gt;console.log('Hello!!'))
+// Output ==&gt; "()=&gt;console.log('Hello!!')"
 </code></pre>
 <p>The function to be stored in the state should be converted into string using serializeFunction.</p>
 <pre><code class="js language-js">  //Returns a function
@@ -1158,20 +1152,20 @@ func getCallerInfo() string {
 <p>Our Jest tests were running with <code>--env=jsdom</code> I got to know that jsdom and phantomJS aren't supporting multiple locale implementations.</p>
 <p><a href="https://github.com/ariya/phantomjs/issues/12327">PhantomJS support locale-specific.</a></p>
 <p>So, the only solution I found is to mock these methods and test rest of the logic. Here is a sample mock behaviour.</p>
-<pre><code class="js language-js">import * as helpers from '../src/helpers';
-describe('formatDate', () =&gt; {
-it('should invoke localString implementation to format date ', () =&gt; {
+<pre><code class="js language-js">import * as helpers from "../src/helpers";
+describe("formatDate", () =&gt; {
+  it("should invoke localString implementation to format date ", () =&gt; {
     const localStringMock = jest.fn();
     const mockDate = { toLocaleString: localStringMock };
     helpers.formatDate(mockDate);
-    expect(localStringMock).toHaveBeenCalledWith('de-DE', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-        });
+    expect(localStringMock).toHaveBeenCalledWith("de-DE", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
     });
+  });
 });
 </code></pre>
 <p><strong>Note:</strong> This behaviour is applicable for toLocaleDateString() toLocaleTimeString()</p>]]></content:encoded>
@@ -1428,7 +1422,7 @@ it('should invoke localString implementation to format date ', () =&gt; {
 <li><p>Add</p>
 <p>config.assets.precompile &lt;&lt; ['ckeditor/*']</p>
 <p>to your application.rb file.</p></li>
-<li><p>Finally add a file called precompile_hook.rake This rake task will help in compiling the ckeditor files and add it to the assets folder. The content of the rake task is here. <a href="https://gist.github.com/prasann/c8978041777cb443fb77">precompile_hook.rake</a></p></li>
+<li><p>Finally add a file called precompile<em>hook.rake This rake task will help in compiling the ckeditor files and add it to the assets folder. The content of the rake task is here. <a href="https://gist.github.com/prasann/c8978041777cb443fb77">precompile</em>hook.rake</a></p></li>
 </ol>
 <p>Here is the screenshot of the network calls before and after adding ckeditor to asset pipeline.</p>
 <p><a href="/assets/images/posts/add_ckeditor_to_rails/full/before.png" title="Before adding to asset pipeline"><img src="/assets/images/posts/add_ckeditor_to_rails/thumbs/before.png" alt="Before adding to asset pipeline" /></a> <a href="/assets/images/posts/add_ckeditor_to_rails/full/after.png" title="After adding to asset pipeline"><img src="/assets/images/posts/add_ckeditor_to_rails/thumbs/after.png" alt="After adding to asset pipeline" /></a></p>
@@ -1640,7 +1634,7 @@ public class HttpClientFactory {
         client = null;
     }
 
-    private SSLContext getSSLContext() throws KeyStoreException, 
+    private SSLContext getSSLContext() throws KeyStoreException,
     NoSuchAlgorithmException, CertificateException, IOException, KeyManagementException {
         KeyStore trustStore  = KeyStore.getInstance(KeyStore.getDefaultType());
         FileInputStream instream = new FileInputStream(new File("my.keystore"));
@@ -1741,8 +1735,7 @@ public class HttpClientFactory {
 <h4 id="6addagenericcontrollerservletinyourparentdomain">6. Add a generic controller/servlet in your parent domain.</h4>
 <p>Have a controller/servlet in your app which actually does the external domain call. Have only one GET, POST method. Keep posting all your requests to the same end-point with an additional header containing the actual end-point. Inside the method extract the header, make a call and go around about it. This means that browser doesn't know its an external domain call as your app will serve as a wrapper to that external domain call.</p>
 <p><strong>Limitation:</strong> Multiple HTTP calls for single request/response.</p>
-<p><strong>More on:</strong> [How to circumvent same origin policy?](
-http://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy)</p>]]></content:encoded>
+<p><strong>More on:</strong> <a href="http://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy">How to circumvent same origin policy?</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Re running testNG failed times n times.]]></title>
@@ -1752,7 +1745,7 @@ http://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-po
             <description><![CDATA[Steps to set up re-runn of testNG failed tests for n number of times, using ant task.]]></description>
             <content:encoded><![CDATA[<p>We were running our Selenium functional tests using <a href="http://testng.org/doc/index.html">testNG</a> runner in <a href="http://jenkins-ci.org/">Jenkins</a>. However the problem was we were having too many failures on our initial run, and lot of these failures were classified as random or not reproducable. Mainly these are test script issues. Some times the testers tend to put some static wait conditions which might work on their machine but not in the Jenkins agent. Sometimes the environment against which our tests run might be a bit slow which pushes our pass percentage well behind. The ideal appropriate fix will be is to go through the failed test cases and figure out the randomness and fix it. But we thought of adding a re run mechanism to our test job to identify these random failures. As the no. of test cases grew, we ended up in re running the failed tests multiple times, something like this.</p>
 <p>Name Total Failed</p>
-<p>InitialRun  100 30</p>
+<p>InitialRun 100 30</p>
 <p>ReRun1 30 20</p>
 <p>ReRun2 20 10</p>
 <p>In this case we will interpret the last 10 failures as a legitimate failures and rest as intermittent ones.</p>
@@ -1764,7 +1757,7 @@ http://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-po
 <pre><code class="xml language-xml">    &lt;target name="runTests" depends="compile" description="Running tests"&gt;
         &lt;echo&gt;Running Tests...&lt;/echo&gt;
         &lt;taskdef resource="testngtasks" classpath="lib/testng-6.8.jar" /&gt;
-        &lt;testng outputDir="${report.dir}" useDefaultListeners="true" classpathref="build.classpath" 
+        &lt;testng outputDir="${report.dir}" useDefaultListeners="true" classpathref="build.classpath"
             listeners="org.uncommons.reportng.HTMLReporter,org.uncommons.reportng.JUnitXMLReporter"&gt;
             &lt;classpath location="${class.dir}" /&gt;
             &lt;xmlfileset dir="." includes="testng-suite.xml" /&gt;
@@ -1982,18 +1975,18 @@ Scenario: Some scenario to test
 <p>This is my first learning. Though it seems to be obvious after taking a good look onto the API, it wasn't very clear for me in the beginning.</p>
 <p><em>For example:</em></p>
 <p><strong>Server</strong></p>
-<pre><code class="js language-js">var app = require('express')(),
-    server = require('http').createServer(app),
-    io = require('socket.io').listen(server);
+<pre><code class="js language-js">var app = require("express")(),
+  server = require("http").createServer(app),
+  io = require("socket.io").listen(server);
 
 server.listen(80);
 
-io.sockets.on('connection', function(socket) {
-    socket.on('first\_msg', function(data) {
-        socket.emit('reply', {
-            hello: 'world'
-        });
+io.sockets.on("connection", function (socket) {
+  socket.on("first_msg", function (data) {
+    socket.emit("reply", {
+      hello: "world",
     });
+  });
 });
 </code></pre>
 <p><strong>Client 1:</strong></p>
@@ -2012,9 +2005,9 @@ io.sockets.on('connection', function(socket) {
     }
 &lt;/script&gt;
 </code></pre>
-<p>In this case i was expecting my <em>Client2</em> console.log to execute but that never happened. Reason being whenever <em>Client1</em> emits '<em>first_msg</em>' it was <em>Client1</em> who was receiving the reply too (obvious i know !!).</p>
+<p>In this case i was expecting my <em>Client2</em> console.log to execute but that never happened. Reason being whenever <em>Client1</em> emits '<em>first</em>msg_' it was _Client1_ who was receiving the reply too (obvious i know !!).</p>
 <p>So in these cases socket.io provides an API to broadcast messages.Hence instead of</p>
-<pre><code class="js language-js">socket.emit('reply', { hello: 'world' });
+<pre><code class="js language-js">socket.emit("reply", { hello: "world" });
 </code></pre>
 <p>it should have been</p>
 <p>socket.broadcast.emit('reply', { hello: 'world' });</p>
@@ -2025,14 +2018,14 @@ io.sockets.on('connection', function(socket) {
 </code></pre>
 <p>which can be bound on the socket so whenever an error is been thrown on the socket the defined behaviour gets executed.</p>
 <p><strong>Client</strong> emits the custom message and sends JSON data to the socket via socket.emit, also he gets an update function that handles the success callback</p>
-<pre><code class="js language-js">socket.emit ('message', {hello: 'world'});
-socket.on ('messageSuccess', function (data) {
-//do something
+<pre><code class="js language-js">socket.emit("message", { hello: "world" });
+socket.on("messageSuccess", function (data) {
+  //do something
 });
 </code></pre>
 <p><strong>Server</strong>-side Gets a call from the message emit from the client and emits the messageSuccess back to the client</p>
-<pre><code class="js language-js">socket.on ('message', function (data) {
-    io.sockets.emit ('messageSuccess', data);
+<pre><code class="js language-js">socket.on("message", function (data) {
+  io.sockets.emit("messageSuccess", data);
 });
 </code></pre>]]></content:encoded>
         </item>
@@ -2063,7 +2056,7 @@ public ModelAndView resolveException(HttpServletRequest httpServletRequest,
         HttpServletResponse httpServletResponse, Object o, Exception e) {
     if (e instanceof MaxUploadSizeExceededException) {
         ModelAndView modelAndView = new ModelAndView("inline-error");
-        modelAndView.addObject("error", 
+        modelAndView.addObject("error",
         "Error: Your file size is too large to upload. Please upload a file of size &lt; 5 MB and  continue. ");
     return modelAndView;
     }
@@ -2090,18 +2083,21 @@ public ModelAndView resolveException(HttpServletRequest httpServletRequest,
 <p><strong>Pre requisites:</strong></p>
 <p>Get <a href="http://mxcl.github.com/homebrew/" title="homebrew">HomeBrew</a> installed in your machine. And of course this needs XCode tools to be installed.</p>
 <p><strong>Steps:</strong></p>
-<p>1) Install latest Fuse4X (a fork of MacFUSE) and NTFS-3G packages:</p>
+<ol>
+<li>Install latest Fuse4X (a fork of MacFUSE) and NTFS-3G packages:</li>
+</ol>
 <pre><code class="bash language-bash">brew install fuse4x
 brew install ntfs-3g
 </code></pre>
-<p>2) Type brew info fuse4x-kext in the terminal. You will be shown a message similar to this:</p>
+<ol start="2">
+<li>Type brew info fuse4x-kext in the terminal. You will be shown a message similar to this:</li>
+</ol>
 <p>In order for FUSE-based filesystems to work, the fuse4x kernel extension
 must be installed by the root user:</p>
 <pre><code class="bash language-bash">sudo cp -rfX /usr/local/Cellar/fuse4x-kext/0.8.13/Library/Extensions/fuse4x.kext /System/Library/Extensions
 sudo chmod +s /System/Library/Extensions/fuse4x.kext/Support/load\_fuse4x
 </code></pre>
-<p>Perform both the operation.
-3) And after this i simply followed this <a href="http://fernandoff.posterous.com/ntfs-write-support-on-osx-lion-with-ntfs-3g-f">blog post entry</a>. Since you have already installed Fuse4x and ntfs-3g you can directly jump to</p>
+<p>Perform both the operation. 3) And after this i simply followed this <a href="http://fernandoff.posterous.com/ntfs-write-support-on-osx-lion-with-ntfs-3g-f">blog post entry</a>. Since you have already installed Fuse4x and ntfs-3g you can directly jump to</p>
 <blockquote>
   <p>"Ok, at this point you should have a functional fuse4x and ntfs-3g install."</p>
 </blockquote>
@@ -2304,7 +2300,7 @@ startActivity(intent);
 <p><em>Basically the path attribute is been ignored by Tomcat so if you want you can ignore it too.</em></p>
 <p><em>The docBase will contain the path of the WAR. Here i have placed my WAR file in the home directory.</em></p>
 <ul>
-<li><p>An important thing to note here is that the WAR file cannot be placed inside the ${TOMCAT_HOME}/webapps folder. If you place the WAR in the webapps folder then the war will get exploded with the same name as the WAR file and after that it is not possible to configure the Context name. So place the WAR anywhere in the system apart from ${TOMCAT_HOME}/webapps folder.</p></li>
+<li><p>An important thing to note here is that the WAR file cannot be placed inside the ${TOMCAT<em>HOME}/webapps folder. If you place the WAR in the webapps folder then the war will get exploded with the same name as the WAR file and after that it is not possible to configure the Context name. So place the WAR anywhere in the system apart from ${TOMCAT</em>HOME}/webapps folder.</p></li>
 <li><p>Now its time to start the server and you will see a folder named myapp in the ${TOMCAT_HOME}/webapps folder, containing the application files.</p></li>
 </ul>
 <p><strong>Approach 2: Server.xml ( <a href="http://tomcat.apache.org/tomcat-6.0-doc/config/context.html">Not Recommended</a> after Tomcat 4.x )</strong></p>
@@ -2650,7 +2646,7 @@ When i tried to use Inconsolata with my IntellijIDEA i couldn't find the ttf typ
 <p><strong>Step 2:</strong></p>
 <p>mkdir /usr/share/fonts/truetype</p>
 <p>cd /usr/share/fonts/truetype</p>
-<p>sudo mkdir  ttf-inconsolata</p>
+<p>sudo mkdir ttf-inconsolata</p>
 <p><strong>Step 3:</strong> Copy the Inconsolata.ttf into the directory.</p>
 <p>sudo cp ~/Desktop/Inconsolata.ttf ttf-inconsolata</p>
 <p><strong>Step 4:</strong> Now modify the permissions to allow it to be accessed by IDE's</p>

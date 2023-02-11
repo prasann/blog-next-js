@@ -1,6 +1,6 @@
 ---
 title: My productivity hacks - gitconfig
-description: Summarizing some of the configuration that i like and follow in managing my git repositories. 
+description: Summarizing some of the configuration that i like and follow in managing my git repositories.
 category: tech, git
 date: 10-08-2022
 minutesToRead: 5
@@ -10,8 +10,8 @@ There are zillions of [git-configs](https://git-scm.com/docs/git-config) present
 
 ### Folder level configuration
 
-This is one of the handy features that was introduced in git 2.13. 
-I usually have a root level folder for `personal` and `work` separately. Within work, there could be multiple `clients` directory. Each of these directories will have its `.gitconfig`-{personal/work/client}` file within it. These directory level gitconfig can contain any valid git-config and will be used to override the global ones at the directory level. 
+This is one of the handy features that was introduced in git 2.13.
+I usually have a root level folder for `personal` and `work` separately. Within work, there could be multiple `clients` directory. Each of these directories will have its `.gitconfig`-{personal/work/client}` file within it. These directory level gitconfig can contain any valid git-config and will be used to override the global ones at the directory level.
 
 A sample from my work level git-config
 
@@ -28,10 +28,12 @@ For the overrides to work, I need to add the following
 [includeIf "gitdir:~/projects/work/"]
     path = ~/projects/work/.gitconfig-work
 ```
+
 **Pro tips in managing the folder level configs**
+
 1. **End `gitdir` with a `/`:** The `gitdir` should end with a `/` otherwise the config won't be picked up inside the directory.
-2. **Config will work only within a git repo:** 
-In my case `~/projects/work` isn't a git repo. so if i check for `git config user.email` it will be the one defined globally. However, i have git repos as subfolder `~/projects/work/proj-a` inside these git repos the email i configured in `.gitconfig-work` will take effect.
+2. **Config will work only within a git repo:**
+   In my case `~/projects/work` isn't a git repo. so if i check for `git config user.email` it will be the one defined globally. However, i have git repos as subfolder `~/projects/work/proj-a` inside these git repos the email i configured in `.gitconfig-work` will take effect.
 
 ### alias
 
@@ -46,7 +48,7 @@ In my case `~/projects/work` isn't a git repo. so if i check for `git config use
 
 ### editor
 
-setup the git's default editor to `vscode`. 
+setup the git's default editor to `vscode`.
 
 ```git
 [core]
@@ -55,7 +57,7 @@ setup the git's default editor to `vscode`.
 
 ### push style
 
-`push.default` strategy to `current`. this push the current branch to update a branch with the same name on the receiving end. 
+`push.default` strategy to `current`. this push the current branch to update a branch with the same name on the receiving end.
 
 ```git
 [push]

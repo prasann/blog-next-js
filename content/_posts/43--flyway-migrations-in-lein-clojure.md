@@ -51,8 +51,9 @@ This helps to run migration everytime before the application deploys. Ofcourse, 
 ### Running migrations for local development
 
 The above method works perfectly for the application deployment scenarios. However, in local it will be better to execute​ ​migration and clean databases as and when required, rather than re-deploying the application. lein-exec plugin offers​ ​a way to create and execute clojure code from project.clj files. With the above-mentioned migration present, all ​I​​ ha​ve to do is to create some aliases as shown below.
+
 ```clojure
-:aliases { 
+:aliases {
     "db-clean"   ["exec" "-ep" "(use 'deal-picker.migration) (clean)"]
     "db-migrate" ["exec" "-ep" "(use 'deal-picker.migration) (migrate)"]
     "db-info"    ["exec" "-ep" "(use 'deal-picker.migration) (info)"]

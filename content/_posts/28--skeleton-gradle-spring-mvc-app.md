@@ -29,7 +29,6 @@ since the task name is not so user friendly, just added an alias to it.
 task serve(dependsOn: cargoRunLocal) << {
 }
 
-
 #### Setup Spring
 
 I decided to play around with Servlet 3.0 style of Spring configuration. This means that i do not need to create web.xml or applicationContext.xml files. Instead i can go with complete Java style configuration.

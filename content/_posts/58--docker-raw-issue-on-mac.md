@@ -6,9 +6,9 @@ date: 08-11-2022
 minutesToRead: 3
 ---
 
-When you run [Docker desktop On Mac](https://www.docker.com/products/docker-desktop/),  you will notice a single huge `docker.raw` file inside the data directory (`~/Library/Containers/com.docker.docker/Data/vms/0/data`) of Docker. 
+When you run [Docker desktop On Mac](https://www.docker.com/products/docker-desktop/), you will notice a single huge `docker.raw` file inside the data directory (`~/Library/Containers/com.docker.docker/Data/vms/0/data`) of Docker.
 
-The size of this file is defined in the user settings. 
+The size of this file is defined in the user settings.
 
 `Settings -> Resources -> Virtual disk limit`
 
@@ -16,17 +16,17 @@ The size of this file is defined in the user settings.
 
 Recently, the [docker faq](https://docs.docker.com/desktop/faqs/macfaqs/#where-does-docker-desktop-store-linux-containers-and-images) section is updated with this explanation
 
-> *Docker Desktop stores Linux containers and images in a single, large “disk image” file in the Mac filesystem.*
+> _Docker Desktop stores Linux containers and images in a single, large “disk image” file in the Mac filesystem._
 
 **What's strange about this?**
 
-When you do `ls -alh` inside this directory, you will see the size of the file to be this maximum 
-size that's defined in the docker desktop preferences. It will be a constant number, and doesn't depend on the number of local containers and images you have in there. 
+When you do `ls -alh` inside this directory, you will see the size of the file to be this maximum
+size that's defined in the docker desktop preferences. It will be a constant number, and doesn't depend on the number of local containers and images you have in there.
 
 ```shell
 32G  Docker.raw
 ```
- 
+
 Even a fresh installation of Docker without any images or containers will also have the same effect and running `docker system prune` will have no impact on the size you see here.
 
 However, if you check the disk usage,  it will be much lesser.

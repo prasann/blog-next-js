@@ -1,8 +1,6 @@
 ## Prasanna's Blog
 
-
 Updating more readme.
-
 
 Pages
 
@@ -17,14 +15,14 @@ Pending
 [x] Landing page color scheme
 [x] Header logo
 [x] Fix Blog post CSS
-    [x] Footer broke in the mobile
-    [x] Align Date, Engage buttons
+[x] Footer broke in the mobile
+[x] Align Date, Engage buttons
 [x] /about
 [x] Enable click on the buttons in landing page and in engage component
 [x] Basic SEO setup. (Thumbnails, Meta tags for sharing)
 [x] Migrate data
-    [x] Migrate blogs
-    [x] Migrate talks
+[x] Migrate blogs
+[x] Migrate talks
 [x] Setup redirects for the old ones
 [x] rss feeds - https://www.daan.fyi/writings/rss
 [x] manifest json for PWA
@@ -42,6 +40,6 @@ Pending
 
 Ideas
 
-* https://lordicon.com/icons
-* https://lottiefiles.com/
-* Add framer motion to route transitions.
+- https://lordicon.com/icons
+- https://lottiefiles.com/
+- Add framer motion to route transitions.

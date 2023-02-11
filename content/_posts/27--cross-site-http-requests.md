@@ -36,9 +36,9 @@ Modern browsers will be able to support CORS for XMLHttpRequest. However IE8 and
 
 Some of the most important constraints are,
 
-*   Your requests should be only GET, POST HTTP methods and not PUT, DELETE etc.
-*   Both the domain (the calling and the caller) uses the same protocol. Either HTTP or HTTPS.
-*   Your request should not have any custom headers.
+- Your requests should be only GET, POST HTTP methods and not PUT, DELETE etc.
+- Both the domain (the calling and the caller) uses the same protocol. Either HTTP or HTTPS.
+- Your request should not have any custom headers.
 
 The exhaustive list is been detailed out in this [MSDN blog](http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx).
 
@@ -68,8 +68,8 @@ So in appA the relative path of the request will be _/cors-ajax_. The browser wi
 
 More reference to this implementation:
 
-*   [Configuring the Proxy](http://www.askapache.com/htaccess/reverse-proxy-apache.html#Configuring_Proxy)
-*   [Configuring Mod Proxy - SO](http://stackoverflow.com/questions/7807600/apache-mod-proxy-configuring-proxypass-proxypassreverse-for-cross-domain-ajax)
+- [Configuring the Proxy](http://www.askapache.com/htaccess/reverse-proxy-apache.html#Configuring_Proxy)
+- [Configuring Mod Proxy - SO](http://stackoverflow.com/questions/7807600/apache-mod-proxy-configuring-proxypass-proxypassreverse-for-cross-domain-ajax)
 
 **Limitation:** The server config are quite hard (at least for me) to understand and perform.
 
@@ -85,5 +85,4 @@ Have a controller/servlet in your app which actually does the external domain ca
 
 **Limitation:** Multiple HTTP calls for single request/response.
 
-**More on:** [How to circumvent same origin policy?](
-http://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy)
+**More on:** [How to circumvent same origin policy?](http://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy)

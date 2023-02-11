@@ -28,6 +28,7 @@ public String getUTCTime(){
         return DateUtils.getFormattedDateTime(new Date(nowAsPerDeviceTimeZone));
     }
 ```
+
 Some more details on SntpService code:
 
 Connect to any of the prominent ntp servers. There were lots of recommendation to place this in config file, however i thought it doesn't make sense for Android since i have to repackage this anyways.
@@ -39,9 +40,11 @@ sntpClient.getNtpTime()
 gives you the current NTP time as per the device time zone.
 
 Then identify the device's time zone,
+
 ```
 cal.getTimeZone()
 ```
+
 and calculate the offset difference between UTC and the current device time.
 
 ```

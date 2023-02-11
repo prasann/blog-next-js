@@ -19,22 +19,19 @@ Taking some pointers from this [issue](https://github.com/galetahub/ckeditor/iss
 
     //= require ckeditor/ckeditor
 
-3.  ckeditor.js looks up for other ckeditor relative to CKEDITOR\_BASEPATH location. So before loading ckeditor in JS add a line to set that environment variable.
+3.  ckeditor.js looks up for other ckeditor relative to CKEDITOR_BASEPATH location. So before loading ckeditor in JS add a line to set that environment variable.
 
-    window.CKEDITOR\_BASEPATH = '/assets/ckeditor/';
+    window.CKEDITOR_BASEPATH = '/assets/ckeditor/';
 
 4.  Add
 
     config.assets.precompile << \['ckeditor/\*'\]
 
     to your application.rb file.
-5.  Finally add a file called precompile\_hook.rake This rake task will help in compiling the ckeditor files and add it to the assets folder. The content of the rake task is here. [precompile\_hook.rake](https://gist.github.com/prasann/c8978041777cb443fb77)
 
-
+5.  Finally add a file called precompile_hook.rake This rake task will help in compiling the ckeditor files and add it to the assets folder. The content of the rake task is here. [precompile_hook.rake](https://gist.github.com/prasann/c8978041777cb443fb77)
 
 Here is the screenshot of the network calls before and after adding ckeditor to asset pipeline.
-
-
 
 [![Before adding to asset pipeline](/assets/images/posts/add_ckeditor_to_rails/thumbs/before.png)](/assets/images/posts/add_ckeditor_to_rails/full/before.png "Before adding to asset pipeline") [![After adding to asset pipeline](/assets/images/posts/add_ckeditor_to_rails/thumbs/after.png)](/assets/images/posts/add_ckeditor_to_rails/full/after.png "After adding to asset pipeline")
 

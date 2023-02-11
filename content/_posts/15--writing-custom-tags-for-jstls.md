@@ -12,6 +12,7 @@ The structure of the TLD file is pretty readalbe.
 Below is an implementation of tag which takes in a section name(value) of a web page and checks whether the logged-in user has rights to view the section.
 
 **Step 1:** custom.tld
+
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
@@ -38,6 +39,7 @@ Below is an implementation of tag which takes in a section name(value) of a web 
     </tag>
 </taglib>
 ```
+
 Here we have implemented a tag called permission within the 'custom' tag library.
 
 Usage: _<custom:permission value="">{section}</custom:permission>_  
@@ -82,9 +84,10 @@ private boolean invertCondition;
     }
 }
 ```
+
 **Explanation:**
 
-\* Since the expectation of this tag is to return true or false, we are extending the _ConditionalTagSupport_ class. Based on the need you can choose upon your class implementation.
+\* Since the expectation of this tag is to return true or false, we are extending the *ConditionalTagSupport* class. Based on the need you can choose upon your class implementation.
 
 \*Note that all tag attributes are member variables of the class and all of them should have getters and setters.
 
@@ -107,6 +110,7 @@ Add the custome tag library to your web.xml to integrate with your web app.
     </taglib>
 </jsp-config>
 ```
+
 The taglib-uri is the _<shortname>_ defined in the TLD file. And _<taglib-location>_ is the location of the tld. Make sure that you are bundling the TLD along with your WAR.
 
 Thats it. You can start using your custom tags in your JSPs now.

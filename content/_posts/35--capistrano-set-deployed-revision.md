@@ -15,6 +15,7 @@ Previously a Git repository is cloned in the deploy location. Now in Cap 3 a Git
 Cap 3 has got a REVISION file, which contain the SHA of the deployed commit. This wasn't useful in our case, as we show this message in our web application.
 
 So i ended up writing a Cap task using a similar logic to create a REVISION file with our custom formatted Git message.
+
 ```ruby
     namespace :deploy do
       task :add\_revision\_file do
@@ -26,9 +27,10 @@ So i ended up writing a Cap task using a similar logic to create a REVISION file
         end
       end
     end
-  
+
 
     after 'deploy:updating', 'deploy:add\_revision\_file'
 
 ```
+
 This will overwrite the REVISION file created by Cap with our custom message. Which will be consumed by our application.

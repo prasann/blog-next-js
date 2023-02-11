@@ -12,7 +12,7 @@ Many times i have faced this necessity of  having a different Context name than
 
 **Approach 1: _Context.xml_ (Recommended way)**
 
-*   Create a Context file in ${TOMCAT\_HOME}/conf/Catalina/localhost directory. Name the file as myapp.xml (The file name should be the same as desired context name) The content of the file is given below.
+- Create a Context file in ${TOMCAT_HOME}/conf/Catalina/localhost directory. Name the file as myapp.xml (The file name should be the same as desired context name) The content of the file is given below.
 
 ```bash
 <Context path="/somepath" docBase="/home/myapp-build123"/>
@@ -22,15 +22,13 @@ _Basically the path attribute is been ignored by Tomcat so if you want you can i
 
 _The docBase will contain the path of the WAR. Here i have placed my WAR file in the home directory._
 
-*   An important thing to note here is that the WAR file cannot be placed inside the ${TOMCAT\_HOME}/webapps folder. If you place the WAR in the webapps folder then the war will get exploded with the same name as the WAR file and after that it is not possible to configure the Context name. So place the WAR anywhere in the system apart from ${TOMCAT\_HOME}/webapps folder.
+- An important thing to note here is that the WAR file cannot be placed inside the ${TOMCAT_HOME}/webapps folder. If you place the WAR in the webapps folder then the war will get exploded with the same name as the WAR file and after that it is not possible to configure the Context name. So place the WAR anywhere in the system apart from ${TOMCAT_HOME}/webapps folder.
 
-
-*   Now its time to start the server and you will see a folder named myapp in the ${TOMCAT\_HOME}/webapps folder, containing the application files.
-
+- Now its time to start the server and you will see a folder named myapp in the ${TOMCAT_HOME}/webapps folder, containing the application files.
 
 **Approach 2: Server.xml ( [Not Recommended](http://tomcat.apache.org/tomcat-6.0-doc/config/context.html) after Tomcat 4.x )**
 
-*   Open the Server.xml file from ${TOMCAT\_HOME}/conf folder. Search for the Host tag and place the Context tag inside it.
+- Open the Server.xml file from ${TOMCAT_HOME}/conf folder. Search for the Host tag and place the Context tag inside it.
 
 ```xml
 <Host name="localhost"  appBase="webapps"
@@ -39,4 +37,5 @@ _The docBase will contain the path of the WAR. Here i have placed my WAR file in
     <Context path="/myapp" docBase="/myapp-build123"/>
 </Host>
 ```
-*   In this scenario you can place the WAR file in the ${TOMCAT\_HOME}/webapps folder itself. And also it is possible to access the application by both the URLs, http://localhost:8080/myapp-build123 and http://localhost:8080/myapp.
+
+- In this scenario you can place the WAR file in the ${TOMCAT_HOME}/webapps folder itself. And also it is possible to access the application by both the URLs, http://localhost:8080/myapp-build123 and http://localhost:8080/myapp.

@@ -5,6 +5,7 @@ category: tech,ubuntu
 date: 11-12-2009
 minutesToRead: 3
 ---
+
 As developers tend to spend most of the time in front of IDEs it makes sense to pick up the best suited font for development. And i have seen most of the developers prefer to use monochrome fonts as it yields better feel while looking at the code. It is been now widely accepted by many developers to use Inconsolata as their development font. So better start using it and prove yourself geeky ;)  
 When i tried to use Inconsolata with my IntellijIDEA i couldn't find the ttf type inconsolata. And Intellij supports only ttf types. After a long search i downloaded thr ODf type and converted it to ttf using a converter and then i had the issue of installing it to my Jaunty. And i took help of my dev friends out here to resolve stuffs. So thought of consolidating the steps together as it may reduce someone else's pain.
 
@@ -18,7 +19,7 @@ mkdir /usr/share/fonts/truetype
 
 cd /usr/share/fonts/truetype
 
-sudo mkdir  ttf-inconsolata
+sudo mkdir ttf-inconsolata
 
 **Step 3:** Copy the Inconsolata.ttf into the directory.
 

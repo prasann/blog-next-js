@@ -12,8 +12,8 @@ The idea is to have the settings file in the Dropbox folder and to have a symlin
 
 **Prerequisites:**
 
-*   Install ST2 in both the machines.
-*   Have a DropBox account and install the software in both the machines.
+- Install ST2 in both the machines.
+- Have a DropBox account and install the software in both the machines.
 
 ### **In Mac:**
 
@@ -22,11 +22,13 @@ Move the entire Sublime Text folder into the Dropbox folder.
 ```bash
 mv '~/Library/Application\\ Support/Sublime\\ Text\\ 2/' '~/Dropbox/Sublime\\ Text\\ 2'
 ```
+
 Next step is to create a symlink in the original location so that it the folder in the Dropbox will be used to store the settings.
 
 ```bash
 ln -s '~/Library/Application\\ Support/Sublime\\ Text\\ 2' '~/Dropbox/Sublime\\ Text\\ 2'
 ```
+
 ### **In Windows:**
 
 Windows don't have symlink concept. So we have to settle with [NTFS symbolic link](http://en.wikipedia.org/wiki/NTFS_symbolic_link "NTFS Junction Point")

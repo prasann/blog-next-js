@@ -34,23 +34,23 @@ Another significant challenge here is that you will have to run and manage N suc
 
 ### Key decisions that we had to take
 
--   **How to deliver data**
-    -   POS are built as offline first servers. It will need lots of amount of product/pricing and promotions data upfront. They can store them there will be enough storage, however to deliver them efficiently will be a key factor.
-    -   Serve data that's needed for that POS and not the universal data
-    -   Most of the e-commerce apps on mobile aren't offline first. We can demand the user to have good/decent internet. However in case of POS it's store network and the expectation we can't close the store just because it's not having a good network.
-    -   Try to look out for "Download once and share" technique. Alternate could be torrent like mechanism (p2p downloads)
--   **How to deliver software and upgrades**
-    -   Decide on a mechanism to deliver the software, upgrades and the security patches.
-    -   What's the difference? Need to make sure that the terminals are upgraded. Unlike mobile, these aren't personal devices and hence need to control them automatically.
-    -   Delivery mechanism shouldn't physical (or manual). Remote upgrades only. convenient to apply patches
-    -   again lookout for "Download once and share" techniques.
--   **Securing server**
-    -   You are exposing a server in front of the end user.
-    -   These aren't personal devices and hence more concern about security.
-    -   What if POS is shop lifted? can't compromise all the data inside it. can't allow it to transact.
--   **Integration with hardware**
-    -   huge concern, due to the availability of range of hardwares and
-    -   options: build an unified hardware interface so you can mock it while testing the rest.
--   **Monitoring Driven development**
-    -   Monitoring is key, need to know how many systems are rolled out, and which versions they are running.
-    -   Monitors for errors. Use metrics as smoke detector and logs on demand forwarding.
+- **How to deliver data**
+  - POS are built as offline first servers. It will need lots of amount of product/pricing and promotions data upfront. They can store them there will be enough storage, however to deliver them efficiently will be a key factor.
+  - Serve data that's needed for that POS and not the universal data
+  - Most of the e-commerce apps on mobile aren't offline first. We can demand the user to have good/decent internet. However in case of POS it's store network and the expectation we can't close the store just because it's not having a good network.
+  - Try to look out for "Download once and share" technique. Alternate could be torrent like mechanism (p2p downloads)
+- **How to deliver software and upgrades**
+  - Decide on a mechanism to deliver the software, upgrades and the security patches.
+  - What's the difference? Need to make sure that the terminals are upgraded. Unlike mobile, these aren't personal devices and hence need to control them automatically.
+  - Delivery mechanism shouldn't physical (or manual). Remote upgrades only. convenient to apply patches
+  - again lookout for "Download once and share" techniques.
+- **Securing server**
+  - You are exposing a server in front of the end user.
+  - These aren't personal devices and hence more concern about security.
+  - What if POS is shop lifted? can't compromise all the data inside it. can't allow it to transact.
+- **Integration with hardware**
+  - huge concern, due to the availability of range of hardwares and
+  - options: build an unified hardware interface so you can mock it while testing the rest.
+- **Monitoring Driven development**
+  - Monitoring is key, need to know how many systems are rolled out, and which versions they are running.
+  - Monitors for errors. Use metrics as smoke detector and logs on demand forwarding.

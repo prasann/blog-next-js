@@ -10,17 +10,17 @@ minutesToRead: 2
 
 **Requisite:**
 
-*   jQuery 1.5+
+- jQuery 1.5+
 
 **Idea:**
 
-*   Create an element to display the animation.
-*   Next create an empty element say <div></div> and set its position: 'fixed'
-*   Set the position of the empty element to the Start Value of the slot.
-*   Now use jQuery animate to move the empty element from Start value to the specified End Value in a given duration.
-*   jQuery animate has a step() method which gives you the current position of the div for every unit of time.
-*   Now inside this step() method set the display element's text to the current position value of the empty element.
-*   Since empty element moves from start value to end value, you will see the numbers changing from start value to end value in the display area.
+- Create an element to display the animation.
+- Next create an empty element say <div></div> and set its position: 'fixed'
+- Set the position of the empty element to the Start Value of the slot.
+- Now use jQuery animate to move the empty element from Start value to the specified End Value in a given duration.
+- jQuery animate has a step() method which gives you the current position of the div for every unit of time.
+- Now inside this step() method set the display element's text to the current position value of the empty element.
+- Since empty element moves from start value to end value, you will see the numbers changing from start value to end value in the display area.
 
 **Javascript Code:**
 

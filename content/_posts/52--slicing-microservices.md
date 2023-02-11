@@ -6,11 +6,11 @@ date: 02-04-2021
 minutesToRead: 5
 ---
 
-> *Cross posted from [Dev.to blog] (https://dev.to/prasann/slicing-microservices-1agj)*
+> _Cross posted from [Dev.to blog] (https://dev.to/prasann/slicing-microservices-1agj)_
 
 Building applications using micro-services are becoming a default go-to architecture these days. I have been part of few teams that build and deploy micro-services in a large scale.
 
-> One pertinent question that often asked is "***Did we slice it right?***"
+> One pertinent question that often asked is "**_Did we slice it right?_**"
 
 ## What is slicing a service mean
 
@@ -28,12 +28,11 @@ One of the common behaviour we did in the teams I worked so far, is to let micro
 
 ![organic slicing of micro-service](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fz8fj6jt4y0z5rlp1irs.png)
 
-
 Some of the benefits,
 
 - **No need of upfront discussion**. Most likely we will have lesser information about the feature, then likely that our design might reflect the incompetencies.
 - **Spawning a new service will have it's own cost**. How much ever you automate, it still adds up the infrastructure cost, maintenance cost. If we are wrong about the slicing then we had to spend some more time and effort to unify it with some other service.
-- Once we have built a feature, most of the **people in the team will understand the use-case and will appreciate the need of a separate service**. It doesn't become a single person's decision or a group of architect's decision. But a decision that comes from ground up. There  is a better chance for the service the retain it's shape when it grew this way.
+- Once we have built a feature, most of the **people in the team will understand the use-case and will appreciate the need of a separate service**. It doesn't become a single person's decision or a group of architect's decision. But a decision that comes from ground up. There is a better chance for the service the retain it's shape when it grew this way.
 
 This approach does require a good discipline in having a constant check on the growth of a service. A highly coupled service is very hard to break down later. And if we are too late to cut down a service, it might become an expensive operation too.
 
@@ -89,7 +88,7 @@ Journey services, should be independent of others. Store data that are necessary
 
 **Build composite entities wherever needed**
 
-- Now, to answer the immediate question that will raise due to the above constraint. How to manage the duplicate business logic.  To be honest, **DRY principle is overrated in my opinion.** But in case if you are looking for such thing, then try adding another layer of composite entities.
+- Now, to answer the immediate question that will raise due to the above constraint. How to manage the duplicate business logic. To be honest, **DRY principle is overrated in my opinion.** But in case if you are looking for such thing, then try adding another layer of composite entities.
 - These composite entities, will encapsulate multiple entities and some business logic around this. One classic example from the app we built is a tax computation service. It involves the product, and the location of the buyer to calculate the tax.
 
 All these things are from my past experience, I'm sure I'm going to learn more and course correct myself in this journey. But one thing that i feel will always help in evolving micro-services is to constantly question the slicing decision to get it at a right state. And also a good knowledge on the [Domain driven design](https://martinfowler.com/bliki/DomainDrivenDesign.html) helps a lot to take these decisions.

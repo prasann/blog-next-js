@@ -19,6 +19,7 @@ startActivity(intent);
 ```
 
 **Approach 2:**
+
 ```java
 Intent intent = getIntent();
 overridePendingTransition(0, 0);
@@ -27,4 +28,5 @@ finish();
 overridePendingTransition(0, 0);
 startActivity(intent);
 ```
+
 _**Note:** The second approach works only from API 5+_

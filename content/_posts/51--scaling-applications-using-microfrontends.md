@@ -6,7 +6,7 @@ date: 22-01-2021
 minutesToRead: 10
 ---
 
-> *Cross posted from [Archimydes blog](https://archimydes.dev/fourthact/blog/scaling-applications-using-micro-frontends)*
+> _Cross posted from [Archimydes blog](https://archimydes.dev/fourthact/blog/scaling-applications-using-micro-frontends)_
 
 This blog post is a summary of a presentation that I made at the Archimydes Mastermind Event that happened on 17th Dec 2020.
 
@@ -58,6 +58,7 @@ From monoliths, the best choice to evolve the backend services as microservices.
 However, most of the microservices I have seen are as follows
 
 ![Microservices](/assets/posts/images/scaling-microfrontends/Twitter_post_-_2.png "Microservices")
+
 > Independent deployments ! == Independent releases
 
 Teams are able to develop and deploy backends independently. However, they need to wait for the frontend to be developed and deployed.
@@ -67,6 +68,7 @@ Teams are able to develop and deploy backends independently. However, they need 
 Micro-frontends are nothing but taking the concept of micro-services to the frontend. Slice the frontend of the application to respect the module boundaries of the backend, and create an end-end independent release path.
 
 ![Microfrontends](/assets/posts/images/scaling-microfrontends/Twitter_post_-_3.png "Microfrontends")
+
 > All of Microservices' promises + Independent releases
 
 ## **Gains with Micro-frontends**
@@ -78,7 +80,7 @@ Micro-frontends are nothing but taking the concept of micro-services to the fron
 
 ### **Problems that need solving**
 
-- T***o 'share, or not to share'?*** - Code reusability is one of the most overrated principles in software development. The problems of reusability are often ignored or not shared. In going the micro-frontend way, this needs to be discussed among the teams. Out of the gate, a duplicate first strategy works since it allows teams to execute faster initially.
+- T**_o 'share, or not to share'?_** - Code reusability is one of the most overrated principles in software development. The problems of reusability are often ignored or not shared. In going the micro-frontend way, this needs to be discussed among the teams. Out of the gate, a duplicate first strategy works since it allows teams to execute faster initially.
 - **Application loading performance** - Micro-frontends can cause an impact on the loading performance of the application. There are ways to mitigate it, but the effort it takes has to be taken into consideration.
 - **Design consistency across the application -** Having a larger number of people working on an application will lead to inconsistencies. Again, there are ways to mitigate this, however, the effort involved in mitigation needs to be considered.
 
@@ -90,7 +92,7 @@ In order to explain the challenges and decision, I will take up the following us
 
 **Building an application to allow user to configure and buy a laptop. Similar to that of Apple's.**
 
-A user can ***configure*** a laptop with various components, accessories, protection plans, etc. The user should be able to ***search*** for accessories, or maybe built-in models, and then finally should be able to ***order*** the product and get it fulfilled.
+A user can **_configure_** a laptop with various components, accessories, protection plans, etc. The user should be able to **_search_** for accessories, or maybe built-in models, and then finally should be able to **_order_** the product and get it fulfilled.
 
 Apart from the 3 services - configure, search, and order, I will have another service called "Frame" merely to hold the application together.
 
@@ -150,7 +152,7 @@ We can achieve this composition in 2 ways, let's go over the pros and cons of th
 - FrintJS
 - Single-Spa
 
-***We chose Run-time composition for the project we worked on. Since our app was rendered on the client-side, it was simpler for us to achieve this.***
+**_We chose Run-time composition for the project we worked on. Since our app was rendered on the client-side, it was simpler for us to achieve this._**
 
 ## **B) Communication between the frontends**
 
@@ -168,7 +170,7 @@ Another approach could be to utilize the window (DOMs) eventing capability. Belo
 
 ![Window events {800xx250}](/assets/posts/images/scaling-microfrontends/window_events_46783b22ad.png "Window events")
 
-***We used to communicate through common redux store and redux events as all the apps in our micro-frontends were using Redux.***
+**_We used to communicate through common redux store and redux events as all the apps in our micro-frontends were using Redux._**
 
 ## **C) Design Consistency**
 

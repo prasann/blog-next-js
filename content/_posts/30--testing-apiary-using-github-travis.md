@@ -12,6 +12,6 @@ minutesToRead: 2
 
 I could able to setup dredd quite easily on my Mac by installing Node and npm. However its not quite straight forward in Windows. I faced lots of difficulties while installing node, npm and dredd.
 
-So i decided to use [Travis](http://travis-ci.org/) to setup the testing pipeline for my jobs. All i needed to do is to have a .travis.yml file to install node\_js and install dredd using npm.
+So i decided to use [Travis](http://travis-ci.org/) to setup the testing pipeline for my jobs. All i needed to do is to have a .travis.yml file to install node_js and install dredd using npm.
 
 Added a simple script file to run the dredd tool inside the job. And that's it. As part of the code i also checked in the API markdown files which will run againt the APIs

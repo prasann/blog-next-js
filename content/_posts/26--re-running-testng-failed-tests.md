@@ -5,11 +5,12 @@ category: tech,testing
 date: 01-05-2014
 minutesToRead: 3
 ---
+
 We were running our Selenium functional tests using [testNG](http://testng.org/doc/index.html) runner in [Jenkins](http://jenkins-ci.org/). However the problem was we were having too many failures on our initial run, and lot of these failures were classified as random or not reproducable. Mainly these are test script issues. Some times the testers tend to put some static wait conditions which might work on their machine but not in the Jenkins agent. Sometimes the environment against which our tests run might be a bit slow which pushes our pass percentage well behind. The ideal appropriate fix will be is to go through the failed test cases and figure out the randomness and fix it. But we thought of adding a re run mechanism to our test job to identify these random failures. As the no. of test cases grew, we ended up in re running the failed tests multiple times, something like this.
 
 Name Total Failed
 
-InitialRun  100 30
+InitialRun 100 30
 
 ReRun1 30 20
 
@@ -26,11 +27,12 @@ After every test run, testng will create a file called testng-failed.xml in the 
 This testng-failed.xml will also inherit all the properties from the original test suite file. For example if we have defined thread-count value then the same value will be retained.
 
 So what I did was copied this file to a location and fed this to the testng task to run again. This can be achieved by any means, since we were using ant as our build tool i configured this in our build.xml file itself.
+
 ```xml
 	<target name="runTests" depends="compile" description="Running tests">
 		<echo>Running Tests...</echo>
 		<taskdef resource="testngtasks" classpath="lib/testng-6.8.jar" />
-		<testng outputDir="${report.dir}" useDefaultListeners="true" classpathref="build.classpath" 
+		<testng outputDir="${report.dir}" useDefaultListeners="true" classpathref="build.classpath"
 			listeners="org.uncommons.reportng.HTMLReporter,org.uncommons.reportng.JUnitXMLReporter">
 			<classpath location="${class.dir}" />
 			<xmlfileset dir="." includes="testng-suite.xml" />
@@ -38,7 +40,7 @@ So what I did was copied this file to a location and fed this to the testng task
 			<sysproperty key="properties" value="${properties}" />
 		</testng>
 		<copy file="${report.dir}/testng-failed.xml" todir="${basedir}/test-output-rerun/0"/>
-		
+
 		<antcall target="multiReRun"/>
 	</target>
 	<target name="multiReRun" description="Multiple rerun tests">

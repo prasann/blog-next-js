@@ -1,14 +1,14 @@
 type PostMeta = {
-    slug: string
-    title: string
-    description: string
-    date: string
-    minutesToRead: string
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  minutesToRead: string;
+};
+
+interface Post extends PostMeta {
+  category?: string;
+  content: string;
 }
 
-interface Post extends PostMeta  {
-    category?: string
-    content: string
-}
-
-export default Post
+export default Post;

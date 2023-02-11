@@ -22,7 +22,7 @@ public ModelAndView resolveException(HttpServletRequest httpServletRequest,
         HttpServletResponse httpServletResponse, Object o, Exception e) {
     if (e instanceof MaxUploadSizeExceededException) {
         ModelAndView modelAndView = new ModelAndView("inline-error");
-        modelAndView.addObject("error", 
+        modelAndView.addObject("error",
         "Error: Your file size is too large to upload. Please upload a file of size < 5 MB and  continue. ");
     return modelAndView;
     }
@@ -30,13 +30,15 @@ public ModelAndView resolveException(HttpServletRequest httpServletRequest,
     return new ModelAndView("500");
 }
 ```
+
 ** How to show the error on the same page:**
 
-The call to the controller is from a jQuery ajax method. But the problem here is that even with this approach your jQuery POST method is going to receive a HTTP\_OK message from the controller. Hence if you are waiting at the error callback then you have no chance of catching this error.
+The call to the controller is from a jQuery ajax method. But the problem here is that even with this approach your jQuery POST method is going to receive a HTTP_OK message from the controller. Hence if you are waiting at the error callback then you have no chance of catching this error.
 
-So what i have done here is to return inline-error view back as the response. On the success callback of the jQuery i check for the presence of the error\_div in the response and display the field in the page. Else show the success message.
+So what i have done here is to return inline-error view back as the response. On the success callback of the jQuery i check for the presence of the error_div in the response and display the field in the page. Else show the success message.
 
 _inline-error.jsp_
+
 ```html
 <div class="error" id="error\_div">${error}</div>
 ```

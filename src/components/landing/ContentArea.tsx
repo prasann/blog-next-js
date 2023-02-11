@@ -54,8 +54,9 @@ const ImageLink = ({
         height="160"
         style={{
           maxWidth: "100%",
-          height: "auto"
-        }} />
+          height: "auto",
+        }}
+      />
       <div className="font-bold text-2xl">{linkText}</div>
     </div>
   );
@@ -109,8 +110,9 @@ const Picture = () => {
         sizes="120vw"
         style={{
           width: "100%",
-          height: "auto"
-        }} />
+          height: "auto",
+        }}
+      />
     </div>
   );
 };

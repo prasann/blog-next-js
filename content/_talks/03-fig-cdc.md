@@ -1,2 +1,2 @@
-In this talk I will discuss on, how our clients went about re platforming their monolith application using [strangler fig approach](https://martinfowler.com/bliki/StranglerFigApplication.html) and 
-will focus on their data strategy using [change data capture](https://www.qlik.com/us/change-data-capture/cdc-change-data-capture#:~:text=Change%20data%20capture%20(CDC)%20refers,a%20downstream%20process%20or%20system.) technique.
+In this talk I will discuss on, how our clients went about re platforming their monolith application using [strangler fig approach](https://martinfowler.com/bliki/StranglerFigApplication.html) and
+will focus on their data strategy using [change data capture](<https://www.qlik.com/us/change-data-capture/cdc-change-data-capture#:~:text=Change%20data%20capture%20(CDC)%20refers,a%20downstream%20process%20or%20system.>) technique.

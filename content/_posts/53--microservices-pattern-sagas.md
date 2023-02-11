@@ -6,11 +6,11 @@ date: 10-06-2021
 minutesToRead: 4
 ---
 
-> *Cross posted from [Dev.to blog] (https://dev.to/prasann/micro-services-patterns-saga-to-music-or-to-dance-4hio)*
+> _Cross posted from [Dev.to blog] (https://dev.to/prasann/micro-services-patterns-saga-to-music-or-to-dance-4hio)_
 
 ## What is a Saga pattern
 
-Saga design pattern is a way to manage a single business transaction that spans across various micro services. Saga pattern breaks a single business transaction into a sequence of local transactions that updates each service and publishes a message or event to trigger the next local transaction step. If any of these local transaction fails, saga will execute the subsequent flows to  rollback and cleanup the transaction.
+Saga design pattern is a way to manage a single business transaction that spans across various micro services. Saga pattern breaks a single business transaction into a sequence of local transactions that updates each service and publishes a message or event to trigger the next local transaction step. If any of these local transaction fails, saga will execute the subsequent flows to rollback and cleanup the transaction.
 
 ## Why do we need this
 

@@ -11,6 +11,7 @@ Briefed out the steps that i did to run my Jasmine test suite in my CI.
 1.  Download phantomjs.exe (Our CI server was running in a Windows server). [Download link](http://phantomjs.org/download.html)
 2.  Use [run-jasmine.js](https://gist.github.com/prasann/9972777). This runner code is taken from phantomJS example and modified to run Jasmine 2.0 and to format the output as we needed.
 3.  Assuming phantomjs.exe, run-jasmine.js and SpecRunner.html (Specrunner file) are in the same level in a directory, execute this command
+
 ```bash
  phantomjs.exe run-jasmine.js SpecRunner.html \[--debug\]
 ```

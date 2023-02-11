@@ -1,9 +1,9 @@
 {
-    "grammarly.selectors": [
-        {
-            "language": "markdown",
-            "scheme": "file",
-            "pattern": "content/_posts/56--git-config-hacks.md"
-        }
-    ]
+  "grammarly.selectors": [
+    {
+      "language": "markdown",
+      "scheme": "file",
+      "pattern": "content/_posts/56--git-config-hacks.md"
+    }
+  ]
 }

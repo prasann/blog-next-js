@@ -28,11 +28,11 @@ const likeThePost = () => {
 };
 
 const celebrate = () => {
-    confetti({
-        particleCount: 400,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
+  confetti({
+    particleCount: 400,
+    spread: 70,
+    origin: { y: 0.6 },
+  });
 };
 
 const Engage = ({ description }: Props) => {

@@ -11,6 +11,7 @@ This post details about making Secure HTTP(HTTPs) call from a server using Apach
 The simplest will be to ignore the ssl certificates and to trust any connection. This approach is not acceptable for production code as it defeat the purpose of using HTTPS. However in some use cases if you want to try out something quickly you can go with this route.
 
 #### Trust any certificate approach (Simple, not recommended for production code.)
+
 ```java
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
@@ -47,9 +48,11 @@ public class HttpClientFactory {
     }
 }
 ```
+
 The above method will return httpClient object which can be used to make any HTTPS calls. Performing HTTPS call is no different from making HTTP call from now on. So you can have a factory with two methods, one for secure and one for non-secure.
 
 Here we have used HttpsTrustManager, which will do nothing more than trusing all clients. This is done by simply implementing X509TrustManager and auto generating all the methods.
+
 ```java
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -79,9 +82,11 @@ public class HttpsTrustManager implements X509TrustManager {
 
 }
 ```
+
 #### Importing a keystore (Recommended)
 
 If you are writing produciton quality code, then you should be looking at this approach. Have a all the keys in your application and create a SSLContext using those keystores. The created SSLContext can then be injected to SSLConnectionSocketFactory and remaining steps will be the same.
+
 ```java
 import javax.net.ssl.SSLContext;
 
@@ -121,7 +126,7 @@ public class HttpClientFactory {
         client = null;
     }
 
-    private SSLContext getSSLContext() throws KeyStoreException, 
+    private SSLContext getSSLContext() throws KeyStoreException,
     NoSuchAlgorithmException, CertificateException, IOException, KeyManagementException {
         KeyStore trustStore  = KeyStore.getInstance(KeyStore.getDefaultType());
         FileInputStream instream = new FileInputStream(new File("my.keystore"));
@@ -136,4 +141,5 @@ public class HttpClientFactory {
     }
 }
 ```
+
 The only difference between the two approaches are the way the SSLContext been created.

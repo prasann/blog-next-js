@@ -5,6 +5,7 @@ category: clojure
 date: 16-02-2018
 minutesToRead: 4
 ---
+
 ### Simple Object Access Protocol (SOAP)
 
 SOAP brings its own protocol and focuses on exposing pieces of application logic (not data) as services. SOAP is focused on accessing named operations, each implements some business logic through different interfaces. This image below expresses the difference between a SOAP and normal REST/JSON endpoint very well.
@@ -22,11 +23,13 @@ Source: [Stack overflow](https://stackoverflow.com/a/44713574/419448)
 #### 1\. Prerequisite
 
 As a one-time step, convert the WSDL into Java objects. This can be done using \`wsimport\` or \`xjc\`
+
 ```bash
 xjc -wsdl wsdl-file-name
 ```
 
 or
+
 ```bash
 wsimport wsdl-file-name
 ```

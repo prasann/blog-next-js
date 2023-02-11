@@ -60,7 +60,7 @@ In the responseError method block, we used to handle all the generic error respo
 
 #### Observation
 
-I was expecting the code in HttpInterceptor to be executed before my transform logic in the resource wrapper. But i was wrong. Only after the resource transformation http interceptors are called. (Refer this [issue.](https://github.com/angular/angular.js/issues/7594 ))
+I was expecting the code in HttpInterceptor to be executed before my transform logic in the resource wrapper. But i was wrong. Only after the resource transformation http interceptors are called. (Refer this [issue.](https://github.com/angular/angular.js/issues/7594))
 
 So, whenever a service responds with 500 error, Http interceptor will redirect the user to a different page. However, this will not happen if there is an error in transformation logic. In order to circumvent this problem, we started writing our error transform response specifically for the error codes. This means that, our transformation logic will not be executed for our generic error codes and eventually it reaches http interceptor.
 
