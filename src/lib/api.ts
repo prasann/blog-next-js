@@ -99,5 +99,3 @@ function pluralize(minutesToRead: number = 1) {
     ? "1 minute read"
     : `${minutesToRead} minutes read`;
 }
-
-export { Post };
