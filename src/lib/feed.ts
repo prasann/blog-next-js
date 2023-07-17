@@ -31,14 +31,14 @@ function buildFeed(): Feed {
   });
 }
 
-function formatStringToDate(
+export function formatStringToDate(
   date: string,
   format: string = "dd-MMMM-yyyy"
 ): Date {
   return parse(date, format, new Date());
 }
 
-function makeItem(postData: Post): Item {
+export function makeItem(postData: Post): Item {
   const url = `${baseUrl}/posts/${postData.slug}`;
   const converter = new showdown.Converter();
   return {
