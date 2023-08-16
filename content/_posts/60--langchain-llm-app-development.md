@@ -11,19 +11,14 @@ This is a personal notes from the course [Langchain for LLM application developm
 
 It is mentioned as a 1 hour course, but it took me around 5 hours to complete the course. The course content was using openAI. I tried using Azure OpenAI in all the workbooks, attached the chapter workbook links along with a short excerpt for each chapter.
 
+This course, will give a good introduction to the Langchain and how to use it to build LLM applications using them. Here is the summary of what is being covered in these chapters.
+
 ## Chapter 1: Models, Prompts and Parsers
 
 - **Models** refers to the large language models
 - **Prompts** refers to the text that you give to the model. Langchain offers an elegant way to construct these prompts. You can also construct your own prompts.
 - **Parsers** refers to the code that you write to parse the output from the model. Langchain provides conventions, to define the parsers.
 
-```mermaid
-graph TD;
-    A[User input] --> B[Prompts];
-    B --> C[Models];
-    C --> D[Parsers];
-    D --> E[Output the final result];
-```
 
 [Link to the workbook](https://github.com/prasann/langchain-deeplearning/blob/main/L1-prompts-models-parsers.ipynb)
 
@@ -40,6 +35,8 @@ Some of the `memory` options discussed in the course are:
 - **ConversationTokenBufferMemory** - It is similar to that of `ConversationBufferWindowMemory`, but instead of storing `n` conversations it stores `n` tokens. Still have the same drawback of the `ConversationBufferWindowMemory`.
 
 - **ConversationSummaryMemory** -  Here a summary of the previous conversations are generated and used that as a context for the subsequent calls. This is a better option than the previous ones.
+
+[Link to the workbook](https://github.com/prasann/langchain-deeplearning/blob/main/L2-memory.ipynb)
 
 ## Chapter 3: Chains
 
@@ -65,8 +62,35 @@ Router chains allows you to map the user input to a specific chain.
 
 ![router chain](/assets/posts/images/langchain-deeplearning/router-chain.png "router chain")
 
+[Link to the workbook](https://github.com/prasann/langchain-deeplearning/blob/main/L3-chain.ipynb)
+
 ## Chapter 4: Question and answer
+
+In order to have a Q&A on top of the user's documents. For this to happen, we need to build [custom embeddings](https://js.langchain.com/docs/modules/data_connection/text_embedding/) for the documents.
+
+Langchain provides interfaces to create and interact with the embeddings. My workbook will contain the Azure OpenAI version of these embeddings and the code uses `VectorstoreIndexCreator` to create the embeddings and `DocArrayInMemorySearch` to store the embeddings.
+
+[Link to the workbook](https://github.com/prasann/langchain-deeplearning/blob/main/L4-questions-answers.ipynb)
 
 ## Chapter 5: Evaluation
 
+It is possible to perform an evaluation of the LLMs. The evaluation is done by comparing the output of the LLMs with the expected output. Langchain offers interfaces to create these evaluation and perform evaluations.
+
+- **Generate examples for LLMs** - This is like creating a test cases for the application under test. Langchain will be able to generate the sample queries and their expected results.
+
+- **Manual evaluation (and debuging)** -  With the sample queries generated, it is possible to manually evaluate the results and debug the LLMs.
+
+- **LLM-assisted evaluation** - Langchain offers `QAEvalChain`, which will allow you to evaluate the LLMs. It will take the sample queries and the expected results and build a graded results against the input data.
+
+[Link to the workbook](https://github.com/prasann/langchain-deeplearning/blob/main/L5-evaluation.ipynb)
+
 ## Chapter 6: Agents
+
+The course discuss only about [Zero-Shot ReAct](https://python.langchain.com/docs/modules/agents/agent_types/react.html) agent. Agent in general are responsible for deciding what step to take next. They can use [tools](https://python.langchain.com/docs/modules/agents/tools/) to interact with the world and [memory](https://python.langchain.com/docs/modules/agents/memory/) to store information.
+
+- **Built-in toolkit** - Langchain offers some built in tools, which can be loaded and the agent can use them to drive the decision making. Example: 
+
+- **Building custom tools** - Most often, we will need to build tools as a wrapper to our data or APIs, so that the agent can use them. Here you can read about [building the custom tools](https://python.langchain.com/docs/modules/agents/tools/custom_tools).
+
+
+[Link to the workbook](https://github.com/prasann/langchain-deeplearning/blob/main/L6-agents.ipynb)
