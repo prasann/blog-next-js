@@ -38,7 +38,7 @@ const CustomComponentsForMarkdown = {
       const height = metaHeight ? metaHeight[1] : "432";
 
       return (
-        <div className="text-center">
+        <div className="flex justify-center">
           <Image
             src={image.properties.src}
             width={width}
@@ -46,10 +46,7 @@ const CustomComponentsForMarkdown = {
             className="postImg"
             alt={alt}
             priority={isPriority}
-            style={{
-              maxWidth: "100%",
-              height: "auto",
-            }}
+            style={{objectFit: "contain"}}
           />
         </div>
       );

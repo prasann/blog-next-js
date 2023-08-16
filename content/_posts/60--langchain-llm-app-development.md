@@ -49,17 +49,17 @@ Sequential chains allows to chain multiple `LLMChain` together.
 
 **SimpleSequentialChain** - this allows the output of the first chain is used as the input for the second chain and so on.
 
-![simple sequential chain {800x235}](/assets/posts/images/langchain-deeplearning/simple-sequential-chain.png "Simple sequential chain")
+![simple sequential chain {400x120}](/assets/posts/images/langchain-deeplearning/simple-sequential-chain.png "Simple sequential chain")
 
 **SequentialChain** -  this allows you to connect multiple `LLMChain` together and also allows you to connect them (input/output) as you wish.
 
-![sequential chain {950x710}](/assets/posts/images/langchain-deeplearning/sequential-chain.png "sequential chain")
+![sequential chain {475x355}](/assets/posts/images/langchain-deeplearning/sequential-chain.png "sequential chain")
 
 ### **Router Chains**
 
 Router chains allows you to map the user input to a specific chain.
 
-![router chain {960x645}](/assets/posts/images/langchain-deeplearning/router.png "router chain")
+![router chain {480x330}](/assets/posts/images/langchain-deeplearning/router.png "router chain")
 
 [Link to the workbook](https://github.com/prasann/langchain-deeplearning/blob/main/L3-chain.ipynb)
 
@@ -69,7 +69,7 @@ In order to have a Q&A on top of the user's documents. For this to happen, we ne
 
 Langchain provides interfaces to create and interact with the embeddings. My workbook will contain the Azure OpenAI version of these embeddings and the code uses `VectorstoreIndexCreator` to create the embeddings and `DocArrayInMemorySearch` to store the embeddings.
 
-![embeddings 101 {962x911}](/assets/posts/images/langchain-deeplearning/embeddings.png "Embeddings")
+![embeddings 101 {480x460}](/assets/posts/images/langchain-deeplearning/embeddings.png "Embeddings")
 
 [Link to the workbook](https://github.com/prasann/langchain-deeplearning/blob/main/L4-questions-answers.ipynb)
 

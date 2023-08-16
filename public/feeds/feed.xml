@@ -4,7 +4,7 @@
         <title>Random Presence</title>
         <link>https://prasanna.dev</link>
         <description>Random presence of my thoughts and learning...</description>
-        <lastBuildDate>Wed, 16 Aug 2023 11:26:17 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Aug 2023 16:55:51 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>npm feed package</generator>
         <language>en</language>
@@ -19,7 +19,7 @@
             <link>https://prasanna.dev/posts/langchain-llm-app-development</link>
             <guid>https://prasanna.dev/posts/langchain-llm-app-development</guid>
             <pubDate>Sun, 13 Aug 2023 18:30:00 GMT</pubDate>
-            <description><![CDATA[This is a personal notes from the course [Langchain for LLM application development](https://learn.deeplearning.ai/langchain/lesson/1/introduction). This one of the short courses offered by the [Deeplearning](https://deeplearning.ai).]]></description>
+            <description><![CDATA[This is a personal notes from the course Langchain for LLM application development. This one of the short courses offered by the Deeplearning.ai. Used Azure OpenAI for the workbooks, instead of OpenAI.]]></description>
             <content:encoded><![CDATA[<p>This is a personal notes from the course <a href="https://learn.deeplearning.ai/langchain/lesson/1/introduction">Langchain for LLM application development</a>. This one of the short courses offered by the <a href="https://deeplearning.ai">Deeplearning</a>.</p>
 <p>It is mentioned as a 1 hour course, but it took me around 5 hours to complete the course. The course content was using openAI. I tried using Azure OpenAI in all the workbooks, attached the chapter workbook links along with a short excerpt for each chapter.</p>
 <p>This course, will give a good introduction to the Langchain and how to use it to build LLM applications using them. Here is the summary of what is being covered in these chapters.</p>
@@ -46,17 +46,17 @@
 <h3 id="sequentialchains"><strong>Sequential Chains</strong></h3>
 <p>Sequential chains allows to chain multiple <code>LLMChain</code> together.</p>
 <p><strong>SimpleSequentialChain</strong> - this allows the output of the first chain is used as the input for the second chain and so on.</p>
-<p><img src="/assets/posts/images/langchain-deeplearning/simple-sequential-chain.png" alt="simple sequential chain" title="Simple sequential chain" /></p>
+<p><img src="/assets/posts/images/langchain-deeplearning/simple-sequential-chain.png" alt="simple sequential chain {800x235}" title="Simple sequential chain" /></p>
 <p><strong>SequentialChain</strong> -  this allows you to connect multiple <code>LLMChain</code> together and also allows you to connect them (input/output) as you wish.</p>
-<p><img src="/assets/posts/images/langchain-deeplearning/sequential-chain.png" alt="sequential chain" title="sequential chain" /></p>
+<p><img src="/assets/posts/images/langchain-deeplearning/sequential-chain.png" alt="sequential chain {950x710}" title="sequential chain" /></p>
 <h3 id="routerchains"><strong>Router Chains</strong></h3>
 <p>Router chains allows you to map the user input to a specific chain.</p>
-<p><img src="/assets/posts/images/langchain-deeplearning/router.png" alt="router chain" title="router chain" /></p>
+<p><img src="/assets/posts/images/langchain-deeplearning/router.png" alt="router chain {960x645}" title="router chain" /></p>
 <p><a href="https://github.com/prasann/langchain-deeplearning/blob/main/L3-chain.ipynb">Link to the workbook</a></p>
 <h2 id="chapter4questionandanswer">Chapter 4: Question and answer</h2>
 <p>In order to have a Q&amp;A on top of the user's documents. For this to happen, we need to build <a href="https://js.langchain.com/docs/modules/data_connection/text_embedding/">custom embeddings</a> for the documents.</p>
 <p>Langchain provides interfaces to create and interact with the embeddings. My workbook will contain the Azure OpenAI version of these embeddings and the code uses <code>VectorstoreIndexCreator</code> to create the embeddings and <code>DocArrayInMemorySearch</code> to store the embeddings.</p>
-<p><img src="/assets/posts/images/langchain-deeplearning/embeddings.png" alt="embeddings 101" title="Embeddings" /></p>
+<p><img src="/assets/posts/images/langchain-deeplearning/embeddings.png" alt="embeddings 101 {962x911}" title="Embeddings" /></p>
 <p><a href="https://github.com/prasann/langchain-deeplearning/blob/main/L4-questions-answers.ipynb">Link to the workbook</a></p>
 <h2 id="chapter5evaluation">Chapter 5: Evaluation</h2>
 <p>It is possible to perform an evaluation of the LLMs. The evaluation is done by comparing the output of the LLMs with the expected output. Langchain offers interfaces to create these evaluation and perform evaluations.</p>
