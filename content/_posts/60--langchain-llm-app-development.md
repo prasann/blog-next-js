@@ -1,6 +1,6 @@
 ---
 title: Langchain for LLM application development
-description: This is a personal notes from the course Langchain for LLM application development. This one of the short courses offered by the Deeplearning.ai
+description: This is a personal notes from the course Langchain for LLM application development. This one of the short courses offered by the Deeplearning.ai. Used Azure OpenAI for the workbooks, instead of OpenAI.
 category: tech, langchain, llm
 date: 14-08-2023
 minutesToRead: 5
