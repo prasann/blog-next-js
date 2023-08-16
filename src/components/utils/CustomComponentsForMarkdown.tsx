@@ -39,6 +39,7 @@ const CustomComponentsForMarkdown = {
 
       return (
         <div className="text-center">
+          console.log("*******", image.properties.src)
           <Image
             src={image.properties.src}
             width={width}

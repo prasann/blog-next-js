@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://prasanna.dev</id>
     <title>Random Presence</title>
-    <updated>2023-07-26T17:25:27.640Z</updated>
+    <updated>2023-08-14T10:28:28.118Z</updated>
     <generator>npm feed package</generator>
     <author>
         <name>Prasanna Venkatesan</name>
@@ -15,6 +15,38 @@
     <logo>https://prasanna.dev/assets/logo.png</logo>
     <icon>https://prasanna.dev/assets/favicons/favicon-32x32.png</icon>
     <rights>Copyright - Prasanna</rights>
+    <entry>
+        <title type="html"><![CDATA[Langchain for LLM application development]]></title>
+        <id>https://prasanna.dev/posts/langchain-llm-app-development</id>
+        <link href="https://prasanna.dev/posts/langchain-llm-app-development"/>
+        <updated>2023-08-13T18:30:00.000Z</updated>
+        <content type="html"><![CDATA[<p>This is a personal notes from the course <a href="https://learn.deeplearning.ai/langchain/lesson/1/introduction">Langchain for LLM application development</a>. This one of the short courses offered by the <a href="https://deeplearning.ai">Deeplearning</a>.</p>
+<p>It is mentioned as a 1 hour course, but it took me around 5 hours to complete the course. The course content was using openAI. I tried using Azure OpenAI in all the workbooks, attached the chapter workbook links along with a short excerpt for each chapter.</p>
+<h2 id="chapter1modelspromptsandparsers">Chapter 1: Models, Prompts and Parsers</h2>
+<ul>
+<li><strong>Models</strong> refers to the large language models</li>
+<li><strong>Prompts</strong> refers to the text that you give to the model. Langchain offers an elegant way to construct these prompts. You can also construct your own prompts.</li>
+<li><strong>Parsers</strong> refers to the code that you write to parse the output from the model. Langchain provides conventions, to define the parsers.</li>
+</ul>
+<!-- TODO: draw a diagram for this -->
+<p>graph TD;
+    A[User input] --&gt; B[Prompts];
+    B --&gt; C[Models];
+    C --&gt; D[Parsers];
+    D --&gt; E[Output the final result];</p>
+<p><a href="https://github.com/prasann/langchain-deeplearning/blob/main/L1-prompts-models-parsers.ipynb">Link to the workbook</a></p>
+<h2 id="chapter2memory">Chapter 2: Memory</h2>
+<p><strong>Memory</strong> refers to the ability to store information and retrieve it later. This enables the user to have a chat like conversation with the LLMs.</p>
+<p>Some of the <code>memory</code> options discussed in the course are:</p>
+<p><strong>ConversationBufferMemory</strong> - 
+<strong>ConversationBufferWindowMemory</strong> - 
+<strong>ConversationTokenBufferMemory</strong> - 
+<strong>ConversationSummaryMemory</strong> - </p>
+<h2 id="chapter3chains">Chapter 3: Chains</h2>
+<h2 id="chapter4questionandanswer">Chapter 4: Question and answer</h2>
+<h2 id="chapter5evaluation">Chapter 5: Evaluation</h2>
+<h2 id="chapter6agents">Chapter 6: Agents</h2>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Multi architecture builds of Docker images]]></title>
         <id>https://prasanna.dev/posts/docker-architecture-specific-images</id>
