@@ -19,7 +19,6 @@ This course, will give a good introduction to the Langchain and how to use it to
 - **Prompts** refers to the text that you give to the model. Langchain offers an elegant way to construct these prompts. You can also construct your own prompts.
 - **Parsers** refers to the code that you write to parse the output from the model. Langchain provides conventions, to define the parsers.
 
-
 [Link to the workbook](https://github.com/prasann/langchain-deeplearning/blob/main/L1-prompts-models-parsers.ipynb)
 
 ## Chapter 2: Memory
@@ -69,6 +68,8 @@ Router chains allows you to map the user input to a specific chain.
 In order to have a Q&A on top of the user's documents. For this to happen, we need to build [custom embeddings](https://js.langchain.com/docs/modules/data_connection/text_embedding/) for the documents.
 
 Langchain provides interfaces to create and interact with the embeddings. My workbook will contain the Azure OpenAI version of these embeddings and the code uses `VectorstoreIndexCreator` to create the embeddings and `DocArrayInMemorySearch` to store the embeddings.
+
+![embeddings 101](/assets/posts/images/langchain-deeplearning/embeddings.png "Embeddings")
 
 [Link to the workbook](https://github.com/prasann/langchain-deeplearning/blob/main/L4-questions-answers.ipynb)
 
