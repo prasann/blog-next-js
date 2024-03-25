@@ -23,7 +23,7 @@ type MobileNavProps = {
 
 const MenuLink = ({ displayName, location }: MenuLinkProps) => {
   return (
-    <div className="p-4 bg-black text-sky-500 hover:text-green-500  hover:cursor-pointer hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white rounded-xl">
+    <div className="p-4 text-sky-500 hover:text-green-300  hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white rounded-xl">
       <a
         href={location}
         className="text-2xl font-semibold transition duration-300"
