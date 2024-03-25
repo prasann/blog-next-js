@@ -2,7 +2,7 @@ import { Feed, Item } from "feed";
 import fs from "fs";
 import { getAllPosts } from "./api";
 import Post from "../types/post";
-import parse from "date-fns/parse";
+import {parse} from "date-fns";
 import showdown from "showdown";
 
 const baseUrl = "https://prasanna.dev";

@@ -19,3 +19,4 @@ const RenderMarkdown = ({ content }: Props) => {
 };
 
 export default RenderMarkdown;
+

@@ -2,13 +2,13 @@ import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Image from "next/image";
-import { CodeProps } from "react-markdown/lib/ast-to-react";
+import { ExtraProps, Components } from "react-markdown";
 
-const CustomComponentsForMarkdown = {
+const CustomComponentsForMarkdown : Partial<Components> = {
   // @ts-ignore
-  code({ node, inline, className, children, ...props } :CodeProps) {
+  code({ node, className, children, ...props }: ExtraProps) {
     const match = /language-(\w+)/.exec(className || "");
-    return !inline && match ? (
+    return match ? (
       <SyntaxHighlighter
         style={dracula}
         language={match[1]}
@@ -24,7 +24,7 @@ const CustomComponentsForMarkdown = {
     );
   },
   // @ts-ignore
-  p(paragraph) {
+  p(paragraph: any) {
     const { node } = paragraph;
     if (node.children[0].tagName === "img") {
       const image = node.children[0];

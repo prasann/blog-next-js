@@ -2,9 +2,7 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 import Post from "../types/post";
-import parse from "date-fns/parse";
-import format from "date-fns/format";
-import { compareDesc } from "date-fns";
+import { format, parse, compareDesc } from 'date-fns'
 
 const postsDirectory = join(process.cwd(), "content", "_posts");
 const talksDirectory = join(process.cwd(), "content", "_talks");
