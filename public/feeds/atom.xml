@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://prasanna.dev</id>
     <title>Random Presence</title>
-    <updated>2023-08-16T16:55:51.625Z</updated>
+    <updated>2024-03-25T08:38:14.676Z</updated>
     <generator>npm feed package</generator>
     <author>
         <name>Prasanna Venkatesan</name>
@@ -15,6 +15,33 @@
     <logo>https://prasanna.dev/assets/logo.png</logo>
     <icon>https://prasanna.dev/assets/favicons/favicon-32x32.png</icon>
     <rights>Copyright - Prasanna</rights>
+    <entry>
+        <title type="html"><![CDATA[Autogen - Make your agents to collaborate]]></title>
+        <id>https://prasanna.dev/posts/autogen-conversational-framework</id>
+        <link href="https://prasanna.dev/posts/autogen-conversational-framework"/>
+        <updated>2023-10-11T18:30:00.000Z</updated>
+        <summary type="html"><![CDATA[Autogen Framework simplifies the construction of complex applications by enabling customizable conversational agents that operate smoothly together to carry out tasks efficiently.]]></summary>
+        <content type="html"><![CDATA[<p><a href="https://github.com/microsoft/autogen">Autogen framework</a> offers developers with a toolkit that harnesses the power of functions, enabling the creation of conversational agents capable of solving diverse tasks. Apart its simplicity of APIs, it also offers multiple modes including the human-in-the-loop model, thereby simplifying the development of complex applications.</p>
+<h2 id="differentiatingautogenfromlangchainorsemantickernel">Differentiating Autogen from Langchain or Semantic Kernel</h2>
+<ol>
+<li><p><strong><a href="https://microsoft.github.io/autogen/">Autogen</a></strong>: Tailored for multi-agent conversations, Autogen streamlines complex LLM workflows, optimizing performance and supporting diverse conversation patterns. Its strength lies in enhancing LLM inference within multi-agent frameworks. It also offers a human-in-the-loop, meaning that the user can intervene in the conversation at any point, providing feedback or additional information to the agents and controlling the conversation flow.</p></li>
+<li><p><strong><a href="https://python.langchain.com/docs/get_started/introduction">Langchain</a></strong>: Focused on ease and integration, Langchain offers a streamlined approach for creating LLM-based applications. It uniquely utilizes a pipeline combining question vector representation and similarity search for efficient information retrieval. Langchain is ideal for developers seeking a simple yet powerful tool for LLM application development.</p></li>
+<li><p><strong><a href="https://learn.microsoft.com/en-us/semantic-kernel/overview/">Semantic Kernel</a></strong>: An open-source SDK, Semantic Kernel simplifies the integration of conventional programming languages with LLMs. It stands out by allowing the chaining of plugins to call existing code, bridging LLMs with various sources of context. Semantic Kernel is a versatile tool for developers looking to leverage LLMs within existing codebases with C#, Python.</p></li>
+</ol>
+<h2 id="aconversationalusecaseforautogenframework">A conversational Use-case for Autogen Framework</h2>
+<p>Planning a trip can be hard, needing careful planning for staying, things to do, and eating. Microsoft's Autogen makes this easy by using AI. It also allows for human intervention to guide the process when needed.</p>
+<p>Imagine planning a weekend trip with friends. With Autogen, planning becomes easy because of its AI agents and the option for human control. Here's how they help:</p>
+<p><strong>HotelBooking Agent</strong>: This agent helps you find a place to stay. It understands what you want and quickly finds options that fit your needs. If needed, a person can step in to adjust choices.</p>
+<p><strong>Activities Agent</strong>: Next, this agent finds things to do based on your interests. It gives suggestions for all kinds of activities to make your trip fun. Humans can also guide these suggestions.</p>
+<p><strong>FoodOptions Agent</strong>: This agent helps you decide where to eat by recommending places that match your taste and diet. Again, there's room for human input to refine choices.</p>
+<p><strong>Collaborative Coordination with Human in the Loop</strong>: Autogen's strength is making these agents work together well, with the option for human intervention. They adjust suggestions based on your choices, making planning easy and tailored to you, with a human touch when needed.</p>
+<p>A sample of this workflow by this twitter user,</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">yo wtf, Microsoft&#39;s newly released AutoGen is fk&#39;in dope..<br><br>- allows for multiple agents that align to one goal<br>- human input allowed<br><br>🤖 I created 5 agents to help me plan a 30-day iternary in Bangkok<br><br>(results below ↓) <a href="https://t.co/klW3Go1d1c">pic.twitter.com/klW3Go1d1c</a></p>&mdash; peter! 🥷 (@pwang_szn) <a href="https://twitter.com/pwang_szn/status/1707334415691686227?ref_src=twsrc%5Etfw">September 28, 2023</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<h2 id="endlesspossibilitieswithautogen">Endless Possibilities with Autogen</h2>
+<p>Beyond trip planning, Autogen finds applications in a plethora of domains. From customer service automation to virtual assistants in healthcare, Autogen's customizable agents prove invaluable in streamlining operations and enhancing user experiences. In e-commerce, Autogen facilitates personalized product recommendations and seamless order management. In education, it enables interactive learning experiences tailored to individual students' needs. With Autogen, the possibilities are limitless, revolutionizing how we interact with technology across various sectors.</p>
+<p>In conclusion, Microsoft's Autogen framework represents a paradigm shift in conversational AI, empowering developers to craft sophisticated agents tailored to diverse tasks and environments. With its emphasis on customizable functions and collaborative modes, Autogen heralds a new era of conversational agents, redefining the boundaries of human-machine interaction.</p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Langchain for LLM application development]]></title>
         <id>https://prasanna.dev/posts/langchain-llm-app-development</id>
@@ -47,17 +74,17 @@
 <h3 id="sequentialchains"><strong>Sequential Chains</strong></h3>
 <p>Sequential chains allows to chain multiple <code>LLMChain</code> together.</p>
 <p><strong>SimpleSequentialChain</strong> - this allows the output of the first chain is used as the input for the second chain and so on.</p>
-<p><img src="/assets/posts/images/langchain-deeplearning/simple-sequential-chain.png" alt="simple sequential chain {800x235}" title="Simple sequential chain" /></p>
+<p><img src="/assets/posts/images/langchain-deeplearning/simple-sequential-chain.png" alt="simple sequential chain {400x120}" title="Simple sequential chain" /></p>
 <p><strong>SequentialChain</strong> -  this allows you to connect multiple <code>LLMChain</code> together and also allows you to connect them (input/output) as you wish.</p>
-<p><img src="/assets/posts/images/langchain-deeplearning/sequential-chain.png" alt="sequential chain {950x710}" title="sequential chain" /></p>
+<p><img src="/assets/posts/images/langchain-deeplearning/sequential-chain.png" alt="sequential chain {475x355}" title="sequential chain" /></p>
 <h3 id="routerchains"><strong>Router Chains</strong></h3>
 <p>Router chains allows you to map the user input to a specific chain.</p>
-<p><img src="/assets/posts/images/langchain-deeplearning/router.png" alt="router chain {960x645}" title="router chain" /></p>
+<p><img src="/assets/posts/images/langchain-deeplearning/router.png" alt="router chain {480x330}" title="router chain" /></p>
 <p><a href="https://github.com/prasann/langchain-deeplearning/blob/main/L3-chain.ipynb">Link to the workbook</a></p>
 <h2 id="chapter4questionandanswer">Chapter 4: Question and answer</h2>
 <p>In order to have a Q&amp;A on top of the user's documents. For this to happen, we need to build <a href="https://js.langchain.com/docs/modules/data_connection/text_embedding/">custom embeddings</a> for the documents.</p>
 <p>Langchain provides interfaces to create and interact with the embeddings. My workbook will contain the Azure OpenAI version of these embeddings and the code uses <code>VectorstoreIndexCreator</code> to create the embeddings and <code>DocArrayInMemorySearch</code> to store the embeddings.</p>
-<p><img src="/assets/posts/images/langchain-deeplearning/embeddings.png" alt="embeddings 101 {962x911}" title="Embeddings" /></p>
+<p><img src="/assets/posts/images/langchain-deeplearning/embeddings.png" alt="embeddings 101 {480x460}" title="Embeddings" /></p>
 <p><a href="https://github.com/prasann/langchain-deeplearning/blob/main/L4-questions-answers.ipynb">Link to the workbook</a></p>
 <h2 id="chapter5evaluation">Chapter 5: Evaluation</h2>
 <p>It is possible to perform an evaluation of the LLMs. The evaluation is done by comparing the output of the LLMs with the expected output. Langchain offers interfaces to create these evaluation and perform evaluations.</p>

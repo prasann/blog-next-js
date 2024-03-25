@@ -1,6 +1,6 @@
 ---
 title: Autogen - Make your agents to collaborate
-description: 
+description: Autogen Framework simplifies the construction of complex applications by enabling customizable conversational agents that operate smoothly together to carry out tasks efficiently. 
 category: tech, llm, ai
 date: 12-10-2023
 minutesToRead: 7

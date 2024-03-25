@@ -1,5 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import React from "react";
+import rehypeRaw from "rehype-raw";
 import CustomComponentsForMarkdown from "./utils/CustomComponentsForMarkdown";
 
 type Props = {
@@ -12,6 +13,7 @@ const RenderMarkdown = ({ content }: Props) => {
     <ReactMarkdown
       components={CustomComponentsForMarkdown}
       children={content}
+      rehypePlugins={[rehypeRaw]}
     />
   );
 };
