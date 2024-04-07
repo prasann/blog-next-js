@@ -1,5 +1,18 @@
 [
   {
+    "title": "Exploring ONDC",
+    "date": "28-11-2023",
+    "place": "Remote",
+    "descriptionFile": "05-ondc.md",
+    "externalLinks": [
+      {
+        "name": "Deck",
+        "link": "https://docs.google.com/presentation/d/e/2PACX-1vRuJRGH288x5i7T5RcDHyjrIvI7sHiz_z5w4sKC8E9CqmkyW4aL4Xjaa92sw8anQh5sgH7VwrjzBtJA/embed?start=false&loop=true&delayms=3000",
+        "embed": true
+      }
+    ]
+  },
+  {
     "title": "Demystifying Micro-frontends",
     "date": "28-04-2022",
     "place": "Remote",

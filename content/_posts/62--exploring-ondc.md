@@ -14,7 +14,7 @@ Upon reflecting on my recent presentation at the Retail Learning Hangout, I delv
 
 India's journey towards digital inclusivity didn't start with ONDC. It's built on the success of initiatives like Aadhaar and the Unified Payments Interface (UPI), showcasing the potential of government-backed technology in driving social and financial inclusion. 
 
-![DPI circles {475x355}](/assets/posts/images/ondc/01-dpi-circle.jpg "DPI circles")
+![DPI circles ](/assets/posts/images/ondc/01-dpi-circle.jpg "DPI circles")
 
 ONDC steps into this arena, aiming to push the digital frontier further and extend e-commerce access to millions of small traders and consumers nationwide who are yet to establish an online presence. Surprisingly, out of the 18 million registered traders in India, only 1.5 million have an online presence. Herein lies the gap—and the opportunity—that ONDC seeks to address.
 
@@ -22,11 +22,11 @@ ONDC steps into this arena, aiming to push the digital frontier further and exte
 
 ONDC stands out due to its shift from the prevailing platform-based e-commerce model to a network-centric approach. This transition isn't just technical but philosophical, prioritizing openness and accessibility. ONDC's model removes barriers, enabling direct interaction between buyers and sellers through a decentralized network.
 
-![ONDC Introduction {475x355}](/assets/posts/images/ondc/02-ondc-intro.jpg "ONDC Introduction")
+![ONDC Introduction ](/assets/posts/images/ondc/02-ondc-intro.jpg "ONDC Introduction")
 
 ### Key Challenges in the Current E-commerce Landscape
 
-![Buyer and Seller problems {475x355}](/assets/posts/images/ondc/03-problem-statement.jpg "Buyer and Seller problems")
+![Buyer and Seller problems ](/assets/posts/images/ondc/03-problem-statement.jpg "Buyer and Seller problems")
 
 ### Empowering Sellers and Enriching Buyer Experience
 
@@ -37,7 +37,7 @@ ONDC stands out due to its shift from the prevailing platform-based e-commerce m
 - **Increased Profitability:** With no intermediaries, sellers enjoy higher earnings and reduced risks.
 - **Seamless Transition:** Sellers uphold their network-wide reputation and can switch between seller apps effortlessly. ONDC provides detailed business analytics to aid strategic planning.
 
-![Seller gains {475x355}](/assets/posts/images/ondc/06-seller.jpg "Seller gains")
+![Seller gains ](/assets/posts/images/ondc/06-seller.jpg "Seller gains")
 
 #### For Buyers
 
@@ -46,13 +46,13 @@ ONDC stands out due to its shift from the prevailing platform-based e-commerce m
 - **Convenient Transactions:** Buyers can review delivery options, settle payments conveniently, and choose from multiple sellers in a single transaction.
 - **Trustworthy Environment:** ONDC ensures reliable grievance management, fostering a secure shopping environment.
 
-![Buyer experience {475x355}](/assets/posts/images/ondc/05-buyer.jpg "Buyer experience")
+![Buyer experience ](/assets/posts/images/ondc/05-buyer.jpg "Buyer experience")
 
 ### Unveiling the Tech Landscape
 
 Central to ONDC's proposition is its network-centric model, democratizing digital commerce for small traders. Through technical illustrations, the presentation showcased how ONDC integrates various players across the commerce value chain, from buyers and sellers to logistics service providers, via a decentralized registry and gateway system.
 
-![Inter connectivity of Networks {475x355}](/assets/posts/images/ondc/07-a-inter-connectivity.jpg "Tech Landscape")
+![Inter connectivity of Networks ](/assets/posts/images/ondc/07-a-inter-connectivity.jpg "Tech Landscape")
 
 ### The Beckn Protocol
 
@@ -60,18 +60,19 @@ At the core of ONDC's mechanics lies the Beckn protocol, facilitating seamless i
 
 #### Explaining Beckn through SMTP
 
-![SMTP Explained {475x355}](/assets/posts/images/ondc/08-smtp-01.jpg "SMTP Explained")
-![Beckn Explained {475x355}](/assets/posts/images/ondc/09-beckn-01.jpg "Beckn explained")
+![SMTP Explained ](/assets/posts/images/ondc/08-smtp-01.jpg "SMTP Explained")
+
+![Beckn Explained ](/assets/posts/images/ondc/09-beckn-01.jpg "Beckn explained")
 
 #### Comparison of HTTP and Beckn
 
-![HTTP vs Beckn {475x355}](/assets/posts/images/ondc/10-beckn.jpg "HTTP vs Beckn")
+![HTTP vs Beckn ](/assets/posts/images/ondc/10-beckn.jpg "HTTP vs Beckn")
 
 ### Design and Architecture Insights
 
 The layered architecture of Beckn and ONDC, reminiscent of the OSI model of network communication, highlights the sophistication behind this concept. Beckn provides APIs and models for digital commerce transactions across various phases, supporting an ecosystem where data privacy, security, and global interoperability are foundational.
 
-![The architecture {475x355}](/assets/posts/images/ondc/07-architecture.jpg "Architecture")
+![The architecture ](/assets/posts/images/ondc/07-architecture.jpg "Architecture")
 
 ### Addressing Challenges
 
@@ -79,6 +80,6 @@ The journey towards widespread ONDC adoption is not without challenges, particul
 
 In conclusion, ONDC represents a bold step towards reshaping India’s digital commerce ecosystem. It's a movement I'm proud to be part of, fostering dialogue and sharing insights on platforms like the Retail Learning Hangout, where ideas converge to shape the future.
 
-You can view the full presentation here: [ONDC - India's Digital Commerce Revolution](https://docs.google.com/presentation/d/1IQoZgyWifpt0FGUKmS-hozKmYQowftCxtD5w6oKUbtw/edit?usp=sharing)
+You can view the full presentation here: [ONDC - India's Digital Commerce Revolution](https://docs.google.com/presentation/d/e/2PACX-1vRuJRGH288x5i7T5RcDHyjrIvI7sHiz_z5w4sKC8E9CqmkyW4aL4Xjaa92sw8anQh5sgH7VwrjzBtJA/embed?start=false&loop=true&delayms=3000)
 
 **Note: All the images are sourced mostly from [Beckn](https://becknprotocol.io/) and from [ONDC](https://ondc.in/)**
