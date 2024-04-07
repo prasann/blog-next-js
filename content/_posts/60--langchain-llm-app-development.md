@@ -4,7 +4,6 @@ description: This is a personal notes from the course Langchain for LLM applicat
 category: tech, langchain, llm
 date: 14-08-2023
 minutesToRead: 5
-draft: true
 ---
 
 This is a personal notes from the course [Langchain for LLM application development](https://learn.deeplearning.ai/langchain/lesson/1/introduction). This one of the short courses offered by the [Deeplearning](https://deeplearning.ai).

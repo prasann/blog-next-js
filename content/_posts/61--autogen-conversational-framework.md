@@ -4,7 +4,6 @@ description: Autogen Framework simplifies the construction of complex applicatio
 category: tech, llm, ai
 date: 12-10-2023
 minutesToRead: 7
-draft: true
 ---
 
 [Autogen framework](https://github.com/microsoft/autogen) offers developers with a toolkit that harnesses the power of functions, enabling the creation of conversational agents capable of solving diverse tasks. Apart its simplicity of APIs, it also offers multiple modes including the human-in-the-loop model, thereby simplifying the development of complex applications.
