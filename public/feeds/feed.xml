@@ -4,7 +4,7 @@
         <title>Random Presence</title>
         <link>https://prasanna.dev</link>
         <description>Random presence of my thoughts and learning...</description>
-        <lastBuildDate>Wed, 07 Aug 2024 11:12:45 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 08 Aug 2024 13:20:32 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>npm feed package</generator>
         <language>en</language>
@@ -14,6 +14,29 @@
             <link>https://prasanna.dev</link>
         </image>
         <copyright>Copyright - Prasanna</copyright>
+        <item>
+            <title><![CDATA[Quota management for DallE API using APIM]]></title>
+            <link>https://prasanna.dev/posts/quota-management-for-dalle-apim</link>
+            <guid>https://prasanna.dev/posts/quota-management-for-dalle-apim</guid>
+            <pubDate>Tue, 25 Jun 2024 18:30:00 GMT</pubDate>
+            <description><![CDATA[This article explores how enterprises can use Azure API Management to implement usage limits and quotas for the DALL-E API, ensuring cost-effective and controlled access to OpenAI's image generation capabilities.]]></description>
+            <content:encoded><![CDATA[<p>Enterprises often work with applications that use OpenAI's technologies. Their teams typically want to explore these applications but need to limit API usage to avoid excessive costs. This means controlling the number of API calls and setting constraints on API usage. Such tasks are usually handled at the Gateway layer of applications, which is where API Management becomes important.</p>
+<h2 id="scenario">Scenario</h2>
+<p>Consider a scenario where an enterprise uses OpenAI's DALL-E API to generate images. They want to limit the number of images generated, which could be set on a per-minute, daily, weekly, or another time basis.</p>
+<h2 id="apimgatewayforgenerativeai">APIM Gateway for Generative AI</h2>
+<p><a href="https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts">Azure API Management (APIM)</a> is a service offering a scalable, multi-cloud API management platform for securing, publishing, and analyzing APIs. It acts as a gateway for APIs, allowing management and usage constraints. Here is a useful article on using APIM as a gateway for Generative AI APIs. <a href="https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/dev-starters/genai-gateway/reference-architectures/apim-based">GenAI Gateway: Managing Generative AI APIs with Azure API Management</a></p>
+<h2 id="quotamanagementfordalleapi">Quota Management for DALL-E API</h2>
+<p>In this article, we will discuss how to manage quotas for the DALL-E API using Azure API Management. We'll explore how to limit the number of images that can be generated through this API.</p>
+<p>To accomplish this with APIM, we can use <code>rate-limit</code> or <code>quota</code> policies. For more details on the differences between these policies, refer to the <a href="https://learn.microsoft.com/en-us/azure/api-management/api-management-sample-flexible-throttling#rate-limits-and-quotas">official documentation</a>.</p>
+<p>The following logic can be applied to both policies:</p>
+<h3 id="approach">Approach</h3>
+<ul>
+<li>The requests made to the DALL-E endpoints contain the number of images to be generated. <a href="https://platform.openai.com/docs/api-reference/images/create#images-create-n">Ref</a></li>
+<li>APIM can track this number and decrease a counter as specified by the policy.</li>
+<li>Ensure the counter is updated only after successful responses from the DALL-E API, and reset the counter at the end of the time period.</li>
+</ul>
+<p>Here is the link to the gist, containing the policy snippet to achieve this using the <code>rate-limit</code> policy. The same ca be extended to the <code>quota</code> policy as well. <a href="https://gist.github.com/prasann/f81d3ecc30729e6d6f8744622336cf83">APIM Policy Snippet</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[ONDC - India's Digital Commerce Revolution]]></title>
             <link>https://prasanna.dev/posts/exploring-ondc</link>
