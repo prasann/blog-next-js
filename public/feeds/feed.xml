@@ -4,7 +4,7 @@
         <title>Random Presence</title>
         <link>https://prasanna.dev</link>
         <description>Random presence of my thoughts and learning...</description>
-        <lastBuildDate>Thu, 08 Aug 2024 13:20:32 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 25 Sep 2024 11:21:15 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>npm feed package</generator>
         <language>en</language>
@@ -14,6 +14,63 @@
             <link>https://prasanna.dev</link>
         </image>
         <copyright>Copyright - Prasanna</copyright>
+        <item>
+            <title><![CDATA[Auto function calling with GPT models using Semantic Kernel]]></title>
+            <link>https://prasanna.dev/posts/auto-function-calling-semantic-kernel</link>
+            <guid>https://prasanna.dev/posts/auto-function-calling-semantic-kernel</guid>
+            <pubDate>Mon, 23 Sep 2024 18:30:00 GMT</pubDate>
+            <description><![CDATA[Writeup on a sample application that demonstrates how to automatically call functions using GPT models and Semantic Kernel. This notebook]]></description>
+            <content:encoded><![CDATA[<h2 id="semantickernel">Semantic Kernel</h2>
+<p><a href="https://github.com/microsoft/semantic-kernel">Semantic Kernel</a> is an SDK that integrates Large Language Models (LLMs) like OpenAI, Azure OpenAI, and Hugging Face with conventional programming languages like C#, Python, and Java. It is a drop-in alternative for LangChain, enabling developers to leverage the power of LLMs in their applications.</p>
+<h2 id="autofunctioncallingwithgptmodels">Auto function calling with GPT models</h2>
+<p>Function calling in Large Language Models (LLMs) is a powerful technique that allows these models to interact with external systems, APIs, and tools. This capability extends the functionality of LLMs beyond text generation, enabling them to perform actions, retrieve real-time information, and execute tasks by leveraging external resources.</p>
+<p>In this article, we explore a sample application that demonstrates how to automatically call functions using GPT (gpt-4o) models and Semantic Kernel. Here we let GPT model to decide what is the appropriate function to call based on the user input, and performs the function call. All these will be orchestrated by Semantic Kernel.</p>
+<h2 id="scenario">Scenario</h2>
+<p>In this sample application, GPT is provided with 2 functions.</p>
+<ol>
+<li>Bing Search - This function takes a search query as input and returns the top search results from Bing.</li>
+<li>Azure AI Search on a custom dataset - This function invokes the Azure AI Search endpoint to perform a vector search on a custom pre-indexed data. For this example, we have a refrigerator-manual being indexed and the function returns the most relevant section from the manual based on the user query.</li>
+</ol>
+<p>When a user inputs a query, the GPT model predicts the function to call based on the input and Semantic Kernel orchestrates the function call.</p>
+<h2 id="approach">Approach</h2>
+<p>In Semantic Kernels, these functions can be represented as <a href="https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/">plugins</a>. Each plugin is a self-contained unit that encapsulates the function's logic, input, and output. The GPT model predicts the plugin to call based on the user input, and Semantic Kernel executes the corresponding plugin.</p>
+<p>For our scenario, there are 2 plugins.</p>
+<ol>
+<li><p>Bing Search Plugin: This comes with Semantic Kernel SDK and is used to search Bing. This uses Bing Service in Azure, and the plugin is configured to call the Bing Search API.</p></li>
+<li><p>A Custom Plugin to call Azure AI Search: This custom plugin will allow GPT to make calls to the Azure AI Search service and perform a vector search on a custom dataset.</p></li>
+</ol>
+<p>The approach is pretty straightforward:</p>
+<ol>
+<li>Initialize the Semantic Kernel with the GPT model and the plugins.</li>
+</ol>
+<pre><code class="python language-python">kernel = Kernel()
+
+# add bing plugin
+
+connector = BingConnector()
+kernel.add_plugin(WebSearchEnginePlugin(connector), "BingIt")
+
+# add custom plugin
+
+search_client = SearchClient(os.getenv("AZURE_AI_SEARCH_ENDPOINT"), 
+                                 os.getenv("AZURE_AI_SEARCH_INDEX_NAME"), 
+                                 AzureKeyCredential(os.getenv("AZURE_AI_SEARCH_API_KEY")))
+    kernel.add_plugin(RefrigeratorInfoPlugin(search_client), "RefrigeratorInfo")
+</code></pre>
+<ol>
+<li>Enable Auto function calling in the Semantic Kernel.</li>
+</ol>
+<pre><code class="python language-python">execution_settings = AzureChatPromptExecutionSettings(tool_choice="auto")
+execution_settings.function_choice_behavior = FunctionChoiceBehavior.Auto(auto_invoke=True)
+</code></pre>
+<ol>
+<li>Interact with the user and let the GPT model predict the function to call.</li>
+</ol>
+<h2 id="codesnippet">Code Snippet</h2>
+<p>You can view the whole working code sample here: <a href="https://github.com/prasann/auto-fn-invocation-sk">Semantic Kernel Auto Function Calling</a></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>With about 80 lines of code, we are able to create a sample application that demonstrates how to automatically call functions using GPT models and Semantic Kernel. This approach can be extended to a wide range of applications, including chatbots, virtual assistants, and automation tools.</p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Quota management for DallE API using APIM]]></title>
             <link>https://prasanna.dev/posts/quota-management-for-dalle-apim</link>
@@ -35,7 +92,37 @@
 <li>APIM can track this number and decrease a counter as specified by the policy.</li>
 <li>Ensure the counter is updated only after successful responses from the DALL-E API, and reset the counter at the end of the time period.</li>
 </ul>
-<p>Here is the link to the gist, containing the policy snippet to achieve this using the <code>rate-limit</code> policy. The same ca be extended to the <code>quota</code> policy as well. <a href="https://gist.github.com/prasann/f81d3ecc30729e6d6f8744622336cf83">APIM Policy Snippet</a></p>]]></content:encoded>
+<h2 id="policysnippet">Policy Snippet</h2>
+<p><a href="https://gist.github.com/prasann/f81d3ecc30729e6d6f8744622336cf83">Link to the Gist</a></p>
+<pre><code class="xml language-xml">&lt;policies&gt;
+    &lt;inbound&gt;
+        &lt;base /&gt;
+        &lt;set-variable name="body" value="@(context.Request.Body.As&lt;string&gt;(preserveContent: true))" /&gt;
+        &lt;choose&gt;
+            &lt;when condition="@(context.Request.Body.As&lt;JObject&gt;()["n"] != null)"&gt;
+                &lt;rate-limit-by-key calls="1" renewal-period="60" counter-key="@(context.Request.IpAddress)" increment-condition="@(context.Response.StatusCode == 200)" increment-count="@(int.Parse(context.Request.Body.As&lt;JObject&gt;()["n"].ToString()))" retry-after-header-name="x-apim-custom-retry" remaining-calls-header-name="x-apim-remaining" /&gt;
+            &lt;/when&gt;
+            &lt;otherwise&gt;
+                &lt;rate-limit-by-key calls="1" renewal-period="60" counter-key="@(context.Request.IpAddress)" increment-condition="@(context.Response.StatusCode == 200)" increment-count="1" retry-after-header-name="x-apim-custom-retry" remaining-calls-header-name="x-apim-remaining" /&gt;
+            &lt;/otherwise&gt;
+        &lt;/choose&gt;
+        &lt;set-body&gt;@((string)context.Variables["body"])&lt;/set-body&gt;
+    &lt;/inbound&gt;
+    &lt;!-- Control if and how the requests are forwarded to services  --&gt;
+    &lt;backend&gt;
+        &lt;base /&gt;
+    &lt;/backend&gt;
+    &lt;!-- Customize the responses --&gt;
+    &lt;outbound&gt;
+        &lt;base /&gt;
+    &lt;/outbound&gt;
+    &lt;!-- Handle exceptions and customize error responses  --&gt;
+    &lt;on-error&gt;
+        &lt;base /&gt;
+    &lt;/on-error&gt;
+&lt;/policies&gt;
+</code></pre>
+<p>Here is the link to the gist, containing the policy snippet and an explanation <a href="https://gist.github.com/prasann/f81d3ecc30729e6d6f8744622336cf83">APIM Policy Snippet</a>. This can be achieved by using the <code>quota</code> policy as well.</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[ONDC - India's Digital Commerce Revolution]]></title>
