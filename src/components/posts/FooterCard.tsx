@@ -1,5 +1,5 @@
 import Image from "next/image";
-import profileImage from "./../../../public/assets/profile.jpg";
+import profileImage from "./../../../public/assets/profile0924.jpg";
 
 const FooterCard = () => {
   return (
