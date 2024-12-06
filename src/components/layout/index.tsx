@@ -8,9 +8,9 @@ type LayoutProps = {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col justify-start min-h-screen bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
+    <div className="flex flex-col justify-start min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
       <NavBar />
-      <main className="prose max-w-none">
+      <main className="prose max-w-none text-gray-300">
         <div className="lg:flex lg:justify-center">{children}</div>
       </main>
       <Footer />

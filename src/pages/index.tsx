@@ -6,7 +6,7 @@ import generateMainFeeds from "../lib/feed";
 
 const Home = () => {
   return (
-    <div>
+    <div className="dark">
       <MetaHeaders />
       <ContentArea />
     </div>

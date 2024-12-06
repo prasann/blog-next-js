@@ -23,7 +23,7 @@ type MobileNavProps = {
 
 const MenuLink = ({ displayName, location }: MenuLinkProps) => {
   return (
-    <div className="p-4 text-sky-500 hover:text-green-300  hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white rounded-xl">
+    <div className="p-4 text-sky-500 hover:text-green-300 hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white rounded-xl">
       <a
         href={location}
         className="text-2xl font-semibold transition duration-300"
@@ -55,7 +55,7 @@ const NavBar = () => {
 
   return (
     <nav>
-      <header className="header dark-background ">
+      <header className="header bg-gray-900 text-white">
         <div className="flex flex-row justify-between">
           <div onClick={navigateToHome} className="cursor-pointer mx-4 my-2">
             <div className="mt-2 w-6/12 md:w-4/12 xl:w-3/12">
@@ -76,7 +76,7 @@ const NavBar = () => {
           </div>
         </div>
       </header>
-      <section className="block fixed md:hidden inset-x-0 bottom-0 z-10 bg-white border-t-2 border-gray-400 shadow">
+      <section className="block fixed md:hidden inset-x-0 bottom-0 z-10 bg-gray-900 border-t-2 border-gray-700 shadow">
         <div id="tabs" className="flex justify-between">
           <MobileNavIcon
             iconName={faAddressCard}
