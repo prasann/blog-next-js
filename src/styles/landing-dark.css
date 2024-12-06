@@ -1,0 +1,44 @@
+.header {
+    @apply h-40 bg-gray-900 text-white;
+  }
+  
+  .content-area {
+    @apply p-2 -mt-10 mr-2 ml-2 bg-gray-800 text-white;
+  }
+  
+  #about-me {
+    .about-me-container {
+      @apply flex flex-col justify-center items-center mb-4;
+    }
+  
+    .pic-container {
+      @apply ml-2 w-2/3 flex flex-row items-center justify-center;
+    }
+  
+    .pic-wrapper {
+      @apply w-2/3 lg:w-full text-center;
+    }
+  
+    .desc-container {
+      @apply p-4;
+    }
+  
+    @screen lg {
+      .about-me-container {
+        @apply flex-row;
+      }
+      .pic-container {
+        @apply w-1/4 mt-12;
+      }
+      .desc-container {
+        @apply w-3/4 ml-8 mr-4;
+      }
+      .pic-wrapper {
+        @apply w-full;
+      }
+    }
+  }
+  
+  body {
+    @apply bg-gray-900 text-white;
+  }
