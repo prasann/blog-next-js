@@ -3,7 +3,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: "dark",
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -45,7 +45,7 @@ module.exports = {
               color: theme('colors.gray.100'),
             },
             h2: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.pink.500'),
             },
             h3: {
               color: theme('colors.gray.100'),
@@ -59,6 +59,9 @@ module.exports = {
             blockquote: {
               color: theme('colors.gray.100'),
               borderLeftColor: theme('colors.gray.700'),
+            },
+            strong: {
+              color: theme('colors.pink.300'),
             },
           },
         },
@@ -75,7 +78,7 @@ module.exports = {
               color: theme('colors.gray.100'),
             },
             h2: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.pink.500'),
             },
             h3: {
               color: theme('colors.gray.100'),
@@ -90,6 +93,9 @@ module.exports = {
               color: theme('colors.gray.100'),
               borderLeftColor: theme('colors.gray.700'),
             },
+            strong: {
+              color: theme('colors.pink.300'),
+            }
           },
         },
       }),
@@ -98,7 +104,7 @@ module.exports = {
   variants: {
     extend: {
       animation: ["hover"],
-      typography: ["dark"], // Add this line
+      typography: ["dark"], 
     },
   },
   plugins: [require("@tailwindcss/typography")],

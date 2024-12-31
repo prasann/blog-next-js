@@ -23,7 +23,7 @@ type MobileNavProps = {
 
 const MenuLink = ({ displayName, location }: MenuLinkProps) => {
   return (
-    <div className="p-4 text-sky-500 hover:text-green-300 hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white rounded-xl">
+    <div className="p-4 menu-links hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset  rounded-xl">
       <a
         href={location}
         className="text-2xl font-semibold transition duration-300"
@@ -38,7 +38,7 @@ const MobileNavIcon = ({ iconName, displayName, location }: MobileNavProps) => {
   return (
     <a
       href={location}
-      className="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1"
+      className="w-full menu-link justify-center inline-block text-center pt-2 pb-1"
     >
       <FontAwesomeIcon icon={iconName} />
       <span className="tab tab-home block text-xs">{displayName}</span>
@@ -55,19 +55,16 @@ const NavBar = () => {
 
   return (
     <nav>
-      <header className="header bg-gray-900 text-white">
+      <header className="header">
         <div className="flex flex-row justify-between">
-          <div onClick={navigateToHome} className="cursor-pointer mx-4 my-2">
-            <div className="mt-2 w-6/12 md:w-4/12 xl:w-3/12">
-              <Image
-                src={logoImage}
-                alt="logo"
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                }}
-              />
-            </div>
+          <div onClick={navigateToHome} className="cursor-pointer mx-2 my-2">
+            <Image
+              src={logoImage}
+              alt="Logo"
+              className="rounded-full"
+              width={50}
+              height={50}
+            />
           </div>
           <div className="hidden md:mr-8 md:flex items-center space-x-2">
             <MenuLink displayName="About" location="/" />
@@ -76,7 +73,7 @@ const NavBar = () => {
           </div>
         </div>
       </header>
-      <section className="block fixed md:hidden inset-x-0 bottom-0 z-10 bg-gray-900 border-t-2 border-gray-700 shadow">
+      <section className="block fixed md:hidden inset-x-0 bottom-0 z-10 shadow">
         <div id="tabs" className="flex justify-between">
           <MobileNavIcon
             iconName={faAddressCard}

@@ -37,7 +37,7 @@ const celebrate = () => {
 
 const Engage = ({ description }: Props) => {
   return (
-    <div className="bg-black flex flex-row">
+    <div className= "flex flex-row">
       <div
         className="mx-2 flex flex-row highlight-animation"
         onClick={() => shareOnTwitter(description)}

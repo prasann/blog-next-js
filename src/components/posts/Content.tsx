@@ -6,7 +6,7 @@ import RenderMarkdown from "../RenderMarkdown";
 const CategoryTag = ({ category }: { category: string }) => {
   return (
     <span
-      className={`text-xs font-semibold inline-block py-2 px-2 rounded-full text-gray-300 bg-gray-700 normal-case last:mr-0 mr-1`}>
+      className={`text-xs font-semibold inline-block py-2 px-2 rounded-full tag-color normal-case last:mr-0 mr-1`}>
       {category}
     </span>
   );
