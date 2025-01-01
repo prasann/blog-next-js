@@ -62,8 +62,10 @@ const NavBar = () => {
               src={logoImage}
               alt="Logo"
               className="rounded-full"
-              width={50}
-              height={50}
+              style={{
+                maxWidth: "50%",
+                height: "auto",
+              }}
             />
           </div>
           <div className="hidden md:mr-8 md:flex items-center space-x-2">
