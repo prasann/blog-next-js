@@ -13,14 +13,14 @@ import talkImage from "./../../images/speak.jpg";
 
 const Greeting = () => {
   return (
-    <>
-      <div className="inline-block animate-wave text-2xl lg:text-6xl origin-[70%_70%]">
+    <div className="">
+      <div className="inline-block animate-wave text-2xl lg:text-6xl origin-[70%_70%] greeting-color">
         👋🏽
       </div>
-      <span className="text-2xl lg:text-6xl font-bold ml-4 mt-2">
+      <span className="text-2xl lg:text-6xl font-bold ml-4 mt-2 greeting-color">
         Hi, I'm Prasanna !!
       </span>
-    </>
+    </div>
   );
 };
 
@@ -138,7 +138,7 @@ const AboutMe = () => {
 
 const Social = () => {
   return (
-    <div className="w-full rounded p-4 mt-4">
+    <div className="w-full social-bg rounded p-4 mt-4">
       <div className="flex flex-row justify-evenly">
         <a
           aria-label="github handle prasann"
@@ -198,10 +198,8 @@ const Social = () => {
 
 const Container = () => {
   return (
-    <div className="content-area bg-white rounded-xl">
+    <div className="content-area rounded-xl">
       <AboutMe />
-
-      {/*<img src="http://ghchart.rshah.org/prasann" alt="prasann's Github chart" />*/}
       <Social />
     </div>
   );

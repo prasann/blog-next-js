@@ -3,7 +3,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: "media",
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -31,12 +31,81 @@ module.exports = {
         wave: "wave 2.5s infinite",
         "ping-slow": "ping 1.5s infinite",
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.gray.300'),
+            a: {
+              color: theme('colors.blue.400'),
+              '&:hover': {
+                color: theme('colors.blue.600'),
+              },
+            },
+            h1: {
+              color: theme('colors.gray.100'),
+            },
+            h2: {
+              color: theme('colors.pink.500'),
+            },
+            h3: {
+              color: theme('colors.gray.100'),
+            },
+            h4: {
+              color: theme('colors.gray.100'),
+            },
+            code: {
+              color: theme('colors.pink.500'),
+            },
+            blockquote: {
+              color: theme('colors.gray.100'),
+              borderLeftColor: theme('colors.gray.700'),
+            },
+            strong: {
+              color: theme('colors.pink.300'),
+            },
+          },
+        },
+        dark: {
+          css: {
+            color: theme('colors.gray.300'),
+            a: {
+              color: theme('colors.blue.400'),
+              '&:hover': {
+                color: theme('colors.blue.600'),
+              },
+            },
+            h1: {
+              color: theme('colors.gray.100'),
+            },
+            h2: {
+              color: theme('colors.pink.500'),
+            },
+            h3: {
+              color: theme('colors.gray.100'),
+            },
+            h4: {
+              color: theme('colors.gray.100'),
+            },
+            code: {
+              color: theme('colors.pink.500'),
+            },
+            blockquote: {
+              color: theme('colors.gray.100'),
+              borderLeftColor: theme('colors.gray.700'),
+            },
+            strong: {
+              color: theme('colors.pink.300'),
+            }
+          },
+        },
+      }),
     },
-    variants: {
-      extend: {
-        animation: ["hover"],
-      },
-    },
-    plugins: [require("@tailwindcss/typography")],
   },
+  variants: {
+    extend: {
+      animation: ["hover"],
+      typography: ["dark"], 
+    },
+  },
+  plugins: [require("@tailwindcss/typography")],
 };

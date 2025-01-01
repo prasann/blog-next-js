@@ -58,9 +58,10 @@
   code::after {
     content: none;
   }
+  @apply text-gray-300;
 }
 
-.image-container{
+.image-container {
   width: 100%;
 
   > div {
@@ -73,4 +74,8 @@
     position: relative !important;
     height: unset !important;
   }
+}
+
+body {
+  @apply bg-gray-900 text-white;
 }
