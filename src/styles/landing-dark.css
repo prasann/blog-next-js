@@ -62,10 +62,10 @@
         @apply flex-row;
       }
       .pic-container {
-        @apply w-1/4 mt-12;
+        @apply w-1/5 mt-12;
       }
       .desc-container {
-        @apply w-3/4 ml-8 mr-4;
+        @apply w-4/5 ml-8 mr-4;
       }
       .pic-wrapper {
         @apply w-full;
