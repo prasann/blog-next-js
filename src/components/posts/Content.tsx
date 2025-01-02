@@ -24,7 +24,7 @@ const Content = ({
     <div className="prose max-w-screen-xl content-area bg-gray-900 text-gray-300 rounded-xl">
       <article key={title}>
         <header>
-          <div className="text-4xl font-bold text-center mt-2">{title}</div>
+          <div className="text-4xl font-bold text-center mt-2 greeting-color">{title}</div>
           <div className="flex flex-row justify-between">
             <div className="mt-2 mb-4 text-center text-gray-400 italic">
               {date}
