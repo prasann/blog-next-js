@@ -58,15 +58,11 @@ const NavBar = () => {
       <header className="header">
         <div className="flex flex-row justify-between">
           <div onClick={navigateToHome} className="cursor-pointer mx-2 my-2">
-            <Image
-              src={logoImage}
-              alt="Logo"
-              className="rounded-full"
-              style={{
-                maxWidth: "50%",
-                height: "auto",
-              }}
-            />
+          <Image
+            src={logoImage}
+            alt="Logo"
+            className="rounded-full w-full h-auto"
+          />
           </div>
           <div className="hidden md:mr-8 md:flex items-center space-x-2">
             <MenuLink displayName="About" location="/" />
@@ -75,7 +71,7 @@ const NavBar = () => {
           </div>
         </div>
       </header>
-      <section className="block fixed md:hidden inset-x-0 bottom-0 z-10 shadow">
+      <section className="block fixed md:hidden inset-x-0 bottom-0 z-10 shadow main-gradient">
         <div id="tabs" className="flex justify-between">
           <MobileNavIcon
             iconName={faAddressCard}

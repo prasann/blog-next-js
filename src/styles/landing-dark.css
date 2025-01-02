@@ -1,5 +1,9 @@
+  .main-gradient {
+    @apply bg-gradient-to-r from-gray-800 via-slate-700 to-black;
+  }
+
   .header {
-    @apply h-40 bg-gradient-to-r from-gray-800 via-slate-700 to-black;
+    @apply h-40 main-gradient
   }
 
   .main-bg{
