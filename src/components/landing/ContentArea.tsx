@@ -66,19 +66,13 @@ const Writeup = () => {
   return (
     <div className="lg:text-justify">
       <div className="mt-4 lg:mt-8">
-        I’m a full-stack developer based out of Bengaluru (India) with
-        experience in building and leading development teams that build
-        high-performance enterprise platforms and products.
+        I'm a full-stack developer hailing from the bustling city of Bengaluru, India. When I'm not busy building and leading development teams to create high-performance enterprise platforms and products, you can find me indulging in my love for coffee and coding (sometimes simultaneously).
       </div>
       <div className="mt-2">
-        I’m a computer science engineer, with a master’s degree in software
-        systems. I’m currently working with Microsoft. I used to work with
-        Thoughtworks in the past. I’m a certified AWS solution architect and
-        have hands-on experience with web technologies.
+        I hold a master's degree in software systems, which is just a fancy way of saying I spent a lot of time in front of a computer screen. Currently, I'm working with the amazing folks at Microsoft, but I used to be a part of the Thoughtworks family. Yes, I’m a certified AWS solution architect, which means I can architect solutions in the cloud while making it rain (metaphorically, of course). Oh, and did I mention I have multiple Azure certifications too? Basically, if it's in the cloud, I've got it covered!
       </div>
       <div className="mt-2">
-        Since you are here, do visit my blogs for my random writings and my
-        talks page to know more about me
+      I have hands-on experience with web technologies, which is a polite way of saying I've broken the internet a few times. Since you're here, why not check out my blogs for some random musings or visit my talks page to hear more about my adventures in tech 🏃‍♂️
       </div>
       <div className="mt-8">
         <div className="flex">
