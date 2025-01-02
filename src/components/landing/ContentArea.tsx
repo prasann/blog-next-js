@@ -66,10 +66,10 @@ const Writeup = () => {
   return (
     <div className="lg:text-justify">
       <div className="mt-4 lg:mt-8">
-      I'm a full-stack developer from the bustling city of Bengaluru, India—where navigating traffic is almost as challenging as debugging code 🤯 But yes, it's all about finding the right shortcuts, whether on the road or in the code! 🚗  I've led large teams to build high-performance enterprise platforms. When I'm not doing that, you'll find me enjoying coffee and coding ☕💻
+      I'm a full-stack developer from the bustling city of Bengaluru, India—where navigating traffic is almost as challenging as debugging code 🤯 But yes, it's all about finding the right shortcuts, whether on the road or in the code! 🚗  I've led large teams to build high-performance enterprise platforms. When I'm not doing that, you'll find me enjoying coffee and coding ☕
       </div>
       <div className="mt-2">
-      I hold a master's degree in software systems 🎓, which is just a fancy way of saying I spent a lot of time in front of a computer screen 🖥️. Currently, I'm working with the amazing folks at Microsoft, but I used to be a part of the Thoughtworks family. I'm a certified AWS solution architect and I have a few Azure certifications as well. Basically, if it's in the cloud, I'm the one you should shout loud! ☁️📣
+      I hold a master's degree in software systems 🎓, which is just a fancy way of saying I spent a lot of time in front of a computer screen. Currently, I'm working with the amazing folks at Microsoft, but I used to be a part of the Thoughtworks family. I'm a certified AWS solution architect and I have a few Azure certifications as well. Basically, if it's in the cloud, I can craft solutions all around 😎
       </div>
       <div className="mt-2">
       I have hands-on experience with web technologies, which is a polite way of saying I've broken things on the internet a few times 💥. Since you're here, why not check out my blogs for some random musings ✍️ or visit my talks page to hear more about my adventures in tech 🏃‍♂️
