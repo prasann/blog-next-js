@@ -65,7 +65,7 @@ const ImageLink = ({
 const Writeup = () => {
   return (
     <div className="lg:text-justify">
-      <div className="mt-4 lg:mt-8">
+      <div className="mt-2 lg:mt-4">
       I'm a full-stack developer from the bustling city of Bengaluru, India—where navigating traffic is almost as challenging as debugging code 🤯 But yes, it's all about finding the right shortcuts, whether on the road or in the code! 🚗  I've led large teams to build high-performance enterprise platforms. When I'm not doing that, you'll find me enjoying coffee and coding ☕
       </div>
       <div className="mt-2">
@@ -74,7 +74,7 @@ const Writeup = () => {
       <div className="mt-2">
       I have hands-on experience with web technologies, which is a polite way of saying I've broken things on the internet a few times 💥. Since you're here, why not check out my blogs for some random musings ✍️ or visit my talks page to hear more about my adventures in tech 🏃‍♂️
       </div>
-      <div className="mt-8">
+      <div className="mt-4">
         <div className="flex">
           <ImageLink
             altText="link to blog"
@@ -103,7 +103,7 @@ const Picture = () => {
         alt="profile pic"
         sizes="120vw"
         style={{
-          width: "100%",
+          width: "80%",
           height: "auto",
         }}
       />
@@ -132,7 +132,7 @@ const AboutMe = () => {
 
 const Social = () => {
   return (
-    <div className="w-full social-bg rounded p-4 mt-4">
+    <div className="w-full social-bg rounded p-4 mt-2">
       <div className="flex flex-row justify-evenly">
         <a
           aria-label="github handle prasann"

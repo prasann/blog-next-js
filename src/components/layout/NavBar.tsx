@@ -61,6 +61,7 @@ const NavBar = () => {
           <Image
             src={logoImage}
             alt="Logo"
+            width={150}
             className="rounded-full w-full h-auto"
           />
           </div>

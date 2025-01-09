@@ -3,7 +3,7 @@
   }
 
   .header {
-    @apply h-40 main-gradient
+    @apply h-36 main-gradient
   }
 
   .main-bg{
