@@ -22,6 +22,8 @@ const MetaHeaders = (customMetaHeader: Meta) => {
       {/*    Twitter tags*/}
       <meta property="twitter:card" content="summary" />
       <meta property="twitter:creator" content="pvenk" />
+      <meta property="twitter:title" content={metaHeader.title} />
+      <meta property="twitter.image" content={metaHeader.image} />
     </Head>
   );
 };
