@@ -1,4 +1,4 @@
-import logoImage from "./../../public/assets/logo.png"
+import logoImage from "./../../public/assets/icons/blog-icon-512.png"
 
 type Meta = {
   title?: string;
