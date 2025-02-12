@@ -1,5 +1,5 @@
 ---
-title: OpenAI's Real-time API - Intro and Key Learnings
+title: OpenAI's Realtime API - Intro and Key Learnings
 description: Worked on a personal digital assistant using the Realtime API from Azure OpenAI. Here are some key learnings and insights from the experience.
 date: 11-02-2025
 minutesToRead: 12
