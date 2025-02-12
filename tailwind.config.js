@@ -48,10 +48,10 @@ module.exports = {
               color: theme('colors.pink.500'),
             },
             h3: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.pink.400'),
             },
             h4: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.pink.400'),
             },
             code: {
               color: theme('colors.pink.500'),
@@ -61,43 +61,13 @@ module.exports = {
               borderLeftColor: theme('colors.gray.700'),
             },
             strong: {
-              color: theme('colors.pink.300'),
+              color: theme('colors.pink.400'),
+            },
+            'thead th': {
+              color: theme('colors.red.400'),
             },
           },
-        },
-        dark: {
-          css: {
-            color: theme('colors.gray.300'),
-            a: {
-              color: theme('colors.blue.400'),
-              '&:hover': {
-                color: theme('colors.blue.600'),
-              },
-            },
-            h1: {
-              color: theme('colors.gray.100'),
-            },
-            h2: {
-              color: theme('colors.pink.500'),
-            },
-            h3: {
-              color: theme('colors.gray.100'),
-            },
-            h4: {
-              color: theme('colors.gray.100'),
-            },
-            code: {
-              color: theme('colors.pink.500'),
-            },
-            blockquote: {
-              color: theme('colors.gray.100'),
-              borderLeftColor: theme('colors.gray.700'),
-            },
-            strong: {
-              color: theme('colors.pink.300'),
-            }
-          },
-        },
+        }
       }),
     },
   },

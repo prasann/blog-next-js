@@ -123,11 +123,44 @@ Unlike the traditional Chat Completions API, where a request-response model is f
 
 In conclusion, a quick summary on the key differences between OpenAI’s Realtime API and the usual Chat Completions API:
 
-| Feature | Realtime API | Chat Completions API |
-|---|---|---|
-| Interaction Model | Event-driven (Streaming & Events) | Request-response |
-| Latency | Ultra-low (Real-time processing) | Higher (Batch-based) |
-| Input Modality | Speech & Text | Text-only |
-| Built-in Speech-to-Text? | Yes, auto-transcribed (input_audio_transcription) | No, requires Whisper or another STT service |
-| Turn Detection? | Yes, detects natural pauses | No, explicit input-end needed |
-| Best Use Case | Real-time voice assistants, AI companions | Text-based chatbots, async responses |
+<table>
+  <thead style="text-align: left;">
+    <tr>
+      <th>Feature</th>
+      <th>Realtime API</th>
+      <th>Chat Completions API</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Interaction Model</td>
+      <td>Event-driven (Streaming & Events)</td>
+      <td>Request-response</td>
+    </tr>
+    <tr>
+      <td>Latency</td>
+      <td>Ultra-low (Real-time processing)</td>
+      <td>Higher (Batch-based)</td>
+    </tr>
+    <tr>
+      <td>Input Modality</td>
+      <td>Speech & Text</td>
+      <td>Text-only</td>
+    </tr>
+    <tr>
+      <td>Built-in Speech-to-Text?</td>
+      <td>Yes, auto-transcribed (input_audio_transcription)</td>
+      <td>No, requires Whisper or another STT service</td>
+    </tr>
+    <tr>
+      <td>Turn Detection?</td>
+      <td>Yes, detects natural pauses</td>
+      <td>No, explicit input-end needed</td>
+    </tr>
+    <tr>
+      <td>Best Use Case</td>
+      <td>Real-time voice assistants, AI companions</td>
+      <td>Text-based chatbots, async responses</td>
+    </tr>
+  </tbody>
+</table>

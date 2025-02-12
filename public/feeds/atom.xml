@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://prasanna.dev</id>
     <title>Random Presence</title>
-    <updated>2025-01-09T12:51:07.128Z</updated>
+    <updated>2025-02-12T17:13:21.658Z</updated>
     <generator>npm feed package</generator>
     <author>
         <name>Prasanna Venkatesan</name>
@@ -15,6 +15,142 @@
     <logo>https://prasanna.dev/assets/logo.png</logo>
     <icon>https://prasanna.dev/assets/favicons/favicon-32x32.png</icon>
     <rights>Copyright - Prasanna</rights>
+    <entry>
+        <title type="html"><![CDATA[OpenAI's Real-time API - Intro and Key Learnings]]></title>
+        <id>https://prasanna.dev/posts/realtime-api-intro-and-learnings</id>
+        <link href="https://prasanna.dev/posts/realtime-api-intro-and-learnings"/>
+        <updated>2025-02-10T18:30:00.000Z</updated>
+        <summary type="html"><![CDATA[Worked on a personal digital assistant using the Realtime API from Azure OpenAI. Here are some key learnings and insights from the experience.]]></summary>
+        <content type="html"><![CDATA[<h2 id="realtimemessagingapi">Real time messaging API</h2>
+<p>The RealTime API allows you to have live, back-and-forth conversations with an AI model. It takes in text or audio as input and responds with text or audio—all in real-time.</p>
+<p>Unlike traditional API calls, where you send a request and wait for a full response, the RealTime API starts responding instantly as you speak or type, making interactions feel more natural and fluid.</p>
+<p>✅ <strong>Multimodal Input & Output</strong> – You can send text or speech and get back text or speech in any supported language.</p>
+<p>✅ <strong>Streaming Responses</strong> – The model starts responding immediately, instead of waiting to generate the full response.</p>
+<p>✅ <strong>Real-Time Translation</strong> – You can speak in one language, and the model can reply in another, making it great for live translations.</p>
+<p>✅ <strong>Interactive Conversations</strong> – It feels more like chatting with a real person because of its speed and responsiveness.</p>
+<h3 id="communicationmodes">Communication Modes</h3>
+<p>OpenAI's RealTime API supports two communication methods: WebRTC and WebSockets</p>
+<h4 id="webrtcultralowlatencyaudiostreaming">WebRTC – Ultra-Low Latency Audio Streaming</h4>
+<ul>
+<li>Designed for real-time voice conversations.</li>
+<li>Uses peer-to-peer (P2P) connections, reducing latency.</li>
+<li>Ideal for live voice assistants, AI-powered calls, and instant translations.</li>
+<li>Best when you need: natural, low-latency spoken conversations.</li>
+</ul>
+<p><img src="/assets/posts/images/realtime-api/image.png" alt="realtime using WebRTC" /></p>
+<h4 id="websocketsflexiblerealtimemessaging">WebSockets – Flexible Real-Time Messaging</h4>
+<ul>
+<li>Uses a client-server model instead of direct P2P connections.</li>
+<li>Supports text-based chat and controlled audio streaming.</li>
+<li>Easier to integrate into existing web applications.</li>
+<li>Best when you need: chatbot-like interactions, AI narration, or real-time text communication.</li>
+</ul>
+<p><img src="/assets/posts/images/realtime-api/image-1.png" alt="realtime using websockets" /></p>
+<h4 id="azureopenaisupportsonlywebsocketsforrealtimeaiinteractions">‼ Azure OpenAI - Supports only WebSockets for real-time AI interactions.</h4>
+<h3 id="sdksupportforrealtimeapi">SDK Support for Realtime API</h3>
+<p>At the time of authoring (not publishing 😁) this article, LangChain and Semantic Kernel primarily support interactions with OpenAI's APIs through traditional HTTP requests. The Realtime API, which facilitates low-latency, streaming interactions via WebSockets (and WebRTC in some cases), is relatively new. Consequently, direct support for the Realtime API in these SDKs may be limited or under development.</p>
+<p>For instance, the Azure OpenAI Realtime Audio SDK provides code samples demonstrating how to interact with the Realtime API using WebSockets. I started off with this initially for this application.</p>
+<h4 id="sneakpeekintothesdklikecodesample">Sneak peek into the SDK (like) code sample</h4>
+<ul>
+<li>Works with text messages, function tool calling, and many other existing capabilities from other endpoints like /chat/completions</li>
+<li>Has samples in multiple languages, python, java, javascript, dotnet (not sure why this is called as language though 🤔)</li>
+</ul>
+<p>Flow of this code sample looks like this,</p>
+<p><img src="/assets/posts/images/realtime-api/image-2.png" alt="alt text" /></p>
+<p>This looks great, however I needed 2 things on top of this!!</p>
+<ul>
+<li>A client application which can interact with the realtime host using voice.</li>
+<li>Use my own data as part of the conversation (aka Retrieval-Augmented Generation - RAG)</li>
+</ul>
+<h3 id="ragwithrealtime">RAG with RealTime</h3>
+<p>When building a conversational AI, I wanted the bot to engage with my own data rather than just relying on the model’s built-in knowledge. This meant using a Retrieval-Augmented Generation (RAG) approach, where the AI could dynamically fetch relevant information from my custom dataset.
+However, I initially had concerns about how to integrate RAG into a real-time interaction, especially when dealing with audio input. How would the model know when to retrieve external data? How could it seamlessly pull information while maintaining a fluid conversation?
+"The best approach for incorporating RAG in RealTime APIs is through Tools and Function Calling. Instead of manually injecting external data into every request, I expose a custom tool that allows the model to query my vector database whenever necessary."</p>
+<p>Here’s how it works:</p>
+<ul>
+<li>Storing Knowledge: A vector database contains my personal or domain-specific knowledge, encoded as embeddings for efficient retrieval.</li>
+<li>Defining the Tool: I define a tool (or function) that provides the model with access to this vector database.</li>
+<li>Dynamic Decision-Making: The model autonomously decides when to use the tool—similar to how a person might decide to "Google something" when they lack certain information.</li>
+<li>Real-Time Retrieval: If the model determines that external context is required, it queries the vector database in real time, retrieves the relevant information, and seamlessly incorporates it into its response.
+This method keeps the conversation dynamic, ensures accuracy, and allows the AI to stay up to date with your specific information.</li>
+</ul>
+<h4 id="ragusingazureaisearch">RAG using Azure AI Search</h4>
+<p>Now moving into building this out. I stumbled upon this fantastic quickstart solution from Azure-Samples that fits my needs perfectly!</p>
+<p><a href="https://github.com/azure-samples/aisearch-openai-rag-audio">AI Search RAG Audio</a></p>
+<p>This quick-start solution sets up a Retrieval-Augmented Generation (RAG)-powered conversational AI. It includes a sample document in Azure Blob Storage, indexed for efficient retrieval. A custom tool handles the RAG process, enabling the AI to fetch relevant information dynamically. The React-based frontend offers an intuitive user interface. This customizable setup serves as a foundation for deploying RAG-enabled conversational systems.</p>
+<p><img src="/assets/posts/images/realtime-api/image-3.png" alt="architecture of rag audio" /></p>
+<p>On top of this,</p>
+<ul>
+<li>Note taking feature:</li>
+<li>Takes notes, and i can use that information to build conversation.</li>
+<li>Cosmos DB store with an indexer to AI Search</li>
+<li>Azure AD - Google authentication</li>
+<li>Progressive Web Application with the React boilerplate from the quick-start.</li>
+</ul>
+<p><img src="/assets/posts/images/realtime-api/image-4.png" alt="tech stack of ai-assistant" /></p>
+<p>Here is the link to my repository, if you are interested to check it out: GitHub - <a href="https://github.com/prasann/ai-assistant">VASI: Digital Assistant</a></p>
+<h3 id="keylearningsintherealtimeapi">Key learnings in the Realtime API</h3>
+<h4 id="eventseventsandevents">Events, Events, and Events</h4>
+<p>Unlike the traditional Chat Completions API, where a request-response model is followed, the Realtime API is fundamentally event-driven. Everything—whether it's receiving responses, detecting pauses in speech, or transcribing input—is handled through events over a single persistent connection.</p>
+<h4 id="bidirectionalcommunicationwithevents">Bidirectional Communication with Events</h4>
+<ul>
+<li>The client sends audio input as an event stream.</li>
+<li>The server processes the speech in real-time and responds with multiple events such as transcriptions, intermediate responses, and final outputs.</li>
+<li>This enables a fluid, low-latency interaction, much closer to how a real-time assistant should behave.</li>
+</ul>
+<h4 id="turndetectionknowingwhentorespond">Turn Detection – Knowing When to Respond</h4>
+<ul>
+<li>Unlike traditional APIs where explicit end-of-input markers are needed, the Realtime API can intelligently detect when a user has finished speaking.</li>
+<li>This is powered by turn detection, which allows for natural pauses in speech before processing the response, mimicking human-like interaction.</li>
+</ul>
+<h4 id="builtinspeechtotextnoadditionalserviceneeded">Built-in Speech-to-Text (No Additional Service Needed!)</h4>
+<ul>
+<li>The session itself handles input transcription, eliminating the need for an external speech-to-text service like Whisper.</li>
+<li>This means seamless integration of voice interactions without additional API calls or dependencies.</li>
+</ul>
+<p>In conclusion, a quick summary on the key differences between OpenAI’s Realtime API and the usual Chat Completions API:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Realtime API</th>
+      <th>Chat Completions API</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Interaction Model</td>
+      <td>Event-driven (Streaming & Events)</td>
+      <td>Request-response</td>
+    </tr>
+    <tr>
+      <td>Latency</td>
+      <td>Ultra-low (Real-time processing)</td>
+      <td>Higher (Batch-based)</td>
+    </tr>
+    <tr>
+      <td>Input Modality</td>
+      <td>Speech & Text</td>
+      <td>Text-only</td>
+    </tr>
+    <tr>
+      <td>Built-in Speech-to-Text?</td>
+      <td>Yes, auto-transcribed (input_audio_transcription)</td>
+      <td>No, requires Whisper or another STT service</td>
+    </tr>
+    <tr>
+      <td>Turn Detection?</td>
+      <td>Yes, detects natural pauses</td>
+      <td>No, explicit input-end needed</td>
+    </tr>
+    <tr>
+      <td>Best Use Case</td>
+      <td>Real-time voice assistants, AI companions</td>
+      <td>Text-based chatbots, async responses</td>
+    </tr>
+  </tbody>
+</table>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[View your Google timeline information on the Web in 2025]]></title>
         <id>https://prasanna.dev/posts/google-maps-timeline-viewer</id>
