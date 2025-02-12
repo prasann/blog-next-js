@@ -1,3 +1,5 @@
+import logoImage from "./../../public/assets/logo.png"
+
 type Meta = {
   title?: string;
   description?: string;
@@ -8,7 +10,7 @@ type Meta = {
 export const defaultMeta: Meta = {
   title: "Random Presence",
   description: "Random presence of my thoughts and learning...",
-  image: "https://blog-next-js-git-main-prasann1.vercel.app/assets/profile0924.jpg",
+  image: logoImage.src,
   isArticle: false,
 };
 

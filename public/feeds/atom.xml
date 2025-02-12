@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://prasanna.dev</id>
     <title>Random Presence</title>
-    <updated>2025-02-12T17:13:21.658Z</updated>
+    <updated>2025-02-12T17:28:07.771Z</updated>
     <generator>npm feed package</generator>
     <author>
         <name>Prasanna Venkatesan</name>
@@ -110,7 +110,7 @@ This method keeps the conversation dynamic, ensures accuracy, and allows the AI 
 </ul>
 <p>In conclusion, a quick summary on the key differences between OpenAI’s Realtime API and the usual Chat Completions API:</p>
 <table>
-  <thead>
+  <thead style="text-align: left;">
     <tr>
       <th>Feature</th>
       <th>Realtime API</th>

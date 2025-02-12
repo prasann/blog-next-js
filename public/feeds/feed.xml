@@ -4,7 +4,7 @@
         <title>Random Presence</title>
         <link>https://prasanna.dev</link>
         <description>Random presence of my thoughts and learning...</description>
-        <lastBuildDate>Wed, 12 Feb 2025 17:13:21 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 12 Feb 2025 17:28:07 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>npm feed package</generator>
         <language>en</language>
@@ -109,7 +109,7 @@ This method keeps the conversation dynamic, ensures accuracy, and allows the AI 
 </ul>
 <p>In conclusion, a quick summary on the key differences between OpenAI’s Realtime API and the usual Chat Completions API:</p>
 <table>
-  <thead>
+  <thead style="text-align: left;">
     <tr>
       <th>Feature</th>
       <th>Realtime API</th>
