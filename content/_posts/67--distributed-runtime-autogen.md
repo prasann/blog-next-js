@@ -11,13 +11,13 @@ Autogen (v0.4+) is a framework for building agent-based applications, supporting
 
 One of the nice features in Autogen is its [distributed runtime](https://microsoft.github.io/autogen/stable/user-guide/core-user-guide/framework/distributed-agent-runtime.html), which enables seamless communication and coordination between agents. This makes it possible to deploy and scale agents independently in a distributed manner. The [gRPC (Google Remote Procedure Call)](https://grpc.io) backed implementation of the distributed runtime allows a robust and high-performance communication channel between agents, making it suitable for various applications, from simple tasks to complex workflows.
 
-In this blog post, will do a deep dive into the architecture of Autogen's distributed runtime, focusing on its GRPC-based implementation.
+In this blog post, will do a deep dive into the architecture of Autogen's distributed runtime, focusing on its GRPC-based implementation. If you aren't familiar with gRPC, take a look at the [gRPC documentation](https://grpc.io/docs/what-is-grpc/introduction/) for a better understanding before diving into the details here.
 
-*Note: This is the state of things as of February 2025 in the main stable branch (v0.4). Autogen is under active development, and things might have changed since. Please refer to the [Autogen documentation](https://microsoft.github.io/autogen/stable). All this information is based on my understanding and could potentially be incorrect, as there isn't much documentation available on how this works in Autogen.*
+*Note: This is the state of things as of February 2025 in the main stable branch (v0.4). Autogen is under active development, and things might have changed since. Please refer to the [Autogen documentation](https://microsoft.github.io/autogen/stable). All this information is based on my understanding and might be incorrect, as there isn't much documentation available on how this works in Autogen.*
 
 ## Overview of Autogen's Distributed agent runtime architecture
 
-The distributed runtime of Autogen is designed to support multiple agents working concurrently, managed by a GRPC host. The architecture facilitates communication and coordination among various components using gRPC. If you aren't familiar with gRPC, take a look at the [gRPC documentation](https://grpc.io/docs/what-is-grpc/introduction/) for a better understanding before diving into the details here.
+The distributed runtime of Autogen is designed to support multiple agents working concurrently, managed by a GRPC host. The architecture facilitates communication and coordination among various components using gRPC. 
 
 ### Architecture Diagram
 
