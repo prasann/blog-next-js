@@ -1,7 +1,7 @@
 ---
-title: Understanding Google's A2A Protocol: Beyond Traditional HTTP
-description: Explore how Google's Agent-to-Agent protocol revolutionizes AI communication with task-based models, rich events, and persistent connections—solving HTTP's limitations for complex AI interactions.
-date: 30-04-2025
+title: "Understanding Google's A2A Protocol: Beyond Traditional HTTP"
+description: "Explore how Google's Agent-to-Agent protocol revolutionizes AI communication with task-based models, rich events, and persistent connections—solving HTTP's limitations for complex AI interactions."
+date: "30-04-2025"
 minutesToRead: 12
 ---
 

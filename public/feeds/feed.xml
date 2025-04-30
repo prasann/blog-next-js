@@ -4,7 +4,7 @@
         <title>Random Presence</title>
         <link>https://prasanna.dev</link>
         <description>Random presence of my thoughts and learning...</description>
-        <lastBuildDate>Fri, 21 Feb 2025 12:37:50 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 30 Apr 2025 07:20:06 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>npm feed package</generator>
         <language>en</language>
@@ -15,18 +15,130 @@
         </image>
         <copyright>Copyright - Prasanna</copyright>
         <item>
+            <title><![CDATA[Understanding Google's A2A Protocol: Beyond Traditional HTTP]]></title>
+            <link>https://prasanna.dev/posts/a2a-vs-http</link>
+            <guid>https://prasanna.dev/posts/a2a-vs-http</guid>
+            <pubDate>Tue, 29 Apr 2025 18:30:00 GMT</pubDate>
+            <description><![CDATA[Explore how Google's Agent-to-Agent protocol revolutionizes AI communication with task-based models, rich events, and persistent connections—solving HTTP's limitations for complex AI interactions.]]></description>
+            <content:encoded><![CDATA[<h1 id="understandinggooglesa2aprotocolbeyondtraditionalhttp">Understanding Google's A2A Protocol: Beyond Traditional HTTP</h1>
+<p>Google's <a href="https://google.github.io/A2A/">Agent-to-Agent (A2A) protocol</a> represents a significant evolution in how AI systems communicate with each other and with client applications. As AI becomes more integrated into our digital interactions, the need for standardized, efficient communication protocols becomes critical. Let's explore how A2A differs from traditional HTTP and HTTP Server-Sent Events (SSE), and why these differences matter.</p>
+<h2 id="thelimitationsoftraditionalhttp">The Limitations of Traditional HTTP</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview">Traditional HTTP</a> follows a simple request-response pattern:</p>
+<ul>
+<li>Client sends a request</li>
+<li>Server processes the request</li>
+<li>Server returns a response</li>
+<li>Connection closes</li>
+</ul>
+<p>This model works well for simple interactions but falls short when dealing with:</p>
+<ul>
+<li>Long-running AI tasks</li>
+<li>Real-time updates</li>
+<li>Complex conversational flows</li>
+<li>Multi-step interactions requiring state management</li>
+</ul>
+<p>For AI agents that may need seconds or minutes to process complex requests, this creates significant inefficiencies as clients must repeatedly poll for updates.</p>
+<h2 id="serversenteventsastepforward">Server-Sent Events: A Step Forward</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">HTTP Server-Sent Events (SSE)</a> improved on traditional HTTP by enabling:</p>
+<ul>
+<li>One-way server-to-client streaming</li>
+<li>Long-lived connections</li>
+<li>Real-time updates without polling</li>
+</ul>
+<p>Basic SSE works by:</p>
+<ul>
+<li>Client initiating a connection with <code>Accept: text/event-stream</code> header</li>
+<li>Server keeping the connection open</li>
+<li>Server pushing updates as they become available</li>
+</ul>
+<p>While this addresses some issues with traditional HTTP, it lacks structured support for complex AI interactions.</p>
+<h2 id="a2aprotocolpurposebuiltforaicommunication">A2A Protocol: Purpose-Built for AI Communication</h2>
+<p>The A2A protocol builds upon SSE but adds sophisticated layers designed specifically for AI agent communication:</p>
+<h3 id="1taskbasedcommunicationmodel">1. Task-Based Communication Model</h3>
+<p>Unlike basic HTTP or SSE, A2A is built around the concept of tasks:</p>
+<ul>
+<li>Each task has a unique identity</li>
+<li>Tasks have defined lifecycles (SUBMITTED → WORKING → COMPLETED/INPUT_REQUIRED)</li>
+<li>Tasks maintain history and context</li>
+<li>Tasks can produce multiple artifacts and status updates</li>
+</ul>
+<p>This task-oriented approach matches how AI systems actually work—processing may take time, require intermediate steps, and produce multiple types of outputs.</p>
+<h3 id="2richeventtypes">2. Rich Event Types</h3>
+<p>While basic SSE can only stream simple text events, A2A defines structured event types:</p>
+<ul>
+<li><code>TaskStatusUpdateEvent</code> for state changes</li>
+<li><code>TaskArtifactUpdateEvent</code> for outputs</li>
+<li>Error events with standardized formats</li>
+</ul>
+<p>Each event carries meaningful context about what happened and why.</p>
+<h3 id="3conversationalsupport">3. Conversational Support</h3>
+<p>A2A excels at handling conversational flows by:</p>
+<ul>
+<li>Maintaining session context across interactions</li>
+<li>Supporting explicit INPUT_REQUIRED states</li>
+<li>Preserving conversation history</li>
+<li>Enabling mid-conversation resubscription</li>
+</ul>
+<h3 id="4connectionlongevity">4. Connection Longevity</h3>
+<p>A key differentiator of A2A is its connection management:</p>
+<ul>
+<li>Connections persist for the entire lifecycle of a task</li>
+<li>Multiple turns of conversation use the same connection</li>
+<li>Connections only terminate when:</li>
+<li>The task reaches a final state (COMPLETED)</li>
+<li>The task requires user input (INPUT_REQUIRED)</li>
+<li>An error occurs</li>
+<li>The client disconnects</li>
+</ul>
+<p>This means a single connection can support an entire multi-turn conversation with an AI agent, not just a single request-response exchange.</p>
+<h3 id="5multiconnectionorchestration">5. Multi-Connection Orchestration</h3>
+<p>A2A clients can maintain simultaneous connections to multiple servers, enabling:</p>
+<ul>
+<li>Parallel task processing</li>
+<li>Service orchestration</li>
+<li>Load balancing</li>
+<li>Specialized agent selection</li>
+</ul>
+<h3 id="6pushnotificationintegration">6. Push Notification Integration</h3>
+<p>Beyond streaming, A2A incorporates webhook-style push notifications:</p>
+<ul>
+<li>Clients can register notification endpoints</li>
+<li>Servers push updates to these endpoints when task states change</li>
+<li>Enables background processing without maintaining open connections</li>
+</ul>
+<h2 id="practicalimplications">Practical Implications</h2>
+<p>These design choices make A2A particularly well-suited for:</p>
+<ul>
+<li><p><strong>Complex AI Workflows</strong>: Multi-step processes that involve planning, gathering information, and execution can maintain state across multiple interactions.</p></li>
+<li><p><strong>Responsive UIs</strong>: Applications can show real-time progress as AI agents work, rather than displaying loading spinners.</p></li>
+<li><p><strong>Cross-Agent Collaboration</strong>: AI agents can efficiently communicate with other AI agents in complex orchestration scenarios.</p></li>
+<li><p><strong>Enterprise Integration</strong>: The protocol's support for both streaming and push notifications makes it adaptable to various infrastructure requirements.</p></li>
+</ul>
+<h2 id="implementationconsiderations">Implementation Considerations</h2>
+<p>When building systems with A2A:</p>
+<ul>
+<li><strong>Connection Management</strong>: Plan for longer-lived connections than in traditional HTTP systems</li>
+<li><strong>State Handling</strong>: Leverage the protocol's built-in state management rather than reinventing it</li>
+<li><strong>Error Recovery</strong>: Implement the resubscription pattern for resilience</li>
+<li><strong>Scaling</strong>: Consider how to scale connection-heavy workloads</li>
+</ul>
+<h2 id="lookingforward">Looking Forward</h2>
+<p>The A2A protocol represents a shift in how we think about AI communication—moving from transactional exchanges to ongoing, stateful interactions. As AI systems become more sophisticated, such purpose-built protocols will become increasingly important in unlocking their full potential.</p>
+<p>By providing a standardized way for AI agents to communicate, A2A opens the door to more complex agent ecosystems where specialized AIs can seamlessly collaborate, creating experiences that feel coherent and intelligent rather than disjointed.</p>]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[Understanding Autogen's Distributed agent runtime implementation.]]></title>
             <link>https://prasanna.dev/posts/distributed-runtime-autogen</link>
             <guid>https://prasanna.dev/posts/distributed-runtime-autogen</guid>
             <pubDate>Thu, 20 Feb 2025 18:30:00 GMT</pubDate>
             <description><![CDATA[A deep dive into the GRPC-based architecture that powers seamless agent coordination and communication in Autogen.]]></description>
             <content:encoded><![CDATA[<h2 id="autogenanditsdistributedruntime">Autogen and its Distributed Runtime</h2>
-<p>Autogen is a framework for building agent-based applications, supporting the orchestration of multiple agents and their intercommunication. </p>
+<p>Autogen (v0.4+) is a framework for building agent-based applications, supporting the orchestration of multiple agents and their intercommunication.</p>
 <p>One of the nice features in Autogen is its <a href="https://microsoft.github.io/autogen/stable/user-guide/core-user-guide/framework/distributed-agent-runtime.html">distributed runtime</a>, which enables seamless communication and coordination between agents. This makes it possible to deploy and scale agents independently in a distributed manner. The <a href="https://grpc.io">gRPC (Google Remote Procedure Call)</a> backed implementation of the distributed runtime allows a robust and high-performance communication channel between agents, making it suitable for various applications, from simple tasks to complex workflows.</p>
-<p>In this blog post, we will take a deep dive into the architecture of Autogen's distributed runtime, focusing on its GRPC-based implementation.</p>
-<p><em>Note: this is the state of things as of February 2025. Autogen is under active development and things might have changed since. So, please refer to the [Autogen documentation]</em></p>
+<p>In this blog post, will do a deep dive into the architecture of Autogen's distributed runtime, focusing on its GRPC-based implementation. If you aren't familiar with gRPC, take a look at the <a href="https://grpc.io/docs/what-is-grpc/introduction/">gRPC documentation</a> for a better understanding before diving into the details here.</p>
+<p><em>Note: This is the state of things as of February 2025 in the main stable branch (v0.4). Autogen is under active development, and things might have changed since. Please refer to the <a href="https://microsoft.github.io/autogen/stable">Autogen documentation</a>. All this information is based on my understanding and might be incorrect, as there isn't much documentation available on how this works in Autogen.</em></p>
 <h2 id="overviewofautogensdistributedagentruntimearchitecture">Overview of Autogen's Distributed agent runtime architecture</h2>
-<p>The distributed runtime of Autogen is designed to support multiple agents working concurrently, managed by a GRPC host. The architecture facilitates communication and coordination among various components using gRPC. If you aren't familiar with gRPC, take a look at the <a href="https://grpc.io/docs/what-is-grpc/introduction/">gRPC documentation</a> for a better understanding before diving into the details here.</p>
+<p>The distributed runtime of Autogen is designed to support multiple agents working concurrently, managed by a GRPC host. The architecture facilitates communication and coordination among various components using gRPC. </p>
 <h3 id="architecturediagram">Architecture Diagram</h3>
 <p><img src="/assets/posts/images/distributed-runtime/image-1.png" alt="Autogen's Distributed Runtime Architecture" /></p>
 <h3 id="components">Components</h3>
@@ -37,10 +149,9 @@ Inner Workings of a GRPC Runtime (Client)</li>
 </ol>
 <h4 id="someofthemainconstituentsofagrpcruntimeincludes">Some of the main constituents of a GRPC Runtime includes,</h4>
 <ul>
-<li><strong>State:</strong> Manages the current state of the runtime and its agents. This could include the current task, configuration, or any other stateful information required for operation.</li>
-<li><strong>Host Connection:</strong> Manages the connection to the GRPC Host. This is crucial for communication between the runtime and the host, allowing the runtime to send and receive messages.</li>
+<li><strong>Host Connection:</strong> Manages the connection to the GRPC Host. This is crucial for communication between the runtime and the host, allowing the runtime to send and receive messages. This has a <code>read_loop</code> which allows you to read and write (I know 😃) messages to the gRPC host.</li>
 <li><strong>Subscription Manager:</strong> The Subscription Manager plays a crucial role in this setup by managing which agents are subscribed to specific topics. When agents publish messages to topics, the Subscription Manager looks up the current subscriptions and ensures that events are relayed to all subscribed agents. This process involves updating subscription lists dynamically and ensuring that the correct agents receive the relevant messages.</li>
-<li><strong>Serialization Registry:</strong> Responsible for serializing and deserializing messages and data. This is essential for communication, as it ensures that data can be correctly transmitted and interpreted between different components.</li>
+<li><strong>Serialization Registry:</strong> Responsible for serializing and deserializing messages and data. Currently supports JSON format only.</li>
 </ul>
 <h3 id="communication">Communication</h3>
 <ul>
@@ -48,7 +159,7 @@ Inner Workings of a GRPC Runtime (Client)</li>
 <li><strong>Bidirectional Stream (to send cloudevents):</strong> This is a continuous, two-way communication channel between the GRPC Host and the runtimes. It allows for real-time exchange of cloud events, which can be critical for coordinating actions across different agents and runtimes.</li>
 </ul>
 <h3 id="agents">Agents</h3>
-<p>Agents in general are unaware of the distributed nature of the runtime. They interact with the GRPC Runtime as if it were a local runtime, allowing for a seamless experience. You can extend the <code>RoutedAgent</code> and build out custom agent ensure to pass on the GRPC Runtime while the agent performs <code>register</code> operation. </p>
+<p>Agents in general are unaware of the distributed nature of the runtime. They interact with the GRPC Runtime as if it were a local <code>AgentRuntime</code>, allowing for a seamless experience. You can extend the <code>RoutedAgent</code> and build out custom agent ensure to pass on the GRPC Runtime while the agent performs <code>register</code> operation. The BaseAgent has to manage the state (chat_history) of the agent. </p>
 <h2 id="crosslanguageagents">Cross language agents</h2>
 <p>One of the main reasons I delved into this topic is to understand the effort involved in building and supporting cross-language agents.</p>
 <p>For example, how can I build a TypeScript agent that can be integrated into the distributed runtime and communicate with a Python agent? I believe they chose gRPC to enable such language-agnostic communication. The documentation also hints at this.</p>
@@ -57,9 +168,10 @@ Inner Workings of a GRPC Runtime (Client)</li>
 <ul>
 <li>They have proto files checked into the repository: <code>agentworker.proto</code> for unary messages and <code>cloudevent.proto</code> for the bidirectional stream.</li>
 <li>The language of choice can generate the client and server code from these proto files. For example, in TypeScript, you can use the <code>grpc-tools</code> package to generate the necessary code.
-There should be an equivalent of <code>GrpcWorkerAgentRuntime</code> in your language of choice. This runtime doesn't have to support the entire functionality currently implemented in Python, but the communication part should be implemented as specified using the aforementioned proto files. This is no easy task given the complexity of the runtime, but <em>where there is a will, there is a way</em> 😎</li>
+There should be an equivalent of <code>GrpcWorkerAgentRuntime</code> in your language of choice. This runtime doesn't have to support the entire functionality currently implemented in Python, but the communication part should be implemented as specified using the aforementioned proto files. This is no easy task given the complexity of the runtime, but <em>where there is a <a href="https://github.com/features/copilot">GH Copilot</a>, there is a way</em> 😎</li>
 <li><code>HostConnection</code> has to be implemented to support the communication with the GRPC host.</li>
 <li><code>RoutedAgent</code> like implementation has to be present. Since the <code>BaseAgent</code> provides the <code>message_handler</code> decorator, you can use that to implement the message handlers for the various messages sent by the GRPC host.</li>
+<li>One other thing that could potentially complicate this is the behaviours of the <code>BaseAgent</code> and <code>AgentRuntime</code> to see if there are any other dependencies that needs to be implemented.</li>
 <li>and more…</li>
 </ul>
 <h2 id="challengesiseeasofnow">Challenges I see as of now</h2>
@@ -69,7 +181,10 @@ There should be an equivalent of <code>GrpcWorkerAgentRuntime</code> in your lan
 <li>Currently, the <code>cloudevents</code> are being passed on to all registered runtimes. The runtimes then decide whether to process the request or not. So, in a scenario with too many agents, the runtimes will be bombarded with events that they don't care about.</li>
 <li>This also makes me wonder how the currently implemented orchestration pattern works out. For example, handoffs between agents. I'm not sure how the distributed runtime will handle that. But this might work since the runtime is abstracted within the agent and the teams aren't aware of the distributed nature of the runtime. (I think!)</li>
 <li>Implementing <code>GrpcWorkerAgentRuntime</code> in a different language is no easy task. There is no guide (yet). So you will have to figure it out yourself by looking into the source code and hopefully there isn't any coupling with other objects.</li>
-</ul>]]></content:encoded>
+</ul>
+<h2 id="codesample">Code sample</h2>
+<p>I started off with great hopes of implementing this distributed runtime in TypeScript, but I quickly realized that it is no easy task. So I backed off. Here is just a refactored version of the example code from the documentation.</p>
+<p><a href="https://github.com/prasann/autogen-distributed-chat">Autogen's distributed runtime example</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[OpenAI's Realtime API - Intro and Key Learnings]]></title>
