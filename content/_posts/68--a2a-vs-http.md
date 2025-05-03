@@ -2,7 +2,7 @@
 title: "Understanding Google's A2A Protocol: Beyond Traditional HTTP"
 description: "Explore how Google's Agent-to-Agent protocol revolutionizes AI communication with task-based models, rich events, and persistent connections—solving HTTP's limitations for complex AI interactions."
 date: "30-04-2025"
-minutesToRead: 12
+minutesToRead: 8
 ---
 
 # Understanding Google's A2A Protocol: Beyond Traditional HTTP
@@ -17,13 +17,6 @@ Google's [Agent-to-Agent (A2A) protocol](https://google.github.io/A2A/) represen
 - Server processes the request
 - Server returns a response
 - Connection closes
-
-This model works well for simple interactions but falls short when dealing with:
-
-- Long-running AI tasks
-- Real-time updates
-- Complex conversational flows
-- Multi-step interactions requiring state management
 
 For AI agents that may need seconds or minutes to process complex requests, this creates significant inefficiencies as clients must repeatedly poll for updates.
 
@@ -76,6 +69,7 @@ A2A excels at handling conversational flows by:
 - Supporting explicit INPUT_REQUIRED states
 - Preserving conversation history
 - Enabling mid-conversation resubscription
+
 ### 4. Connection Longevity
 
 A key differentiator of A2A is its connection management:
@@ -90,34 +84,13 @@ A key differentiator of A2A is its connection management:
 
 This means a single connection can support an entire multi-turn conversation with an AI agent, not just a single request-response exchange.
 
-### 5. Multi-Connection Orchestration
-
-A2A clients can maintain simultaneous connections to multiple servers, enabling:
-
-- Parallel task processing
-- Service orchestration
-- Load balancing
-- Specialized agent selection
-
-### 6. Push Notification Integration
+### 5. Push Notification Integration
 
 Beyond streaming, A2A incorporates webhook-style push notifications:
 
 - Clients can register notification endpoints
 - Servers push updates to these endpoints when task states change
 - Enables background processing without maintaining open connections
-
-## Practical Implications
-
-These design choices make A2A particularly well-suited for:
-
-- **Complex AI Workflows**: Multi-step processes that involve planning, gathering information, and execution can maintain state across multiple interactions.
-
-- **Responsive UIs**: Applications can show real-time progress as AI agents work, rather than displaying loading spinners.
-
-- **Cross-Agent Collaboration**: AI agents can efficiently communicate with other AI agents in complex orchestration scenarios.
-
-- **Enterprise Integration**: The protocol's support for both streaming and push notifications makes it adaptable to various infrastructure requirements.
 
 ## Implementation Considerations
 
