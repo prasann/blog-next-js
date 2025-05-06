@@ -161,7 +161,7 @@ const Social = () => {
           aria-label="linkedin handle pvenk"
           className="highlight-animation text-center lg:text-2xl"
           rel="noreferrer"
-          href="https://www.linkedin.com/in/pvenk"
+          href="https://www.linkedin.com/in/prasanna-v-nagarajan"
           target="_blank"
         >
           <FontAwesomeIcon
