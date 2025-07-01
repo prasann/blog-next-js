@@ -5,4 +5,13 @@ const withPWA = require("next-pwa")({
   disable: prod ? false : true,
 });
 
-module.exports = withPWA({});
+module.exports = withPWA({
+  async rewrites() {
+    return [
+      {
+        source: '/resume',
+        destination: '/resume.html',
+      },
+    ];
+  },
+});
