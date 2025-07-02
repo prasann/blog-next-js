@@ -1,11 +1,12 @@
 <!doctype html>
 <html>
   <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Prasanna V Nagarajan</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  <style>
-  /********************************************
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Prasanna V Nagarajan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      /********************************************
 * 	reset from
 * 	http://meyerweb.com/eric/tools/css/reset/
 *******************************************/
@@ -219,11 +220,16 @@ section .location {
   padding: 0;
 }
 
+#header {
+  margin-bottom: 1rem;
+}
+
 #header > #profiles,
 #header > #contact,
 #skills,
 #languages,
-#interests {
+#interests,
+#projects {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -516,6 +522,15 @@ section .location {
   width: 15em;
 }
 
+/* Projects section styling */
+#projects .project-item {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5em;
+  box-sizing: border-box;
+  break-inside: avoid;
+}
+
 /* Skill chart */
 
 .level {
@@ -604,6 +619,21 @@ section .location {
     font-weight: 600;
     color: #000;
   }
+  #projects .project-item {
+    width: 48%;
+    margin-right: 2%;
+    margin-bottom: 1rem;
+    padding: 0.5em;
+    box-sizing: border-box;
+  }
+  #projects .project-item:nth-child(2n) {
+    margin-right: 0;
+  }
+  /* Make first project full-width for emphasis */
+  #projects .project-item:first-child {
+    width: 100%;
+    margin-right: 0;
+  }
 }
 
 /****************
@@ -663,6 +693,8 @@ section .location {
     -ms-word-wrap: break-word;
     word-wrap: break-word;
     line-height: 1.25;
+    transform: scale(0.95);
+    transform-origin: top left;
   }
   @page {
     margin: 1cm 1.4cm;
@@ -791,531 +823,486 @@ section .location {
   .fa-location-dot:before {
     padding-left: 0.1em;
   }
+  #projects .project-item {
+    width: 48%;
+    margin-right: 2%;
+    margin-bottom: 0.5rem;
+    padding: 0;
+    page-break-inside: avoid;
+    box-sizing: border-box;
+  }
+  #projects .project-item:nth-child(2n) {
+    margin-right: 0;
+  }
+  /* Make first project full-width for emphasis */
+  #projects .project-item:first-child {
+    width: 100%;
+    margin-right: 0;
+  }
 }
 
-  </style>
-  
+    </style>
   </head>
   <body>
-  
-  <div id="resume">
-    	<header id="header" class="clear">
-    		<img class="image" src="https://avatars.githubusercontent.com/u/380340?s&#x3D;400&amp;u&#x3D;a1f7859d9d68248b6c367365610866b1bcaabdb4&amp;v&#x3D;4" alt="Prasanna V Nagarajan" />
-    		<div class="middle">
-    			<h1 class="name">Prasanna V Nagarajan</h1>
-    			<h2 class="label">Principal Software Engineer - Microsoft</h2>
-    		</div>
-    
-    		<span class="location">
-    			<span class="city">Bengaluru,</span>
-    			<span class="region">Karnataka</span>
-    			<span class="countryCode">(IN)</span>
-    		</span>
-    
-    
-    		<div id="contact">
-    			<div class="email">
-    				<span class="fa-regular fa-envelope"></span>
-    				<a class="hide-href-print" href="mailto:mail.prasanna.v@gmail.com">mail.prasanna.v@gmail.com</a>
-    			</div>
-    			<div class="phone">
-    				<span class="fa-solid fa-mobile-screen-button"></span>
-    				<a class="hide-href-print" href="tel:+91-9940202502">+91-9940202502</a>
-    			</div>
-    		</div>
-    
-    		<div id="profiles">
-    			<div class="item">
-    				<div class="username">
-    					<span class="fa-brands fa-linkedin linkedin social"></span>
-    					<span class="url">
-    						<a target="_blank" href="https://www.linkedin.com/in/prasanna-v-nagarajan/"><span class="show-only-url-print">prasanna-v-nagarajan</span></a>
-    					</span>
-    				</div>
-    			</div>
-    			<div class="item">
-    				<div class="username">
-    					<span class="fa-brands fa-twitter twitter social"></span>
-    					<span class="url">
-    						<a target="_blank" href="https://twitter.com/pvenk"><span class="show-only-url-print">pvenk</span></a>
-    					</span>
-    				</div>
-    			</div>
-    		</div>
-    	</header>
-    
-    	<section class="section summary">
-        <header>
-          <h2 class="section-title">summary</h2>
-        </header>
-    		<section class="main-summary">
-    			<div><p><p>Principal Software Engineer at Microsoft with 16+ years of experience in building and scaling enterprise software solutions. Currently leading AI/ML initiatives in Industry Solutions Engineering, focusing on Generative AI applications and data platforms. Proven track record of leading engineering teams, developing distributed systems, and creating scalable solutions across multiple clients. Passionate contributor to open-source projects with expertise spanning full-stack development, cloud-native applications, and technical leadership.</p></p></div>
-    		</section>
-    	</section>
-    
-    <section class="section">
-      <header>
-        <h2 class='section-title'>Skills</h2>
-      </header>
-      <section id="skills">
-        <div class="item">
-          <h3 class="name">
-            AI/ML Technologies
-          </h3>
-            <div class="level advanced">
-                <em>Advanced</em>
-              <div class="bar"></div>
-            </div>
-          <ul class="keywords">
-            <li>Azure AI/ML</li>
-            <li>ML/LLM Ops</li>
-            <li>Generative AI</li>
-          </ul>
-        </div>
-        <div class="item">
-          <h3 class="name">
-            Cloud Platforms
-          </h3>
-            <div class="level expert">
-                <em>Expert</em>
-              <div class="bar"></div>
-            </div>
-          <ul class="keywords">
-            <li>Microsoft Azure</li>
-            <li>AWS</li>
-            <li>Cloud-Native Solutions</li>
-          </ul>
-        </div>
-        <div class="item">
-          <h3 class="name">
-            Programming Languages
-          </h3>
-            <div class="level expert">
-                <em>Expert</em>
-              <div class="bar"></div>
-            </div>
-          <ul class="keywords">
-            <li>Java</li>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>Ruby</li>
-            <li>Python</li>
-            <li>SQL</li>
-          </ul>
-        </div>
-        <div class="item">
-          <h3 class="name">
-            Software Engineering
-          </h3>
-            <div class="level advanced">
-                <em>Advanced</em>
-              <div class="bar"></div>
-            </div>
-          <ul class="keywords">
-            <li>Full-Stack Development</li>
-            <li>Distributed Systems</li>
-            <li>Design Patterns</li>
-            <li>Test Driven Development</li>
-          </ul>
-        </div>
-        <div class="item">
-          <h3 class="name">
-            Leadership &amp; Management
-          </h3>
-            <div class="level advanced">
-                <em>Advanced</em>
-              <div class="bar"></div>
-            </div>
-          <ul class="keywords">
-            <li>Technical Project Leadership</li>
-            <li>Hands-on Technical Leadership</li>
-            <li>Pre-Sales Technical Consulting</li>
-            <li>Team Mentoring</li>
-          </ul>
-        </div>
-        <div class="item">
-          <h3 class="name">
-            Development Practices
-          </h3>
-            <div class="level expert">
-                <em>Expert</em>
-              <div class="bar"></div>
-            </div>
-          <ul class="keywords">
-            <li>Agile Methodologies</li>
-            <li>DevOps</li>
-            <li>CI/CD</li>
-            <li>JUnit</li>
-            <li>Code Reviews</li>
-          </ul>
-        </div>
-      </section>
-    </section>
-    <section class="section">
-      <header>
-        <h2 class='section-title'>Work Experience <span class="item-count">(2)</span></h2>
-      </header>
-    
-      <section id="work">
-        <section class="work-item">
-            <label for="work-item-0"></label>
-    
-            <header class="clear">
-              <div class="date">
-                <span class="startDate">Jun 2022</span>
-                <span class="endDate">- Current</span>
-              </div>
-              <div class="position">Principal Engineer</div>
-                <div class="company"></div>
-            </header>
-    
-          <span class="location">
-            <span class="fa-solid fa-location-dot"></span>
-            Bengaluru, Karnataka, India
-          </span>
-          <span class="url">
-            <span class="fa-solid fa-up-right-from-square"></span>
-            <a target="_blank" href="https://www.microsoft.com">https://www.microsoft.com</a>
-          </span>        <div class="item" id="work-item">
-            <div class="summary"><p><p>Leading AI/ML initiatives and data platform development in Industry Solutions Engineering. Progressed from Senior Software Engineer to Principal Engineer, focusing on Generative AI applications and scalable enterprise solutions.</p></p></div>
-            <ul class="highlights">
-              <li><p><p>Leading cross-functional teams to develop AI/ML solutions for enterprise clients using Azure AI services</p></p></li>
-              <li><p><p>Architected and built scalable data platforms for enterprise customers</p></p></li>
-              <li><p><p>Driving technical strategy for Generative AI applications across multiple industry verticals</p></p></li>
-              <li><p><p>Mentoring engineering teams and establishing best practices for AI/ML development and MLOps</p></p></li>
-              <li><p><p>Contributed to open-source projects and internal tooling improvements</p></p></li>
-            </ul>
-          </div>
-        </section>
-        <section class="work-item">
-            <label for="work-item-1"></label>
-    
-            <header class="clear">
-              <div class="date">
-                <span class="startDate">Jun 2009</span>
-                <span class="endDate">- Jun 2022</span>
-              </div>
-              <div class="position">Technical Principal (Started as Consultant Developer)</div>
-                <div class="company"></div>
-            </header>
-    
-          <span class="location">
-            <span class="fa-solid fa-location-dot"></span>
-            Global (India, Germany, South Africa)
-          </span>
-          <span class="url">
-            <span class="fa-solid fa-up-right-from-square"></span>
-            <a target="_blank" href="https://www.thoughtworks.com">https://www.thoughtworks.com</a>
-          </span>        <div class="item" id="work-item">
-            <div class="summary"><p><p>13-year journey progressing from Application Developer to Technical Principal across multiple countries. Led technical consulting engagements, international assignments, and large-scale software delivery projects.</p></p></div>
-            <ul class="highlights">
-              <li><p><p>Led technical consulting engagements and provided strategic guidance on software architecture</p></p></li>
-              <li><p><p>Architected and designed large-scale distributed systems for enterprise clients</p></p></li>
-              <li><p><p>Mentored teams on agile methodologies and software engineering best practices across cultures</p></p></li>
-              <li><p><p>Led pre-sales technical consulting and solution design activities for enterprise clients</p></p></li>
-              <li><p><p>Built enterprise web applications using Java, Ruby on Rails, and modern web technologies</p></p></li>
-              <li><p><p>Implemented test-driven development and agile methodologies from early career</p></p></li>
-              <li><p><p>International experience across 3 countries: India, Germany (2 years), and South Africa(1 year)</p></p></li>
-              <li><p><p>Started as a Consultant Developer and progressed into a Technical Principal</p></p></li>
-            </ul>
-          </div>
-        </section>
-      </section>
-    </section>
-    <section class="section">
-      <header>
-        <h2 class='section-title'>Projects <span class="item-count">(5)</span></h2>
-      </header>
-      <section id="projects">
-        <section class="project-item">
-    
-          <header class="clear">
-            <div class="position">Multi-Agent AI Platform for Banking</div>
-            <div class="date">
-              <span class="startDate">Aug 2024</span>
-              <span class="endDate">- Current</span>
-            </div>
+    <div id="resume">
+      	<header id="header" class="clear">
+      		<img class="image" src="https://avatars.githubusercontent.com/u/380340?s&#x3D;400&amp;u&#x3D;a1f7859d9d68248b6c367365610866b1bcaabdb4&amp;v&#x3D;4" alt="Prasanna V Nagarajan" />
+      		<div class="middle">
+      			<h1 class="name">Prasanna V Nagarajan</h1>
+      			<h2 class="label">Principal Software Engineer - Microsoft</h2>
+      		</div>
+      
+      		<span class="location">
+      			<span class="city">Bengaluru,</span>
+      			<span class="region">Karnataka</span>
+      			<span class="countryCode">(IN)</span>
+      		</span>
+      
+      
+      		<div id="contact">
+      			<div class="website">
+      				<span class="fa-solid fa-globe"></span>
+      				<a class="hide-href-print" target="_blank" target="_blank" href="https://prasanna.dev">https://prasanna.dev</a>
+      			</div>
+      			<div class="email">
+      				<span class="fa-regular fa-envelope"></span>
+      				<a class="hide-href-print" href="mailto:mail.prasanna.v@gmail.com">mail.prasanna.v@gmail.com</a>
+      			</div>
+      			<div class="phone">
+      				<span class="fa-solid fa-mobile-screen-button"></span>
+      				<a class="hide-href-print" href="tel:+91-9940202502">+91-9940202502</a>
+      			</div>
+      		</div>
+      
+      		<div id="profiles">
+      			<div class="item">
+      				<div class="username">
+      					<span class="fa-brands fa-linkedin linkedin social"></span>
+      					<span class="url">
+      						<a target="_blank" href="https://www.linkedin.com/in/prasanna-v-nagarajan/"><span class="show-only-url-print">prasanna-v-nagarajan</span></a>
+      					</span>
+      				</div>
+      			</div>
+      			<div class="item">
+      				<div class="username">
+      					<span class="fa-brands fa-twitter twitter social"></span>
+      					<span class="url">
+      						<a target="_blank" href="https://twitter.com/pvenk"><span class="show-only-url-print">pvenk</span></a>
+      					</span>
+      				</div>
+      			</div>
+      		</div>
+      	</header>
+      
+      	<section class="section summary">
+          <header>
+            <h2 class="section-title">summary</h2>
           </header>
-          <ul class="keywords">
-              <li>Multi-Agent AI</li>
-              <li>Azure AI Foundry</li>
-              <li>Semantic Kernel</li>
-              <li>Cross-Cloud Architecture</li>
-              <li>RPA</li>
-          </ul>
-          <div class="item">
-            <ul class="highlights">
-                <li><p><p>Built AWS-hosted platform managing Azure-deployed agents with unified observability</p></p></li>
-                <li><p><p>Developed extensible RPA framework with BPMN workflow integration</p></p></li>
-                <li><p><p>Enabled coordination between pro-code, low-code, and no-code agent paradigms</p></p></li>
-            </ul>
-          </div>
-        </section>
-        <section class="project-item">
-    
-          <header class="clear">
-            <div class="position">Enterprise GenAI Gateway Pattern</div>
-            <div class="date">
-              <span class="startDate">Oct 2023</span>
-              <span class="endDate">- Jun 2024</span>
-            </div>
-          </header>
-          <ul class="keywords">
-              <li>Azure APIM</li>
-              <li>GenAI Gateway</li>
-              <li>AI Governance</li>
-              <li>Enterprise Architecture</li>
-              <li>Cost Optimization</li>
-          </ul>
-          <div class="item">
-            <ul class="highlights">
-                <li><p><p>Published Microsoft Learn module and open-source accelerator</p></p></li>
-                <li><p><p>Implemented intelligent throttling and dynamic model routing</p></p></li>
-                <li><p><p>Enabled accurate PTU capacity planning through usage analytics</p></p></li>
-            </ul>
-          </div>
-        </section>
-        <section class="project-item">
-    
-          <header class="clear">
-            <div class="position">MLOps Model Factory Pattern</div>
-            <div class="date">
-              <span class="startDate">Dec 2022</span>
-              <span class="endDate">- Aug 2023</span>
-            </div>
-          </header>
-          <ul class="keywords">
-              <li>MLOps</li>
-              <li>Azure ML</li>
-              <li>Model Factory</li>
-              <li>CI/CD Pipelines</li>
-              <li>Open Source</li>
-          </ul>
-          <div class="item">
-            <ul class="highlights">
-                <li><p><p>Reduced ML project setup from weeks to hours through template scaffolding</p></p></li>
-                <li><p><p>Open-sourced as Microsoft MLOps Model Factory Accelerator</p></p></li>
-                <li><p><p>Successfully deployed multiple models to production across industries</p></p></li>
-            </ul>
-          </div>
-        </section>
-        <section class="project-item">
-    
-          <header class="clear">
-            <div class="position">Enterprise Retail Platform - POS Deployment</div>
-            <div class="date">
-              <span class="startDate">Dec 2018</span>
-              <span class="endDate">- Dec 2021</span>
-            </div>
-          </header>
-          <ul class="keywords">
-              <li>Microservices</li>
-              <li>Custom Orchestration</li>
-              <li>Large-Scale Deployment</li>
-              <li>Java</li>
-              <li>Golang</li>
-          </ul>
-          <div class="item">
-            <ul class="highlights">
-                <li><p><p>Designed custom orchestration system using Docker Compose-like DSL</p></p></li>
-                <li><p><p>Achieved 10-minute maximum downtime across diverse retail environments</p></p></li>
-                <li><p><p>Enabled 60+ developers across 5 teams to deploy 40+ services independently</p></p></li>
-            </ul>
-          </div>
-        </section>
-        <section class="project-item">
-    
-          <header class="clear">
-            <div class="position">Automotive Sales Portal - Microfrontends</div>
-            <div class="date">
-              <span class="startDate">Jan 2017</span>
-              <span class="endDate">- Nov 2018</span>
-            </div>
-          </header>
-          <ul class="keywords">
-              <li>Microfrontends</li>
-              <li>React</li>
-              <li>Dynamic Composition</li>
-              <li>Technical Leadership</li>
-              <li>Conference Speaking</li>
-          </ul>
-          <div class="item">
-            <ul class="highlights">
-                <li><p><p>Led technical coordination across 40+ developers in 5 independent teams</p></p></li>
-                <li><p><p>Developed browser-based dynamic composition system for unified UX</p></p></li>
-                <li><p><p>Established thought leadership through conference presentations and publications</p></p></li>
-            </ul>
-          </div>
-        </section>
-      </section>
-    </section>
-    <section class="section">
-      <header>
-        <h2 class='section-title'>Education <span class="item-count">(2)</span></h2>
-      </header>
-    
-      <section id="education">
-        <section class="education-item">
-          <header class="clear">
-            <div class="date">
-              <span class="startDate">
-              2011
-              </span>
-              <span class="endDate">
-              - 2013
-              </span>
-            </div>
-            <div class="header-left">
-              <div class="studyType">
-                Master of Science (MS)
-              </div>
-              <div class="area">
-                Software Systems
-              </div>
-              <div class="institution">
-                Birla Institute of Technology and Science
-              </div>
-            </div>
-          </header>
-    
-    
-          <ul class="courses">
-            <li>Advanced Operating Systems</li>
-            <li>Advanced Database Systems</li>
-            <li>Distributed Systems</li>
-          </ul>
-    
-          <div class="item">
-          </div>
-        </section>
-        <section class="education-item">
-          <header class="clear">
-            <div class="date">
-              <span class="startDate">
-              2005
-              </span>
-              <span class="endDate">
-              - 2009
-              </span>
-            </div>
-            <div class="header-left">
-              <div class="studyType">
-                Bachelor of Engineering
-              </div>
-              <div class="area">
-                Computer Science
-              </div>
-              <div class="institution">
-                SSN College Of Engineering
-              </div>
-            </div>
-          </header>
-    
-    
-          <ul class="courses">
-            <li>Data Structures and Algorithms</li>
-            <li>Object-Oriented Programming</li>
-            <li>Database Management Systems</li>
-            <li>Computer Networks</li>
-            <li>Software Engineering</li>
-          </ul>
-    
-          <div class="item">
-          </div>
-        </section>
-      </section>
-    </section>
+      		<section class="main-summary">
+      			<div><p><p>Principal Software Engineer at Microsoft with 16+ years of experience in building and scaling enterprise software solutions. Currently leading AI/ML initiatives in Industry Solutions Engineering, focusing on Generative AI applications and data platforms. Proven track record of leading engineering teams, developing distributed systems, and creating scalable solutions across multiple clients. Passionate contributor to open-source projects with expertise spanning full-stack development, cloud-native applications, and technical leadership.</p></p></div>
+      		</section>
+      	</section>
+      
       <section class="section">
         <header>
-          <h2 class="section-title">Certificates</h2>
+          <h2 class='section-title'>Skills</h2>
         </header>
-        <section id="certificates">
-            <section class="certificate-item">
-              <header class="clear">
-                  <div class="date">
-                    Jul 2024
-                  </div>
-                <div class="header-left">
-                    <div class="name">
-                      Microsoft Certified: Azure AI Engineer Associate
-                    </div>
-                    <div class="issuer">
-                      Microsoft
-                    </div>
-                </div>
-              </header>
-    
-              <div class="item">
-                  <span class="url">
-                    <span class="fa-solid fa-up-right-from-square"></span>
-                    <a target="_blank" href="https://learn.microsoft.com/api/credentials/share/en-us/prasanna-msft/EBE7EEDD7CB8F952?sharingId">https://learn.microsoft.com/api/credentials/share/en-us/prasanna-msft/EBE7EEDD7CB8F952?sharingId</a>
-                  </span>
+        <section id="skills">
+          <div class="item">
+            <h3 class="name">
+              AI/ML Technologies
+            </h3>
+              <div class="level advanced">
+                  <em>Advanced</em>
               </div>
-            </section>
-            <section class="certificate-item">
-              <header class="clear">
-                  <div class="date">
-                    Nov 2021
-                  </div>
-                <div class="header-left">
-                    <div class="name">
-                      AWS Certified Solutions Architect – Associate
-                    </div>
-                    <div class="issuer">
-                      Amazon Web Services (AWS)
-                    </div>
-                </div>
-              </header>
-    
-              <div class="item">
-                  <span class="url">
-                    <span class="fa-solid fa-up-right-from-square"></span>
-                    <a target="_blank" href="https://www.credly.com/badges/363481e3-ae7c-4feb-85ad-3b1fd2241d71?source&#x3D;linked_in_profile">https://www.credly.com/badges/363481e3-ae7c-4feb-85ad-3b1fd2241d71?source&#x3D;linked_in_profile</a>
-                  </span>
+            <ul class="keywords">
+              <li>Azure AI/ML</li>
+              <li>ML/LLM Ops</li>
+              <li>Generative AI</li>
+            </ul>
+          </div>
+          <div class="item">
+            <h3 class="name">
+              Cloud Platforms
+            </h3>
+              <div class="level expert">
+                  <em>Expert</em>
               </div>
-            </section>
+            <ul class="keywords">
+              <li>Microsoft Azure</li>
+              <li>AWS</li>
+              <li>Cloud-Native Solutions</li>
+            </ul>
+          </div>
+          <div class="item">
+            <h3 class="name">
+              Programming Languages
+            </h3>
+              <div class="level expert">
+                  <em>Expert</em>
+              </div>
+            <ul class="keywords">
+              <li>Java</li>
+              <li>JavaScript</li>
+              <li>TypeScript</li>
+              <li>Ruby</li>
+              <li>Python</li>
+              <li>SQL</li>
+            </ul>
+          </div>
+          <div class="item">
+            <h3 class="name">
+              Software Engineering
+            </h3>
+              <div class="level advanced">
+                  <em>Advanced</em>
+              </div>
+            <ul class="keywords">
+              <li>Full-Stack Development</li>
+              <li>Distributed Systems</li>
+              <li>Design Patterns</li>
+              <li>Test Driven Development</li>
+            </ul>
+          </div>
+          <div class="item">
+            <h3 class="name">
+              Leadership &amp; Management
+            </h3>
+              <div class="level advanced">
+                  <em>Advanced</em>
+              </div>
+            <ul class="keywords">
+              <li>Technical Project Leadership</li>
+              <li>Hands-on Technical Leadership</li>
+              <li>Pre-Sales Technical Consulting</li>
+              <li>Team Mentoring</li>
+            </ul>
+          </div>
+          <div class="item">
+            <h3 class="name">
+              Development Practices
+            </h3>
+              <div class="level expert">
+                  <em>Expert</em>
+              </div>
+            <ul class="keywords">
+              <li>Agile Methodologies</li>
+              <li>DevOps</li>
+              <li>CI/CD</li>
+              <li>JUnit</li>
+              <li>Code Reviews</li>
+            </ul>
+          </div>
         </section>
       </section>
-    <section class="section">
-      <header>
-        <h2 class='section-title'>Languages</h2>
-      </header>
-      <section id="languages">
-        <div class="display">
-          <h3 class="language">
-            Tamil
-          </h3>
-          <div class="item">
-            <div class="level fluency native speaker">
-              <em>Native Speaker</em>
-              <div class="bar"></div>
+      <section class="section">
+        <header>
+          <h2 class='section-title'>Work Experience <span class="item-count">(2)</span></h2>
+        </header>
+      
+        <section id="work">
+          <section class="work-item">
+              <label for="work-item-0"></label>
+              <header class="clear">
+                  <div class="date">
+                    <span class="startDate">Jun 2022</span>
+                      <span class="endDate">- Current</span>
+                  </div>
+                <div class="position">Principal Engineer</div>
+                  <div class="company">Microsoft Corporation</div>
+              </header>
+            <span class="location">
+              <span class="fa-solid fa-location-dot"></span>
+              Bengaluru, Karnataka, India
+            </span>
+             <div class="item" id="work-item">
+              <div class="summary"><p><p>Leading AI/ML initiatives and data platform development in Industry Solutions Engineering. Progressed from Senior Software Engineer to Principal Engineer, focusing on Generative AI applications and scalable enterprise solutions.</p></p></div>
+              <ul class="highlights">
+                <li><p><p>Leading cross-functional teams to develop AI/ML solutions for enterprise clients using Azure AI services</p></p></li>
+                <li><p><p>Architecting reusable patterns and accelerators for enterprise AI/ML solutions across multiple clients</p></p></li>
+                <li><p><p>Driving technical strategy for Generative AI applications across multiple industry verticals</p></p></li>
+                <li><p><p>Mentoring engineering teams and establishing best practices for AI/ML development, LLMOps and MLOps</p></p></li>
+                <li><p><p>Contributed to open-source projects and internal tooling improvements</p></p></li>
+              </ul>
             </div>
-          </div>
-        </div>
-        <div class="display">
-          <h3 class="language">
-            English
-          </h3>
-          <div class="item">
-            <div class="level fluency full professional">
-              <em>Full Professional</em>
-              <div class="bar"></div>
+          </section>
+          <section class="work-item">
+              <label for="work-item-1"></label>
+              <header class="clear">
+                  <div class="date">
+                    <span class="startDate">Jun 2009</span>
+                      <span class="endDate">- Jun 2022</span>
+                  </div>
+                <div class="position">Technical Principal</div>
+                  <div class="company">Thoughtworks Technologies</div>
+              </header>
+            <span class="location">
+              <span class="fa-solid fa-location-dot"></span>
+              Global (India, Germany, South Africa)
+            </span>
+            <span class="url">
+              <span class="fa-solid fa-up-right-from-square"></span>
+              <a target="_blank" href="https://www.thoughtworks.com">https://www.thoughtworks.com</a>
+            </span>        <div class="item" id="work-item">
+              <div class="summary"><p><p>13-year journey progressing from Application Developer to Technical Principal across multiple countries. Led technical consulting engagements, international assignments, and large-scale software delivery projects.</p></p></div>
+              <ul class="highlights">
+                <li><p><p>Led technical consulting engagements and provided strategic guidance on software architecture</p></p></li>
+                <li><p><p>Architected, designed, and developed large-scale distributed systems for enterprise clients</p></p></li>
+                <li><p><p>Led pre-sales technical consulting and solution design activities for enterprise clients</p></p></li>
+                <li><p><p>Built enterprise web applications using Java, Ruby on Rails, and modern web technologies</p></p></li>
+                <li><p><p>Implemented and mentored teams on agile methodologies, TDD, and software engineering best practices across multiple clients</p></p></li>
+                <li><p><p>Gained international experience across 3 countries with multi-year assignments in Germany (2 years) and South Africa (1 year)</p></p></li>
+              </ul>
             </div>
-          </div>
-        </div>
-        <div class="display">
-          <h3 class="language">
-            Hindi
-          </h3>
-          <div class="item">
-            <div class="level fluency limited working">
-              <em>Limited Working</em>
-              <div class="bar"></div>
-            </div>
-          </div>
-        </div>
+          </section>
+        </section>
       </section>
-    </section>
-
+      <section class="section">
+        <header>
+          <h2 class='section-title'>Projects <span class="item-count">(5)</span></h2>
+        </header>
+        <section id="projects">
+          <section class="project-item">
+            <header class="clear">
+                <div class="date">
+                  <span class="startDate">Aug 2024</span>
+                    <span class="endDate">- Current</span>
+                </div>
+              <div class="position">Multi-Agent AI Platform for Banking</div>
+            </header>
+            <ul class="keywords">
+                <li>Multi-Agent AI</li>
+                <li>Azure AI Foundry</li>
+                <li>Semantic Kernel</li>
+                <li>Cross-Cloud Architecture</li>
+                <li>RPA</li>
+            </ul>
+            <div class="item">
+                <div class="summary"><p><p>Designed cross-cloud platform orchestrating AI agents across Azure AI Foundry, Copilot Studio, and Semantic Kernel for Australian bank's AI transformation</p></p></div>
+              <ul class="highlights">
+                  <li><p><p>Built AWS-hosted platform managing Azure-deployed agents with unified observability</p></p></li>
+                  <li><p><p>Developed extensible RPA framework with BPMN workflow integration</p></p></li>
+                  <li><p><p>Enabled coordination between pro-code, low-code, and no-code agent paradigms</p></p></li>
+              </ul>
+            </div>
+          </section>
+          <section class="project-item">
+            <header class="clear">
+                <div class="date">
+                  <span class="startDate">Oct 2023</span>
+                    <span class="endDate">- Jun 2024</span>
+                </div>
+              <div class="position">Enterprise GenAI Gateway Pattern</div>
+            </header>
+            <ul class="keywords">
+                <li>Azure APIM</li>
+                <li>GenAI Gateway</li>
+                <li>AI Governance</li>
+                <li>Enterprise Architecture</li>
+                <li>Cost Optimization</li>
+            </ul>
+            <div class="item">
+                <div class="summary"><p><p>Created comprehensive enterprise GenAI gateway pattern and tool-agnostic architecture using Azure APIM for AI governance and cost optimization</p></p></div>
+              <ul class="highlights">
+                  <li><p><p>Published Microsoft Learn module and open-source accelerator</p></p></li>
+                  <li><p><p>Implemented intelligent throttling and dynamic model routing</p></p></li>
+                  <li><p><p>Enabled accurate PTU capacity planning through usage analytics</p></p></li>
+              </ul>
+            </div>
+          </section>
+          <section class="project-item">
+            <header class="clear">
+                <div class="date">
+                  <span class="startDate">Dec 2022</span>
+                    <span class="endDate">- Aug 2023</span>
+                </div>
+              <div class="position">MLOps Model Factory Pattern</div>
+            </header>
+            <ul class="keywords">
+                <li>MLOps</li>
+                <li>Azure ML</li>
+                <li>Model Factory</li>
+                <li>CI/CD Pipelines</li>
+                <li>Open Source</li>
+            </ul>
+            <div class="item">
+                <div class="summary"><p><p>Designed ML Model Factory pattern providing standardized pipeline templates for rapid model development, validated across retail and telecom sectors</p></p></div>
+              <ul class="highlights">
+                  <li><p><p>Reduced ML project setup from weeks to hours through template scaffolding</p></p></li>
+                  <li><p><p>Open-sourced as Microsoft MLOps Model Factory Accelerator</p></p></li>
+                  <li><p><p>Successfully deployed multiple models to production across industries</p></p></li>
+              </ul>
+            </div>
+          </section>
+          <section class="project-item">
+            <header class="clear">
+                <div class="date">
+                  <span class="startDate">Dec 2018</span>
+                    <span class="endDate">- Dec 2021</span>
+                </div>
+              <div class="position">Enterprise Retail Platform - POS Deployment</div>
+            </header>
+            <ul class="keywords">
+                <li>Microservices</li>
+                <li>Custom Orchestration</li>
+                <li>Large-Scale Deployment</li>
+                <li>Java</li>
+                <li>Golang</li>
+            </ul>
+            <div class="item">
+                <div class="summary"><p><p>Led microservices platform deployment to 20,000+ POS machines with custom container orchestration and minimal downtime requirements</p></p></div>
+              <ul class="highlights">
+                  <li><p><p>Designed custom orchestration system using Docker Compose-like DSL</p></p></li>
+                  <li><p><p>Achieved 10-minute maximum downtime across diverse retail environments</p></p></li>
+                  <li><p><p>Enabled 60+ developers across 5 teams to deploy 40+ services independently</p></p></li>
+              </ul>
+            </div>
+          </section>
+          <section class="project-item">
+            <header class="clear">
+                <div class="date">
+                  <span class="startDate">Jan 2017</span>
+                    <span class="endDate">- Nov 2018</span>
+                </div>
+              <div class="position">Automotive Sales Portal - Microfrontends</div>
+            </header>
+            <ul class="keywords">
+                <li>Microfrontends</li>
+                <li>React</li>
+                <li>Dynamic Composition</li>
+                <li>Technical Leadership</li>
+                <li>Conference Speaking</li>
+            </ul>
+            <div class="item">
+                <div class="summary"><p><p>Pioneered microfrontends architecture for automotive sales platform enabling independent team development with dynamic browser composition</p></p></div>
+              <ul class="highlights">
+                  <li><p><p>Led technical coordination across 40+ developers in 5 independent teams</p></p></li>
+                  <li><p><p>Developed browser-based dynamic composition system for unified UX</p></p></li>
+                  <li><p><p>Established thought leadership through conference presentations and publications</p></p></li>
+              </ul>
+            </div>
+          </section>
+        </section>
+      </section>
+      <section class="section">
+        <header>
+          <h2 class='section-title'>Education <span class="item-count">(2)</span></h2>
+        </header>
+      
+        <section id="education">
+          <section class="education-item">
+            <header class="clear">
+                <div class="date">
+                  <span class="startDate">Jun 2011</span>
+                    <span class="endDate">- Jun 2013</span>
+                </div>
+              <div class="header-left">
+                <div class="studyType">
+                  Master of Science (MS)
+                </div>
+                <div class="area">
+                  Software Systems
+                </div>
+                <div class="institution">
+                  Birla Institute of Technology and Science
+                </div>
+              </div>
+            </header>
+      
+      
+            <ul class="courses">
+              <li>Advanced Operating Systems</li>
+              <li>Advanced Database Systems</li>
+              <li>Distributed Systems</li>
+            </ul>
+      
+            <div class="item">
+            </div>
+          </section>
+          <section class="education-item">
+            <header class="clear">
+                <div class="date">
+                  <span class="startDate">Jun 2005</span>
+                    <span class="endDate">- Jun 2009</span>
+                </div>
+              <div class="header-left">
+                <div class="studyType">
+                  Bachelor of Engineering
+                </div>
+                <div class="area">
+                  Computer Science
+                </div>
+                <div class="institution">
+                  SSN College Of Engineering
+                </div>
+              </div>
+            </header>
+      
+      
+            <ul class="courses">
+              <li>Data Structures and Algorithms</li>
+              <li>Object-Oriented Programming</li>
+              <li>Database Management Systems</li>
+              <li>Computer Networks</li>
+              <li>Software Engineering</li>
+            </ul>
+      
+            <div class="item">
+            </div>
+          </section>
+        </section>
+      </section>
+        <section class="section">
+          <header>
+            <h2 class="section-title">Certificates</h2>
+          </header>
+          <section id="certificates">
+              <section class="certificate-item">
+                <header class="clear">
+                    <div class="date">
+                      Jul 2024
+                    </div>
+                  <div class="header-left">
+                      <div class="name">
+                        Microsoft Certified: Azure AI Engineer Associate
+                      </div>
+                      <div class="issuer">
+                        Microsoft
+                      </div>
+                  </div>
+                </header>
+      
+                <div class="item">
+                    <span class="url">
+                      <span class="fa-solid fa-up-right-from-square"></span>
+                      <a target="_blank" href="https://learn.microsoft.com/api/credentials/share/en-us/prasanna-msft/EBE7EEDD7CB8F952?sharingId">https://learn.microsoft.com/api/credentials/share/en-us/prasanna-msft/EBE7EEDD7CB8F952?sharingId</a>
+                    </span>
+                </div>
+              </section>
+              <section class="certificate-item">
+                <header class="clear">
+                    <div class="date">
+                      Nov 2021
+                    </div>
+                  <div class="header-left">
+                      <div class="name">
+                        AWS Certified Solutions Architect – Associate
+                      </div>
+                      <div class="issuer">
+                        Amazon Web Services (AWS)
+                      </div>
+                  </div>
+                </header>
+      
+                <div class="item">
+                    <span class="url">
+                      <span class="fa-solid fa-up-right-from-square"></span>
+                      <a target="_blank" href="https://www.credly.com/badges/363481e3-ae7c-4feb-85ad-3b1fd2241d71?source&#x3D;linked_in_profile">https://www.credly.com/badges/363481e3-ae7c-4feb-85ad-3b1fd2241d71?source&#x3D;linked_in_profile</a>
+                    </span>
+                </div>
+              </section>
+          </section>
+        </section>
+    </div>
   </body>
 </html>
