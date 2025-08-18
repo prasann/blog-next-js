@@ -22,6 +22,7 @@ body {
   --bg-secondary: #f8fafc;
   --text-primary: #1f2937;
   --text-secondary: #6b7280;
+  --accent-color: #3b82f6;
 }
 
 /* Dark theme colors */
@@ -30,6 +31,150 @@ body {
   --bg-secondary: #374151;
   --text-primary: #f9fafb;
   --text-secondary: #d1d5db;
+  --accent-color: #60a5fa;
+}
+
+/* Theme-specific utility classes */
+.theme-text-primary { color: var(--text-primary); }
+.theme-text-secondary { color: var(--text-secondary); }
+.theme-text-muted { color: var(--text-secondary); opacity: 0.8; }
+
+.theme-bg-primary { background-color: var(--bg-primary); }
+.theme-bg-secondary { background-color: var(--bg-secondary); }
+.theme-bg-tertiary { background-color: var(--bg-secondary); }
+
+.theme-border { border-color: var(--text-secondary); opacity: 0.3; }
+
+.theme-link { 
+  color: var(--accent-color); 
+  text-decoration: underline;
+  text-decoration-color: var(--text-secondary);
+}
+
+.theme-accent { color: var(--accent-color); font-weight: 600; }
+.theme-accent-hover:hover { color: var(--accent-color); opacity: 0.8; transition: all 0.2s; }
+
+.greeting-color { 
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Typography colors - headings and text elements */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary) !important;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  color: var(--text-primary) !important;
+}
+
+.prose p, .prose li, .prose td, .prose th {
+  color: var(--text-primary) !important;
+}
+
+.prose a {
+  color: var(--accent-color) !important;
+  text-decoration-color: var(--accent-color) !important;
+  opacity: 0.9;
+}
+
+.prose a:hover {
+  opacity: 1;
+}
+
+.prose blockquote {
+  color: var(--text-secondary) !important;
+  border-left-color: var(--text-secondary) !important;
+}
+
+.prose code {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Comprehensive prose theme override - works with any color palette */
+.prose-theme {
+  /* Override all typography colors to use our theme variables */
+  color: var(--text-primary) !important;
+}
+
+.prose-theme h1, .prose-theme h2, .prose-theme h3, .prose-theme h4, .prose-theme h5, .prose-theme h6 {
+  color: var(--text-primary) !important;
+}
+
+.prose-theme p, .prose-theme li, .prose-theme td, .prose-theme th, .prose-theme span {
+  color: var(--text-primary) !important;
+}
+
+.prose-theme a {
+  color: var(--accent-color) !important;
+  text-decoration-color: var(--accent-color) !important;
+}
+
+.prose-theme a:hover {
+  color: var(--accent-color) !important;
+  opacity: 0.8;
+}
+
+.prose-theme strong {
+  color: var(--text-primary) !important;
+}
+
+.prose-theme em {
+  color: var(--text-secondary) !important;
+}
+
+.prose-theme blockquote {
+  color: var(--text-secondary) !important;
+  border-left-color: var(--accent-color) !important;
+}
+
+.prose-theme pre {
+  background-color: var(--bg-secondary) !important;
+}
+
+.prose-theme code {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Only style inline code, not code blocks */
+.prose-theme p code,
+.prose-theme li code {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-secondary) !important;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+/* Exclude ALL Prism/SyntaxHighlighter styling from theme overrides */
+.prose-theme pre,
+.prose-theme pre *,
+.prose-theme pre[class*="language-"],
+.prose-theme pre[class*="language-"] *,
+.prose-theme code[class*="language-"],
+.prose-theme code[class*="language-"] *,
+.prose-theme div[class*="react-syntax-highlighter"],
+.prose-theme div[class*="react-syntax-highlighter"] * {
+  color: inherit !important;
+  background: inherit !important;
+}
+
+.prose-theme table {
+  color: var(--text-primary) !important;
+}
+
+.prose-theme thead th {
+  color: var(--text-primary) !important;
+  border-bottom-color: var(--text-secondary) !important;
+}
+
+.prose-theme tbody td {
+  border-bottom-color: var(--text-secondary) !important;
 }
 
 /* Header styling to prevent overlap */

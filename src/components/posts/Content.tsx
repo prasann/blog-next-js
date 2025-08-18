@@ -21,7 +21,7 @@ const Content = ({
   category,
 }: Post) => {
   return (
-    <div className="prose max-w-screen-xl content-area theme-bg-tertiary theme-text-primary rounded-xl">
+    <div className="prose prose-theme max-w-screen-xl content-area theme-bg-tertiary theme-text-primary rounded-xl">
       <article key={title}>
         <header>
           <div className="text-4xl font-bold text-center mt-2 greeting-color">{title}</div>

@@ -13,10 +13,10 @@ export interface BlogConfig {
 // Available palettes: "Clean Slate", "Ocean Breeze", "Forest Green", "Warm Sunset", 
 //                    "Royal Purple", "Rose Garden", "Corporate Blue", "Monochrome"
 const defaultConfig: BlogConfig = {
-  selectedPalette: 'Clean Slate', // Change this to any palette name
+  selectedPalette: 'Monochrome', // Back to original since prose was the issue
   gradients: {
     landing: true,
-    blog: false
+    blog: true
   }
 };
 
@@ -39,9 +39,4 @@ export function getThemeConfig() {
     hasLandingGradients: config.gradients.landing,
     hasBlogGradients: config.gradients.blog
   };
-}
-
-// Always use CSS variables now (no more daisyUI themes)
-export function isUsingDaisyUIThemes(): boolean {
-  return false; // We're using our custom color palette system
 }

@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { getThemeConfig, isUsingDaisyUIThemes } from '../lib/theme-config';
+import { getThemeConfig } from '../lib/theme-config';
 
 export default function SimpleThemeSwitcher() {
   const [isDark, setIsDark] = useState(true); // Default to dark
   const themeConfig = getThemeConfig();
-  const useDaisyUI = isUsingDaisyUIThemes();
 
   // Apply CSS variables for the selected palette
   const applyCSSVariables = (isDarkMode: boolean) => {
@@ -15,6 +14,11 @@ export default function SimpleThemeSwitcher() {
     root.style.setProperty('--bg-secondary', colors.bgSecondary);
     root.style.setProperty('--text-primary', colors.textPrimary);
     root.style.setProperty('--text-secondary', colors.textSecondary);
+    
+    // Apply accent color if available
+    if (colors.accent) {
+      root.style.setProperty('--accent-color', colors.accent);
+    }
   };
 
   useEffect(() => {
