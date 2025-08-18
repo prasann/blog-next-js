@@ -10,6 +10,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import ProfileImage from "./../../images/profile.jpeg";
 import blogImage from "./../../images/blog.jpg";
 import talkImage from "./../../images/speak.jpg";
+import PaletteDemo from "../PaletteDemo";
 
 const Greeting = () => {
   return (
@@ -195,6 +196,7 @@ const Container = () => {
     <div className="content-area rounded-xl">
       <AboutMe />
       <Social />
+      <PaletteDemo />
     </div>
   );
 };

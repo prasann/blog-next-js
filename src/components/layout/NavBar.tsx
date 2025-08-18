@@ -9,6 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import SimpleThemeSwitcher from "../SimpleThemeSwitcher";
 
 type MenuLinkProps = {
   displayName: string;
@@ -69,6 +70,7 @@ const NavBar = () => {
             <MenuLink displayName="About" location="/" />
             <MenuLink displayName="Talks" location="/talks" />
             <MenuLink displayName="Blog" location="/blog" />
+            <SimpleThemeSwitcher />
           </div>
         </div>
       </header>

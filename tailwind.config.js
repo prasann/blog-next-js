@@ -80,22 +80,6 @@ module.exports = {
     },
   },
   plugins: [
-    require("@tailwindcss/typography"),
-    require("daisyui")
-  ],
-  
-  // DaisyUI config
-  daisyui: {
-    themes: [
-      "cupcake",    // Light theme - cheerful and clean
-      "dark",       // Dark theme - daisyUI default dark
-      "halloween",  // Dark theme - spooky orange & purple
-      "dracula",    // Dark theme - classic dracula colors  
-      "autumn",     // Light theme - warm autumn colors
-    ],
-    darkTheme: "dark", // default dark theme
-    base: true, // applies background color and foreground color
-    styled: false, // we use our own custom CSS theming
-    utils: true, // adds responsive and modifier utilities
-  },
+    require("@tailwindcss/typography")
+  ]
 };

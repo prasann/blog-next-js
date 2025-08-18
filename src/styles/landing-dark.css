@@ -1,10 +1,5 @@
 /* Layout-specific styles for landing page */
-/* Using theme-responsive styles */
-
-.header {
-  height: 9rem;
-  background-image: linear-gradient(to right, var(--theme-bg-tertiary), var(--theme-bg-secondary), var(--theme-bg-primary));
-}
+/* Using clean gradient classes from gradients.css */
 
 #about-me {
   .about-me-container {

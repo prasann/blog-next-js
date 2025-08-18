@@ -46,7 +46,6 @@
     "autoprefixer": "^10.4.20",
     "babel-jest": "^29.7.0",
     "cooky-cutter": "^1.5.4",
-    "daisyui": "^5.0.50",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "husky": "^9.1.4",
@@ -66,5 +65,15 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "blog": {
+    "themes": {
+      "light": "cupcake",
+      "dark": "dark"
+    },
+    "gradients": {
+      "landing": true,
+      "blog": false
+    }
   }
 }
