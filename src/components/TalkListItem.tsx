@@ -21,7 +21,7 @@ const RenderLink = (link: ExternalLink) => {
   } else {
     return (
       <div key={link.name} className="my-4 text-2xl">
-        <a className="no-underline font-bold text-blue-400" href={link.link}>
+        <a className="no-underline font-bold theme-accent theme-accent-hover" href={link.link}>
           {link.name}
         </a>
       </div>
@@ -41,7 +41,7 @@ const Description = ({
   if (descriptionMarkdown) {
     return <RenderMarkdown content={descriptionMarkdown} />;
   } else {
-    return <div className="text-gray-300 my-4">{description}</div>;
+    return <div className="theme-text-muted my-4">{description}</div>;
   }
 };
 
@@ -54,20 +54,20 @@ const TalkListItem = ({
   externalLinks,
 }: Talk) => {
   return (
-    <div className="m-2 text-white grid lg:grid-cols-3 rounded-xl shadow-xl p-2 border-2 border-gray-700 bg-gray-800">
-      <div className="text-white m-2 p-2 lg:p-6 bg-gray-900 lg:col-span-2">
-        <div className="text-gray-300 text-3xl font-bold">{title}</div>
+    <div className="m-2 theme-text-primary grid lg:grid-cols-3 rounded-xl shadow-xl p-2 border-2 theme-border theme-bg-secondary">
+      <div className="theme-text-primary m-2 p-2 lg:p-6 theme-bg-tertiary lg:col-span-2">
+        <div className="theme-text-primary text-3xl font-bold">{title}</div>
         <div className="grid grid-cols-2 mt-4">
           <IconWithText text={date}>
             <FontAwesomeIcon
-              className="text-pink-400"
+              className="theme-accent"
               icon={faCalendar}
               size="2x"
             />
           </IconWithText>
           <IconWithText text={place}>
             <FontAwesomeIcon
-              className="text-red-400"
+              className="theme-link"
               icon={faMapMarkerAlt}
               size="2x"
             />
@@ -78,7 +78,7 @@ const TalkListItem = ({
           descriptionMarkdown={descriptionMarkdown}
         />
       </div>
-      <div className="text-white m-2 p-6 bg-gray-900">
+      <div className="theme-text-primary m-2 p-6 theme-bg-tertiary">
         {externalLinks.map((link) => (
           <RenderLink key={Math.random()} {...link} />
         ))}

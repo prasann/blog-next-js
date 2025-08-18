@@ -34,37 +34,39 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.300'),
+            // Remove hardcoded colors - let our CSS custom properties handle theming
+            color: 'inherit',
             a: {
-              color: theme('colors.blue.400'),
+              color: 'inherit',
+              textDecoration: 'underline',
               '&:hover': {
-                color: theme('colors.blue.600'),
+                color: 'inherit',
               },
             },
             h1: {
-              color: theme('colors.gray.100'),
+              color: 'inherit',
             },
             h2: {
-              color: theme('colors.pink.500'),
+              color: 'inherit',
             },
             h3: {
-              color: theme('colors.pink.400'),
+              color: 'inherit',
             },
             h4: {
-              color: theme('colors.pink.400'),
+              color: 'inherit',
             },
             code: {
-              color: theme('colors.pink.500'),
+              color: 'inherit',
             },
             blockquote: {
-              color: theme('colors.gray.100'),
-              borderLeftColor: theme('colors.gray.700'),
+              color: 'inherit',
+              borderLeftColor: 'inherit',
             },
             strong: {
-              color: theme('colors.pink.400'),
+              color: 'inherit',
             },
             'thead th': {
-              color: theme('colors.red.400'),
+              color: 'inherit',
             },
           },
         }
@@ -77,5 +79,23 @@ module.exports = {
       typography: ["dark"], 
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("daisyui")
+  ],
+  
+  // DaisyUI config
+  daisyui: {
+    themes: [
+      "cupcake",    // Light theme - cheerful and clean
+      "dark",       // Dark theme - daisyUI default dark
+      "halloween",  // Dark theme - spooky orange & purple
+      "dracula",    // Dark theme - classic dracula colors  
+      "autumn",     // Light theme - warm autumn colors
+    ],
+    darkTheme: "dark", // default dark theme
+    base: true, // applies background color and foreground color
+    styled: false, // we use our own custom CSS theming
+    utils: true, // adds responsive and modifier utilities
+  },
 };

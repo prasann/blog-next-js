@@ -4,7 +4,7 @@
         <title>Random Presence</title>
         <link>https://prasanna.dev</link>
         <description>Random presence of my thoughts and learning...</description>
-        <lastBuildDate>Wed, 30 Apr 2025 07:20:06 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 18 Aug 2025 05:41:36 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>npm feed package</generator>
         <language>en</language>
@@ -29,13 +29,6 @@
 <li>Server processes the request</li>
 <li>Server returns a response</li>
 <li>Connection closes</li>
-</ul>
-<p>This model works well for simple interactions but falls short when dealing with:</p>
-<ul>
-<li>Long-running AI tasks</li>
-<li>Real-time updates</li>
-<li>Complex conversational flows</li>
-<li>Multi-step interactions requiring state management</li>
 </ul>
 <p>For AI agents that may need seconds or minutes to process complex requests, this creates significant inefficiencies as clients must repeatedly poll for updates.</p>
 <h2 id="serversenteventsastepforward">Server-Sent Events: A Step Forward</h2>
@@ -91,28 +84,12 @@
 <li>The client disconnects</li>
 </ul>
 <p>This means a single connection can support an entire multi-turn conversation with an AI agent, not just a single request-response exchange.</p>
-<h3 id="5multiconnectionorchestration">5. Multi-Connection Orchestration</h3>
-<p>A2A clients can maintain simultaneous connections to multiple servers, enabling:</p>
-<ul>
-<li>Parallel task processing</li>
-<li>Service orchestration</li>
-<li>Load balancing</li>
-<li>Specialized agent selection</li>
-</ul>
-<h3 id="6pushnotificationintegration">6. Push Notification Integration</h3>
+<h3 id="5pushnotificationintegration">5. Push Notification Integration</h3>
 <p>Beyond streaming, A2A incorporates webhook-style push notifications:</p>
 <ul>
 <li>Clients can register notification endpoints</li>
 <li>Servers push updates to these endpoints when task states change</li>
 <li>Enables background processing without maintaining open connections</li>
-</ul>
-<h2 id="practicalimplications">Practical Implications</h2>
-<p>These design choices make A2A particularly well-suited for:</p>
-<ul>
-<li><p><strong>Complex AI Workflows</strong>: Multi-step processes that involve planning, gathering information, and execution can maintain state across multiple interactions.</p></li>
-<li><p><strong>Responsive UIs</strong>: Applications can show real-time progress as AI agents work, rather than displaying loading spinners.</p></li>
-<li><p><strong>Cross-Agent Collaboration</strong>: AI agents can efficiently communicate with other AI agents in complex orchestration scenarios.</p></li>
-<li><p><strong>Enterprise Integration</strong>: The protocol's support for both streaming and push notifications makes it adaptable to various infrastructure requirements.</p></li>
 </ul>
 <h2 id="implementationconsiderations">Implementation Considerations</h2>
 <p>When building systems with A2A:</p>

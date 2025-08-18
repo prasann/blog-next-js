@@ -21,15 +21,15 @@ const Content = ({
   category,
 }: Post) => {
   return (
-    <div className="prose max-w-screen-xl content-area bg-gray-900 text-gray-300 rounded-xl">
+    <div className="prose max-w-screen-xl content-area theme-bg-tertiary theme-text-primary rounded-xl">
       <article key={title}>
         <header>
           <div className="text-4xl font-bold text-center mt-2 greeting-color">{title}</div>
           <div className="flex flex-row justify-between">
-            <div className="mt-2 mb-4 text-center text-gray-400 italic">
+            <div className="mt-2 mb-4 text-center theme-text-muted italic">
               {date}
             </div>
-            <div className="mt-2 mb-4 text-center text-gray-400 italic">
+            <div className="mt-2 mb-4 text-center theme-text-muted italic">
               {minutesToRead}
             </div>
           </div>
@@ -45,7 +45,7 @@ const Content = ({
       <div className="flex justify-center items-center">
         <Engage description={description} />
       </div>
-      <div className="flex-grow border-t mx-4 md:mx-24 border-gray-700 mt-4" />
+      <div className="flex-grow border-t mx-4 md:mx-24 border-base-300 mt-4" />
       <FooterCard />
     </div>
   );

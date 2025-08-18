@@ -136,7 +136,7 @@ const Social = () => {
       <div className="flex flex-row justify-evenly">
         <a
           aria-label="github handle prasann"
-          className="text-black highlight-animation text-center lg:text-2xl"
+          className="theme-text-primary highlight-animation text-center lg:text-2xl"
           rel="noreferrer"
           href="https://github.com/prasann"
           target="_blank"
@@ -180,7 +180,7 @@ const Social = () => {
         >
           <FontAwesomeIcon
             aria-hidden={true}
-            className="highlight-animation text-green-600"
+            className="highlight-animation text-success"
             icon={faEnvelope}
             size="2x"
           />

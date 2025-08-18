@@ -8,23 +8,304 @@
   src: local("Muli"), url("/fonts/Muli-Regular.ttf") format("ttf");
 }
 
-.dark-background {
-  @apply bg-gradient-to-l from-black via-gray-700 to-black;
+/* Define CSS custom properties for theming - using daisyUI theme colors */
+:root {
+  /* Default: blog-dark (our original dark theme) */
+  --theme-bg-primary: rgb(17 24 39); /* gray-900 */
+  --theme-bg-secondary: rgb(31 41 55); /* gray-800 */
+  --theme-bg-tertiary: rgb(55 65 81); /* gray-700 */
+  --theme-text-primary: rgb(243 244 246); /* gray-100 */
+  --theme-text-secondary: rgb(209 213 219); /* gray-300 */
+  --theme-text-muted: rgb(156 163 175); /* gray-400 */
+  --theme-border: rgb(75 85 99); /* gray-600 */
+  --theme-accent: rgb(236 72 153); /* pink-500 */
+  --theme-accent-hover: rgb(244 114 182); /* pink-400 */
+  --theme-link: rgb(56 189 248); /* sky-400 */
+  --theme-success: rgb(74 222 128); /* green-400 */
 }
 
-.light-background {
-  @apply bg-gradient-to-tr from-yellow-50 to-red-50;
+/* Cupcake theme - light and cheerful */
+[data-theme="cupcake"] {
+  --theme-bg-primary: rgb(250 249 246); /* base-100 */
+  --theme-bg-secondary: rgb(245 245 244); /* base-200 */
+  --theme-bg-tertiary: rgb(214 211 209); /* base-300 */
+  --theme-text-primary: rgb(41 37 36); /* base-content */
+  --theme-text-secondary: rgb(68 64 60); /* neutral-content */
+  --theme-text-muted: rgb(120 113 108); /* neutral */
+  --theme-border: rgb(214 211 209); /* base-300 */
+  --theme-accent: rgb(101 163 13); /* accent */
+  --theme-accent-hover: rgb(77 124 15); /* accent-focus */
+  --theme-link: rgb(30 64 175); /* primary */
+  --theme-success: rgb(22 163 74); /* success */
 }
 
-.icon-text {
-  @apply my-1 mr-1 h-5 w-5 text-blue-500;
+/* Dark theme - daisyUI default dark */
+[data-theme="dark"] {
+  --theme-bg-primary: rgb(26 32 44); /* base-100 */
+  --theme-bg-secondary: rgb(45 55 72); /* base-200 */
+  --theme-bg-tertiary: rgb(74 85 104); /* base-300 */
+  --theme-text-primary: rgb(160 174 192); /* base-content */
+  --theme-text-secondary: rgb(203 213 224); /* neutral-content */
+  --theme-text-muted: rgb(113 128 150); /* neutral */
+  --theme-border: rgb(74 85 104); /* base-300 */
+  --theme-accent: rgb(34 197 94); /* accent */
+  --theme-accent-hover: rgb(22 163 74); /* accent-focus */
+  --theme-link: rgb(59 130 246); /* primary */
+  --theme-success: rgb(34 197 94); /* success */
 }
 
-.prose {
-  overflow-wrap: break-word;
+/* Halloween theme - spooky dark orange/purple */
+[data-theme="halloween"] {
+  --theme-bg-primary: rgb(26 15 38); /* base-100 */
+  --theme-bg-secondary: rgb(51 30 76); /* base-200 */
+  --theme-bg-tertiary: rgb(76 45 114); /* base-300 */
+  --theme-text-primary: rgb(248 248 242); /* base-content */
+  --theme-text-secondary: rgb(220 208 192); /* neutral-content */
+  --theme-text-muted: rgb(180 168 152); /* neutral */
+  --theme-border: rgb(76 45 114); /* base-300 */
+  --theme-accent: rgb(255 153 0); /* accent - orange */
+  --theme-accent-hover: rgb(255 183 51); /* accent-focus */
+  --theme-link: rgb(147 51 234); /* primary - purple */
+  --theme-success: rgb(34 197 94); /* success */
 }
-* {
-  /*outline: 1px red solid;*/
+
+/* Dracula theme - classic dracula colors */
+[data-theme="dracula"] {
+  --theme-bg-primary: rgb(40 42 54); /* base-100 */
+  --theme-bg-secondary: rgb(68 71 90); /* base-200 */
+  --theme-bg-tertiary: rgb(98 114 164); /* base-300 */
+  --theme-text-primary: rgb(248 248 242); /* base-content */
+  --theme-text-secondary: rgb(220 221 225); /* neutral-content */
+  --theme-text-muted: rgb(139 233 253); /* neutral */
+  --theme-border: rgb(98 114 164); /* base-300 */
+  --theme-accent: rgb(255 121 198); /* accent - pink */
+  --theme-accent-hover: rgb(255 85 180); /* accent-focus */
+  --theme-link: rgb(189 147 249); /* primary - purple */
+  --theme-success: rgb(80 250 123); /* success - green */
+}
+
+/* Autumn theme - warm light theme */
+[data-theme="autumn"] {
+  --theme-bg-primary: rgb(255 248 240); /* base-100 */
+  --theme-bg-secondary: rgb(255 237 213); /* base-200 */
+  --theme-bg-tertiary: rgb(251 191 36); /* base-300 */
+  --theme-text-primary: rgb(120 53 15); /* base-content */
+  --theme-text-secondary: rgb(146 64 14); /* neutral-content */
+  --theme-text-muted: rgb(180 83 9); /* neutral */
+  --theme-border: rgb(251 191 36); /* base-300 */
+  --theme-accent: rgb(217 119 6); /* accent */
+  --theme-accent-hover: rgb(180 83 9); /* accent-focus */
+  --theme-link: rgb(191 75 38); /* primary */
+  --theme-success: rgb(22 163 74); /* success */
+}
+
+@layer components {
+  /* Theme-responsive classes using CSS custom properties */
+  .theme-bg-primary {
+    background-color: var(--theme-bg-primary);
+  }
+  
+  .theme-bg-secondary {
+    background-color: var(--theme-bg-secondary);
+  }
+  
+  .theme-bg-tertiary {
+    background-color: var(--theme-bg-tertiary);
+  }
+  
+  .theme-text-primary {
+    color: var(--theme-text-primary);
+  }
+  
+  .theme-text-secondary {
+    color: var(--theme-text-secondary);
+  }
+  
+  .theme-text-muted {
+    color: var(--theme-text-muted);
+  }
+  
+  .theme-border {
+    border-color: var(--theme-border);
+  }
+  
+  .theme-accent {
+    color: var(--theme-accent);
+  }
+  
+  .theme-accent-hover:hover {
+    color: var(--theme-accent-hover);
+  }
+  
+  .theme-link {
+    color: var(--theme-link);
+  }
+  
+  .theme-success {
+    color: var(--theme-success);
+  }
+
+  /* Theme-responsive background gradient classes */
+  .main-gradient {
+    background-image: linear-gradient(to right, var(--theme-bg-tertiary), var(--theme-bg-secondary), var(--theme-bg-primary));
+  }
+
+  .social-bg {
+    background-image: linear-gradient(to top right, var(--theme-bg-tertiary), var(--theme-bg-secondary), var(--theme-bg-primary));
+  }
+
+  .greeting-color {
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, var(--theme-accent), var(--theme-link));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .logo-color {
+    font-size: 2.25rem; /* text-4xl */
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, var(--theme-accent), var(--theme-link));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .menu-links {
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, var(--theme-accent), var(--theme-link));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s;
+  }
+  
+  .menu-links:hover {
+    color: var(--theme-success);
+    background-image: none;
+    -webkit-text-fill-color: var(--theme-success);
+  }
+  
+  .menu-links:focus {
+    outline: 2px solid var(--theme-accent);
+    outline-offset: 2px;
+  }
+
+  /* Updated semantic classes */
+  .main-bg {
+    background-color: var(--theme-bg-primary);
+  }
+
+  .content-area {
+    padding: 0.5rem;
+    margin-top: -2.5rem;
+    background-color: var(--theme-bg-secondary);
+    color: var(--theme-text-secondary);
+  }
+
+  .footer-bg {
+    background-color: var(--theme-bg-secondary);
+  }
+
+  .tag-color {
+    background-color: rgb(236 72 153);
+    color: rgb(243 244 246);
+  }
+
+  .icon-text {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    margin-right: 0.25rem;
+    height: 1.25rem;
+    width: 1.25rem;
+    color: var(--theme-link);
+  }
+
+  .highlight-animation {
+    cursor: pointer;
+    transition-property: transform;
+    transition-duration: 200ms;
+    transform: translateZ(0);
+  }
+  
+  .highlight-animation:hover {
+    transform: scale(1.1) translateZ(0);
+  }
+
+  /* Legacy gradient classes for compatibility */
+  .dark-background {
+    background-image: linear-gradient(to right, var(--theme-bg-tertiary), var(--theme-bg-secondary), var(--theme-bg-primary));
+  }
+
+  .light-background {
+    background-image: linear-gradient(to top right, rgb(249 250 251), rgb(229 231 235));
+  }
+}
+
+@layer base {
+  .prose {
+    color: var(--theme-text-secondary);
+    overflow-wrap: break-word;
+  }
+
+  .prose code::before {
+    content: none;
+  }
+
+  .prose code::after {
+    content: none;
+  }
+
+  /* Override typography plugin colors to use our theme colors */
+  .prose h1 {
+    color: var(--theme-text-primary);
+  }
+
+  .prose h2 {
+    color: var(--theme-accent);
+  }
+
+  .prose h3 {
+    color: var(--theme-accent);
+  }
+
+  .prose h4 {
+    color: var(--theme-accent);
+  }
+
+  .prose a {
+    color: var(--theme-link);
+  }
+
+  .prose a:hover {
+    color: var(--theme-accent-hover);
+  }
+
+  .prose strong {
+    color: var(--theme-accent);
+  }
+
+  .prose code {
+    color: var(--theme-accent);
+  }
+
+  .prose blockquote {
+    color: var(--theme-text-primary);
+    border-left-color: var(--theme-border);
+  }
+
+  .prose thead th {
+    color: var(--theme-accent);
+  }
+
+  body {
+    background-color: var(--theme-bg-primary);
+    color: var(--theme-text-primary);
+  }
+
+  #about-me {
+    background-color: var(--theme-bg-secondary);
+  }
 }
 
 .iframe-container {
@@ -47,20 +328,6 @@
   height: 100%;
 }
 
-.highlight-animation {
-  @apply cursor-pointer transition duration-200 transform-gpu hover:scale-110;
-}
-
-.prose {
-  code::before {
-    content: none;
-  }
-  code::after {
-    content: none;
-  }
-  @apply text-gray-300;
-}
-
 .image-container {
   width: 100%;
 
@@ -76,6 +343,7 @@
   }
 }
 
-body {
-  @apply bg-gray-900 text-white;
+/* Debug outline - commented out */
+* {
+  /*outline: 1px red solid;*/
 }
