@@ -12,7 +12,7 @@
   },
   "engines": {
     "npm": ">=10.0.0",
-    "node": "18.x"
+    "node": "22.x"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
