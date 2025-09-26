@@ -1,5 +1,74 @@
 [
   {
+    "title": "Accelerating your coding Journey - Guided by Copilot",
+    "date": "09-2025",
+    "place": "Microsoft Office, Bengaluru",
+    "description": "Hands-on session at VSCode Dev Days exploring how to harness GitHub Copilot's full potential within VSCode. Covered differences between Agent Mode and Edit Mode, creating Custom Modes for specific workflows, and fine-tuning productivity configurations. Also discussed prompting and collaboration conventions, including shared practices like agents.md and structured instructions for consistent team usage across projects.",
+    "externalLinks": []
+  },
+  {
+    "title": "Cross-Platform Multi-Agent Orchestration with Semantic Kernel",
+    "date": "05-2025",
+    "place": "Bengaluru",
+    "description": "Explored orchestration of multi-agent applications using Pro-Code, Low-Code, and No-Code platforms. Demonstrated three distinct agents: Semantic Kernel (Pro-Code), Microsoft Copilot Studio (Low-Code), and Azure AI Agent Service (No-Code) integrated into a unified application. Covered coordinating layer built with Semantic Kernel for managing agent communication and workflow, plus OpenTelemetry integration across all agents for unified observability and comprehensive system monitoring.",
+    "externalLinks": [
+      {
+        "name": "Deck",
+        "link": "https://docs.google.com/presentation/d/1J1eXHjv2Yk3nYHk3F7gk9y4XfOa8c8Jt5Fqz1Uu0m0o/edit?usp=sharing",
+        "embed": true
+      },
+      {
+        "name": "Code",
+        "link": "https://github.com/prasann/thin-multi-starter",
+        "embed": false
+      }
+    ]
+  },
+  {
+    "title": "OpenAI's Realtime API - Intro and Key Learnings",
+    "date": "01-2025",
+    "place": "AI Meetup, Bengaluru",
+    "description": "Deep-dive into OpenAI's Realtime API covering real-time messaging concepts, communication modes (WebRTC vs WebSockets), and RAG integration with real-time interactions. Explored event-driven architecture, turn detection, built-in speech-to-text capabilities, and practical implementation using Azure AI Search. Demonstrated building a conversational AI with custom RAG tools and function calling for dynamic knowledge retrieval.",
+    "externalLinks": [
+      {
+        "name": "Detailed Blog Post",
+        "link": "https://www.prasanna.dev/posts/realtime-api-intro-and-learnings",
+        "embed": false
+      }
+    ]
+  },
+  {
+    "title": "Understanding Autogen's Distributed Agent Runtime",
+    "date": "02-2025",
+    "place": "Agentic Meetup, HSR Layout, Bengaluru",
+    "description": "Deep-dive into Autogen's distributed runtime architecture and its gRPC-based implementation. Explored components including GRPC Host, GRPC Runtime clients, Host Connection, Subscription Manager, and Serialization Registry. Covered communication patterns, cross-language agent possibilities, and challenges in implementing distributed multi-agent systems. Discussed the complexities of building TypeScript agents that can communicate with Python agents in the distributed runtime.",
+    "externalLinks": [
+      {
+        "name": "Detailed Blog Post",
+        "link": "https://www.prasanna.dev/posts/distributed-runtime-autogen",
+        "embed": false
+      },
+      {
+        "name": "Code Sample",
+        "link": "https://github.com/prasann/autogen-distributed-chat",
+        "embed": false
+      }
+    ]
+  },
+  {
+    "title": "Edge Rollout System",
+    "date": "10-2024",
+    "place": "Google Office, Bengaluru",
+    "description": "Presented at a Distributed Systems meetup about the Edge Rollout System - a core component of an In-Store Platform for a UK retailer modernizing 65,000 POS devices across 4,200 stores. The system handles automated deployment of OS images and containerized applications to self-checkout tills using a manifest-driven, three-tier architecture (Cloud → Store → Device) in an offline-first environment.",
+    "externalLinks": [
+      {
+        "name": "Deck",
+        "link": "https://docs.google.com/presentation/d/1X7gb_DO0jnR7HfnKlSbSAaAyO4SkZ9FXklbNEqRBBRA/edit?usp=sharing",
+        "embed": true
+      }
+    ]
+  },
+  {
     "title": "Exploring ONDC",
     "date": "28-11-2023",
     "place": "Remote",
