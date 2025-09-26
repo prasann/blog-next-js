@@ -1,7 +1,7 @@
 export type ExternalLink = {
   name: string;
   link: string;
-  embed: boolean;
+  embed?: boolean; // Made optional since we now use auto-detection
 };
 
 type Talk = {

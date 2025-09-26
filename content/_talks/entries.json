@@ -7,8 +7,7 @@
     "externalLinks": [
       {
         "name": "Code",
-        "link": "https://github.com/prasann/vscode-dev-day",
-        "embed": false
+        "link": "https://github.com/prasann/vscode-dev-day"
       }
     ]
   },
@@ -20,13 +19,11 @@
     "externalLinks": [
       {
         "name": "Deck",
-        "link": "https://drive.google.com/file/d/15KXndI7WakCH4gbzYTrBEQxHApWKBGig/preview",
-        "embed": true
+        "link": "https://drive.google.com/file/d/15KXndI7WakCH4gbzYTrBEQxHApWKBGig/preview"
       },
       {
         "name": "Code",
-        "link": "https://github.com/prasann/thin-multi-starter",
-        "embed": false
+        "link": "https://github.com/prasann/thin-multi-starter"
       }
     ]
   },
@@ -38,8 +35,7 @@
     "externalLinks": [
       {
         "name": "Detailed Blog Post",
-        "link": "https://www.prasanna.dev/posts/realtime-api-intro-and-learnings",
-        "embed": false
+        "link": "https://www.prasanna.dev/posts/realtime-api-intro-and-learnings"
       }
     ]
   },
@@ -51,13 +47,11 @@
     "externalLinks": [
       {
         "name": "Detailed Blog Post",
-        "link": "https://www.prasanna.dev/posts/distributed-runtime-autogen",
-        "embed": false
+        "link": "https://www.prasanna.dev/posts/distributed-runtime-autogen"
       },
       {
         "name": "Code Sample",
-        "link": "https://github.com/prasann/autogen-distributed-chat",
-        "embed": false
+        "link": "https://github.com/prasann/autogen-distributed-chat"
       }
     ]
   },
@@ -69,8 +63,7 @@
     "externalLinks": [
       {
         "name": "Deck",
-        "link": "https://docs.google.com/presentation/d/e/2PACX-1vRa6PTohE2wStQfu7Mav6eeLQ7iixJvAhO7qhQhl1e7-QG2625LuVy5uAUyVWPbt-8Fm2NEVZSn3qif/pubembed?start=false&loop=false&delayms=3000",
-        "embed": true
+        "link": "https://docs.google.com/presentation/d/e/2PACX-1vRa6PTohE2wStQfu7Mav6eeLQ7iixJvAhO7qhQhl1e7-QG2625LuVy5uAUyVWPbt-8Fm2NEVZSn3qif/pubembed?start=false&loop=false&delayms=3000"
       }
     ]
   },
@@ -82,8 +75,7 @@
     "externalLinks": [
       {
         "name": "Deck",
-        "link": "https://docs.google.com/presentation/d/e/2PACX-1vRuJRGH288x5i7T5RcDHyjrIvI7sHiz_z5w4sKC8E9CqmkyW4aL4Xjaa92sw8anQh5sgH7VwrjzBtJA/embed?start=false&loop=true&delayms=3000",
-        "embed": true
+        "link": "https://docs.google.com/presentation/d/e/2PACX-1vRuJRGH288x5i7T5RcDHyjrIvI7sHiz_z5w4sKC8E9CqmkyW4aL4Xjaa92sw8anQh5sgH7VwrjzBtJA/embed?start=false&loop=true&delayms=3000"
       }
     ]
   },
@@ -95,8 +87,7 @@
     "externalLinks": [
       {
         "name": "Deck",
-        "link": "https://docs.google.com/presentation/d/e/2PACX-1vSWEX7tUaa6KOk1HdqhKNShhJF9fkhf1Hb3JICJn_iQ9fl5SsznF57J_LPT3VwBbrSBfjUx8629kVnb/embed?start=false&loop=false&delayms=3000",
-        "embed": true
+        "link": "https://docs.google.com/presentation/d/e/2PACX-1vSWEX7tUaa6KOk1HdqhKNShhJF9fkhf1Hb3JICJn_iQ9fl5SsznF57J_LPT3VwBbrSBfjUx8629kVnb/embed?start=false&loop=false&delayms=3000"
       }
     ]
   },
@@ -108,8 +99,7 @@
     "externalLinks": [
       {
         "name": "Deck",
-        "link": "https://docs.google.com/presentation/d/e/2PACX-1vSfaOPPCXU18hEWlDj35VC1nHOu0_JvFg7kzsjRCrZtHgmDc9aIck7HloqW0phQxpVovZUBft0IiTJG/embed?start=false&loop=false&delayms=3000",
-        "embed": true
+        "link": "https://docs.google.com/presentation/d/e/2PACX-1vSfaOPPCXU18hEWlDj35VC1nHOu0_JvFg7kzsjRCrZtHgmDc9aIck7HloqW0phQxpVovZUBft0IiTJG/embed?start=false&loop=false&delayms=3000"
       }
     ]
   },
@@ -121,8 +111,7 @@
     "externalLinks": [
       {
         "name": "Deck",
-        "link": "https://docs.google.com/presentation/d/e/2PACX-1vRkX-53_D5WJoXdaD6dCAcQPEaOh9Qce72qwCj_Lt8r5_lLVNNb8-NQh4ze2jURwbOVn38yE5uL_avx/embed?start=false&loop=false&delayms=3000",
-        "embed": true
+        "link": "https://docs.google.com/presentation/d/e/2PACX-1vRkX-53_D5WJoXdaD6dCAcQPEaOh9Qce72qwCj_Lt8r5_lLVNNb8-NQh4ze2jURwbOVn38yE5uL_avx/embed?start=false&loop=false&delayms=3000"
       }
     ]
   },
@@ -134,8 +123,7 @@
     "externalLinks": [
       {
         "name": "Video",
-        "link": "https://www.youtube.com/embed/ozEI0-5zMro",
-        "embed": true
+        "link": "https://www.youtube.com/embed/ozEI0-5zMro"
       }
     ]
   },
@@ -147,8 +135,7 @@
     "externalLinks": [
       {
         "name": "Presentation Deck",
-        "link": "https://www.slideshare.net/slideshow/embed_code/key/JaKVATp5xiJY1Y",
-        "embed": true
+        "link": "https://www.slideshare.net/slideshow/embed_code/key/JaKVATp5xiJY1Y"
       }
     ]
   },
@@ -160,13 +147,11 @@
     "externalLinks": [
       {
         "name": "Presentation Deck",
-        "link": "https://docs.google.com/presentation/d/e/2PACX-1vRLrCZy4IARcJSY1Zb48_3zhkd4kl79gAxl9RcQe708Y-_n_q4ZzKce5tC6FtSixe5hUtnPLE3bMRpt/embed?start=false&loop=false&delayms=3000",
-        "embed": true
+        "link": "https://docs.google.com/presentation/d/e/2PACX-1vRLrCZy4IARcJSY1Zb48_3zhkd4kl79gAxl9RcQe708Y-_n_q4ZzKce5tC6FtSixe5hUtnPLE3bMRpt/embed?start=false&loop=false&delayms=3000"
       },
       {
         "name": "Talk Video",
-        "link": "https://www.youtube.com/embed/OzOgCmO5AjI",
-        "embed": false
+        "link": "https://www.youtube.com/embed/OzOgCmO5AjI"
       }
     ]
   },
@@ -178,8 +163,7 @@
     "externalLinks": [
       {
         "name": "Presentation Deck",
-        "link": "https://www.slideshare.net/slideshow/embed_code/key/jPx5noSwpL5alt",
-        "embed": true
+        "link": "https://www.slideshare.net/slideshow/embed_code/key/jPx5noSwpL5alt"
       }
     ]
   },
@@ -191,13 +175,11 @@
     "externalLinks": [
       {
         "name": "Presentation Deck",
-        "link": "https://speakerdeck.com/player/f14f8017997d4260bac0501e0e6b31b6",
-        "embed": true
+        "link": "https://speakerdeck.com/player/f14f8017997d4260bac0501e0e6b31b6"
       },
       {
         "name": "Link to the Video",
-        "link": "https://www.youtube.com/embed/8dzh9byoDo4",
-        "embed": false
+        "link": "https://www.youtube.com/embed/8dzh9byoDo4"
       }
     ]
   },
@@ -209,8 +191,7 @@
     "externalLinks": [
       {
         "name": "Presentation Deck",
-        "link": "https://www.slideshare.net/slideshow/embed_code/key/fIodC78yyqAfSy",
-        "embed": true
+        "link": "https://www.slideshare.net/slideshow/embed_code/key/fIodC78yyqAfSy"
       }
     ]
   },
@@ -222,8 +203,7 @@
     "externalLinks": [
       {
         "name": "Presentation Deck",
-        "link": "https://www.slideshare.net/slideshow/embed_code/key/6EufQeU1fm1SFl",
-        "embed": true
+        "link": "https://www.slideshare.net/slideshow/embed_code/key/6EufQeU1fm1SFl"
       }
     ]
   },
@@ -235,8 +215,7 @@
     "externalLinks": [
       {
         "name": "Presentation Deck",
-        "link": "https://www.slideshare.net/slideshow/embed_code/key/fAVHO9T4Khyr23",
-        "embed": true
+        "link": "https://www.slideshare.net/slideshow/embed_code/key/fAVHO9T4Khyr23"
       }
     ]
   },
@@ -244,12 +223,11 @@
     "title": "Being a consultant developer",
     "date": "12-01-2014",
     "place": "Johannesburg",
-    "description": "Being a developer is all about writing quality code. however, being a consultant is way different. We need to make a right decisions, and have excellent communication. This talk helps the developers to jump on to the consultant wagon.",
+    "description": "Being a developer is all about writing code. however, being a consultant is way different. We need to make a right decisions, and have excellent communication. This talk helps the developers to jump on to the consultant wagon.",
     "externalLinks": [
       {
         "name": "Presentation Deck",
-        "link": "https://www.slideshare.net/slideshow/embed_code/key/1nmJJGMOKkpDOe",
-        "embed": true
+        "link": "https://www.slideshare.net/slideshow/embed_code/key/1nmJJGMOKkpDOe"
       }
     ]
   },
@@ -261,8 +239,7 @@
     "externalLinks": [
       {
         "name": "Presentation Deck",
-        "link": "https://speakerdeck.com/player/de59897df12b464a80b44ee5a005e862",
-        "embed": true
+        "link": "https://speakerdeck.com/player/de59897df12b464a80b44ee5a005e862"
       }
     ]
   }

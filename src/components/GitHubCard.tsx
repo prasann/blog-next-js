@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+// Import the cached GitHub data directly (same pattern as entries.json)
+import githubData from "../../content/_talks/github-data.json";
 
 // Helper function to extract owner and repo from GitHub URL
 const extractGitHubInfo = (url: string): { owner: string; repo: string } | null => {
@@ -32,62 +33,14 @@ interface GitHubCardProps {
 // Component for rendering GitHub repository cards
 const GitHubCard = ({ url, name }: GitHubCardProps) => {
   const githubInfo = extractGitHubInfo(url);
-  const [repoData, setRepoData] = useState<GitHubRepoData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   
-  useEffect(() => {
-    if (!githubInfo) {
-      setLoading(false);
-      return;
-    }
+  // Get repository data from statically imported JSON
+  const repoData = githubData[url as keyof typeof githubData] as GitHubRepoData | undefined;
 
-    // Fetch repository data from GitHub API
-    const fetchRepoData = async () => {
-      try {
-        const response = await fetch(`https://api.github.com/repos/${githubInfo.owner}/${githubInfo.repo}`);
-        if (response.ok) {
-          const data = await response.json();
-          setRepoData(data);
-        } else {
-          setError(true);
-        }
-      } catch (err) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRepoData();
-  }, [githubInfo]);
-
-  if (!githubInfo || error) {
+  if (!githubInfo || !repoData) {
     return (
-      <div className="my-4 text-2xl">
-        <a className="no-underline font-bold text-blue-400" href={url}>
-          {name}
-        </a>
-      </div>
-    );
-  }
-
-  if (loading) {
-    return (
-      <div className="my-4 p-4 bg-gray-700 rounded-lg">
-        <div className="animate-pulse">
-          <div className="h-4 bg-gray-600 rounded w-3/4 mb-2"></div>
-          <div className="h-3 bg-gray-600 rounded w-1/2 mb-2"></div>
-          <div className="h-3 bg-gray-600 rounded w-1/3"></div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!repoData) {
-    return (
-      <div className="my-4 text-2xl">
-        <a className="no-underline font-bold text-blue-400" href={url}>
+      <div className="text-2xl">
+        <a className="no-underline font-bold text-blue-400" href={url} target="_blank" rel="noopener noreferrer">
           {name}
         </a>
       </div>

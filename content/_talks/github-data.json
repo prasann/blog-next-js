@@ -1,0 +1,41 @@
+{
+  "https://github.com/prasann/vscode-dev-day": {
+    "name": "vscode-dev-day",
+    "full_name": "prasann/vscode-dev-day",
+    "description": "VSCode Dev Days materials - Exploring GitHub Copilot's full potential with hands-on examples and configurations",
+    "html_url": "https://github.com/prasann/vscode-dev-day",
+    "stargazers_count": 47,
+    "forks_count": 12,
+    "language": "TypeScript",
+    "owner": {
+      "login": "prasann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/380340?v=4"
+    }
+  },
+  "https://github.com/prasann/thin-multi-starter": {
+    "name": "thin-multi-starter",
+    "full_name": "prasann/thin-multi-starter",
+    "description": "Cross-platform multi-agent orchestration starter using Semantic Kernel, Copilot Studio, and Azure AI Agent Service",
+    "html_url": "https://github.com/prasann/thin-multi-starter",
+    "stargazers_count": 156,
+    "forks_count": 23,
+    "language": "Python",
+    "owner": {
+      "login": "prasann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/380340?v=4"
+    }
+  },
+  "https://github.com/prasann/autogen-distributed-chat": {
+    "name": "autogen-distributed-chat",
+    "full_name": "prasann/autogen-distributed-chat",
+    "description": "Sample implementation of Autogen's distributed runtime with gRPC communication between TypeScript and Python agents",
+    "html_url": "https://github.com/prasann/autogen-distributed-chat",
+    "stargazers_count": 89,
+    "forks_count": 18,
+    "language": "Python",
+    "owner": {
+      "login": "prasann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/380340?v=4"
+    }
+  }
+}

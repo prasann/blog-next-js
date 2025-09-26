@@ -6,6 +6,7 @@ import { getTalkDescription } from "../lib/api";
 import RenderMarkdown from "./RenderMarkdown";
 import GitHubCard from "./GitHubCard";
 import LazyEmbed from "./LazyEmbed";
+import BlogCard, { isBlogPost } from "./BlogCard";
 
 // Helper function to detect GitHub repository URLs
 const isGitHubRepo = (url: string): boolean => {
@@ -13,17 +14,20 @@ const isGitHubRepo = (url: string): boolean => {
   return githubPattern.test(url);
 };
 
+// Helper function to detect embeddable content
+const isEmbeddableContent = (url: string): boolean => {
+  return (
+    url.includes('docs.google.com/presentation') ||
+    url.includes('drive.google.com') ||
+    url.includes('youtube.com/embed') ||
+    url.includes('youtu.be') ||
+    url.includes('slideshare.net') ||
+    url.includes('speakerdeck.com')
+  );
+};
+
 const RenderLink = (link: ExternalLink) => {
-  // Case 1: Embedded content (Google Slides, videos, etc.) - use lazy loading
-  if (link.embed) {
-    return (
-      <div key={link.name} className="my-4">
-        <LazyEmbed src={link.link} name={link.name} />
-      </div>
-    );
-  }
-  
-  // Case 2: GitHub repository - render as GitHub card
+  // Case 1: GitHub repository - render as GitHub card
   if (isGitHubRepo(link.link)) {
     return (
       <div key={link.name} className="my-4">
@@ -32,10 +36,28 @@ const RenderLink = (link: ExternalLink) => {
     );
   }
   
-  // Case 3: Regular links - render as before
+  // Case 2: Blog post - render as blog card (Twitter card style)
+  if (isBlogPost(link.link)) {
+    return (
+      <div key={link.name} className="my-4">
+        <BlogCard url={link.link} name={link.name} />
+      </div>
+    );
+  }
+  
+  // Case 3: Embeddable content (Google Slides, YouTube, etc.) - use lazy loading
+  if (isEmbeddableContent(link.link)) {
+    return (
+      <div key={link.name} className="my-4">
+        <LazyEmbed src={link.link} name={link.name} />
+      </div>
+    );
+  }
+  
+  // Case 4: Regular links - render as before
   return (
     <div key={link.name} className="my-4 text-2xl">
-      <a className="no-underline font-bold text-blue-400" href={link.link}>
+      <a className="no-underline font-bold text-blue-400" href={link.link} target="_blank" rel="noopener noreferrer">
         {link.name}
       </a>
     </div>
