@@ -5,6 +5,7 @@ import { faCalendar, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { getTalkDescription } from "../lib/api";
 import RenderMarkdown from "./RenderMarkdown";
 import GitHubCard from "./GitHubCard";
+import LazyEmbed from "./LazyEmbed";
 
 // Helper function to detect GitHub repository URLs
 const isGitHubRepo = (url: string): boolean => {
@@ -13,24 +14,22 @@ const isGitHubRepo = (url: string): boolean => {
 };
 
 const RenderLink = (link: ExternalLink) => {
-  // Case 1: Embedded content (Google Slides, videos, etc.)
+  // Case 1: Embedded content (Google Slides, videos, etc.) - use lazy loading
   if (link.embed) {
     return (
-      <div key={link.name} className="my-4 iframe-container">
-        <iframe
-          src={link.link}
-          frameBorder="0"
-          loading="lazy"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+      <div key={link.name} className="my-4">
+        <LazyEmbed src={link.link} name={link.name} />
       </div>
     );
   }
   
   // Case 2: GitHub repository - render as GitHub card
   if (isGitHubRepo(link.link)) {
-    return <GitHubCard key={link.name} url={link.link} name={link.name} />;
+    return (
+      <div key={link.name} className="my-4">
+        <GitHubCard url={link.link} name={link.name} />
+      </div>
+    );
   }
   
   // Case 3: Regular links - render as before
