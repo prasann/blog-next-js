@@ -4,8 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { getTalkDescription } from "../lib/api";
 import RenderMarkdown from "./RenderMarkdown";
+import GitHubCard from "./GitHubCard";
+
+// Helper function to detect GitHub repository URLs
+const isGitHubRepo = (url: string): boolean => {
+  const githubPattern = /^https:\/\/github\.com\/[^\/]+\/[^\/]+\/?$/;
+  return githubPattern.test(url);
+};
 
 const RenderLink = (link: ExternalLink) => {
+  // Case 1: Embedded content (Google Slides, videos, etc.)
   if (link.embed) {
     return (
       <div key={link.name} className="my-4 iframe-container">
@@ -18,15 +26,21 @@ const RenderLink = (link: ExternalLink) => {
         />
       </div>
     );
-  } else {
-    return (
-      <div key={link.name} className="my-4 text-2xl">
-        <a className="no-underline font-bold text-blue-400" href={link.link}>
-          {link.name}
-        </a>
-      </div>
-    );
   }
+  
+  // Case 2: GitHub repository - render as GitHub card
+  if (isGitHubRepo(link.link)) {
+    return <GitHubCard key={link.name} url={link.link} name={link.name} />;
+  }
+  
+  // Case 3: Regular links - render as before
+  return (
+    <div key={link.name} className="my-4 text-2xl">
+      <a className="no-underline font-bold text-blue-400" href={link.link}>
+        {link.name}
+      </a>
+    </div>
+  );
 };
 
 type DescriptionProps = {
