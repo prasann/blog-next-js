@@ -61,8 +61,8 @@ const NavBar = () => {
           <Image
             src={logoImage}
             alt="Logo"
-            width={150}
-            className="rounded-full w-full h-auto"
+            width={72}
+            className="p-4 w-full h-auto"
           />
           </div>
           <div className="hidden md:mr-8 md:flex items-center space-x-2">

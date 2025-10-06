@@ -4,7 +4,7 @@
         <title>Random Presence</title>
         <link>https://prasanna.dev</link>
         <description>Random presence of my thoughts and learning...</description>
-        <lastBuildDate>Thu, 02 Oct 2025 17:07:46 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 06 Oct 2025 05:43:12 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>npm feed package</generator>
         <language>en</language>
@@ -38,7 +38,7 @@
 <li>Redis: stores the nodegraph JSON and a vector index built from the user query embeddings.</li>
 <li>Runtime retrieval/injection: at run time, the orchestrator queries Redis and injects per-node examples.</li>
 </ul>
-<p><img src="/assets/posts/images/langfuse-feedback-loop/flow-diagram-neutral.png" alt="Logical diagram {200x600}" title="Logical architecture" /></p>
+<p><img src="/assets/posts/images/langfuse-feedback-loop/flow-diagram-neutral.png" alt="Logical diagram {350x600}" title="Logical architecture" /></p>
 <p>Key constraints we used:</p>
 <ul>
 <li>Only the user query is embedded for semantic search.</li>
@@ -96,8 +96,7 @@
             <guid>https://prasanna.dev/posts/a2a-vs-http</guid>
             <pubDate>Tue, 29 Apr 2025 18:30:00 GMT</pubDate>
             <description><![CDATA[Explore how Google's Agent-to-Agent protocol revolutionizes AI communication with task-based models, rich events, and persistent connections—solving HTTP's limitations for complex AI interactions.]]></description>
-            <content:encoded><![CDATA[<h1 id="understandinggooglesa2aprotocolbeyondtraditionalhttp">Understanding Google's A2A Protocol: Beyond Traditional HTTP</h1>
-<p>Google's <a href="https://google.github.io/A2A/">Agent-to-Agent (A2A) protocol</a> represents a significant evolution in how AI systems communicate with each other and with client applications. As AI becomes more integrated into our digital interactions, the need for standardized, efficient communication protocols becomes critical. Let's explore how A2A differs from traditional HTTP and HTTP Server-Sent Events (SSE), and why these differences matter.</p>
+            <content:encoded><![CDATA[<p>Google's <a href="https://google.github.io/A2A/">Agent-to-Agent (A2A) protocol</a> represents a significant evolution in how AI systems communicate with each other and with client applications. As AI becomes more integrated into our digital interactions, the need for standardized, efficient communication protocols becomes critical. Let's explore how A2A differs from traditional HTTP and HTTP Server-Sent Events (SSE), and why these differences matter.</p>
 <h2 id="thelimitationsoftraditionalhttp">The Limitations of Traditional HTTP</h2>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview">Traditional HTTP</a> follows a simple request-response pattern:</p>
 <ul>
