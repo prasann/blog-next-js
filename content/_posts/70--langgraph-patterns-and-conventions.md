@@ -1,5 +1,5 @@
 ---
-title: "LangGraph Patterns and Conventions for Building Reliable Agent Systems"
+title: "LangGraph patterns and conventions for building agentic systems"
 date: "28-11-2025"
 tags:
   - LangGraph
