@@ -7,6 +7,7 @@ tags:
   - python
   - best-practices
 description: "Patterns and conventions I picked up building agent systems with LangGraph, covering pure transformations, state management, and common anti-patterns to avoid."
+minutesToRead: 12
 ---
 
 After building a few agent systems with LangGraph, I started noticing patterns in what worked and what caused bugs. Things like mutating state, blocking in nodes, and hiding tool calls inside LLM nodes made debugging really painful. Putting up this list for my future reference, and possibly to share with others who are in the first days of LangGraph.

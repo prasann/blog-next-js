@@ -8,6 +8,7 @@ tags:
   - agentic-systems
   - human-in-loop
 description: "A practical feedback loop that turns validated agent runs into dynamic, query-relevant few-shot examples to make agentic workflows more predictable."
+minutesToRead: 10
 ---
 
 Agentic systems can do powerful things, but they are often unpredictable in practice. With many agents and branching workflows, small changes in input or context can push the system down a different path. That makes the experience inconsistent for users and hard to debug for developers.
