@@ -1,6 +1,6 @@
 ---
 title: "LangGraph patterns and conventions for building agentic systems"
-date: "28-11-2025"
+date: "28-10-2025"
 tags:
   - LangGraph
   - agentic-systems

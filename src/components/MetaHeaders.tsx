@@ -14,7 +14,7 @@ const MetaHeaders = (customMetaHeader: Meta) => {
       <meta property="og:title" content={metaHeader.title} />
       <meta property="og:description" content={metaHeader.description} />
       <meta name="image" property="og:image" content={metaHeader.image} />
-      {metaHeader.isArticle} && <meta property="og:type" content="article" />
+      {metaHeader.isArticle && <meta property="og:type" content="article" />}
       <meta property="og:locale" content="en_IN" />
       <meta property="og:url" content="https://prasanna.dev" />
       <meta property="fb:app_id" content="670156599751120%" />
@@ -23,7 +23,7 @@ const MetaHeaders = (customMetaHeader: Meta) => {
       <meta property="twitter:card" content="summary" />
       <meta property="twitter:creator" content="pvenk" />
       <meta property="twitter:title" content={metaHeader.title} />
-      <meta property="twitter.image" content={metaHeader.image} />
+      <meta property="twitter:image" content={metaHeader.image} />
     </Head>
   );
 };
