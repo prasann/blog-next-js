@@ -16,7 +16,7 @@ Fair warning: this comes from my experience building with LangGraph and reading 
 
 ## 1. Nodes are Pure Transformations
 
-**Principle**: Nodes transform state → new state without side effects during execution.
+**Pattern**: Treat nodes as pure transformations (state → new state) for easier replay and debugging. LangGraph doesn't enforce this, but it makes your system more predictable.
 
 ```python
 # ❌ WRONG: Imperative with side effects
@@ -40,7 +40,7 @@ def process_node(state):
 
 ## 2. State is Immutable Between Nodes
 
-**Principle**: Never mutate state objects. Return new state objects.
+**Pattern**: Never mutate state objects. Return new state objects. LangGraph doesn't prevent mutations, but they cause confusing merge behavior when reducers are involved.
 
 ```python
 # ❌ WRONG: Mutating shared references
@@ -65,7 +65,7 @@ def add_item_node(state):
 
 ## 3. Persistence is External to Graph Execution
 
-**Principle**: Don't persist inside nodes. Let LangGraph's checkpointer handle it.
+**Pattern**: Prefer letting LangGraph's checkpointer handle persistence rather than manual DB writes in nodes. Manual persistence isn't forbidden, but it duplicates effort and can break replay semantics.
 
 ```python
 # ❌ WRONG: Manual persistence in nodes
@@ -97,7 +97,7 @@ def process_order_node(state):
 
 ## 4. Use Reducers for List/Collection Updates
 
-**Principle**: Annotate collection fields to tell LangGraph how to merge updates.
+**Pattern**: Annotate collection fields to tell LangGraph how to merge updates. This prevents lost updates when parallel branches return list fragments.
 
 ```python
 # State definition with reducers
@@ -125,7 +125,7 @@ def node2(state):
 
 ## 5. Interrupts/Pauses Separate Workflow from Waiting
 
-**Principle**: Use `interrupt_before`/`interrupt_after` instead of blocking loops.
+**Pattern**: Use `interrupt_before`/`interrupt_after` instead of blocking loops. When resuming, pass the same thread_id in config to continue from the checkpoint.
 
 ```python
 # ❌ WRONG: Blocking inside node
@@ -157,7 +157,7 @@ graph.invoke(
 
 ## 6. Conditional Routing is Stateless
 
-**Principle**: Routing functions inspect state, don't modify it.
+**Pattern**: Routing functions inspect state, don't modify it. They run at execution time when selecting the next node, so they should be pure and deterministic.
 
 ```python
 # ❌ WRONG: Side effects in routing
@@ -173,11 +173,11 @@ def route_decision(state):
     return "continue" if state["iteration"] < 3 else "end"
 ```
 
-**Why**: Routing executed during graph compilation/planning. Must be deterministic and pure.
+**Why**: Routing functions run at execution time when choosing edges. Must be deterministic so repeated evaluations yield consistent paths.
 
 ## 7. Tool Calls are Explicit State Transitions
 
-**Principle**: LLM tool calls become nodes, not hidden in LLM node.
+**Pattern**: Make LLM tool calls explicit nodes rather than hiding execution inside the LLM node. LangGraph's built-in agent helpers can auto-execute tools, but explicit nodes give you better visibility and control.
 
 ```python
 # ❌ WRONG: Hidden tool execution
@@ -212,7 +212,7 @@ def route_after_agent(state):
 
 ## 8. State Schema Defines Behavior
 
-**Principle**: State structure + annotations encode workflow semantics.
+**Pattern**: State structure + annotations encode workflow semantics. Omitted fields in a node's return keep their prior values.
 
 ```python
 # State schema is documentation AND behavior
@@ -239,7 +239,7 @@ class AgentState(TypedDict):
 
 ## 9. Checkpoints Enable Human-in-the-Loop
 
-**Principle**: Human-in-the-loop is just pause + resume with human input injected.
+**Pattern**: Human-in-the-loop is just pause + resume with human input injected as partial state updates.
 
 ```python
 # Compile with checkpointing
@@ -267,7 +267,7 @@ graph.invoke(human_decision, config=config)
 
 ## 10. Multi-Agent = Subgraphs with Shared State
 
-**Principle**: Each agent is a subgraph. Parent graph coordinates.
+**Pattern**: Each agent is a subgraph. Parent graph coordinates. Parent passes only overlapping state keys to subgraphs unless you design explicit mapping.
 
 ```python
 # Agent 1: Research specialist (subgraph)
@@ -320,8 +320,8 @@ while not ready(): pass
 # ❌ Hidden tool calls
 response = llm.invoke_with_automatic_tool_execution()
 
-# ❌ Manual state merging
-state["list"] = state["list"] + new_items  # Use reducer instead
+# ❌ Manual state merging (error-prone in parallel branches)
+state["list"] = state["list"] + new_items  # Use reducer to avoid lost updates
 
 # ❌ Stateful routing
 global counter
