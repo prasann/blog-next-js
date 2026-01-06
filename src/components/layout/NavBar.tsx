@@ -23,14 +23,12 @@ type MobileNavProps = {
 
 const MenuLink = ({ displayName, location }: MenuLinkProps) => {
   return (
-    <div className="p-4 menu-links hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset  rounded-xl">
-      <a
-        href={location}
-        className="text-2xl font-semibold transition duration-300"
-      >
-        {displayName}
-      </a>
-    </div>
+    <a
+      href={location}
+      className="btn btn-ghost text-xl menu-links"
+    >
+      {displayName}
+    </a>
   );
 };
 
@@ -38,10 +36,10 @@ const MobileNavIcon = ({ iconName, displayName, location }: MobileNavProps) => {
   return (
     <a
       href={location}
-      className="w-full menu-link justify-center inline-block text-center pt-2 pb-1"
+      className="btn btn-ghost flex-col w-full menu-link"
     >
-      <FontAwesomeIcon icon={iconName} />
-      <span className="tab tab-home block text-xs">{displayName}</span>
+      <FontAwesomeIcon icon={iconName} className="text-lg" />
+      <span className="text-xs">{displayName}</span>
     </a>
   );
 };
@@ -55,42 +53,42 @@ const NavBar = () => {
 
   return (
     <nav>
-      <header className="header">
-        <div className="flex flex-row justify-between">
-          <div onClick={navigateToHome} className="cursor-pointer mx-2 my-2">
-          <Image
-            src={logoImage}
-            alt="Logo"
-            width={72}
-            className="p-4 w-full h-auto"
-          />
+      <div className="navbar bg-base-100 main-gradient">
+        <div className="navbar-start">
+          <div onClick={navigateToHome} className="btn btn-ghost">
+            <Image
+              src={logoImage}
+              alt="Logo"
+              width={72}
+              className="w-full h-auto"
+            />
           </div>
-          <div className="hidden md:mr-8 md:flex items-center space-x-2">
+        </div>
+        <div className="navbar-end hidden md:flex">
+          <div className="flex gap-2">
             <MenuLink displayName="About" location="/" />
             <MenuLink displayName="Talks" location="/talks" />
             <MenuLink displayName="Blog" location="/blog" />
           </div>
         </div>
-      </header>
-      <section className="block fixed md:hidden inset-x-0 bottom-0 z-10 shadow main-gradient">
-        <div id="tabs" className="flex justify-between">
-          <MobileNavIcon
-            iconName={faAddressCard}
-            displayName="About"
-            location="/"
-          />
-          <MobileNavIcon
-            iconName={faBookOpen}
-            displayName="Blog"
-            location="/blog"
-          />
-          <MobileNavIcon
-            iconName={faVolumeUp}
-            displayName="Talks"
-            location="/talks"
-          />
-        </div>
-      </section>
+      </div>
+      <div className="btm-nav md:hidden main-gradient">
+        <MobileNavIcon
+          iconName={faAddressCard}
+          displayName="About"
+          location="/"
+        />
+        <MobileNavIcon
+          iconName={faBookOpen}
+          displayName="Blog"
+          location="/blog"
+        />
+        <MobileNavIcon
+          iconName={faVolumeUp}
+          displayName="Talks"
+          location="/talks"
+        />
+      </div>
     </nav>
   );
 };

@@ -1,9 +1,13 @@
 const Footer = () => {
   return (
-    <footer className="footer-bg py-5 text-center text-xs mt-auto pb-14 md:pb-0">
-      Designed with{" "}
-      <span className="animate-ping-slow motion-reduce"> ❤️ </span> &nbsp; by
-      Prasanna
+    <footer className="footer footer-center bg-base-200 text-base-content p-4 pb-14 md:pb-4">
+      <aside>
+        <p className="text-sm">
+          Designed with{" "}
+          <span className="animate-ping-slow motion-reduce"> ❤️ </span> by
+          Prasanna
+        </p>
+      </aside>
     </footer>
   );
 };
