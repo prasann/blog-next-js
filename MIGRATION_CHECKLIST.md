@@ -1,39 +1,39 @@
 # DaisyUI Migration Checklist
 
-## Phase 1: Install DaisyUI & Setup ⏳
-- [ ] Install daisyui package: `npm install daisyui@latest`
-- [ ] Update `tailwind.config.js`:
-  - [ ] Add DaisyUI to plugins array
-  - [ ] Configure themes (night/winter)
-  - [ ] Set darkTheme to "night"
-- [ ] Test build: `npm run build`
-- [ ] Verify no errors
+## Phase 1: Install DaisyUI & Setup ✅
+- [x] Install daisyui package: `npm install daisyui@latest`
+- [x] Update `tailwind.config.js`:
+  - [x] Add DaisyUI to plugins array
+  - [x] Configure themes (night/winter)
+  - [x] Set darkTheme to "night"
+- [x] Test build: `npm run build`
+- [x] Verify no errors
 
-## Phase 2: Migrate to rehype-prism-plus 🎨
-- [ ] Install rehype-prism-plus: `npm install rehype-prism-plus`
-- [ ] Uninstall old packages: `npm uninstall react-syntax-highlighter @types/react-syntax-highlighter`
-- [ ] Update `src/components/RenderMarkdown.tsx`:
-  - [ ] Import rehype-prism-plus
-  - [ ] Add to rehypePlugins array
-- [ ] Update `src/components/utils/CustomComponentsForMarkdown.tsx`:
-  - [ ] Remove `code()` function
-  - [ ] Add DaisyUI classes to blockquote (alert)
-  - [ ] Add DaisyUI classes to table (table-zebra)
-  - [ ] Add DaisyUI classes to links (link-primary)
-- [ ] Create `src/styles/prism/prism-night-owl.css`
-- [ ] Import Prism theme in globals.css
-- [ ] Add rehype-prism-plus required CSS to globals.css
-- [ ] Test syntax highlighting on sample post
+## Phase 2: Migrate to rehype-prism-plus ✅
+- [x] Install rehype-prism-plus: `npm install rehype-prism-plus`
+- [x] Uninstall old packages: `npm uninstall react-syntax-highlighter @types/react-syntax-highlighter`
+- [x] Update `src/components/RenderMarkdown.tsx`:
+  - [x] Import rehype-prism-plus
+  - [x] Add to rehypePlugins array
+- [x] Update `src/components/utils/CustomComponentsForMarkdown.tsx`:
+  - [x] Remove `code()` function
+  - [x] Add DaisyUI classes to blockquote (alert)
+  - [x] Add DaisyUI classes to table (table-zebra)
+  - [x] Add DaisyUI classes to links (link-primary)
+- [x] Create `src/styles/prism/prism-night-owl.css`
+- [x] Import Prism theme in globals.css
+- [x] Add rehype-prism-plus required CSS to globals.css
+- [x] Test syntax highlighting on sample post
 
-## Phase 3: Add Copy-to-Clipboard 📋
-- [ ] Create `src/components/CodeBlock.tsx`:
-  - [ ] Add copy button with state management
-  - [ ] Style with DaisyUI button classes
-  - [ ] Add hover effects and copied state feedback
-- [ ] Update `src/components/utils/CustomComponentsForMarkdown.tsx`:
-  - [ ] Add `pre()` function wrapping CodeBlock
-  - [ ] Extract language from className
-- [ ] Test copy button functionality
+## Phase 3: Add Copy-to-Clipboard ✅
+- [x] Create `src/components/CodeBlock.tsx`:
+  - [x] Add copy button with state management
+  - [x] Style with DaisyUI button classes
+  - [x] Add hover effects and copied state feedback
+- [x] Update `src/components/utils/CustomComponentsForMarkdown.tsx`:
+  - [x] Add `pre()` function wrapping CodeBlock
+  - [x] Extract language from className
+- [x] Test copy button functionality
 
 ## Phase 4: Migrate Layout Components 🏗️
 - [ ] Update Navigation/Header:
