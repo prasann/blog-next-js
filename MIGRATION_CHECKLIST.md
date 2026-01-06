@@ -94,18 +94,18 @@
   - [x] Tables
   - [x] Blockquotes
 
-## Phase 8: Update Backgrounds & Gradients 🎨
-- [ ] Replace custom background classes:
-  - [ ] .dark-background → bg-base-100/200/300
-  - [ ] .light-background → DaisyUI theme colors
-- [ ] Update gradients to use DaisyUI variables:
-  - [ ] .dark-background gradient
-  - [ ] .main-gradient
-  - [ ] .greeting-color / .logo-color
-  - [ ] .menu-links
-  - [ ] .social-bg
-- [ ] Update container classes to DaisyUI container
-- [ ] Update text colors to semantic colors (text-base-content, text-primary)
+## Phase 8: Update Backgrounds & Gradients ✅
+- [x] Replace custom background classes:
+  - [x] .dark-background → bg-base-100/200/300
+  - [x] .light-background → DaisyUI theme colors
+- [x] Update gradients to use DaisyUI variables:
+  - [x] .dark-background gradient
+  - [x] .main-gradient
+  - [x] .greeting-color / .logo-color
+  - [x] .menu-links
+  - [x] .social-bg
+- [x] Update container classes to DaisyUI container
+- [x] Update text colors to semantic colors (text-base-content, text-primary)
 
 ## Phase 9: Testing & Refinement ✅
 - [ ] Visual regression testing:
