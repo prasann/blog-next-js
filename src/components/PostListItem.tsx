@@ -21,7 +21,7 @@ const PostListItem = ({
       className="card card-compact bg-base-100 border-b-2 border-base-300 hover:bg-base-200 cursor-pointer transition-colors"
     >
       <div className="card-body">
-        <h2 className="card-title text-primary hover:text-secondary justify-center md:justify-start">
+        <h2 className="card-title text-xl font-semibold bg-gradient-to-r from-rose-400 via-pink-500 to-fuchsia-500 bg-clip-text text-transparent hover:from-primary hover:via-primary hover:to-primary justify-center md:justify-start">
           {title}
         </h2>
         <div className="flex flex-row justify-between text-sm text-base-content/60 italic">

@@ -13,13 +13,11 @@ import talkImage from "./../../images/speak.jpg";
 
 const Greeting = () => {
   return (
-    <div className="">
-      <div className="inline-block animate-wave text-2xl lg:text-6xl origin-[70%_70%] greeting-color">
-        👋🏽
+    <div className="mb-6">
+      <div className="flex items-center gap-3 mb-2">
+        <span className="text-5xl animate-wave inline-block origin-[70%_70%]">👋🏽</span>
+        <h1 className="text-4xl lg:text-5xl font-bold gradient-text">Hi, I'm Prasanna !!</h1>
       </div>
-      <span className="text-2xl lg:text-6xl font-bold ml-4 mt-2 greeting-color">
-        Hi, I'm Prasanna !!
-      </span>
     </div>
   );
 };
@@ -43,12 +41,12 @@ const ImageLink = ({
   };
   return (
     <div
-      className="w-1/2 highlight-animation mr-4 p-2 flex flex-col items-center"
+      className="w-1/2 cursor-pointer hover:scale-105 transition-transform mr-4 p-2 flex flex-col items-center"
       onClick={() => navigateTo(navigateLink)}
     >
       <Image
         alt={altText}
-        className="rounded"
+        className="rounded-lg shadow-lg"
         src={srcImg}
         width="160"
         height="160"
@@ -57,25 +55,25 @@ const ImageLink = ({
           height: "auto",
         }}
       />
-      <div className="font-bold text-2xl">{linkText}</div>
+      <div className="font-bold text-2xl mt-2">{linkText}</div>
     </div>
   );
 };
 
 const Writeup = () => {
   return (
-    <div className="lg:text-justify">
-      <div className="mt-2 lg:mt-4">
-      I'm a full-stack developer from the bustling city of Bengaluru, India—where navigating traffic is almost as challenging as debugging code 🤯 But yes, it's all about finding the right shortcuts, whether on the road or in the code! 🚗  I've led large teams to build high-performance enterprise platforms. When I'm not doing that, you'll find me enjoying coffee and coding ☕
-      </div>
-      <div className="mt-2">
-      I hold a master's degree in software systems 🎓, which is just a fancy way of saying I spent a lot of time in front of a computer screen. Currently, I'm working with the amazing folks at Microsoft, but I used to be a part of the Thoughtworks family. I'm a certified AWS solution architect and I have a few Azure certifications as well. Basically, if it's in the cloud, I can craft solutions all around 😎
-      </div>
-      <div className="mt-2">
-      I have hands-on experience with web technologies, which is a polite way of saying I've broken things on the internet a few times 💥. Since you're here, why not check out my blogs for some random musings ✍️ or visit my talks page to hear more about my adventures in tech 🏃‍♂️
-      </div>
-      <div className="mt-4">
-        <div className="flex">
+    <div className="space-y-4 text-base-content leading-relaxed">
+      <p>
+        I'm a full-stack developer from the bustling city of Bengaluru, India—where navigating traffic is almost as challenging as debugging code 🤯 But yes, it's all about finding the right shortcuts, whether on the road or in the code! 🚗  I've led large teams to build high-performance enterprise platforms. When I'm not doing that, you'll find me enjoying coffee and coding ☕
+      </p>
+      <p>
+        I hold a master's degree in software systems 🎓, which is just a fancy way of saying I spent a lot of time in front of a computer screen. Currently, I'm working with the amazing folks at Microsoft, but I used to be a part of the Thoughtworks family. I'm a certified AWS solution architect and I have a few Azure certifications as well. Basically, if it's in the cloud, I can craft solutions all around 😎
+      </p>
+      <p>
+        I have hands-on experience with web technologies, which is a polite way of saying I've broken things on the internet a few times 💥. Since you're here, why not check out my blogs for some random musings ✍️ or visit my talks page to hear more about my adventures in tech 🏃‍♂️
+      </p>
+      <div className="mt-6">
+        <div className="flex justify-center gap-4">
           <ImageLink
             altText="link to blog"
             linkText="Blog"
@@ -95,35 +93,32 @@ const Writeup = () => {
 };
 const Picture = () => {
   return (
-    <div className="pic-wrapper">
-      <Image
-        placeholder="blur"
-        className="rounded-full"
-        src={ProfileImage}
-        alt="profile pic"
-        sizes="120vw"
-        style={{
-          width: "80%",
-          height: "auto",
-        }}
-      />
+    <div className="avatar">
+      <div className="w-32 lg:w-40 rounded-full">
+        <Image
+          placeholder="blur"
+          src={ProfileImage}
+          alt="profile pic"
+          width={160}
+          height={160}
+        />
+      </div>
     </div>
   );
 };
 
 const AboutMe = () => {
   return (
-    <div
-      id="about-me"
-      className="rounded text-xl shadow-xl p-2 leading-relaxed"
-    >
-      <div className="about-me-container">
-        <div className="pic-container">
-          <Picture />
-        </div>
-        <div className="desc-container">
-          <Greeting />
-          <Writeup />
+    <div className="card bg-base-200 shadow-2xl border border-base-300">
+      <div className="card-body">
+        <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
+          <div className="flex-shrink-0">
+            <Picture />
+          </div>
+          <div className="flex-1">
+            <Greeting />
+            <Writeup />
+          </div>
         </div>
       </div>
     </div>
@@ -132,59 +127,46 @@ const AboutMe = () => {
 
 const Social = () => {
   return (
-    <div className="w-full social-bg rounded p-4 mt-2">
-      <div className="flex flex-row justify-evenly">
-        <a
-          aria-label="github handle prasann"
-          className="text-black highlight-animation text-center lg:text-2xl"
-          rel="noreferrer"
-          href="https://github.com/prasann"
-          target="_blank"
-        >
-          <FontAwesomeIcon aria-hidden={true} icon={faGithub} size="2x" />
-        </a>
-        <a
-          aria-label="twitter handle pvenk"
-          className="highlight-animation text-center lg:text-2xl"
-          rel="noreferrer"
-          href="https://twitter.com/pvenk"
-          target="_blank"
-        >
-          <FontAwesomeIcon
-            aria-hidden={true}
-            className="text-twitter-blue"
-            icon={faTwitter}
-            size="2x"
-          />
-        </a>
-        <a
-          aria-label="linkedin handle pvenk"
-          className="highlight-animation text-center lg:text-2xl"
-          rel="noreferrer"
-          href="https://www.linkedin.com/in/prasanna-v-nagarajan"
-          target="_blank"
-        >
-          <FontAwesomeIcon
-            aria-hidden={true}
-            className="text-linkedin-blue"
-            icon={faLinkedin}
-            size="2x"
-          />
-        </a>
-        <a
-          aria-label="email - mail@prasanna.dev"
-          className="text-center lg:text-2xl"
-          rel="noreferrer"
-          href="mailto:mail@prasanna.dev"
-          target="_blank"
-        >
-          <FontAwesomeIcon
-            aria-hidden={true}
-            className="highlight-animation text-green-600"
-            icon={faEnvelope}
-            size="2x"
-          />
-        </a>
+    <div className="card bg-base-200 shadow-2xl border border-base-300">
+      <div className="card-body">
+        <div className="flex justify-center gap-8">
+          <a
+            aria-label="GitHub"
+            className="btn btn-circle btn-ghost text-2xl hover:text-primary"
+            href="https://github.com/prasann"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FontAwesomeIcon icon={faGithub} />
+          </a>
+          <a
+            aria-label="Twitter"
+            className="btn btn-circle btn-ghost text-2xl hover:text-info"
+            href="https://twitter.com/pvenk"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a
+            aria-label="LinkedIn"
+            className="btn btn-circle btn-ghost text-2xl hover:text-info"
+            href="https://www.linkedin.com/in/prasanna-v-nagarajan"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FontAwesomeIcon icon={faLinkedin} />
+          </a>
+          <a
+            aria-label="Email"
+            className="btn btn-circle btn-ghost text-2xl hover:text-success"
+            href="mailto:mail@prasanna.dev"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FontAwesomeIcon icon={faEnvelope} />
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -192,9 +174,11 @@ const Social = () => {
 
 const Container = () => {
   return (
-    <div className="content-area rounded-xl">
-      <AboutMe />
-      <Social />
+    <div className="container mx-auto max-w-5xl p-4 md:p-8">
+      <div className="space-y-8">
+        <AboutMe />
+        <Social />
+      </div>
     </div>
   );
 };

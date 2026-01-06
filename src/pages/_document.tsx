@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
   //TODO: Remove this, and make typography work without cdn
   render() {
     return (
-      <Html lang={"en-us"}>
+      <Html lang={"en-us"} data-theme="prasanna">
         <Head>
           <link
             rel="apple-touch-icon"

@@ -1,95 +1,45 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import logoImage from "./../../../public/assets/logo.png";
-import {
-  faAddressCard,
-  faBookOpen,
-  faVolumeUp,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-
-type MenuLinkProps = {
-  displayName: string;
-  location: string;
-};
-
-type MobileNavProps = {
-  iconName: IconProp;
-  displayName: string;
-  location: string;
-};
-
-const MenuLink = ({ displayName, location }: MenuLinkProps) => {
-  return (
-    <a
-      href={location}
-      className="btn btn-ghost text-xl menu-links"
-    >
-      {displayName}
-    </a>
-  );
-};
-
-const MobileNavIcon = ({ iconName, displayName, location }: MobileNavProps) => {
-  return (
-    <a
-      href={location}
-      className="btn btn-ghost flex-col w-full menu-link"
-    >
-      <FontAwesomeIcon icon={iconName} className="text-lg" />
-      <span className="text-xs">{displayName}</span>
-    </a>
-  );
-};
 
 const NavBar = () => {
   const router = useRouter();
 
-  function navigateToHome() {
-    return router.push(`/`);
-  }
-
   return (
-    <nav>
-      <div className="navbar bg-base-100 main-gradient">
-        <div className="navbar-start">
-          <div onClick={navigateToHome} className="btn btn-ghost">
-            <Image
-              src={logoImage}
-              alt="Logo"
-              width={72}
-              className="w-full h-auto"
-            />
-          </div>
-        </div>
-        <div className="navbar-end hidden md:flex">
-          <div className="flex gap-2">
-            <MenuLink displayName="About" location="/" />
-            <MenuLink displayName="Talks" location="/talks" />
-            <MenuLink displayName="Blog" location="/blog" />
-          </div>
+    <div className="navbar bg-base-200 border-b border-base-300">
+      <div className="navbar-start">
+        <button onClick={() => router.push('/')} className="btn btn-ghost normal-case">
+          <Image
+            src={logoImage}
+            alt="Prasanna Logo"
+            width={40}
+            height={40}
+            className="w-10 h-10"
+          />
+        </button>
+      </div>
+      <div className="navbar-center hidden md:flex">
+        <ul className="menu menu-horizontal px-1">
+          <li><a href="/">About</a></li>
+          <li><a href="/talks">Talks</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+      <div className="navbar-end md:hidden">
+        <div className="dropdown dropdown-end">
+          <label tabIndex={0} className="btn btn-ghost btn-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </label>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52">
+            <li><a href="/">About</a></li>
+            <li><a href="/talks">Talks</a></li>
+            <li><a href="/blog">Blog</a></li>
+          </ul>
         </div>
       </div>
-      <div className="btm-nav md:hidden main-gradient">
-        <MobileNavIcon
-          iconName={faAddressCard}
-          displayName="About"
-          location="/"
-        />
-        <MobileNavIcon
-          iconName={faBookOpen}
-          displayName="Blog"
-          location="/blog"
-        />
-        <MobileNavIcon
-          iconName={faVolumeUp}
-          displayName="Talks"
-          location="/talks"
-        />
-      </div>
-    </nav>
+    </div>
   );
 };
 

@@ -43,8 +43,25 @@ module.exports = {
     require("daisyui"),
   ],
   daisyui: {
-    themes: ["night", "winter"],
-    darkTheme: "night",
+    themes: [
+      {
+        prasanna: {
+          "primary": "#ec4899",        // pink-500 - brand color
+          "secondary": "#f472b6",     // pink-400
+          "accent": "#fb7185",        // rose-400
+          "neutral": "#1f2937",       // gray-800
+          "base-100": "#111827",      // gray-900 - darkest background
+          "base-200": "#1f2937",      // gray-800 - card backgrounds
+          "base-300": "#374151",      // gray-700 - borders/dividers
+          "base-content": "#f3f4f6",  // gray-100 - main text
+          "info": "#3b82f6",
+          "success": "#10b981",
+          "warning": "#f59e0b",
+          "error": "#ef4444",
+        },
+      },
+    ],
+    darkTheme: "prasanna",
     base: true,
     styled: true,
     utils: true,

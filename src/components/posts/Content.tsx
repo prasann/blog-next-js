@@ -23,7 +23,7 @@ const Content = ({
     <div className="prose prose-lg max-w-none content-area bg-base-100 text-base-content rounded-xl p-4 md:p-8">
       <article key={title} className="space-y-4">
         <header className="space-y-4">
-          <h1 className="text-4xl font-bold text-center greeting-color mb-4">{title}</h1>
+          <h1 className="text-4xl font-bold text-center gradient-text mb-4">{title}</h1>
           <div className="flex flex-row justify-between text-sm text-base-content/60 italic">
             <div>{date}</div>
             <div>{minutesToRead}</div>
