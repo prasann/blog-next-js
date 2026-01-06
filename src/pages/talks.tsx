@@ -18,7 +18,7 @@ const Talks = ({ talks }: Props) => {
   return (
     <div>
       <MetaHeaders {...metaDetails} />
-      <div className="content-area bg-white rounded-xl">
+      <div className="content-area bg-base-200 rounded-xl">
         {talks.map((talk) => (
           <TalkListItem key={talk.title} {...talk} />
         ))}
