@@ -35,14 +35,14 @@
   - [x] Extract language from className
 - [x] Test copy button functionality
 
-## Phase 4: Migrate Layout Components 🏗️
-- [ ] Update Navigation/Header:
-  - [ ] Replace with DaisyUI navbar component
-  - [ ] Use navbar-start, navbar-center, navbar-end
-  - [ ] Update buttons to btn variants
-- [ ] Update Footer:
-  - [ ] Replace with DaisyUI footer component
-  - [ ] Use footer sections and typography
+## Phase 4: Migrate Layout Components ✅
+- [x] Update Navigation/Header:
+  - [x] Replace with DaisyUI navbar component
+  - [x] Use navbar-start, navbar-center, navbar-end
+  - [x] Update buttons to btn variants
+- [x] Update Footer:
+  - [x] Replace with DaisyUI footer component
+  - [x] Use footer sections and typography
 - [ ] Optional: Add theme toggle with localStorage
 
 ## Phase 5: Migrate Blog Components 📝
