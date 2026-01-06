@@ -4,7 +4,7 @@
         <title>Random Presence</title>
         <link>https://prasanna.dev</link>
         <description>Random presence of my thoughts and learning...</description>
-        <lastBuildDate>Wed, 12 Nov 2025 07:14:56 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 06 Jan 2026 10:11:58 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>npm feed package</generator>
         <language>en</language>
@@ -15,15 +15,15 @@
         </image>
         <copyright>Copyright - Prasanna</copyright>
         <item>
-            <title><![CDATA[LangGraph Patterns and Conventions for Building Reliable Agent Systems]]></title>
+            <title><![CDATA[LangGraph patterns and conventions for building agentic systems]]></title>
             <link>https://prasanna.dev/posts/langgraph-patterns-and-conventions</link>
             <guid>https://prasanna.dev/posts/langgraph-patterns-and-conventions</guid>
-            <pubDate>Thu, 27 Nov 2025 18:30:00 GMT</pubDate>
+            <pubDate>Mon, 27 Oct 2025 18:30:00 GMT</pubDate>
             <description><![CDATA[Patterns and conventions I picked up building agent systems with LangGraph, covering pure transformations, state management, and common anti-patterns to avoid.]]></description>
             <content:encoded><![CDATA[<p>After building a few agent systems with LangGraph, I started noticing patterns in what worked and what caused bugs. Things like mutating state, blocking in nodes, and hiding tool calls inside LLM nodes made debugging really painful. Putting up this list for my future reference, and possibly to share with others who are in the first days of LangGraph.</p>
 <p>Fair warning: this comes from my experience building with LangGraph and reading the docs, but I'm not 100% sure every pattern here is officially recommended. Think of these as working conventions that helped me rather than gospel. If something here helps you avoid the headaches I ran into, great. If you find better patterns, even better.</p>
 <h2 id="1nodesarepuretransformations">1. Nodes are Pure Transformations</h2>
-<p><strong>Principle</strong>: Nodes transform state → new state without side effects during execution.</p>
+<p><strong>Pattern</strong>: Treat nodes as pure transformations (state → new state) for easier replay and debugging. LangGraph doesn't enforce this, but it makes your system more predictable.</p>
 <pre><code class="python language-python"># ❌ WRONG: Imperative with side effects
 def process_node(state):
     data = state["data"]
@@ -42,7 +42,7 @@ def process_node(state):
 </code></pre>
 <p><strong>Why</strong>: Enables replay, debugging, checkpointing, and parallel execution.</p>
 <h2 id="2stateisimmutablebetweennodes">2. State is Immutable Between Nodes</h2>
-<p><strong>Principle</strong>: Never mutate state objects. Return new state objects.</p>
+<p><strong>Pattern</strong>: Never mutate state objects. Return new state objects. LangGraph doesn't prevent mutations, but they cause confusing merge behavior when reducers are involved.</p>
 <pre><code class="python language-python"># ❌ WRONG: Mutating shared references
 def add_item_node(state):
     state["items"].append(new_item)           # Mutates original
@@ -62,7 +62,7 @@ def add_item_node(state):
 </code></pre>
 <p><strong>Why</strong>: Preserves history, enables time-travel debugging, prevents race conditions.</p>
 <h2 id="3persistenceisexternaltographexecution">3. Persistence is External to Graph Execution</h2>
-<p><strong>Principle</strong>: Don't persist inside nodes. Let LangGraph's checkpointer handle it.</p>
+<p><strong>Pattern</strong>: Prefer letting LangGraph's checkpointer handle persistence rather than manual DB writes in nodes. Manual persistence isn't forbidden, but it duplicates effort and can break replay semantics.</p>
 <pre><code class="python language-python"># ❌ WRONG: Manual persistence in nodes
 def process_order_node(state):
     order = state["order"]
@@ -89,7 +89,7 @@ def process_order_node(state):
 </code></pre>
 <p><strong>Why</strong>: Framework manages transactions, retries, consistency automatically.</p>
 <h2 id="4usereducersforlistcollectionupdates">4. Use Reducers for List/Collection Updates</h2>
-<p><strong>Principle</strong>: Annotate collection fields to tell LangGraph how to merge updates.</p>
+<p><strong>Pattern</strong>: Annotate collection fields to tell LangGraph how to merge updates. This prevents lost updates when parallel branches return list fragments.</p>
 <pre><code class="python language-python"># State definition with reducers
 from typing import Annotated
 from operator import add
@@ -112,7 +112,7 @@ def node2(state):
 </code></pre>
 <p><strong>Why</strong>: Avoids manual list copying, prevents lost updates in parallel branches.</p>
 <h2 id="5interruptspausesseparateworkflowfromwaiting">5. Interrupts/Pauses Separate Workflow from Waiting</h2>
-<p><strong>Principle</strong>: Use <code>interrupt_before</code>/<code>interrupt_after</code> instead of blocking loops.</p>
+<p><strong>Pattern</strong>: Use <code>interrupt_before</code>/<code>interrupt_after</code> instead of blocking loops. When resuming, pass the same thread_id in config to continue from the checkpoint.</p>
 <pre><code class="python language-python"># ❌ WRONG: Blocking inside node
 def wait_for_completion_node(state):
     while not is_job_complete(state["job_id"]):
@@ -139,7 +139,7 @@ graph.invoke(
 </code></pre>
 <p><strong>Why</strong>: Enables async, event-driven workflows. Scales to thousands of concurrent workflows.</p>
 <h2 id="6conditionalroutingisstateless">6. Conditional Routing is Stateless</h2>
-<p><strong>Principle</strong>: Routing functions inspect state, don't modify it.</p>
+<p><strong>Pattern</strong>: Routing functions inspect state, don't modify it. They run at execution time when selecting the next node, so they should be pure and deterministic.</p>
 <pre><code class="python language-python"># ❌ WRONG: Side effects in routing
 iteration_counter = 0
 
@@ -152,9 +152,9 @@ def route_decision(state):
 def route_decision(state):
     return "continue" if state["iteration"] &lt; 3 else "end"
 </code></pre>
-<p><strong>Why</strong>: Routing executed during graph compilation/planning. Must be deterministic and pure.</p>
+<p><strong>Why</strong>: Routing functions run at execution time when choosing edges. Must be deterministic so repeated evaluations yield consistent paths.</p>
 <h2 id="7toolcallsareexplicitstatetransitions">7. Tool Calls are Explicit State Transitions</h2>
-<p><strong>Principle</strong>: LLM tool calls become nodes, not hidden in LLM node.</p>
+<p><strong>Pattern</strong>: Make LLM tool calls explicit nodes rather than hiding execution inside the LLM node. LangGraph's built-in agent helpers can auto-execute tools, but explicit nodes give you better visibility and control.</p>
 <pre><code class="python language-python"># ❌ WRONG: Hidden tool execution
 def agent_node(state):
     llm_response = llm.invoke(state["messages"])
@@ -184,7 +184,7 @@ def route_after_agent(state):
 </code></pre>
 <p><strong>Why</strong>: Graph shows complete workflow. Tool execution is traceable, retryable, debuggable.</p>
 <h2 id="8stateschemadefinesbehavior">8. State Schema Defines Behavior</h2>
-<p><strong>Principle</strong>: State structure + annotations encode workflow semantics.</p>
+<p><strong>Pattern</strong>: State structure + annotations encode workflow semantics. Omitted fields in a node's return keep their prior values.</p>
 <pre><code class="python language-python"># State schema is documentation AND behavior
 from typing import TypedDict, Annotated
 
@@ -206,7 +206,7 @@ class AgentState(TypedDict):
 </code></pre>
 <p><strong>Why</strong>: Self-documenting. Type checker catches errors. Framework knows merge strategy.</p>
 <h2 id="9checkpointsenablehumanintheloop">9. Checkpoints Enable Human-in-the-Loop</h2>
-<p><strong>Principle</strong>: Human-in-the-loop is just pause + resume with human input injected.</p>
+<p><strong>Pattern</strong>: Human-in-the-loop is just pause + resume with human input injected as partial state updates.</p>
 <pre><code class="python language-python"># Compile with checkpointing
 graph = workflow.compile(
     checkpointer=PostgresSaver.from_conn_string(db_url),
@@ -229,7 +229,7 @@ graph.invoke(human_decision, config=config)
 </code></pre>
 <p><strong>Why</strong>: No special HITL code needed. Workflow pauses are first-class primitives.</p>
 <h2 id="10multiagentsubgraphswithsharedstate">10. Multi-Agent = Subgraphs with Shared State</h2>
-<p><strong>Principle</strong>: Each agent is a subgraph. Parent graph coordinates.</p>
+<p><strong>Pattern</strong>: Each agent is a subgraph. Parent graph coordinates. Parent passes only overlapping state keys to subgraphs unless you design explicit mapping.</p>
 <pre><code class="python language-python"># Agent 1: Research specialist (subgraph)
 def create_research_agent():
     workflow = StateGraph(ResearchState)
@@ -276,8 +276,8 @@ while not ready(): pass
 # ❌ Hidden tool calls
 response = llm.invoke_with_automatic_tool_execution()
 
-# ❌ Manual state merging
-state["list"] = state["list"] + new_items  # Use reducer instead
+# ❌ Manual state merging (error-prone in parallel branches)
+state["list"] = state["list"] + new_items  # Use reducer to avoid lost updates
 
 # ❌ Stateful routing
 global counter
