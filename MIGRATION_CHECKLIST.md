@@ -78,21 +78,21 @@
 - [x] Review `src/styles/loader.css` - migrate or delete
 - [x] Delete `src/styles/prism/themes/prism-atom-dark.css`
 
-## Phase 7: Update Prose Styling 📖
-- [ ] Update `src/components/posts/Content.tsx`:
-  - [ ] Wrap markdown in prose with DaisyUI theme
-  - [ ] Use prose-lg or prose-xl
-  - [ ] Add max-w-none
-  - [ ] Apply dark mode variants
-- [ ] Test all markdown features:
-  - [ ] Inline code
-  - [ ] Fenced code blocks
-  - [ ] Line numbers
-  - [ ] Line highlighting
-  - [ ] Diff blocks
-  - [ ] Images
-  - [ ] Tables
-  - [ ] Blockquotes
+## Phase 7: Update Prose Styling ✅
+- [x] Update `src/components/posts/Content.tsx`:
+  - [x] Wrap markdown in prose with DaisyUI theme
+  - [x] Use prose-lg or prose-xl
+  - [x] Add max-w-none
+  - [x] Apply dark mode variants
+- [x] Test all markdown features:
+  - [x] Inline code
+  - [x] Fenced code blocks
+  - [x] Line numbers
+  - [x] Line highlighting
+  - [x] Diff blocks
+  - [x] Images
+  - [x] Tables
+  - [x] Blockquotes
 
 ## Phase 8: Update Backgrounds & Gradients 🎨
 - [ ] Replace custom background classes:
