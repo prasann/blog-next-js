@@ -18,16 +18,18 @@ const PostListItem = ({
     <div
       key={slug}
       onClick={() => navigateTo(slug)}
-      className="cursor-pointer m-1 p-2 border-b-2 border-gray-700 hover:bg-gray-800"
+      className="card card-compact bg-base-100 border-b-2 border-base-300 hover:bg-base-200 cursor-pointer transition-colors"
     >
-      <div className="text-center md:text-left my-2 text-sky-400 text-2xl hover:text-pink-500">
-        {title}
+      <div className="card-body">
+        <h2 className="card-title text-primary hover:text-secondary justify-center md:justify-start">
+          {title}
+        </h2>
+        <div className="flex flex-row justify-between text-sm text-base-content/60 italic">
+          <div>{date}</div>
+          <div>{minutesToRead}</div>
+        </div>
+        <p className="text-base-content/80">{description}</p>
       </div>
-      <div className="flex flex-row justify-between">
-        <div className="text-gray-400 italic text-sm">{date}</div>
-        <div className="text-gray-400 italic text-sm">{minutesToRead}</div>
-      </div>
-      <div className="text-gray-300">{description}</div>
     </div>
   );
 };

@@ -5,8 +5,7 @@ import RenderMarkdown from "../RenderMarkdown";
 
 const CategoryTag = ({ category }: { category: string }) => {
   return (
-    <span
-      className={`text-xs font-semibold inline-block py-2 px-2 rounded-full tag-color normal-case last:mr-0 mr-1`}>
+    <span className="badge badge-primary badge-lg mr-1">
       {category}
     </span>
   );
@@ -45,7 +44,7 @@ const Content = ({
       <div className="flex justify-center items-center">
         <Engage description={description} />
       </div>
-      <div className="flex-grow border-t mx-4 md:mx-24 border-gray-700 mt-4" />
+      <div className="divider"></div>
       <FooterCard />
     </div>
   );

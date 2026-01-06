@@ -37,29 +37,21 @@ const celebrate = () => {
 
 const Engage = ({ description }: Props) => {
   return (
-    <div className= "flex flex-row">
-      <div
-        className="mx-2 flex flex-row highlight-animation"
+    <div className="flex flex-row gap-2">
+      <button
+        className="btn btn-primary btn-sm gap-2"
         onClick={() => shareOnTwitter(description)}
       >
-        <FontAwesomeIcon
-          className="cursor-pointer text-twitter-blue"
-          icon={faTwitter}
-          size="2x"
-        />
-        <div className="align-middle mx-2 text-bold">Share</div>
-      </div>
-      <div
-        className="mx-2 flex flex-row highlight-animation"
+        <FontAwesomeIcon icon={faTwitter} />
+        Share
+      </button>
+      <button
+        className="btn btn-secondary btn-sm gap-2"
         onClick={likeThePost}
       >
-        <FontAwesomeIcon
-          className="cursor-pointer text-heart-red"
-          icon={faHeart}
-          size="2x"
-        />
-        <div className="align-middle mx-2 text-bold">Like</div>
-      </div>
+        <FontAwesomeIcon icon={faHeart} />
+        Like
+      </button>
     </div>
   );
 };
