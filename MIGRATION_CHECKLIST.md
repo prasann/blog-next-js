@@ -63,20 +63,20 @@
 - [x] Update `src/components/posts/FooterCard.tsx`:
   - [x] Apply DaisyUI card styling
 
-## Phase 6: Clean Up Global Styles 🧹
-- [ ] Update `src/styles/globals.css`:
-  - [ ] Remove custom .prose overrides
-  - [ ] Remove custom color utilities
-  - [ ] Remove custom button/card styles
-  - [ ] Keep only fonts, Prism imports, essential resets
-- [ ] Update `tailwind.config.js`:
-  - [ ] Remove custom typography theme extensions
-  - [ ] Remove custom color definitions
-  - [ ] Remove custom animation utilities
-- [ ] Review `src/styles/landing.css` - migrate or delete
-- [ ] Review `src/styles/landing-dark.css` - migrate or delete
-- [ ] Review `src/styles/loader.css` - migrate or delete
-- [ ] Delete `src/styles/prism/themes/prism-atom-dark.css`
+## Phase 6: Clean Up Global Styles ✅
+- [x] Update `src/styles/globals.css`:
+  - [x] Remove custom .prose overrides
+  - [x] Remove custom color utilities
+  - [x] Remove custom button/card styles
+  - [x] Keep only fonts, Prism imports, essential resets
+- [x] Update `tailwind.config.js`:
+  - [x] Remove custom typography theme extensions
+  - [x] Remove custom color definitions
+  - [x] Remove custom animation utilities
+- [x] Review `src/styles/landing.css` - migrate or delete
+- [x] Review `src/styles/landing-dark.css` - migrate or delete
+- [x] Review `src/styles/loader.css` - migrate or delete
+- [x] Delete `src/styles/prism/themes/prism-atom-dark.css`
 
 ## Phase 7: Update Prose Styling 📖
 - [ ] Update `src/components/posts/Content.tsx`:
