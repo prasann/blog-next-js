@@ -1,8 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import { Components } from "react-markdown";
+import CodeBlock from "../CodeBlock";
 
 const CustomComponentsForMarkdown : Partial<Components> = {
+  // @ts-ignore
+  pre({ children, className }: any) {
+    return <CodeBlock className={className}>{children}</CodeBlock>;
+  },
   // @ts-ignore
   p(paragraph: any) {
     const { node } = paragraph;
