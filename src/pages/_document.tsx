@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
   //TODO: Remove this, and make typography work without cdn
   render() {
     return (
-      <Html lang={"en-us"} data-theme="prasanna">
+      <Html lang={"en-us"}>
         <Head>
           <link
             rel="apple-touch-icon"
@@ -56,6 +56,18 @@ export default class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,600;1,400;1,600&display=swap"
             rel="stylesheet"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function() {
+                  try {
+                    var theme = localStorage.getItem('theme') || 'prasanna';
+                    document.documentElement.setAttribute('data-theme', theme);
+                  } catch (e) {}
+                })();
+              `,
+            }}
           />
           <GoogleAnalytics />
         </Head>
