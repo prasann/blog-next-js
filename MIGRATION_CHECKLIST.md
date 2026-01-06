@@ -45,23 +45,23 @@
   - [x] Use footer sections and typography
 - [ ] Optional: Add theme toggle with localStorage
 
-## Phase 5: Migrate Blog Components 📝
-- [ ] Update `src/components/BlogCard.tsx`:
-  - [ ] Replace with DaisyUI card
-  - [ ] Use card-body, card-title, card-actions
-- [ ] Update `src/components/PostListItem.tsx`:
-  - [ ] Use DaisyUI card compact variant
-  - [ ] Replace category tags with badge component
-- [ ] Update `src/components/GitHubCard.tsx`:
-  - [ ] Apply DaisyUI card styling
-- [ ] Update `src/components/posts/Content.tsx`:
-  - [ ] Wrap in DaisyUI article
-  - [ ] Replace category tags with badge badge-primary
-  - [ ] Use DaisyUI divider component
-- [ ] Update `src/components/posts/Engage.tsx`:
-  - [ ] Replace buttons with DaisyUI btn variants
-- [ ] Update `src/components/posts/FooterCard.tsx`:
-  - [ ] Apply DaisyUI card styling
+## Phase 5: Migrate Blog Components ✅
+- [x] Update `src/components/BlogCard.tsx`:
+  - [x] Replace with DaisyUI card
+  - [x] Use card-body, card-title, card-actions
+- [x] Update `src/components/PostListItem.tsx`:
+  - [x] Use DaisyUI card compact variant
+  - [x] Replace category tags with badge component
+- [x] Update `src/components/GitHubCard.tsx`:
+  - [x] Apply DaisyUI card styling
+- [x] Update `src/components/posts/Content.tsx`:
+  - [x] Wrap in DaisyUI article
+  - [x] Replace category tags with badge badge-primary
+  - [x] Use DaisyUI divider component
+- [x] Update `src/components/posts/Engage.tsx`:
+  - [x] Replace buttons with DaisyUI btn variants
+- [x] Update `src/components/posts/FooterCard.tsx`:
+  - [x] Apply DaisyUI card styling
 
 ## Phase 6: Clean Up Global Styles 🧹
 - [ ] Update `src/styles/globals.css`:
