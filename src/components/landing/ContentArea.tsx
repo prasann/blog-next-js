@@ -93,8 +93,10 @@ const Writeup = () => {
 };
 const Picture = () => {
   return (
-    <div className="avatar">
-      <div className="w-32 lg:w-40 rounded-full">
+    <div className="avatar relative">
+      {/* Yellow highlight circle behind photo */}
+      <div className="absolute inset-0 w-32 lg:w-40 h-32 lg:h-40 bg-yellow-400/30 rounded-full blur-2xl -z-10"></div>
+      <div className="w-32 lg:w-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
         <Image
           placeholder="blur"
           src={ProfileImage}
@@ -129,42 +131,42 @@ const Social = () => {
   return (
     <div className="card bg-base-200 shadow-2xl border border-base-300">
       <div className="card-body">
-        <div className="flex justify-center gap-8">
+        <div className="flex justify-center gap-6">
           <a
             aria-label="GitHub"
-            className="btn btn-circle btn-ghost text-2xl hover:text-primary"
+            className="btn btn-circle btn-lg bg-base-100 hover:bg-base-300 border-base-300 text-base-content hover:scale-110 transition-transform"
             href="https://github.com/prasann"
             target="_blank"
             rel="noreferrer"
           >
-            <FontAwesomeIcon icon={faGithub} />
+            <FontAwesomeIcon icon={faGithub} size="xl" />
           </a>
           <a
             aria-label="Twitter"
-            className="btn btn-circle btn-ghost text-2xl hover:text-info"
+            className="btn btn-circle btn-lg bg-base-100 hover:bg-twitter-blue border-base-300 text-twitter-blue hover:text-white hover:scale-110 transition-all"
             href="https://twitter.com/pvenk"
             target="_blank"
             rel="noreferrer"
           >
-            <FontAwesomeIcon icon={faTwitter} />
+            <FontAwesomeIcon icon={faTwitter} size="xl" />
           </a>
           <a
             aria-label="LinkedIn"
-            className="btn btn-circle btn-ghost text-2xl hover:text-info"
+            className="btn btn-circle btn-lg bg-base-100 hover:bg-linkedin-blue border-base-300 text-linkedin-blue hover:text-white hover:scale-110 transition-all"
             href="https://www.linkedin.com/in/prasanna-v-nagarajan"
             target="_blank"
             rel="noreferrer"
           >
-            <FontAwesomeIcon icon={faLinkedin} />
+            <FontAwesomeIcon icon={faLinkedin} size="xl" />
           </a>
           <a
             aria-label="Email"
-            className="btn btn-circle btn-ghost text-2xl hover:text-success"
+            className="btn btn-circle btn-lg bg-base-100 hover:bg-success border-base-300 text-success hover:text-white hover:scale-110 transition-all"
             href="mailto:mail@prasanna.dev"
             target="_blank"
             rel="noreferrer"
           >
-            <FontAwesomeIcon icon={faEnvelope} />
+            <FontAwesomeIcon icon={faEnvelope} size="xl" />
           </a>
         </div>
       </div>

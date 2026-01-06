@@ -60,6 +60,7 @@ module.exports = {
           "error": "#ef4444",
         },
       },
+      "winter", // Light theme option
     ],
     darkTheme: "prasanna",
     base: true,
