@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Prism theme for code highlighting */
+@import './prism/prism-night-owl.css';
+
 @font-face {
   font-family: "Muli";
   src: local("Muli"), url("/fonts/Muli-Regular.ttf") format("ttf");
@@ -78,4 +81,28 @@
 
 body {
   @apply bg-gray-900 text-white;
+}
+/* rehype-prism-plus specific styles */
+pre[class*="language-"] {
+  @apply relative my-4 rounded-lg;
+  overflow-x: auto;
+}
+
+/* Line numbers */
+.code-line {
+  @apply px-4 border-l-4 border-transparent;
+}
+
+/* Line highlighting */
+.code-line.highlighted {
+  @apply bg-blue-900/30 border-blue-500;
+}
+
+/* Diff highlighting */
+.code-line.inserted {
+  @apply bg-green-900/30 border-green-500;
+}
+
+.code-line.deleted {
+  @apply bg-red-900/30 border-red-500;
 }

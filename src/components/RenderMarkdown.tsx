@@ -1,6 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import React from "react";
 import rehypeRaw from "rehype-raw";
+import rehypePrismPlus from "rehype-prism-plus";
 import CustomComponentsForMarkdown from "./utils/CustomComponentsForMarkdown";
 
 type Props = {
@@ -13,7 +14,8 @@ const RenderMarkdown = ({ content }: Props) => {
     <ReactMarkdown
       components={CustomComponentsForMarkdown}
       children={content}
-      rehypePlugins={[rehypeRaw]}
+      // @ts-ignore
+      rehypePlugins={[rehypeRaw, [rehypePrismPlus, { ignoreMissing: true }]]}
     />
   );
 };
