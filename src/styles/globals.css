@@ -11,6 +11,34 @@
   src: local("Muli"), url("/fonts/Muli-Regular.ttf") format("ttf");
 }
 
+/* Base typography improvements */
+@layer base {
+  body {
+    @apply text-base;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-heading;
+  }
+}
+
+/* Background gradients */
+@layer components {
+  .dark-background {
+    @apply bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900;
+  }
+
+  .light-background {
+    @apply bg-gradient-to-br from-orange-50 via-white to-pink-50;
+  }
+
+  /* Text gradient for hero heading */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-400 to-teal-500;
+    text-shadow: 0 0 40px rgba(167, 139, 250, 0.4);
+  }
+}
+
 /* Keep iframe container for embedded content */
 .iframe-container {
   overflow: hidden;

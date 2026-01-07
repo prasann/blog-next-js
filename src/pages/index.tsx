@@ -6,10 +6,10 @@ import generateMainFeeds from "../lib/feed";
 
 const Home = () => {
   return (
-    <div className="dark">
+    <>
       <MetaHeaders />
       <ContentArea />
-    </div>
+    </>
   );
 };
 

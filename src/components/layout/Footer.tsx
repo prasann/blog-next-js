@@ -1,11 +1,11 @@
 const Footer = () => {
   return (
-    <footer className="footer footer-center bg-base-200 text-base-content border-t border-base-300 p-6 mt-auto">
-      <aside className="text-center">
-        <p className="text-sm opacity-70">
-          Designed with <span className="text-error">❤️</span> by Prasanna
+    <footer className="bg-slate-800/50 border-t border-slate-700/50 p-6 mt-auto">
+      <div className="text-center">
+        <p className="text-sm text-gray-400">
+          Designed with <span className="text-pink-500">❤️</span> by Prasanna
         </p>
-      </aside>
+      </div>
     </footer>
   );
 };
