@@ -262,7 +262,7 @@ section .location {
 }
 
 #header .image {
-  width: 11em;
+  width: 9em;
   float: right;
   border-radius: 4px;
 }
@@ -507,19 +507,67 @@ section .location {
 }
 
 #languages .item,
-#skills .item,
 #interests .item {
   width: 15em;
   padding: 0 0.5em 0.5em 0;
   border-bottom: none;
 }
 
-#skills .item {
-  width: 16em;
+/* Compact grid layout for skills */
+#skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+  width: 100%;
 }
 
-#skills .item .keywords {
-  width: 15em;
+#skills .item {
+  width: 100%;
+  padding: 0.6em 0.8em;
+  background: #f8f9fa;
+  border-radius: 4px;
+  border-left: 3px solid #0095ff;
+}
+
+/* Emphasize first two skill categories */
+#skills .item:nth-child(1),
+#skills .item:nth-child(2) {
+  border-left-color: #ff6d1f;
+  border-left-width: 4px;
+}
+
+#skills .item .name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #202931;
+  margin-bottom: 0.4em;
+}
+
+/* Compact bullet-separated keywords */
+#skills .keywords {
+  margin: 0;
+  line-height: 1.5;
+}
+
+#skills .keywords li {
+  display: inline;
+  font-size: 0.85rem;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: #606d76;
+  border: none;
+  white-space: normal;
+}
+
+#skills .keywords li::after {
+  content: " • ";
+  color: #aaa;
+  padding: 0 0.2em;
+}
+
+#skills .keywords li:last-child::after {
+  content: "";
 }
 
 /* Projects section styling */
@@ -619,6 +667,9 @@ section .location {
     font-weight: 600;
     color: #000;
   }
+  #skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
   #projects .project-item {
     width: 48%;
     margin-right: 2%;
@@ -632,6 +683,17 @@ section .location {
   /* Make first project full-width for emphasis */
   #projects .project-item:first-child {
     width: 100%;
+    margin-right: 0;
+  }
+  #certificates .certificate-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 48%;
+    margin-right: 2%;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+  }
+  #certificates .certificate-item:nth-child(2n) {
     margin-right: 0;
   }
 }
@@ -678,6 +740,13 @@ section .location {
 }
 
 @media print {
+  .print-hide {
+    display: none !important;
+  }
+  .section:has(#projects) {
+    page-break-before: always;
+    page-break-after: always;
+  }
   #profiles a:not(.hide-href-print)::after{
     content: " (" attr(href) ") ";
   }
@@ -762,19 +831,42 @@ section .location {
     font-size: 0.8rem;
     font-weight: 600;
   }
-  #skills .item {
-    display: flex;
-    flex-direction: column;
-    margin: 0.3rem 0;
-    padding: 0;
+  #skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem;
+    margin: 0.5rem 0;
   }
-  #skills .level {
-    margin: 0.1rem 0;
-    font-weight: 400;
+  #skills .item {
+    background: none;
+    border-left: 2px solid #ddd;
+    padding: 0.2em 0 0.2em 0.5em;
+    margin: 0;
+  }
+  #skills .item .name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.2em;
   }
   #skills .keywords {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     margin: 0;
+    line-height: 1.4;
+  }
+  #skills .keywords li {
+    display: inline;
+    font-size: 0.8rem;
+    background: none;
+    padding: 0;
+    margin: 0;
+    color: #606d76;
+  }
+  #skills .keywords li::after {
+    content: " • ";
+    color: #aaa;
+  }
+  #skills .keywords li:last-child::after {
+    content: "";
   }
   .highlights {
     margin: 0.5em 0 0 0;
@@ -823,7 +915,13 @@ section .location {
   .fa-location-dot:before {
     padding-left: 0.1em;
   }
+  #projects {
+    display: block;
+    width: 100%;
+  }
   #projects .project-item {
+    display: inline-block;
+    vertical-align: top;
     width: 48%;
     margin-right: 2%;
     margin-bottom: 0.5rem;
@@ -836,7 +934,20 @@ section .location {
   }
   /* Make first project full-width for emphasis */
   #projects .project-item:first-child {
+    display: block;
     width: 100%;
+    margin-right: 0;
+  }
+  #certificates .certificate-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 48%;
+    margin-right: 2%;
+    margin-bottom: 0.5rem;
+    box-sizing: border-box;
+    page-break-inside: avoid;
+  }
+  #certificates .certificate-item:nth-child(2n) {
     margin-right: 0;
   }
 }
@@ -846,7 +957,7 @@ section .location {
   <body>
     <div id="resume">
       	<header id="header" class="clear">
-      		<img class="image" src="https://avatars.githubusercontent.com/u/380340?s&#x3D;400&amp;u&#x3D;a1f7859d9d68248b6c367365610866b1bcaabdb4&amp;v&#x3D;4" alt="Prasanna V Nagarajan" />
+      		<img class="image" src="https://www.prasanna.dev/assets/profile0924.jpg" alt="Prasanna V Nagarajan" />
       		<div class="middle">
       			<h1 class="name">Prasanna V Nagarajan</h1>
       			<h2 class="label">Principal Software Engineer - Microsoft</h2>
@@ -863,6 +974,10 @@ section .location {
       			<div class="website">
       				<span class="fa-solid fa-globe"></span>
       				<a class="hide-href-print" target="_blank" target="_blank" href="https://prasanna.dev">https://prasanna.dev</a>
+      			</div>
+      			<div class="email">
+      				<span class="fa-regular fa-envelope"></span>
+      				<a class="hide-href-print" href="mailto:mail.prasanna.v@gmail.com">mail.prasanna.v@gmail.com</a>
       			</div>
       		</div>
       
@@ -901,12 +1016,7 @@ section .location {
         </header>
         <section id="skills">
           <div class="item">
-            <h3 class="name">
-              AI/ML Technologies
-            </h3>
-              <div class="level advanced">
-                  <em>Advanced</em>
-              </div>
+            <div class="name">AI/ML Technologies</div>
             <ul class="keywords">
               <li>Azure AI/ML</li>
               <li>ML/LLM Ops</li>
@@ -914,12 +1024,7 @@ section .location {
             </ul>
           </div>
           <div class="item">
-            <h3 class="name">
-              Cloud Platforms
-            </h3>
-              <div class="level expert">
-                  <em>Expert</em>
-              </div>
+            <div class="name">Cloud Platforms</div>
             <ul class="keywords">
               <li>Microsoft Azure</li>
               <li>AWS</li>
@@ -927,12 +1032,7 @@ section .location {
             </ul>
           </div>
           <div class="item">
-            <h3 class="name">
-              Programming Languages
-            </h3>
-              <div class="level expert">
-                  <em>Expert</em>
-              </div>
+            <div class="name">Programming Languages</div>
             <ul class="keywords">
               <li>Java</li>
               <li>JavaScript</li>
@@ -943,12 +1043,7 @@ section .location {
             </ul>
           </div>
           <div class="item">
-            <h3 class="name">
-              Software Engineering
-            </h3>
-              <div class="level advanced">
-                  <em>Advanced</em>
-              </div>
+            <div class="name">Software Engineering</div>
             <ul class="keywords">
               <li>Full-Stack Development</li>
               <li>Distributed Systems</li>
@@ -957,12 +1052,7 @@ section .location {
             </ul>
           </div>
           <div class="item">
-            <h3 class="name">
-              Leadership &amp; Management
-            </h3>
-              <div class="level advanced">
-                  <em>Advanced</em>
-              </div>
+            <div class="name">Leadership &amp; Management</div>
             <ul class="keywords">
               <li>Technical Project Leadership</li>
               <li>Hands-on Technical Leadership</li>
@@ -971,12 +1061,7 @@ section .location {
             </ul>
           </div>
           <div class="item">
-            <h3 class="name">
-              Development Practices
-            </h3>
-              <div class="level expert">
-                  <em>Expert</em>
-              </div>
+            <div class="name">Development Practices</div>
             <ul class="keywords">
               <li>Agile Methodologies</li>
               <li>DevOps</li>
@@ -1007,7 +1092,10 @@ section .location {
               <span class="fa-solid fa-location-dot"></span>
               Bengaluru, Karnataka, India
             </span>
-             <div class="item" id="work-item">
+            <span class="url">
+              <span class="fa-solid fa-up-right-from-square"></span>
+              <a target="_blank" href="https://www.microsoft.com/">https://www.microsoft.com/</a>
+            </span>        <div class="item" id="work-item">
               <div class="summary"><p><p>Leading AI/ML initiatives and data platform development in Industry Solutions Engineering. Progressed from Senior Software Engineer to Principal Engineer, focusing on Generative AI applications and scalable enterprise solutions.</p></p></div>
               <ul class="highlights">
                 <li><p><p>Leading cross-functional teams to develop AI/ML solutions for enterprise clients using Azure AI services</p></p></li>
@@ -1060,21 +1148,24 @@ section .location {
                   <span class="startDate">Aug 2024</span>
                     <span class="endDate">- Current</span>
                 </div>
-              <div class="position">Multi-Agent AI Platform for Banking</div>
+              <div class="position">Multi-Agent Smart Home Platform</div>
             </header>
             <ul class="keywords">
                 <li>Multi-Agent AI</li>
-                <li>Azure AI Foundry</li>
+                <li>ML-First Routing</li>
+                <li>LangGraph</li>
                 <li>Semantic Kernel</li>
-                <li>Cross-Cloud Architecture</li>
-                <li>RPA</li>
+                <li>Conversational AI</li>
+                <li>Platform Engineering</li>
             </ul>
             <div class="item">
-                <div class="summary"><p><p>Designed cross-cloud platform orchestrating AI agents across Azure AI Foundry, Copilot Studio, and Semantic Kernel for Australian bank's AI transformation</p></p></div>
+                <div class="summary"><p><p>Built conversational AI platform enabling natural language control of 50+ smart home device types across mobile, voice assistant, and robot form factors</p></p></div>
               <ul class="highlights">
-                  <li><p><p>Built AWS-hosted platform managing Azure-deployed agents with unified observability</p></p></li>
-                  <li><p><p>Developed extensible RPA framework with BPMN workflow integration</p></p></li>
-                  <li><p><p>Enabled coordination between pro-code, low-code, and no-code agent paradigms</p></p></li>
+                  <li><p><p>Architected scalable platform supporting 50+ device types with extensible federated agent architecture and end-to-end agent traceability</p></p></li>
+                  <li><p><p>Reduced LLM inference costs through ML-first routing architecture (semantic cache + intent classification)</p></p></li>
+                  <li><p><p>Designed heterogeneous agent system enabling plug-and-play integration across diverse AI technologies</p></p></li>
+                  <li><p><p>Reduced agent onboarding from 4 weeks to 9 days via self-service platform enabling 10+ teams</p></p></li>
+                  <li><p><p>Coordinated cross-functional collaboration across multiple product teams to deliver complex multi-agent program</p></p></li>
               </ul>
             </div>
           </section>
@@ -1202,7 +1293,7 @@ section .location {
             </header>
       
       
-            <ul class="courses">
+            <ul class="courses print-hide">
               <li>Advanced Operating Systems</li>
               <li>Advanced Database Systems</li>
               <li>Distributed Systems</li>
@@ -1231,12 +1322,11 @@ section .location {
             </header>
       
       
-            <ul class="courses">
+            <ul class="courses print-hide">
               <li>Data Structures and Algorithms</li>
               <li>Object-Oriented Programming</li>
               <li>Database Management Systems</li>
               <li>Computer Networks</li>
-              <li>Software Engineering</li>
             </ul>
       
             <div class="item">
@@ -1265,7 +1355,7 @@ section .location {
                 </header>
       
                 <div class="item">
-                    <span class="url">
+                    <span class="url print-hide">
                       <span class="fa-solid fa-up-right-from-square"></span>
                       <a target="_blank" href="https://learn.microsoft.com/en-us/users/prasanna-msft/credentials/239AA67FC77C9276">https://learn.microsoft.com/en-us/users/prasanna-msft/credentials/239AA67FC77C9276</a>
                     </span>
@@ -1287,7 +1377,7 @@ section .location {
                 </header>
       
                 <div class="item">
-                    <span class="url">
+                    <span class="url print-hide">
                       <span class="fa-solid fa-up-right-from-square"></span>
                       <a target="_blank" href="https://learn.microsoft.com/api/credentials/share/en-us/prasanna-msft/EBE7EEDD7CB8F952">https://learn.microsoft.com/api/credentials/share/en-us/prasanna-msft/EBE7EEDD7CB8F952</a>
                     </span>
@@ -1309,7 +1399,7 @@ section .location {
                 </header>
       
                 <div class="item">
-                    <span class="url">
+                    <span class="url print-hide">
                       <span class="fa-solid fa-up-right-from-square"></span>
                       <a target="_blank" href="https://www.credly.com/badges/363481e3-ae7c-4feb-85ad-3b1fd2241d71?source&#x3D;linked_in_profile">https://www.credly.com/badges/363481e3-ae7c-4feb-85ad-3b1fd2241d71?source&#x3D;linked_in_profile</a>
                     </span>
@@ -1317,6 +1407,35 @@ section .location {
               </section>
           </section>
         </section>
+      <section class="section">
+        <header>
+          <h2 class='section-title'>Publications</h2>
+        </header>
+        <section id="publications">
+          <section class="publication-item">
+            <label for="publication-item-0"></label>
+      
+            <header class="clear">
+              <span class="date">
+                Jan 2026
+              </span>
+              <div class="header-left">
+                <span class="name">
+                  Prompt-Driven Development Handbook
+                </span>
+                <span class="publisher">
+                  in BPB Publications
+                </span>
+              </div>
+             
+            </header>
+      
+            <div class="item">
+              <div class="summary"><p><p>A comprehensive guide to AI-assisted software development covering GitHub Copilot, Cursor, Claude Code, and other AI coding tools. The book provides practical techniques for prompt engineering, code generation, debugging, and advanced patterns including multi-agent workflows throughout the development lifecycle. Designed for software developers, engineering managers, tech leads, and students looking to leverage AI tools effectively while maintaining code quality and best practices in an AI-assisted world.</p></p></div>
+            </div>
+          </section>
+        </section>
+      </section>
     </div>
   </body>
 </html>
