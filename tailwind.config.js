@@ -16,12 +16,7 @@ module.exports = {
       letterSpacing: {
         heading: "-0.02em",
       },
-      // Background gradients
-      backgroundImage: {
-        "gradient-dark": "linear-gradient(to bottom right, #0f172a, #1e293b, #0f172a)",
-        "gradient-light": "linear-gradient(to bottom right, #fff7ed, #ffffff, #fef3f2)",
-        "gradient-text": "linear-gradient(to right, #f472b6, #ec4899, #c026d3)",
-      },
+
       // Semantic color theme - change these to instantly refresh the site look
       colors: {
         // Social media brand colors (keep as-is)
@@ -110,18 +105,12 @@ module.exports = {
     themes: [
       {
         prasanna: {
-          "primary": "#3b82f6",        // blue-500 - brand color
-          "secondary": "#60a5fa",     // blue-400
-          "accent": "#2563eb",        // blue-600
-          "neutral": "#1f2937",       // gray-800
+          // Base colors (backgrounds and text)
           "base-100": "#111827",      // gray-900 - darkest background
           "base-200": "#1f2937",      // gray-800 - card backgrounds
           "base-300": "#374151",      // gray-700 - borders/dividers
-          "base-content": "#f3f4f6",  // gray-100 - main text
-          "info": "#3b82f6",
-          "success": "#10b981",
-          "warning": "#f59e0b",
-          "error": "#ef4444",
+          // Utility colors
+          "success": "#10b981",       // green - used for email icon hover
         },
       },
       "winter", // Light theme option
