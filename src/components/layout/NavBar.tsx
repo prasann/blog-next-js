@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
-import logoImage from "./../../../public/assets/logo.png";
+import logoImage from "./../../../public/assets/logo.svg";
 import { useEffect, useState } from "react";
 
 const NavBar = () => {

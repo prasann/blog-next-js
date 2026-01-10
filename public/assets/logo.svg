@@ -1,0 +1,14 @@
+<svg viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+   <stop offset="0%" stop-color="#2563eb"/>
+   <stop offset="50%" stop-color="#06b6d4"/>
+   <stop offset="100%" stop-color="#2563eb"/>
+  </linearGradient>
+ </defs>
+ <g fill="url(#gradient)">
+  <text x="0" y="60" font-size="70" font-weight="800" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">P</text>
+  <text x="45" y="25" font-size="20" font-weight="700" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">&lt;/&gt;</text>
+  <text x="45" y="60" font-size="45" font-weight="800" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">N</text>
+ </g>
+</svg>
