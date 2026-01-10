@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faBlog, faMicrophone } from "@fortawesome/free-solid-svg-icons";
 import ProfileImage from "./../../images/profile.jpeg";
+import FeaturedBook from "./FeaturedBook";
 
 const Greeting = () => {
   return (
@@ -163,6 +164,7 @@ const Container = () => {
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="space-y-6 md:space-y-8">
           <AboutMe />
+          <FeaturedBook />
           <Social />
         </div>
       </div>
