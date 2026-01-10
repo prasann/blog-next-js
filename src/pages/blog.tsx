@@ -15,17 +15,19 @@ const Blog = ({ allPosts }: Props) => {
     description: "lists of all the blog posts that i have done so far.",
   };
   return (
-    <div>
+    <div className="min-h-screen py-12">
       <MetaHeaders {...metaDetails} />
-      <div className="flex justify-center px-4 py-8 md:py-12">
-        <div className="w-full max-w-6xl">
-          <h1 className="text-4xl font-bold mb-2 text-gray-100">Blog Posts</h1>
-          <p className="text-gray-400 mb-10">Thoughts on software development, architecture, and technology</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {allPosts.map((post) => (
-              <PostListItem key={post.title} {...post} />
-            ))}
-          </div>
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent pb-2 leading-tight">
+            Blog Posts
+          </h1>
+          <p className="text-lg text-gray-400">Thoughts on software development, architecture, and technology</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {allPosts.map((post) => (
+            <PostListItem key={post.title} {...post} />
+          ))}
         </div>
       </div>
     </div>
