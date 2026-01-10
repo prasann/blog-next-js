@@ -15,12 +15,20 @@ const Blog = ({ allPosts }: Props) => {
     description: "lists of all the blog posts that i have done so far.",
   };
   return (
-    <div>
+    <div className="min-h-screen py-12">
       <MetaHeaders {...metaDetails} />
-      <div className="prose max-w-screen-xl content-area rounded-xl">
-        {allPosts.map((post) => (
-          <PostListItem key={post.title} {...post} />
-        ))}
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 gradient-heading pb-2 leading-tight">
+            Blog Posts
+          </h1>
+          <p className="text-lg text-theme-text-muted">Thoughts on software development, architecture, and technology</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {allPosts.map((post) => (
+            <PostListItem key={post.title} {...post} />
+          ))}
+        </div>
       </div>
     </div>
   );

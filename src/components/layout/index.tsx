@@ -8,10 +8,10 @@ type LayoutProps = {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col justify-start min-h-screen">
+    <div className="flex flex-col min-h-screen dark-background overflow-x-hidden">
       <NavBar />
-      <main className="prose max-w-none main-bg">
-        <div className="lg:flex lg:justify-center">{children}</div>
+      <main className="flex-1">
+        {children}
       </main>
       <Footer />
     </div>

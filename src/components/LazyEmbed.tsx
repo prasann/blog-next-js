@@ -61,101 +61,51 @@ const LazyEmbed = ({ src, name }: LazyEmbedProps) => {
     );
   }
 
-  // Show thumbnail with play button
+  // Show clean preview card
   return (
-    <div className="relative">
-      {/* Skeleton loader while thumbnail loads */}
-      {!thumbnailLoaded && (
-        <div className="w-full bg-gray-700 rounded-lg animate-pulse flex items-center justify-center py-6">
-          <div className="text-gray-400">Loading preview...</div>
+    <div 
+      className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-white/10 hover:border-blue-500/30 rounded-xl p-6 cursor-pointer group transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]"
+      onClick={handleLoadEmbed}
+    >
+      <div className="flex items-center gap-4">
+        {/* Icon based on type */}
+        <div className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center ${
+          embedInfo.type === 'youtube' 
+            ? 'bg-gradient-to-br from-red-600 to-red-700' 
+            : embedInfo.type === 'slides'
+            ? 'bg-gradient-to-br from-orange-500 to-orange-600'
+            : 'bg-gradient-to-br from-blue-500 to-blue-600'
+        }`}>
+          {embedInfo.type === 'youtube' ? (
+            <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          ) : embedInfo.type === 'slides' ? (
+            <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+            </svg>
+          ) : (
+            <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/>
+            </svg>
+          )}
         </div>
-      )}
-      
-      {/* Thumbnail or fallback */}
-      <div 
-        className={`relative cursor-pointer group transition-opacity ${!thumbnailLoaded ? 'opacity-0 absolute inset-0' : 'opacity-100'}`}
-        onClick={handleLoadEmbed}
-      >
-        {embedInfo.thumbnail ? (
-          <div className="relative w-full bg-gray-800 rounded-lg overflow-hidden" style={{minHeight: '200px'}}>
-            <img
-              src={embedInfo.thumbnail}
-              alt={`${name} preview`}
-              className="w-full h-full object-cover"
-              onLoad={() => setThumbnailLoaded(true)}
-              onError={() => {
-                setThumbnailLoaded(true);
-                // Fallback to generic preview
-              }}
-            />
-            
-            {/* Play/Load overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-30 transition-all">
-              <div className="bg-white bg-opacity-90 rounded-full p-4 group-hover:bg-opacity-100 transition-all transform group-hover:scale-110">
-                {embedInfo.type === 'youtube' ? (
-                  // YouTube play icon
-                  <svg className="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                ) : (
-                  // Slides presentation icon
-                  <svg className="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M9 12H4.5L7 9.5 9 12zm11-11H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zM4 19V5h16v14H4z"/>
-                    <path d="M10.5 13.5L12 12l1.5 1.5L16 10v7H8v-3.5z"/>
-                  </svg>
-                )}
-              </div>
-            </div>
-            
-            {/* Load button text */}
-            <div className="absolute bottom-4 left-4 right-4">
-              <div className="bg-black bg-opacity-70 text-white px-3 py-2 rounded text-sm text-center">
-                Preview content
-              </div>
-            </div>
+        
+        <div className="flex-1 min-w-0">
+          <div className="text-sm text-gray-400 mb-1">
+            {embedInfo.type === 'youtube' ? 'Video' : embedInfo.type === 'slides' ? 'Presentation' : 'Content'}
           </div>
-        ) : (
-          // Fallback design for all embed types - clean and consistent
-          <div 
-            className="w-full bg-gray-700 rounded-lg flex items-center justify-center relative group py-6"
-            onClick={handleLoadEmbed}
-          >
-            {/* Set thumbnail loaded when fallback is shown */}
-            {(() => { if (!thumbnailLoaded) setThumbnailLoaded(true); return null; })()}
-            
-            <div className="text-center text-gray-300">
-              <div className="mb-3">
-                {embedInfo.type === 'slides' ? (
-                  // Google Slides icon - using the simple document icon you like
-                  <div className="w-12 h-12 mx-auto bg-gray-600 rounded-lg flex items-center justify-center">
-                    <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M6 2h8l6 6v12c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm7 7V3.5L18.5 9H13z"/>
-                      <path d="M7 11h10v1H7v-1zm0 2h8v1H7v-1zm0 2h6v1H7v-1z"/>
-                    </svg>
-                  </div>
-                ) : embedInfo.type === 'youtube' ? (
-                  // YouTube icon
-                  <div className="w-12 h-12 mx-auto bg-red-600 rounded-lg flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                ) : (
-                  // Generic presentation icon
-                  <div className="w-12 h-12 mx-auto bg-gray-600 rounded-lg flex items-center justify-center">
-                    <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M6 2h8l6 6v12c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm7 7V3.5L18.5 9H13z"/>
-                    </svg>
-                  </div>
-                )}
-              </div>
-              <div className="text-base font-semibold mb-3">{name}</div>
-              <div className="text-sm bg-blue-600 text-white px-4 py-2 rounded-lg group-hover:bg-blue-500 transition-colors">
-                Preview content
-              </div>
-            </div>
+          <div className="font-semibold text-gray-200 group-hover:text-blue-300 transition-colors line-clamp-1">
+            {name}
           </div>
-        )}
+        </div>
+        
+        {/* Preview button */}
+        <div className="flex-shrink-0">
+          <div className="px-4 py-2 bg-blue-500/20 group-hover:bg-blue-500/30 border border-blue-500/30 group-hover:border-blue-400/50 text-blue-300 group-hover:text-blue-200 rounded-lg text-sm font-medium transition-all">
+            Preview
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -3,30 +3,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Prism theme for code highlighting */
+@import './prism/prism-laserwave.css';
+
 @font-face {
   font-family: "Muli";
   src: local("Muli"), url("/fonts/Muli-Regular.ttf") format("ttf");
 }
 
-.dark-background {
-  @apply bg-gradient-to-l from-black via-gray-700 to-black;
+/* Base typography improvements */
+@layer base {
+  body {
+    @apply text-base;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-heading;
+  }
 }
 
-.light-background {
-  @apply bg-gradient-to-tr from-yellow-50 to-red-50;
+/* Background gradients */
+@layer components {
+  .dark-background {
+    @apply bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900;
+  }
+
+  .light-background {
+    @apply bg-gradient-to-br from-orange-50 via-white to-pink-50;
+  }
+
+  /* Text gradient for hero heading and titles */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600;
+    text-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+  }
+  
+  /* Reusable gradient heading - used across blog posts, talks, etc. */
+  .gradient-heading {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600;
+  }
 }
 
-.icon-text {
-  @apply my-1 mr-1 h-5 w-5 text-blue-500;
-}
-
-.prose {
-  overflow-wrap: break-word;
-}
-* {
-  /*outline: 1px red solid;*/
-}
-
+/* Keep iframe container for embedded content */
 .iframe-container {
   overflow: hidden;
   position: relative;
@@ -47,20 +65,7 @@
   height: 100%;
 }
 
-.highlight-animation {
-  @apply cursor-pointer transition duration-200 transform-gpu hover:scale-110;
-}
-
-.prose {
-  code::before {
-    content: none;
-  }
-  code::after {
-    content: none;
-  }
-  @apply text-gray-300;
-}
-
+/* Keep image container for Next.js Image component */
 .image-container {
   width: 100%;
 
@@ -76,6 +81,27 @@
   }
 }
 
-body {
-  @apply bg-gray-900 text-white;
+/* rehype-prism-plus specific styles */
+pre[class*="language-"] {
+  @apply relative my-4 rounded-lg;
+  overflow-x: auto;
+}
+
+/* Line numbers */
+.code-line {
+  @apply px-4 border-l-4 border-transparent;
+}
+
+/* Line highlighting */
+.code-line.highlighted {
+  @apply bg-blue-900/30 border-blue-500;
+}
+
+/* Diff highlighting */
+.code-line.inserted {
+  @apply bg-green-900/30 border-green-500;
+}
+
+.code-line.deleted {
+  @apply bg-red-900/30 border-red-500;
 }

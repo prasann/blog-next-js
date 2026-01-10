@@ -5,8 +5,7 @@ import RenderMarkdown from "../RenderMarkdown";
 
 const CategoryTag = ({ category }: { category: string }) => {
   return (
-    <span
-      className={`text-xs font-semibold inline-block py-2 px-2 rounded-full tag-color normal-case last:mr-0 mr-1`}>
+    <span className="inline-flex items-center px-3 py-1 text-xs font-medium text-theme-accent-light bg-theme-bg-accent-light border border-theme-border-accent-light rounded-full">
       {category}
     </span>
   );
@@ -21,32 +20,41 @@ const Content = ({
   category,
 }: Post) => {
   return (
-    <div className="prose max-w-screen-xl content-area bg-gray-900 text-gray-300 rounded-xl">
-      <article key={title}>
-        <header>
-          <div className="text-4xl font-bold text-center mt-2 greeting-color">{title}</div>
-          <div className="flex flex-row justify-between">
-            <div className="mt-2 mb-4 text-center text-gray-400 italic">
-              {date}
+    <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <div className="bg-theme-glass-light backdrop-blur-lg border border-theme-border-medium rounded-3xl overflow-hidden">
+        <div className="p-6 md:p-10">
+          <article key={title} className="space-y-6">
+            <header className="space-y-4 border-b border-theme-border-medium pb-6">
+              <h1 className="text-3xl md:text-4xl font-bold gradient-heading">{title}</h1>
+              <div className="flex flex-wrap items-center gap-3 text-sm text-theme-text-muted">
+                <time>{date}</time>
+                <span>•</span>
+                <span>{minutesToRead}</span>
+                {category && (
+                  <>
+                    <span>•</span>
+                    <div className="flex flex-wrap gap-2">
+                      {category.split(",").map((cat) => (
+                        <CategoryTag key={cat} category={cat} />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            </header>
+            <div className="prose prose-lg prose-invert max-w-none">
+              {/*@ts-ignore*/}
+              <RenderMarkdown content={content} />
             </div>
-            <div className="mt-2 mb-4 text-center text-gray-400 italic">
-              {minutesToRead}
-            </div>
+          </article>
+          <div className="mt-10 pt-8 border-t border-theme-border-medium">
+            <Engage description={description} />
           </div>
-          <div className="text-center">
-            {category?.split(",").map((cat) => (
-              <CategoryTag key={cat} category={cat} />
-            ))}
+          <div className="mt-8 pt-8 border-t border-theme-border-medium">
+            <FooterCard />
           </div>
-        </header>
-        {/*@ts-ignore*/}
-        <RenderMarkdown content={content} />
-      </article>
-      <div className="flex justify-center items-center">
-        <Engage description={description} />
+        </div>
       </div>
-      <div className="flex-grow border-t mx-4 md:mx-24 border-gray-700 mt-4" />
-      <FooterCard />
     </div>
   );
 };

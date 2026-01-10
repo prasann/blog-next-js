@@ -16,12 +16,20 @@ const Talks = ({ talks }: Props) => {
     description: "lists of all the talks that i have done so far.",
   };
   return (
-    <div>
+    <div className="min-h-screen py-12">
       <MetaHeaders {...metaDetails} />
-      <div className="content-area bg-white rounded-xl">
-        {talks.map((talk) => (
-          <TalkListItem key={talk.title} {...talk} />
-        ))}
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 gradient-heading">
+            Talks
+          </h1>
+          <p className="text-lg text-theme-text-muted">Conference talks, presentations, and speaking engagements</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {talks.map((talk) => (
+            <TalkListItem key={talk.title} {...talk} />
+          ))}
+        </div>
       </div>
     </div>
   );

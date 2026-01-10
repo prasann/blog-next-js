@@ -57,6 +57,18 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,600;1,400;1,600&display=swap"
             rel="stylesheet"
           />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function() {
+                  try {
+                    var theme = localStorage.getItem('theme') || 'prasanna';
+                    document.documentElement.setAttribute('data-theme', theme);
+                  } catch (e) {}
+                })();
+              `,
+            }}
+          />
           <GoogleAnalytics />
         </Head>
         <body>

@@ -18,16 +18,24 @@ const PostListItem = ({
     <div
       key={slug}
       onClick={() => navigateTo(slug)}
-      className="cursor-pointer m-1 p-2 border-b-2 border-gray-700 hover:bg-gray-800"
+      className="group card bg-base-200/30 hover:bg-base-200/60 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-1 border border-theme-border-light backdrop-blur-sm rounded-2xl"
+    
     >
-      <div className="text-center md:text-left my-2 text-sky-400 text-2xl hover:text-pink-500">
-        {title}
+      <div className="card-body p-6">
+        <h2 className="card-title text-xl font-semibold mb-3 gradient-heading group-hover:from-blue-300 group-hover:via-blue-400 group-hover:to-blue-500 transition-all">
+          {title}
+        </h2>
+        <p className="text-theme-text-secondary flex-grow line-clamp-3 mb-4">{description}</p>
+        <div className="flex flex-row justify-between items-center text-sm text-theme-text-muted pt-4 border-t border-theme-border-light">
+          <time>{date}</time>
+          <span className="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {minutesToRead}
+          </span>
+        </div>
       </div>
-      <div className="flex flex-row justify-between">
-        <div className="text-gray-400 italic text-sm">{date}</div>
-        <div className="text-gray-400 italic text-sm">{minutesToRead}</div>
-      </div>
-      <div className="text-gray-300">{description}</div>
     </div>
   );
 };
