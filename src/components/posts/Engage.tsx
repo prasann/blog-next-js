@@ -39,7 +39,7 @@ const Engage = ({ description }: Props) => {
   return (
     <div className="flex justify-center gap-4">
       <button
-        className="flex items-center gap-2 px-6 py-3 bg-theme-bg-accent-medium hover:bg-theme-bg-accent-dark border border-theme-border-accent-medium hover:border-theme-border-accent-dark text-theme-accent-light hover:text-theme-accent transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:-translate-y-0.5"
+        className="flex items-center gap-2 px-6 py-3 bg-theme-bg-accent-medium hover:bg-theme-bg-accent-dark border border-theme-border-accent-medium hover:border-theme-border-accent-dark rounded-xl text-theme-accent-light hover:text-theme-accent transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:-translate-y-0.5"
         onClick={() => shareOnTwitter(description)}
       >
         <FontAwesomeIcon icon={faTwitter} className="text-lg" />
