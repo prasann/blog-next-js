@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 /* Import Prism theme for code highlighting */
-@import './prism/prism-night-owl.css';
+@import './prism/prism-laserwave.css';
 
 @font-face {
   font-family: "Muli";
