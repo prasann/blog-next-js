@@ -17,11 +17,15 @@ const Blog = ({ allPosts }: Props) => {
   return (
     <div>
       <MetaHeaders {...metaDetails} />
-      <div className="flex justify-center p-4 md:p-8">
-        <div className="w-full max-w-screen-xl bg-base-200 rounded-xl shadow-2xl p-6 md:p-8 space-y-4">
-          {allPosts.map((post) => (
-            <PostListItem key={post.title} {...post} />
-          ))}
+      <div className="flex justify-center px-4 py-8 md:py-12">
+        <div className="w-full max-w-6xl">
+          <h1 className="text-4xl font-bold mb-2 text-gray-100">Blog Posts</h1>
+          <p className="text-gray-400 mb-10">Thoughts on software development, architecture, and technology</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {allPosts.map((post) => (
+              <PostListItem key={post.title} {...post} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
