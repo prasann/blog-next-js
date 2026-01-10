@@ -42,7 +42,7 @@ const Content = ({
                 )}
               </div>
             </header>
-            <div className="prose prose-lg prose-invert max-w-none prose-headings:font-semibold prose-h2:text-2xl prose-h2:text-gray-100 prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:text-gray-200 prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300 prose-strong:text-gray-100 prose-code:text-blue-300 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-transparent prose-pre:p-0">
+            <div className="prose prose-lg prose-invert max-w-none">
               {/*@ts-ignore*/}
               <RenderMarkdown content={content} />
             </div>

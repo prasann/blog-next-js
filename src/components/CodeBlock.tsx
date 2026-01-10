@@ -41,17 +41,17 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
   return (
     <div className="relative group">
       {language && (
-        <div className="absolute top-0 left-0 px-3 py-1 text-xs font-semibold text-gray-300 bg-gray-800 rounded-tl-lg rounded-br-lg">
+        <div className="absolute top-2 left-3 px-2 py-1 text-xs font-semibold text-blue-300 bg-blue-500/20 rounded-md z-10">
           {language}
         </div>
       )}
       <button
         onClick={handleCopy}
-        className="btn btn-xs btn-ghost absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
+        className="absolute top-2 right-2 px-3 py-1.5 text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-gray-300 hover:text-white rounded-lg opacity-0 group-hover:opacity-100 transition-all z-10"
         aria-label="Copy code"
       >
         {copied ? (
-          <span className="text-success">✓ Copied</span>
+          <span className="text-green-400">✓ Copied</span>
         ) : (
           <span>Copy</span>
         )}
@@ -60,5 +60,4 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     </div>
   );
 };
-
 export default CodeBlock;
