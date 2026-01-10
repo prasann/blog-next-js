@@ -22,7 +22,7 @@ const PostListItem = ({
     
     >
       <div className="card-body p-6">
-        <h2 className="card-title text-xl font-semibold mb-3 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:via-blue-400 group-hover:to-blue-500 transition-all">
+        <h2 className="card-title text-xl font-semibold mb-3 gradient-heading group-hover:from-blue-300 group-hover:via-blue-400 group-hover:to-blue-500 transition-all">
           {title}
         </h2>
         <p className="text-gray-300 flex-grow line-clamp-3 mb-4">{description}</p>

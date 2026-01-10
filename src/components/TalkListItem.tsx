@@ -95,7 +95,7 @@ const TalkListItem = ({
   return (
     <div className="bg-base-200/30 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all duration-300 h-full flex flex-col">
       <div className="p-6 flex-1">
-        <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
+        <h2 className="text-2xl font-bold mb-4 gradient-heading">
           {title}
         </h2>
         <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-400">

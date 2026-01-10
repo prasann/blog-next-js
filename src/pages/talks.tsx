@@ -20,7 +20,7 @@ const Talks = ({ talks }: Props) => {
       <MetaHeaders {...metaDetails} />
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 gradient-heading">
             Talks
           </h1>
           <p className="text-lg text-gray-400">Conference talks, presentations, and speaking engagements</p>

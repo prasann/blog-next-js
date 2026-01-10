@@ -1,5 +1,4 @@
 import "../styles/globals.css";
-import "../styles/landing-dark.css";
 import "../styles/loader.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 

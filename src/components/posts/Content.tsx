@@ -25,7 +25,7 @@ const Content = ({
         <div className="p-6 md:p-10">
           <article key={title} className="space-y-6">
             <header className="space-y-4 border-b border-white/10 pb-6">
-              <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">{title}</h1>
+              <h1 className="text-3xl md:text-4xl font-bold gradient-heading">{title}</h1>
               <div className="flex flex-wrap items-center gap-3 text-sm text-gray-400">
                 <time>{date}</time>
                 <span>•</span>

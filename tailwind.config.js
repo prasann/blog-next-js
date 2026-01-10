@@ -33,15 +33,11 @@ module.exports = {
           middle: "#a78bfa",  // purple-400
           end: "#14b8a6",     // teal-500
         },
-        // Brand blue theme - matches blue-400/500/600
-        brand: {
-          100: "#dbeafe",  // blue-100 - very light
-          200: "#bfdbfe",  // blue-200 - light text
-          300: "#93c5fd",  // blue-300 - lighter text
-          400: "#60a5fa",  // blue-400 - gradient start, icons
-          DEFAULT: "#3b82f6", // blue-500 - primary
-          500: "#3b82f6",  // blue-500 - primary (explicit)
-          600: "#2563eb",  // blue-600 - gradient end
+        // Text colors for better readability
+        text: {
+          primary: "#f3f4f6",    // gray-100 - main text
+          secondary: "#d1d5db",  // gray-300 - secondary text  
+          tertiary: "#9ca3af",   // gray-400 - muted text
         },
       },
       // Keep wave animation as it's custom
@@ -75,9 +71,9 @@ module.exports = {
     themes: [
       {
         prasanna: {
-          "primary": "#ec4899",        // pink-500 - brand color
-          "secondary": "#f472b6",     // pink-400
-          "accent": "#fb7185",        // rose-400
+          "primary": "#3b82f6",        // blue-500 - brand color
+          "secondary": "#60a5fa",     // blue-400
+          "accent": "#2563eb",        // blue-600
           "neutral": "#1f2937",       // gray-800
           "base-100": "#111827",      // gray-900 - darkest background
           "base-200": "#1f2937",      // gray-800 - card backgrounds
