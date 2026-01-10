@@ -33,6 +33,16 @@ module.exports = {
           middle: "#a78bfa",  // purple-400
           end: "#14b8a6",     // teal-500
         },
+        // Brand blue theme - matches blue-400/500/600
+        brand: {
+          100: "#dbeafe",  // blue-100 - very light
+          200: "#bfdbfe",  // blue-200 - light text
+          300: "#93c5fd",  // blue-300 - lighter text
+          400: "#60a5fa",  // blue-400 - gradient start, icons
+          DEFAULT: "#3b82f6", // blue-500 - primary
+          500: "#3b82f6",  // blue-500 - primary (explicit)
+          600: "#2563eb",  // blue-600 - gradient end
+        },
       },
       // Keep wave animation as it's custom
       keyframes: {
