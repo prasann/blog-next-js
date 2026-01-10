@@ -54,13 +54,17 @@ const RenderLink = (link: ExternalLink) => {
     );
   }
   
-  // Case 4: Regular links - render as before
+  // Case 4: Regular links - render as compact badges
   return (
-    <div key={link.name} className="my-4 text-2xl">
-      <a className="no-underline font-bold text-blue-400" href={link.link} target="_blank" rel="noopener noreferrer">
-        {link.name}
-      </a>
-    </div>
+    <a 
+      key={link.name} 
+      className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 hover:border-blue-400/40 text-blue-300 hover:text-blue-200 rounded-lg transition-all duration-200" 
+      href={link.link} 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      {link.name}
+    </a>
   );
 };
 
@@ -89,35 +93,37 @@ const TalkListItem = ({
   externalLinks,
 }: Talk) => {
   return (
-    <div className="m-2 text-white grid lg:grid-cols-3 rounded-xl shadow-xl p-2 border-2 border-gray-700 bg-gray-800">
-      <div className="text-white m-2 p-2 lg:p-6 bg-gray-900 lg:col-span-2">
-        <div className="text-gray-300 text-3xl font-bold">{title}</div>
-        <div className="grid grid-cols-2 mt-4">
-          <IconWithText text={date}>
-            <FontAwesomeIcon
-              className="text-pink-400"
-              icon={faCalendar}
-              size="2x"
-            />
-          </IconWithText>
-          <IconWithText text={place}>
-            <FontAwesomeIcon
-              className="text-red-400"
-              icon={faMapMarkerAlt}
-              size="2x"
-            />
-          </IconWithText>
+    <div className="bg-base-200/30 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all duration-300 h-full flex flex-col">
+      <div className="p-6 flex-1">
+        <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
+          {title}
+        </h2>
+        <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-400">
+          <div className="flex items-center gap-2">
+            <FontAwesomeIcon icon={faCalendar} className="text-blue-400" />
+            <span>{date}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="text-blue-400" />
+            <span>{place}</span>
+          </div>
         </div>
-        <Description
-          description={description}
-          descriptionMarkdown={descriptionMarkdown}
-        />
+        <div className="text-gray-300 text-sm leading-relaxed">
+          <Description
+            description={description}
+            descriptionMarkdown={descriptionMarkdown}
+          />
+        </div>
       </div>
-      <div className="text-white m-2 p-6 bg-gray-900">
-        {externalLinks.map((link) => (
-          <RenderLink key={Math.random()} {...link} />
-        ))}
-      </div>
+      {externalLinks && externalLinks.length > 0 && (
+        <div className="border-t border-white/10 p-4 bg-white/5">
+          <div className="flex flex-wrap gap-2">
+            {externalLinks.map((link, index) => (
+              <RenderLink key={index} {...link} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
