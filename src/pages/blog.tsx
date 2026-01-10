@@ -22,7 +22,7 @@ const Blog = ({ allPosts }: Props) => {
           <h1 className="text-5xl md:text-6xl font-bold mb-4 gradient-heading pb-2 leading-tight">
             Blog Posts
           </h1>
-          <p className="text-lg text-gray-400">Thoughts on software development, architecture, and technology</p>
+          <p className="text-lg text-theme-text-muted">Thoughts on software development, architecture, and technology</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {allPosts.map((post) => (

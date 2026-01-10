@@ -39,14 +39,14 @@ const Engage = ({ description }: Props) => {
   return (
     <div className="flex justify-center gap-4">
       <button
-        className="flex items-center gap-2 px-6 py-3 bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/30 hover:border-blue-400/50 text-blue-300 hover:text-blue-200 rounded-xl font-semibold transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:-translate-y-0.5"
+        className="flex items-center gap-2 px-6 py-3 bg-theme-bg-accent-medium hover:bg-theme-bg-accent-dark border border-theme-border-accent-medium hover:border-theme-border-accent-dark text-theme-accent-light hover:text-theme-accent transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:-translate-y-0.5"
         onClick={() => shareOnTwitter(description)}
       >
         <FontAwesomeIcon icon={faTwitter} className="text-lg" />
         Share
       </button>
       <button
-        className="flex items-center gap-2 px-6 py-3 bg-pink-500/20 hover:bg-pink-500/30 border border-pink-500/30 hover:border-pink-400/50 text-pink-300 hover:text-pink-200 rounded-xl font-semibold transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:-translate-y-0.5"
+        className="flex items-center gap-2 px-6 py-3 bg-theme-bg-pink-light hover:bg-theme-bg-pink-medium border border-pink-500/30 hover:border-pink-400/50 text-pink-300 hover:text-pink-200 rounded-xl font-semibold transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:-translate-y-0.5"
         onClick={likeThePost}
       >
         <FontAwesomeIcon icon={faHeart} className="text-lg" />

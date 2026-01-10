@@ -23,7 +23,7 @@ const Talks = ({ talks }: Props) => {
           <h1 className="text-5xl md:text-6xl font-bold mb-4 gradient-heading">
             Talks
           </h1>
-          <p className="text-lg text-gray-400">Conference talks, presentations, and speaking engagements</p>
+          <p className="text-lg text-theme-text-muted">Conference talks, presentations, and speaking engagements</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {talks.map((talk) => (
