@@ -48,17 +48,17 @@ const IconLink = ({
 
 const Writeup = () => {
   return (
-    <div className="space-y-4 md:space-y-8 text-theme-text-primary leading-relaxed text-base md:text-xl">
-      <p>
+    <div className="space-y-4 lg:space-y-8 text-justify text-theme-text-primary text-base md:text-xl">
+      <p className="leading-relaxed">
         I'm a full-stack developer from the bustling city of Bengaluru, India—where navigating traffic is almost as challenging as debugging code 🤯 But yes, it's all about finding the right shortcuts, whether on the road or in the code! 🚗  I've led large teams to build high-performance enterprise platforms. When I'm not doing that, you'll find me enjoying coffee and coding ☕
       </p>
-      <p>
+      <p className="leading-relaxed">
         I hold a master's degree in software systems 🎓, which is just a fancy way of saying I spent a lot of time in front of a computer screen. Currently, I'm working with the amazing folks at Microsoft, but I used to be a part of the Thoughtworks family. I'm a certified AWS solution architect and I have a few Azure certifications as well. Basically, if it's in the cloud, I can craft solutions all around 😎
       </p>
-      <p>
+      <p className="leading-relaxed">
         I have hands-on experience with web technologies, which is a polite way of saying I've broken things on the internet a few times 💥. Since you're here, why not check out my blogs for some random musings ✍️ or visit my talks page to hear more about my adventures in tech 🏃‍♂️
       </p>
-      <div className="mt-7 flex flex-wrap justify-center gap-6">
+      <div className="mt-5 flex flex-wrap justify-center gap-6">
         <IconLink
           linkText="Blog"
           navigateLink="/blog"
@@ -99,7 +99,7 @@ const AboutMe = () => {
       
       <div className="relative bg-theme-glass-light backdrop-blur-lg border border-theme-border-medium rounded-3xl overflow-hidden hover:border-theme-border-dark transition-all duration-300">
         <div className="p-6 md:p-8 lg:p-10">
-        <div className="flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-10 items-center lg:items-start">
+        <div className="flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-10 items-center">
           <div className="flex-shrink-0">
             <Picture />
           </div>
