@@ -31,21 +31,21 @@ const NavBar = () => {
             <Image
               src={logoImage}
               alt="Prasanna Logo"
-              width={40}
-              height={40}
-              className="w-10 h-10"
+              width={96}
+              height={96}
+              className="w-12 h-12"
             />
           </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-gray-100 hover:text-blue-400 transition-colors font-medium">
+            <a href="/" className="text-gray-100 hover:text-blue-400 transition-colors text-xl">
               About
             </a>
-            <a href="/talks" className="text-gray-100 hover:text-purple-400 transition-colors font-medium">
+            <a href="/talks" className="text-gray-100 hover:text-purple-400 transition-colors text-xl">
               Talks
             </a>
-            <a href="/blog" className="text-gray-100 hover:text-cyan-400 transition-colors font-medium">
+            <a href="/blog" className="text-gray-100 hover:text-cyan-400 transition-colors text-xl">
               Blog
             </a>
           </div>
