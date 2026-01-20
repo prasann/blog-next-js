@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://prasanna.dev</id>
     <title>Random Presence</title>
-    <updated>2026-01-10T17:32:01.160Z</updated>
+    <updated>2026-01-22T07:58:41.662Z</updated>
     <generator>npm feed package</generator>
     <author>
         <name>Prasanna Venkatesan</name>
@@ -15,6 +15,222 @@
     <logo>https://prasanna.dev/assets/logo.png</logo>
     <icon>https://prasanna.dev/assets/favicons/favicon-32x32.png</icon>
     <rights>Copyright - Prasanna</rights>
+    <entry>
+        <title type="html"><![CDATA[Decoding GitHub Copilot Customizations]]></title>
+        <id>https://prasanna.dev/posts/decoding-gh-copilot-customizations</id>
+        <link href="https://prasanna.dev/posts/decoding-gh-copilot-customizations"/>
+        <updated>2026-01-19T18:30:00.000Z</updated>
+        <summary type="html"><![CDATA[A decision framework for choosing the right GitHub Copilot customization layer. One question that leads you from 'Which one?' to the right answer.]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+  <p><strong>Work in Progress</strong>: This post is still being refined. Check back soon for updates.</p>
+</blockquote>
+<p>You know GitHub Copilot can be customized. The <a href="https://code.visualstudio.com/docs/copilot/customization/overview">official docs</a> explain <em>how</em> to create instructions, prompts, agents, and skills.</p>
+<p>But you're stuck at: <strong>"Which one do I use for THIS problem?"</strong></p>
+<p>This post gives you a <strong>decision framework</strong>: one question that leads you to the right layer.</p>
+<h2 id="theonequestionframework">The One-Question Framework</h2>
+<p>Ask yourself: <strong>"How often and in what context does this apply?"</strong></p>
+<pre><code>┌─────────────────────────────────────────────┐
+│ ALWAYS, in all chat interactions            │
+│ → Instructions                              │
+│   Example: "Use TypeScript strict mode"    │
+├─────────────────────────────────────────────┤
+│ REPEATEDLY, when I invoke it                │
+│ → Prompt Files                              │
+│   Example: "Scaffold component + tests"    │
+├─────────────────────────────────────────────┤
+│ CONDITIONALLY, for specific roles           │
+│ → Custom Agents                             │
+│   Example: "Planning specialist (read-only)"│
+├─────────────────────────────────────────────┤
+│ WORKFLOWS with executable scripts           │
+│ → Agent Skills                              │
+│   Example: "Run tests + linting + format"  │
+└─────────────────────────────────────────────┘
+</code></pre>
+<p>Let's see how to recognize when you need each layer.</p>
+<h2 id="layer1instructions">Layer 1: Instructions</h2>
+<h3 id="recognitionsignals">Recognition Signals</h3>
+<ul>
+<li>✅ You repeat this <strong>in every chat</strong></li>
+<li>✅ It's a <strong>guideline or rule</strong>, not a task</li>
+<li>✅ New developers need to know this</li>
+</ul>
+<h3 id="the1secondtest">The 1-Second Test</h3>
+<blockquote>
+  <p>"Is this a coding standard we always follow?"</p>
+</blockquote>
+<p>If yes → Instruction.</p>
+<h3 id="example">Example</h3>
+<pre><code class="markdown language-markdown"># .github/copilot-instructions.md
+- Use TypeScript strict mode
+- Prefer async/await over promises
+- Include JSDoc for public functions
+</code></pre>
+<p><strong>Usage</strong>: Automatic (or manual include). Never invoke directly.</p>
+<h3 id="boundaries">Boundaries</h3>
+<ul>
+<li>❌ NOT for specific tasks ("Create user profile component")</li>
+<li>❌ NOT for conditional behavior ("Only plan, don't code")</li>
+<li>❌ NOT for workflows ("Run tests then lint")</li>
+</ul>
+<p><strong>Best for</strong>: Coding practices, tech preferences, code review rules, commit message format.</p>
+<h2 id="layer2promptfiles">Layer 2: Prompt Files</h2>
+<h3 id="recognitionsignals-1">Recognition Signals</h3>
+<ul>
+<li>✅ You do this <strong>exact task 2-3+ times</strong></li>
+<li>✅ It's <strong>multi-step</strong> scaffolding</li>
+<li>✅ You copy-paste the description</li>
+</ul>
+<h3 id="the1secondtest-1">The 1-Second Test</h3>
+<blockquote>
+  <p>"Do I keep explaining this same workflow?"</p>
+</blockquote>
+<p>If yes → Prompt File.</p>
+<h3 id="example-1">Example</h3>
+<pre><code class="markdown language-markdown"># .github/prompts/create-component.prompt.md
+Create a React component with:
+- TypeScript props interface
+- JSDoc documentation
+- Test file with React Testing Library
+- Accessibility attributes
+</code></pre>
+<p><strong>Usage</strong>: <code>#create-component Button with label, onClick, loading</code></p>
+<h3 id="boundaries-1">Boundaries</h3>
+<ul>
+<li>❌ NOT for general rules ("Use strict types")</li>
+<li>❌ NOT for role-based behavior ("Only review code")</li>
+<li>❌ NOT for workflows with scripts</li>
+</ul>
+<p><strong>Best for</strong>: Component scaffolding, endpoint generation, test creation, migration steps.</p>
+<h2 id="layer3customagents">Layer 3: Custom Agents</h2>
+<h3 id="recognitionsignals-2">Recognition Signals</h3>
+<ul>
+<li>✅ You need a <strong>specialist for a specific role</strong></li>
+<li>✅ You want <strong>limited scope</strong> (read-only, frontend-only)</li>
+<li>✅ Different <strong>phases</strong> need different behavior (plan vs implement)</li>
+</ul>
+<h3 id="the1secondtest-2">The 1-Second Test</h3>
+<blockquote>
+  <p>"Do I need Copilot to act like a specialist with specific constraints?"</p>
+</blockquote>
+<p>If yes → Custom Agent.</p>
+<h3 id="example-2">Example</h3>
+<pre><code class="markdown language-markdown"># .github/agents/planner.agent.md
+You are a planning specialist.
+
+Constraints:
+- READ-ONLY: Never write code
+- Create implementation plans only
+- Include risks and effort estimates
+</code></pre>
+<p><strong>Usage</strong>: <code>@planner how should we add authentication?</code></p>
+<p>Result: Detailed plan, no code. Perfect for approval gates.</p>
+<h3 id="boundaries-2">Boundaries</h3>
+<ul>
+<li>❌ NOT for task templates ("Generate component")</li>
+<li>❌ NOT for general rules ("Use strict types")</li>
+<li>❌ NOT for workflows with scripts</li>
+</ul>
+<p><strong>Best for</strong>: Planning phase, research mode, frontend-only work, security review, architecture analysis.</p>
+<h2 id="layer4agentskills">Layer 4: Agent Skills</h2>
+<h3 id="recognitionsignals-3">Recognition Signals</h3>
+<ul>
+<li>✅ You have <strong>executable scripts/workflows</strong></li>
+<li>✅ It's a <strong>specialized capability</strong> (not just guidelines)</li>
+<li>✅ You want <strong>portability</strong> across tools (VS Code, CLI, GitHub coding agent)</li>
+</ul>
+<h3 id="the1secondtest-3">The 1-Second Test</h3>
+<blockquote>
+  <p>"Does this workflow run actual scripts or tools?"</p>
+</blockquote>
+<p>If yes → Agent Skill.</p>
+<h3 id="example-3">Example</h3>
+<pre><code>.github/skills/pre-commit-check/
+├── SKILL.md (instructions)
+├── scripts/check_all.sh (executable)
+└── references/quality-standards.md (docs)
+</code></pre>
+<p><strong>Usage</strong>: <code>@pre-commit-check</code></p>
+<p>Result: Runs type checking, linting, tests, reports issues.</p>
+<h3 id="boundaries-3">Boundaries</h3>
+<ul>
+<li>❌ NOT for task templates without scripts ("Generate component")</li>
+<li>❌ NOT for guidelines ("Use strict types")</li>
+<li>❌ NOT for behavior constraints ("Read-only mode")</li>
+</ul>
+<p><strong>Best for</strong>: Testing workflows, deployment checks, migration processes, code quality gates.</p>
+<p><strong>Note</strong>: Preview feature (VS Code Insiders). Open standard (agentskills.io).</p>
+<h2 id="quickreferencethemastertable">Quick Reference: The Master Table</h2>
+<p>| Question | Layer | Example | Invoke |
+|----------|-------|---------|--------|
+| <strong>"Is this a standard we always follow?"</strong> | Instruction | "Use TypeScript strict mode" | Auto/Manual |
+| <strong>"Do I repeat this task 2-3+ times?"</strong> | Prompt File | "Scaffold component + tests" | <code>#name</code> |
+| <strong>"Do I need a specialist with constraints?"</strong> | Custom Agent | "Planner (read-only)" | <code>@name</code> |
+| <strong>"Does this run scripts/tools?"</strong> | Agent Skill | "Pre-commit checks" | <code>@name</code> |</p>
+<h3 id="commonscenarios10secondlookup">Common Scenarios (10-Second Lookup)</h3>
+<p>| I Need To… | Use | Why |
+|--------------|-----|-----|
+| Enforce async/await everywhere | Instruction | Standard |
+| Define commit message format | Instruction | Guideline |
+| Generate React components | Prompt File | Repeatable task |
+| Create API endpoints | Prompt File | Task template |
+| Plan before implementing | Custom Agent | Phase-specific role |
+| Frontend-only assistance | Custom Agent | Scoped specialist |
+| Run tests + lint + format | Agent Skill | Executable workflow |
+| Database migration process | Agent Skill | Scripts + docs |</p>
+<h3 id="decisionflowchart">Decision Flowchart</h3>
+<pre><code>Need Copilot to do something?
+│
+├─ Is it a STANDARD/RULE?
+│  └─ Yes → Instruction
+│
+├─ Is it a TASK I repeat 2-3+ times?
+│  └─ Yes → Prompt File
+│
+├─ Do I need a SPECIALIST ROLE?
+│  └─ Yes → Custom Agent
+│
+└─ Does it RUN SCRIPTS?
+   └─ Yes → Agent Skill
+</code></pre>
+<h2 id="realworlddecisionexamples">Real-World Decision Examples</h2>
+<h3 id="usestricttypes">"Use Strict Types"</h3>
+<ul>
+<li>❌ Prompt: Would need to invoke every time</li>
+<li>✅ <strong>Instruction</strong>: Standard that always applies</li>
+</ul>
+<h3 id="createreactcomponents">"Create React Components"</h3>
+<ul>
+<li>❌ Instruction: Too specific for a general rule</li>
+<li>✅ <strong>Prompt File</strong>: Repeatable task with consistent structure</li>
+</ul>
+<h3 id="planarchitecturefirst">"Plan Architecture First"</h3>
+<ul>
+<li>❌ Instruction: Would interfere when you want code</li>
+<li>❌ Prompt: Plans aren't templates, each is unique</li>
+<li>✅ <strong>Custom Agent</strong>: Phase-specific behavior (read-only mode)</li>
+</ul>
+<h3 id="precommitqualitychecks">"Pre-Commit Quality Checks"</h3>
+<ul>
+<li>❌ Instruction: Doesn't actually run anything</li>
+<li>❌ Prompt: Need to execute scripts, not generate code</li>
+<li>✅ <strong>Agent Skill</strong>: Bundles executable scripts with docs</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>You now have a <strong>decision framework</strong>:</p>
+<pre><code>The real question isn't "How do I create these?"
+The real question is "Which one solves THIS problem?"
+</code></pre>
+<p><strong>One question. Four answers. Clear boundaries.</strong></p>
+<p>Use the Master Table when you're stuck. Check the examples when unsure. Trust the framework.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><strong><a href="https://github.com/prasann/gh-copilot-lab">gh-copilot-lab</a></strong> - Hands-on practice</li>
+<li><strong><a href="https://code.visualstudio.com/docs/copilot/customization/overview">VS Code Docs</a></strong> - How to implement</li>
+<li><strong><a href="https://agentskills.io">agentskills.io</a></strong> - Skills open standard</li>
+</ul>
+<p><strong>Questions?</strong> <a href="https://github.com/prasann/gh-copilot-lab/issues">Open an issue</a></p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[LangGraph patterns and conventions for building agentic systems]]></title>
         <id>https://prasanna.dev/posts/langgraph-patterns-and-conventions</id>
