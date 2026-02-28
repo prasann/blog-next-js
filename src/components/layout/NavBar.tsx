@@ -24,32 +24,56 @@ const NavBar = () => {
   return (
     <>
       {/* Desktop Navigation - Top */}
-      <nav className="hidden md:block bg-slate-800 border-b border-slate-700 shadow-lg">
+      <nav className="hidden md:block bg-gradient-to-r from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-lg border-b border-theme-border-medium shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <button 
               onClick={() => router.push('/')} 
-              className="flex items-center hover:opacity-80 transition-opacity p-2"
+              className="flex items-center hover:scale-105 transition-transform p-2 group"
             >
-              <Image
-                src={logoImage}
-                alt="Prasanna Logo"
-                width={96}
-                height={96}
-                className="w-16 h-auto"
-              />
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur opacity-0 group-hover:opacity-30 transition-opacity"></div>
+                <Image
+                  src={logoImage}
+                  alt="Prasanna Logo"
+                  width={96}
+                  height={96}
+                  className="w-16 h-auto relative z-10"
+                />
+              </div>
             </button>
 
             {/* Desktop Navigation */}
-            <div className="flex items-center space-x-8">
-              <a href="/" className="text-gray-100 hover:text-blue-400 transition-colors text-xl">
+            <div className="flex items-center space-x-2">
+              <a 
+                href="/" 
+                className={`px-4 py-2 rounded-lg text-lg font-medium transition-all duration-300 ${
+                  isActive('/') 
+                    ? 'bg-blue-500/20 text-blue-300 shadow-[0_0_15px_rgba(59,130,246,0.3)]' 
+                    : 'text-gray-300 hover:text-blue-400 hover:bg-blue-500/10'
+                }`}
+              >
                 About
               </a>
-              <a href="/talks" className="text-gray-100 hover:text-purple-400 transition-colors text-xl">
+              <a 
+                href="/talks" 
+                className={`px-4 py-2 rounded-lg text-lg font-medium transition-all duration-300 ${
+                  isActive('/talks') 
+                    ? 'bg-purple-500/20 text-purple-300 shadow-[0_0_15px_rgba(168,85,247,0.3)]' 
+                    : 'text-gray-300 hover:text-purple-400 hover:bg-purple-500/10'
+                }`}
+              >
                 Talks
               </a>
-              <a href="/blog" className="text-gray-100 hover:text-cyan-400 transition-colors text-xl">
+              <a 
+                href="/blog" 
+                className={`px-4 py-2 rounded-lg text-lg font-medium transition-all duration-300 ${
+                  isActive('/blog') 
+                    ? 'bg-cyan-500/20 text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.3)]' 
+                    : 'text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10'
+                }`}
+              >
                 Blog
               </a>
             </div>
@@ -58,12 +82,12 @@ const NavBar = () => {
       </nav>
 
       {/* Mobile Navigation - Top (Logo only) */}
-      <nav className="md:hidden bg-slate-800 border-b border-slate-700 shadow-lg">
+      <nav className="md:hidden bg-gradient-to-r from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-lg border-b border-theme-border-medium shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center h-16">
             <button 
               onClick={() => router.push('/')} 
-              className="flex items-center hover:opacity-80 transition-opacity p-2"
+              className="flex items-center hover:scale-105 transition-transform p-2"
             >
               <Image
                 src={logoImage}
@@ -78,7 +102,7 @@ const NavBar = () => {
       </nav>
 
       {/* Mobile Navigation - Bottom */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-slate-800/95 backdrop-blur-sm border-t border-slate-700 shadow-lg z-50">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-gradient-to-r from-slate-900/98 via-slate-800/98 to-slate-900/98 backdrop-blur-lg border-t border-theme-border-medium shadow-[0_-4px_20px_rgba(0,0,0,0.4)] z-50">
         <div className="flex items-center justify-around h-16 px-2">
           <a 
             href="/"

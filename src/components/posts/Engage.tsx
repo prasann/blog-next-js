@@ -37,20 +37,20 @@ const celebrate = () => {
 
 const Engage = ({ description }: Props) => {
   return (
-    <div className="flex justify-center gap-4">
+    <div className="flex flex-wrap justify-center gap-4">
       <button
-        className="flex items-center gap-2 px-6 py-3 bg-theme-cyan/10 hover:bg-theme-cyan/20 border border-theme-border-cyan-light hover:border-theme-border-cyan-medium rounded-xl text-theme-cyan-light hover:text-theme-cyan transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:-translate-y-0.5"
+        className="group flex items-center gap-3 px-8 py-3.5 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 hover:from-blue-500/30 hover:to-cyan-500/30 border-2 border-theme-cyan/40 hover:border-theme-cyan rounded-xl text-theme-cyan-light hover:text-white font-semibold transition-all duration-300 hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:scale-105 backdrop-blur-sm"
         onClick={() => shareOnTwitter(description)}
       >
-        <FontAwesomeIcon icon={faTwitter} className="text-lg" />
-        Share
+        <FontAwesomeIcon icon={faTwitter} className="text-xl group-hover:scale-110 transition-transform" />
+        <span>Share on Twitter</span>
       </button>
       <button
-        className="flex items-center gap-2 px-6 py-3 bg-theme-bg-pink-light hover:bg-theme-bg-pink-medium border border-pink-500/30 hover:border-pink-400/50 text-pink-300 hover:text-pink-200 rounded-xl font-semibold transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:-translate-y-0.5"
+        className="group flex items-center gap-3 px-8 py-3.5 bg-gradient-to-r from-pink-500/20 to-rose-500/20 hover:from-pink-500/30 hover:to-rose-500/30 border-2 border-pink-500/40 hover:border-pink-400 text-pink-300 hover:text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-[0_0_25px_rgba(236,72,153,0.4)] hover:scale-105 backdrop-blur-sm"
         onClick={likeThePost}
       >
-        <FontAwesomeIcon icon={faHeart} className="text-lg" />
-        Like
+        <FontAwesomeIcon icon={faHeart} className="text-xl group-hover:scale-110 transition-transform" />
+        <span>Like this Post</span>
       </button>
     </div>
   );
