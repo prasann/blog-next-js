@@ -11,10 +11,35 @@ module.exports = {
       },
       // Typography improvements
       fontSize: {
-        base: ["1.125rem", { lineHeight: "1.8" }],
+        base: ["1.125rem", { lineHeight: "1.6" }],
       },
       letterSpacing: {
         heading: "-0.02em",
+      },
+      
+      // Typography improvements
+      typography: {
+        DEFAULT: {
+          css: {
+            lineHeight: "1.6",
+            'p': {
+              marginTop: "0.75em",
+              marginBottom: "0.75em",
+            },
+            'h1, h2, h3, h4, h5, h6': {
+              marginTop: "1em",
+              marginBottom: "0.5em",
+            },
+            'ul, ol': {
+              marginTop: "0.75em",
+              marginBottom: "0.75em",
+            },
+            'li': {
+              marginTop: "0.25em",
+              marginBottom: "0.25em",
+            },
+          },
+        },
       },
 
       // Semantic color theme - change these to instantly refresh the site look

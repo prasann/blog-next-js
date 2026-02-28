@@ -14,6 +14,15 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     return match ? match[1] : "";
   };
 
+  // Extract className from code element if it's in children
+  const getCodeClassName = (): string | undefined => {
+    if (className) return className;
+    if (React.isValidElement(children) && children.props.className) {
+      return children.props.className;
+    }
+    return undefined;
+  };
+
   const extractCode = (node: React.ReactNode): string => {
     if (typeof node === "string") return node;
     if (React.isValidElement(node) && node.props.children) {
@@ -36,15 +45,11 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     }
   };
 
-  const language = extractLanguage(className);
+  const codeClassName = getCodeClassName();
+  const language = extractLanguage(codeClassName);
 
   return (
     <div className="relative group">
-      {language && (
-        <div className="absolute top-2 left-3 px-2 py-1 text-xs font-semibold text-blue-300 bg-blue-500/20 rounded-md z-10">
-          {language}
-        </div>
-      )}
       <button
         onClick={handleCopy}
         className="absolute top-2 right-2 px-3 py-1.5 text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-gray-300 hover:text-white rounded-lg opacity-0 group-hover:opacity-100 transition-all z-10"
@@ -56,7 +61,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
           <span>Copy</span>
         )}
       </button>
-      <pre className={className}>{children}</pre>
+      <pre className={codeClassName}>{children}</pre>
     </div>
   );
 };

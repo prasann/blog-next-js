@@ -5,8 +5,8 @@ import CodeBlock from "../CodeBlock";
 
 const CustomComponentsForMarkdown : Partial<Components> = {
   // @ts-ignore
-  pre({ children, className }: any) {
-    return <CodeBlock className={className}>{children}</CodeBlock>;
+  pre({ children }: any) {
+    return <CodeBlock>{children}</CodeBlock>;
   },
   // @ts-ignore
   p(paragraph: any) {
