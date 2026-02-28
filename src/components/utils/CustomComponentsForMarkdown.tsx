@@ -48,7 +48,7 @@ const CustomComponentsForMarkdown : Partial<Components> = {
   },
   // @ts-ignore
   a({ href, children }: any) {
-    return <a href={href} className="link link-primary">{children}</a>;
+    return <a href={href} className="text-theme-cyan hover:text-theme-cyan-light underline decoration-theme-cyan/50 hover:decoration-theme-cyan-light transition-colors">{children}</a>;
   },
 };
 

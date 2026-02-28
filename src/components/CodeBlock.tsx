@@ -52,11 +52,11 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     <div className="relative group">
       <button
         onClick={handleCopy}
-        className="absolute top-2 right-2 px-3 py-1.5 text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-gray-300 hover:text-white rounded-lg opacity-0 group-hover:opacity-100 transition-all z-10"
+        className="absolute top-2 right-2 px-3 py-1.5 text-xs font-medium bg-white/5 hover:bg-theme-cyan/20 border border-white/10 hover:border-theme-cyan transition-all text-gray-300 hover:text-theme-cyan-light rounded-lg opacity-0 group-hover:opacity-100 z-10"
         aria-label="Copy code"
       >
         {copied ? (
-          <span className="text-green-400">✓ Copied</span>
+          <span className="text-theme-cyan-light">✓ Copied</span>
         ) : (
           <span>Copy</span>
         )}

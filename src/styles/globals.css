@@ -32,15 +32,15 @@
     @apply bg-gradient-to-br from-orange-50 via-white to-pink-50;
   }
 
-  /* Text gradient for hero heading and titles */
+  /* Text gradient for hero heading and titles - Blue to Cyan */
   .gradient-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600;
-    text-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-cyan-500;
+    text-shadow: 0 0 40px rgba(34, 211, 238, 0.3);
   }
   
   /* Reusable gradient heading - used across blog posts, talks, etc. */
   .gradient-heading {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600;
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-cyan-500;
   }
 }
 

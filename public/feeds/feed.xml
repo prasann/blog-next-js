@@ -4,7 +4,7 @@
         <title>Random Presence</title>
         <link>https://prasanna.dev</link>
         <description>Random presence of my thoughts and learning...</description>
-        <lastBuildDate>Thu, 22 Jan 2026 07:58:41 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 28 Feb 2026 14:09:31 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>npm feed package</generator>
         <language>en</language>
@@ -28,24 +28,6 @@
 <p>This post gives you a <strong>decision framework</strong>: one question that leads you to the right layer.</p>
 <h2 id="theonequestionframework">The One-Question Framework</h2>
 <p>Ask yourself: <strong>"How often and in what context does this apply?"</strong></p>
-<pre><code>┌─────────────────────────────────────────────┐
-│ ALWAYS, in all chat interactions            │
-│ → Instructions                              │
-│   Example: "Use TypeScript strict mode"    │
-├─────────────────────────────────────────────┤
-│ REPEATEDLY, when I invoke it                │
-│ → Prompt Files                              │
-│   Example: "Scaffold component + tests"    │
-├─────────────────────────────────────────────┤
-│ CONDITIONALLY, for specific roles           │
-│ → Custom Agents                             │
-│   Example: "Planning specialist (read-only)"│
-├─────────────────────────────────────────────┤
-│ WORKFLOWS with executable scripts           │
-│ → Agent Skills                              │
-│   Example: "Run tests + linting + format"  │
-└─────────────────────────────────────────────┘
-</code></pre>
 <p>Let's see how to recognize when you need each layer.</p>
 <h2 id="layer1instructions">Layer 1: Instructions</h2>
 <h3 id="recognitionsignals">Recognition Signals</h3>
@@ -56,9 +38,9 @@
 </ul>
 <h3 id="the1secondtest">The 1-Second Test</h3>
 <blockquote>
-  <p>"Is this a coding standard we always follow?"</p>
+  <p>"Is this a coding standard we always follow?"
+  If yes → Instruction.</p>
 </blockquote>
-<p>If yes → Instruction.</p>
 <h3 id="example">Example</h3>
 <pre><code class="markdown language-markdown"># .github/copilot-instructions.md
 - Use TypeScript strict mode
@@ -160,23 +142,42 @@ Constraints:
 <p><strong>Best for</strong>: Testing workflows, deployment checks, migration processes, code quality gates.</p>
 <p><strong>Note</strong>: Preview feature (VS Code Insiders). Open standard (agentskills.io).</p>
 <h2 id="quickreferencethemastertable">Quick Reference: The Master Table</h2>
-<p>| Question | Layer | Example | Invoke |
-|----------|-------|---------|--------|
-| <strong>"Is this a standard we always follow?"</strong> | Instruction | "Use TypeScript strict mode" | Auto/Manual |
-| <strong>"Do I repeat this task 2-3+ times?"</strong> | Prompt File | "Scaffold component + tests" | <code>#name</code> |
-| <strong>"Do I need a specialist with constraints?"</strong> | Custom Agent | "Planner (read-only)" | <code>@name</code> |
-| <strong>"Does this run scripts/tools?"</strong> | Agent Skill | "Pre-commit checks" | <code>@name</code> |</p>
-<h3 id="commonscenarios10secondlookup">Common Scenarios (10-Second Lookup)</h3>
-<p>| I Need To… | Use | Why |
-|--------------|-----|-----|
-| Enforce async/await everywhere | Instruction | Standard |
-| Define commit message format | Instruction | Guideline |
-| Generate React components | Prompt File | Repeatable task |
-| Create API endpoints | Prompt File | Task template |
-| Plan before implementing | Custom Agent | Phase-specific role |
-| Frontend-only assistance | Custom Agent | Scoped specialist |
-| Run tests + lint + format | Agent Skill | Executable workflow |
-| Database migration process | Agent Skill | Scripts + docs |</p>
+<table>
+  <thead style="text-align: left;">
+    <tr>
+      <th>Question</th>
+      <th>Layer</th>
+      <th>Example</th>
+      <th>Invoke</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>"Is this a standard we always follow?"</strong></td>
+      <td>Instruction</td>
+      <td>"Use TypeScript strict mode"</td>
+      <td>Auto/Manual</td>
+    </tr>
+    <tr>
+      <td><strong>"Do I repeat this task 2-3+ times?"</strong></td>
+      <td>Prompt File</td>
+      <td>"Scaffold component + tests"</td>
+      <td><code>#name</code></td>
+    </tr>
+    <tr>
+      <td><strong>"Do I need a specialist with constraints?"</strong></td>
+      <td>Custom Agent</td>
+      <td>"Planner (read-only)"</td>
+      <td><code>@name</code></td>
+    </tr>
+    <tr>
+      <td><strong>"Does this run scripts/tools?"</strong></td>
+      <td>Agent Skill</td>
+      <td>"Pre-commit checks"</td>
+      <td><code>@name</code></td>
+    </tr>
+  </tbody>
+</table>
 <h3 id="decisionflowchart">Decision Flowchart</h3>
 <pre><code>Need Copilot to do something?
 │
@@ -192,43 +193,14 @@ Constraints:
 └─ Does it RUN SCRIPTS?
    └─ Yes → Agent Skill
 </code></pre>
-<h2 id="realworlddecisionexamples">Real-World Decision Examples</h2>
-<h3 id="usestricttypes">"Use Strict Types"</h3>
-<ul>
-<li>❌ Prompt: Would need to invoke every time</li>
-<li>✅ <strong>Instruction</strong>: Standard that always applies</li>
-</ul>
-<h3 id="createreactcomponents">"Create React Components"</h3>
-<ul>
-<li>❌ Instruction: Too specific for a general rule</li>
-<li>✅ <strong>Prompt File</strong>: Repeatable task with consistent structure</li>
-</ul>
-<h3 id="planarchitecturefirst">"Plan Architecture First"</h3>
-<ul>
-<li>❌ Instruction: Would interfere when you want code</li>
-<li>❌ Prompt: Plans aren't templates, each is unique</li>
-<li>✅ <strong>Custom Agent</strong>: Phase-specific behavior (read-only mode)</li>
-</ul>
-<h3 id="precommitqualitychecks">"Pre-Commit Quality Checks"</h3>
-<ul>
-<li>❌ Instruction: Doesn't actually run anything</li>
-<li>❌ Prompt: Need to execute scripts, not generate code</li>
-<li>✅ <strong>Agent Skill</strong>: Bundles executable scripts with docs</li>
-</ul>
 <h2 id="summary">Summary</h2>
-<p>You now have a <strong>decision framework</strong>:</p>
-<pre><code>The real question isn't "How do I create these?"
-The real question is "Which one solves THIS problem?"
-</code></pre>
-<p><strong>One question. Four answers. Clear boundaries.</strong></p>
-<p>Use the Master Table when you're stuck. Check the examples when unsure. Trust the framework.</p>
+<p>Choosing between Instructions, Prompt Files, Custom Agents, and Agent Skills doesn't have to be guesswork. The framework is simple: always-on standards become Instructions, repeatable tasks become Prompt Files, role-based behavior becomes Custom Agents, and executable workflows become Agent Skills. One question—"How often and in what context?"—is all you need to cut through the confusion and pick the right layer every time.</p>
 <h2 id="resources">Resources</h2>
 <ul>
 <li><strong><a href="https://github.com/prasann/gh-copilot-lab">gh-copilot-lab</a></strong> - Hands-on practice</li>
 <li><strong><a href="https://code.visualstudio.com/docs/copilot/customization/overview">VS Code Docs</a></strong> - How to implement</li>
 <li><strong><a href="https://agentskills.io">agentskills.io</a></strong> - Skills open standard</li>
-</ul>
-<p><strong>Questions?</strong> <a href="https://github.com/prasann/gh-copilot-lab/issues">Open an issue</a></p>]]></content:encoded>
+</ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[LangGraph patterns and conventions for building agentic systems]]></title>

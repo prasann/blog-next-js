@@ -49,14 +49,21 @@ module.exports = {
         "linkedin-blue": "#0077B5",
         "heart-red": "#FE251B",
         
-        // Theme colors - edit these for easy site-wide color changes
+        // Theme colors - Blue + Cyan for distinctive identity
         theme: {
-          // Accent colors (currently blue-based)
+          // Primary accent colors (blue-based)
           accent: {
             light: "#93c5fd",     // blue-300 - lighter accent
             DEFAULT: "#60a5fa",   // blue-400 - main accent
             medium: "#3b82f6",    // blue-500 - medium accent
             dark: "#2563eb",      // blue-600 - darker accent
+          },
+          // Secondary accent colors (cyan-based)
+          cyan: {
+            light: "#67e8f9",     // cyan-300 - lighter cyan
+            DEFAULT: "#22d3ee",   // cyan-400 - main cyan
+            medium: "#06b6d4",    // cyan-500 - medium cyan
+            dark: "#0891b2",      // cyan-600 - darker cyan
           },
           // Glass-morphism effects
           glass: {
@@ -66,13 +73,18 @@ module.exports = {
           },
           // Borders and dividers
           border: {
-            light: "rgba(255, 255, 255, 0.05)",   // border-white/5
-            medium: "rgba(255, 255, 255, 0.10)",  // border-white/10
-            dark: "rgba(255, 255, 255, 0.15)",    // border-white/15
+            light: "rgba(255, 255, 255, 0.12)",   // border-white/12 - increased visibility
+            medium: "rgba(255, 255, 255, 0.15)",  // border-white/15
+            dark: "rgba(255, 255, 255, 0.20)",    // border-white/20
             accent: {
               light: "rgba(59, 130, 246, 0.2)",   // border-blue-500/20
               medium: "rgba(59, 130, 246, 0.3)",  // border-blue-500/30
               dark: "rgba(59, 130, 246, 0.4)",    // border-blue-400/40
+            },
+            cyan: {
+              light: "rgba(34, 211, 238, 0.2)",   // border-cyan-400/20
+              medium: "rgba(34, 211, 238, 0.3)",  // border-cyan-400/30
+              dark: "rgba(34, 211, 238, 0.4)",    // border-cyan-400/40
             },
           },
           // Text colors
@@ -83,6 +95,10 @@ module.exports = {
             accent: {
               light: "#93c5fd",     // blue-300
               medium: "#60a5fa",    // blue-400
+            },
+            cyan: {
+              light: "#67e8f9",     // cyan-300
+              medium: "#22d3ee",    // cyan-400
             },
           },
           // Background accents

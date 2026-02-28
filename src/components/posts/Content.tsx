@@ -3,9 +3,14 @@ import Post from "../../types/post";
 import FooterCard from "./FooterCard";
 import RenderMarkdown from "../RenderMarkdown";
 
-const CategoryTag = ({ category }: { category: string }) => {
+const CategoryTag = ({ category, index }: { category: string, index?: number }) => {
+  const isCyan = index !== undefined && index % 2 === 1;
   return (
-    <span className="inline-flex items-center px-3 py-1 text-xs font-medium text-theme-accent-light bg-theme-bg-accent-light border border-theme-border-accent-light rounded-full">
+    <span className={`inline-flex items-center px-3 py-1 text-xs font-medium rounded-full ${
+      isCyan 
+        ? 'text-theme-cyan-light bg-theme-cyan/10 border border-theme-border-cyan-light'
+        : 'text-theme-accent-light bg-theme-bg-accent-light border border-theme-border-accent-light'
+    }`}>
       {category}
     </span>
   );
@@ -34,8 +39,8 @@ const Content = ({
                   <>
                     <span>•</span>
                     <div className="flex flex-wrap gap-2">
-                      {category.split(",").map((cat) => (
-                        <CategoryTag key={cat} category={cat} />
+                      {category.split(",").map((cat, idx) => (
+                        <CategoryTag key={cat} category={cat} index={idx} />
                       ))}
                     </div>
                   </>
