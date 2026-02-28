@@ -1,10 +1,11 @@
 /* ./styles/globals.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 /* Import Prism theme for code highlighting */
 @import './prism/prism-laserwave.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @font-face {
   font-family: "Muli";

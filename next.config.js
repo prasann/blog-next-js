@@ -6,6 +6,8 @@ const withPWA = require("next-pwa")({
 });
 
 module.exports = withPWA({
+  // Enable Turbopack (Next.js 16 default)
+  turbopack: {},
   async rewrites() {
     return [
       {
