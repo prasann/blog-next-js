@@ -1,4 +1,4 @@
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { event } from "../../lib/googleTag";
@@ -42,7 +42,7 @@ const Engage = ({ description }: Props) => {
         className="group flex items-center gap-3 px-8 py-3.5 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 hover:from-blue-500/30 hover:to-cyan-500/30 border-2 border-theme-cyan/40 hover:border-theme-cyan rounded-xl text-white font-semibold transition-all duration-300 hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:scale-105 backdrop-blur-sm"
         onClick={() => shareOnTwitter(description)}
       >
-        <FontAwesomeIcon icon={faTwitter} className="text-xl group-hover:scale-110 transition-transform" />
+        <FontAwesomeIcon icon={faXTwitter} className="text-xl group-hover:scale-110 transition-transform" />
         <span>Share on X</span>
       </button>
       <button
