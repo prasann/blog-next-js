@@ -60,8 +60,8 @@ const NavBar = () => {
                 href="/talks" 
                 className={`px-4 py-2 rounded-lg text-lg font-medium transition-all duration-300 ${
                   isActive('/talks') 
-                    ? 'bg-purple-500/20 text-purple-300 shadow-[0_0_15px_rgba(168,85,247,0.3)]' 
-                    : 'text-gray-300 hover:text-purple-400 hover:bg-purple-500/10'
+                    ? 'bg-blue-500/20 text-blue-300 shadow-[0_0_15px_rgba(59,130,246,0.3)]' 
+                    : 'text-gray-300 hover:text-blue-400 hover:bg-blue-500/10'
                 }`}
               >
                 Talks
@@ -131,7 +131,7 @@ const NavBar = () => {
           <a 
             href="/talks"
             className={`flex flex-col items-center justify-center flex-1 py-2 transition-colors ${
-              isActive('/talks') ? 'text-purple-400' : 'text-gray-400 hover:text-gray-200'
+              isActive('/talks') ? 'text-blue-400' : 'text-gray-400 hover:text-gray-200'
             }`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
