@@ -147,7 +147,7 @@ module.exports = {
       {
         prasanna: {
           // Base colors (backgrounds and text)
-          "base-100": "#111827",      // gray-900 - darkest background
+          "base-100": "#030712",      // gray-950 - darkest background
           "base-200": "#1f2937",      // gray-800 - card backgrounds
           "base-300": "#374151",      // gray-700 - borders/dividers
           // Utility colors

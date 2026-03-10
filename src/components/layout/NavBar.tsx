@@ -24,7 +24,7 @@ const NavBar = () => {
   return (
     <>
       {/* Desktop Navigation - Top */}
-      <nav className="hidden md:block bg-gradient-to-r from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-lg border-b border-theme-border-medium shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+      <nav className="hidden md:block bg-gradient-to-r from-black via-slate-900 to-gray-900 backdrop-blur-lg border-b border-theme-border-medium shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -82,7 +82,7 @@ const NavBar = () => {
       </nav>
 
       {/* Mobile Navigation - Top (Logo only) */}
-      <nav className="md:hidden bg-gradient-to-r from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-lg border-b border-theme-border-medium shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+      <nav className="md:hidden bg-gradient-to-r from-black via-slate-900 to-gray-900 backdrop-blur-lg border-b border-theme-border-medium shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center h-16">
             <button 

@@ -1,7 +1,7 @@
 /* ./styles/globals.css */
 
 /* Import Prism theme for code highlighting */
-@import './prism/prism-laserwave.css';
+@import './prism/prism-github-dark.css';
 
 @tailwind base;
 @tailwind components;
@@ -26,7 +26,7 @@
 /* Background gradients */
 @layer components {
   .dark-background {
-    @apply bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900;
+    @apply bg-gradient-to-br from-black via-slate-900 to-gray-900;
   }
 
   .light-background {
