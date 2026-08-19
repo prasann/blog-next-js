@@ -5,6 +5,11 @@ interface CodeBlockProps {
   className?: string;
 }
 
+type CodeElementProps = {
+  children?: React.ReactNode;
+  className?: string;
+};
+
 const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
   const [copied, setCopied] = useState(false);
 
@@ -17,7 +22,10 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
   // Extract className from code element if it's in children
   const getCodeClassName = (): string | undefined => {
     if (className) return className;
-    if (React.isValidElement(children) && children.props.className) {
+    if (
+      React.isValidElement<CodeElementProps>(children) &&
+      children.props.className
+    ) {
       return children.props.className;
     }
     return undefined;
@@ -25,7 +33,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
 
   const extractCode = (node: React.ReactNode): string => {
     if (typeof node === "string") return node;
-    if (React.isValidElement(node) && node.props.children) {
+    if (React.isValidElement<CodeElementProps>(node) && node.props.children) {
       if (Array.isArray(node.props.children)) {
         return node.props.children.map(extractCode).join("");
       }

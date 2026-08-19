@@ -3,7 +3,7 @@ import Post from "../../types/post";
 import FooterCard from "./FooterCard";
 import RenderMarkdown from "../RenderMarkdown";
 
-const CategoryTag = ({ category, index }: { category: string, index?: number }) => {
+const CategoryTag = ({ tag, index }: { tag: string, index?: number }) => {
   const isCyan = index !== undefined && index % 2 === 1;
   return (
     <span className={`inline-flex items-center px-3 py-1 text-xs font-medium rounded-full ${
@@ -11,7 +11,7 @@ const CategoryTag = ({ category, index }: { category: string, index?: number }) 
         ? 'text-theme-cyan-light bg-theme-cyan/10 border border-theme-border-cyan-light'
         : 'text-theme-accent-light bg-theme-bg-accent-light border border-theme-border-accent-light'
     }`}>
-      {category}
+      {tag}
     </span>
   );
 };
@@ -22,7 +22,7 @@ const Content = ({
   content,
   date,
   minutesToRead,
-  category,
+  tags,
 }: Post) => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
@@ -35,12 +35,12 @@ const Content = ({
                 <time>{date}</time>
                 <span>•</span>
                 <span>{minutesToRead}</span>
-                {category && (
+                {tags && tags.length > 0 && (
                   <>
                     <span>•</span>
                     <div className="flex flex-wrap gap-2">
-                      {category.split(",").map((cat, idx) => (
-                        <CategoryTag key={cat} category={cat} index={idx} />
+                      {tags.map((tag, idx) => (
+                        <CategoryTag key={tag} tag={tag} index={idx} />
                       ))}
                     </div>
                   </>

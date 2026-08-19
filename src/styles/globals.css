@@ -1,15 +1,118 @@
-/* ./styles/globals.css */
+@import "tailwindcss";
+@import "./prism/prism-github-dark.css";
 
-/* Import Prism theme for code highlighting */
-@import './prism/prism-github-dark.css';
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+  themes: winter;
+}
+@plugin "daisyui/theme" {
+  name: "prasanna";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: #030712;
+  --color-base-200: #1f2937;
+  --color-base-300: #374151;
+  --color-base-content: #f3f4f6;
+  --color-primary: #60a5fa;
+  --color-primary-content: #030712;
+  --color-secondary: #22d3ee;
+  --color-secondary-content: #030712;
+  --color-accent: #3b82f6;
+  --color-accent-content: #ffffff;
+  --color-neutral: #374151;
+  --color-neutral-content: #f3f4f6;
+  --color-info: #38bdf8;
+  --color-info-content: #030712;
+  --color-success: #10b981;
+  --color-success-content: #030712;
+  --color-warning: #f59e0b;
+  --color-warning-content: #030712;
+  --color-error: #ef4444;
+  --color-error-content: #ffffff;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@custom-variant dark (&:where([data-theme="prasanna"], [data-theme="prasanna"] *));
+
+@theme {
+  --font-sans: "Mulish", sans-serif;
+  --text-base: 1.125rem;
+  --text-base--line-height: 1.6;
+  --tracking-heading: 0;
+  --color-twitter-blue: #00acee;
+  --color-linkedin-blue: #0077b5;
+  --color-heart-red: #fe251b;
+  --color-theme-accent-light: #93c5fd;
+  --color-theme-accent: #60a5fa;
+  --color-theme-accent-medium: #3b82f6;
+  --color-theme-accent-dark: #2563eb;
+  --color-theme-cyan-light: #67e8f9;
+  --color-theme-cyan: #22d3ee;
+  --color-theme-cyan-medium: #06b6d4;
+  --color-theme-cyan-dark: #0891b2;
+  --color-theme-glass-light: rgb(255 255 255 / 5%);
+  --color-theme-glass-medium: rgb(255 255 255 / 10%);
+  --color-theme-glass-dark: rgb(255 255 255 / 15%);
+  --color-theme-border-light: rgb(255 255 255 / 12%);
+  --color-theme-border-medium: rgb(255 255 255 / 15%);
+  --color-theme-border-dark: rgb(255 255 255 / 20%);
+  --color-theme-border-accent-light: rgb(59 130 246 / 20%);
+  --color-theme-border-accent-medium: rgb(59 130 246 / 30%);
+  --color-theme-border-accent-dark: rgb(59 130 246 / 40%);
+  --color-theme-border-cyan-light: rgb(34 211 238 / 20%);
+  --color-theme-border-cyan-medium: rgb(34 211 238 / 30%);
+  --color-theme-border-cyan-dark: rgb(34 211 238 / 40%);
+  --color-theme-text-primary: #f3f4f6;
+  --color-theme-text-secondary: #d1d5db;
+  --color-theme-text-muted: #9ca3af;
+  --color-theme-text-accent-light: #93c5fd;
+  --color-theme-text-accent-medium: #60a5fa;
+  --color-theme-text-cyan-light: #67e8f9;
+  --color-theme-text-cyan-medium: #22d3ee;
+  --color-theme-bg-accent-light: rgb(59 130 246 / 10%);
+  --color-theme-bg-accent-medium: rgb(59 130 246 / 20%);
+  --color-theme-bg-accent-dark: rgb(59 130 246 / 30%);
+  --color-theme-bg-pink-light: rgb(236 72 153 / 20%);
+  --color-theme-bg-pink-medium: rgb(236 72 153 / 30%);
+  --animate-wave: wave 2.5s infinite;
+
+  @keyframes wave {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    15%,
+    40% {
+      transform: rotate(14deg);
+    }
+    30% {
+      transform: rotate(-8deg);
+    }
+    50% {
+      transform: rotate(-4deg);
+    }
+    60% {
+      transform: rotate(10deg);
+    }
+    70% {
+      transform: rotate(0deg);
+    }
+  }
+}
 
 @font-face {
   font-family: "Muli";
-  src: local("Muli"), url("/fonts/Muli-Regular.ttf") format("ttf");
+  src:
+    local("Muli"),
+    url("/fonts/Muli-Regular.ttf") format("ttf");
 }
 
 /* Base typography improvements */
@@ -17,8 +120,13 @@
   body {
     @apply text-base;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply tracking-heading;
   }
 }
@@ -26,22 +134,22 @@
 /* Background gradients */
 @layer components {
   .dark-background {
-    @apply bg-gradient-to-br from-black via-slate-900 to-gray-900;
+    @apply bg-linear-to-br from-black via-slate-900 to-gray-900;
   }
 
   .light-background {
-    @apply bg-gradient-to-br from-orange-50 via-white to-pink-50;
+    @apply bg-linear-to-br from-orange-50 via-white to-pink-50;
   }
 
   /* Text gradient for hero heading and titles - Blue to Cyan */
   .gradient-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-cyan-500;
+    @apply bg-linear-to-r from-blue-400 via-cyan-400 to-cyan-500 bg-clip-text text-transparent;
     text-shadow: 0 0 40px rgba(34, 211, 238, 0.3);
   }
-  
+
   /* Reusable gradient heading - used across blog posts, talks, etc. */
   .gradient-heading {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-cyan-500;
+    @apply bg-linear-to-r from-blue-400 via-cyan-400 to-cyan-500 bg-clip-text text-transparent;
   }
 }
 
