@@ -1,15 +1,19 @@
 import Post from "../types/post";
 import { getAllPosts } from "../lib/api";
+import { getTagCounts, getYearCounts } from "../lib/timeline";
 import PostListItem from "../components/PostListItem";
 import MetaHeaders from "../components/MetaHeaders";
+import TimelineShell from "../components/timeline/TimelineShell";
 import React from "react";
 import Meta from "../types/meta";
 
 type Props = {
   allPosts: Post[];
+  tagCounts: Record<string, number>;
+  yearCounts: Record<number, number>;
 };
 
-const Blog = ({ allPosts }: Props) => {
+const Blog = ({ allPosts, tagCounts, yearCounts }: Props) => {
   const metaDetails: Meta = {
     title: "Prasanna's - Blogposts",
     description: "lists of all the blog posts that i have done so far.",
@@ -24,11 +28,14 @@ const Blog = ({ allPosts }: Props) => {
           </h1>
           <p className="text-lg text-theme-text-muted">Thoughts on software development, architecture, and technology</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {allPosts.map((post) => (
-            <PostListItem key={post.title} {...post} />
-          ))}
-        </div>
+        <TimelineShell
+          items={allPosts}
+          tagCounts={tagCounts}
+          yearCounts={yearCounts}
+          itemLabel="posts"
+          itemKey={(post) => post.slug}
+          renderCard={(post) => <PostListItem {...post} />}
+        />
       </div>
     </div>
   );
@@ -37,7 +44,11 @@ const Blog = ({ allPosts }: Props) => {
 export const getStaticProps = async () => {
   const allPosts = getAllPosts();
   return {
-    props: { allPosts },
+    props: {
+      allPosts,
+      tagCounts: getTagCounts(allPosts),
+      yearCounts: getYearCounts(allPosts),
+    },
   };
 };
 
