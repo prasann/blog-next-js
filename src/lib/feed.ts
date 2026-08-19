@@ -2,10 +2,15 @@ import { Feed, Item } from "feed";
 import fs from "fs";
 import { getAllPosts } from "./api";
 import Post from "../types/post";
-import {parse} from "date-fns";
-import showdown from "showdown";
+import { parse } from "date-fns";
+import MarkdownIt from "markdown-it";
 
 const baseUrl = "https://prasanna.dev";
+const markdown = new MarkdownIt();
+
+function normalizeGeneratedContent(content: string): string {
+  return content.replace(/[\t ]+$/gm, "");
+}
 
 function buildFeed(): Feed {
   return new Feed({
@@ -33,21 +38,20 @@ function buildFeed(): Feed {
 
 export function formatStringToDate(
   date: string,
-  format: string = "dd-MMMM-yyyy"
+  format: string = "dd-MMMM-yyyy",
 ): Date {
   return parse(date, format, new Date());
 }
 
 export function makeItem(postData: Post): Item {
   const url = `${baseUrl}/posts/${postData.slug}`;
-  const converter = new showdown.Converter();
   return {
     title: postData.title,
     link: url,
     id: url,
     date: formatStringToDate(postData.date),
     description: postData.description,
-    content: converter.makeHtml(postData.content),
+    content: markdown.render(postData.content),
   };
 }
 
@@ -56,9 +60,18 @@ const generateMainFeeds = async (): Promise<void> => {
   let allPosts = getAllPosts(true);
   allPosts.map((post) => feed.addItem(makeItem(post)));
   fs.mkdirSync("public/feeds/", { recursive: true });
-  fs.writeFileSync("public/feeds/feed.xml", feed.rss2());
-  fs.writeFileSync("public/feeds/feed.json", feed.json1());
-  fs.writeFileSync("public/feeds/atom.xml", feed.atom1());
+  fs.writeFileSync(
+    "public/feeds/feed.xml",
+    normalizeGeneratedContent(feed.rss2()),
+  );
+  fs.writeFileSync(
+    "public/feeds/feed.json",
+    normalizeGeneratedContent(feed.json1()),
+  );
+  fs.writeFileSync(
+    "public/feeds/atom.xml",
+    normalizeGeneratedContent(feed.atom1()),
+  );
 };
 
 export default generateMainFeeds;
