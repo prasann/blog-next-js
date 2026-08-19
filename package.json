@@ -8,7 +8,9 @@
     "start": "next start",
     "test": "jest",
     "postbuild": "next-sitemap",
-    "generate-github-data": "node scripts/generate-github-data.js"
+    "generate-github-data": "node scripts/generate-github-data.js",
+    "tag-talks": "node scripts/tag-talks.js",
+    "check-blog-tags": "node scripts/check-blog-tags.js"
   },
   "engines": {
     "npm": ">=11.0.0",

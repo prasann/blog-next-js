@@ -23,13 +23,9 @@ const Talks = ({ talks, tagCounts, yearCounts }: Props) => {
     <div className="min-h-screen py-12">
       <MetaHeaders {...metaDetails} />
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 gradient-heading">
-            Talks
-          </h1>
-          <p className="text-lg text-theme-text-muted">Conference talks, presentations, and speaking engagements</p>
-        </div>
         <TimelineShell
+          title="Talks"
+          subtitle="Conference talks, presentations, and speaking engagements"
           items={talks}
           tagCounts={tagCounts}
           yearCounts={yearCounts}

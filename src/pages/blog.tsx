@@ -22,13 +22,9 @@ const Blog = ({ allPosts, tagCounts, yearCounts }: Props) => {
     <div className="min-h-screen py-12">
       <MetaHeaders {...metaDetails} />
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 gradient-heading pb-2 leading-tight">
-            Blog Posts
-          </h1>
-          <p className="text-lg text-theme-text-muted">Thoughts on software development, architecture, and technology</p>
-        </div>
         <TimelineShell
+          title="Blog Posts"
+          subtitle="Thoughts on software development, architecture, and technology"
           items={allPosts}
           tagCounts={tagCounts}
           yearCounts={yearCounts}

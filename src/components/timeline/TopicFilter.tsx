@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
@@ -27,7 +27,20 @@ type TopicFilterProps = {
 
 const TopicFilter = ({ tagCounts, activeTag, onSelectTag }: TopicFilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const tags = TAG_ORDER.filter((tag) => tagCounts[tag]);
+
+  // Floats over the page instead of pushing content down, so opening it doesn't shift the cadence strip/cards.
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
 
   const pillClasses = (isActive: boolean) =>
     `flex-shrink-0 px-4 py-2.5 text-sm font-medium rounded-full border transition-all duration-200 ${
@@ -37,7 +50,7 @@ const TopicFilter = ({ tagCounts, activeTag, onSelectTag }: TopicFilterProps) =>
     }`;
 
   return (
-    <div className="mb-4">
+    <div className="relative flex-shrink-0" ref={containerRef}>
       <button
         onClick={() => setIsOpen((open) => !open)}
         aria-expanded={isOpen}
@@ -52,14 +65,17 @@ const TopicFilter = ({ tagCounts, activeTag, onSelectTag }: TopicFilterProps) =>
       </button>
 
       {isOpen && (
-        <div className="mt-3 flex gap-2 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible">
+        <div className="absolute right-0 z-30 mt-2 flex w-[min(90vw,24rem)] flex-wrap gap-2 rounded-xl border border-theme-border-medium bg-base-200 p-3 shadow-xl">
           <button onClick={() => onSelectTag(null)} className={pillClasses(activeTag === null)}>
             All
           </button>
           {tags.map((tag) => (
             <button
               key={tag}
-              onClick={() => onSelectTag(activeTag === tag ? null : tag)}
+              onClick={() => {
+                onSelectTag(activeTag === tag ? null : tag);
+                setIsOpen(false);
+              }}
               className={pillClasses(activeTag === tag)}
             >
               {tag} <span className="opacity-70">({tagCounts[tag]})</span>

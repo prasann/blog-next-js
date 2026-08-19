@@ -8,6 +8,8 @@ import Reveal from "./Reveal";
 type TimelineItem = { date: string; tags: string[] };
 
 type TimelineShellProps<T extends TimelineItem> = {
+  title: string;
+  subtitle: string;
   items: T[];
   tagCounts: Record<string, number>;
   yearCounts: Record<number, number>;
@@ -17,6 +19,8 @@ type TimelineShellProps<T extends TimelineItem> = {
 };
 
 function TimelineShell<T extends TimelineItem>({
+  title,
+  subtitle,
   items,
   tagCounts,
   yearCounts,
@@ -70,7 +74,13 @@ function TimelineShell<T extends TimelineItem>({
 
   return (
     <div>
-      <TopicFilter tagCounts={tagCounts} activeTag={activeTag} onSelectTag={setActiveTag} />
+      <div className="mb-4 flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <h1 className="gradient-heading text-3xl font-bold md:text-4xl">{title}</h1>
+          <p className="mt-1 text-sm text-theme-text-muted">{subtitle}</p>
+        </div>
+        <TopicFilter tagCounts={tagCounts} activeTag={activeTag} onSelectTag={setActiveTag} />
+      </div>
       <CadenceStrip
         years={allYears}
         yearCounts={yearCounts}
