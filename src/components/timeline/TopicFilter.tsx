@@ -65,9 +65,9 @@ const TopicFilter = ({ tagCounts, activeTag, onSelectTag }: TopicFilterProps) =>
       </button>
 
       {isOpen && (
-        // Mobile: renders in normal flow (pushes content down), pills scroll horizontally.
+        // Mobile: renders in normal flow (pushes content down), pills wrap into a chip cloud.
         // Desktop (md+): floats as a popover instead, so it doesn't shift the cadence strip/cards.
-        <div className="mt-3 flex gap-2 overflow-x-auto pb-1 md:absolute md:right-0 md:z-30 md:mt-2 md:w-[24rem] md:flex-wrap md:overflow-visible md:rounded-xl md:border md:border-theme-border-medium md:bg-base-200 md:p-3 md:shadow-xl md:pb-3">
+        <div className="mt-3 flex flex-wrap gap-2 md:absolute md:right-0 md:z-30 md:mt-2 md:w-[24rem] md:rounded-xl md:border md:border-theme-border-medium md:bg-base-200 md:p-3 md:shadow-xl">
           <button onClick={() => onSelectTag(null)} className={pillClasses(activeTag === null)}>
             All
           </button>
