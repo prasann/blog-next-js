@@ -9,6 +9,7 @@ describe("makeItem", () => {
     description: "This is an example post",
     content: "This is the content of the example post",
     minutesToRead: "",
+    tags: [],
   };
 
   it("returns an object with the correct properties", () => {

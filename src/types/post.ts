@@ -7,7 +7,7 @@ type PostMeta = {
 };
 
 interface Post extends PostMeta {
-  category?: string;
+  tags: string[];
   content: string;
 }
 

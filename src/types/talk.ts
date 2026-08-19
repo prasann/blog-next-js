@@ -8,6 +8,7 @@ type Talk = {
   title: string;
   date: string;
   place: string;
+  tags: string[];
   description?: string;
   descriptionMarkdown?: string;
   externalLinks: ExternalLink[];

@@ -3,6 +3,7 @@
     "title": "Accelerating your coding Journey - Guided by Copilot",
     "date": "20-09-2025",
     "place": "Microsoft Office, Bengaluru",
+    "tags": ["AI/LLM"],
     "description": "Hands-on session at VSCode Dev Days exploring how to harness GitHub Copilot's full potential within VSCode. Covered differences between Agent Mode and Edit Mode, creating Custom Modes for specific workflows, and fine-tuning productivity configurations. Also discussed prompting and collaboration conventions, including shared practices like agents.md and structured instructions for consistent team usage across projects.",
     "externalLinks": [
       {
@@ -15,6 +16,7 @@
     "title": "Cross-Platform Multi-Agent Orchestration with Semantic Kernel",
     "date": "10-05-2025",
     "place": "Bengaluru",
+    "tags": ["AI/LLM", "Architecture"],
     "description": "Explored orchestration of multi-agent applications using Pro-Code, Low-Code, and No-Code platforms. Demonstrated three distinct agents: Semantic Kernel (Pro-Code), Microsoft Copilot Studio (Low-Code), and Azure AI Agent Service (No-Code) integrated into a unified application. Covered coordinating layer built with Semantic Kernel for managing agent communication and workflow, plus OpenTelemetry integration across all agents for unified observability and comprehensive system monitoring.",
     "externalLinks": [
       {
@@ -31,6 +33,7 @@
     "title": "OpenAI's Realtime API - Intro and Key Learnings",
     "date": "25-01-2025",
     "place": "AI Meetup, Bengaluru",
+    "tags": ["AI/LLM"],
     "description": "Deep-dive into OpenAI's Realtime API covering real-time messaging concepts, communication modes (WebRTC vs WebSockets), and RAG integration with real-time interactions. Explored event-driven architecture, turn detection, built-in speech-to-text capabilities, and practical implementation using Azure AI Search. Demonstrated building a conversational AI with custom RAG tools and function calling for dynamic knowledge retrieval.",
     "externalLinks": [
       {
@@ -43,6 +46,7 @@
     "title": "Understanding Autogen's Distributed Agent Runtime",
     "date": "12-02-2025",
     "place": "Agentic Meetup, HSR Layout, Bengaluru",
+    "tags": ["AI/LLM", "Architecture"],
     "description": "Deep-dive into Autogen's distributed runtime architecture and its gRPC-based implementation. Explored components including GRPC Host, GRPC Runtime clients, Host Connection, Subscription Manager, and Serialization Registry. Covered communication patterns, cross-language agent possibilities, and challenges in implementing distributed multi-agent systems. Discussed the complexities of building TypeScript agents that can communicate with Python agents in the distributed runtime.",
     "externalLinks": [
       {
@@ -59,6 +63,7 @@
     "title": "Edge Rollout System",
     "date": "21-10-2024",
     "place": "Google Office, Bengaluru",
+    "tags": ["Architecture", "DevOps"],
     "description": "Presented at a Distributed Systems meetup about the Edge Rollout System - a core component of an In-Store Platform for a UK retailer modernizing 65,000 POS devices across 4,200 stores. The system handles automated deployment of OS images and containerized applications to self-checkout tills using a manifest-driven, three-tier architecture (Cloud → Store → Device) in an offline-first environment.",
     "externalLinks": [
       {
@@ -71,6 +76,7 @@
     "title": "Exploring ONDC",
     "date": "28-11-2023",
     "place": "Virtual",
+    "tags": ["AI/LLM"],
     "descriptionFile": "05-ondc.md",
     "externalLinks": [
       {
@@ -83,6 +89,7 @@
     "title": "Demystifying Micro-frontends",
     "date": "28-04-2022",
     "place": "Virtual",
+    "tags": ["JavaScript", "Architecture"],
     "descriptionFile": "04-microfrontend-webinar.md",
     "externalLinks": [
       {
@@ -95,6 +102,7 @@
     "title": "Strangler fig pattern with CDC",
     "date": "20-04-2022",
     "place": "Virtual",
+    "tags": ["Architecture"],
     "descriptionFile": "03-fig-cdc.md",
     "externalLinks": [
       {
@@ -107,6 +115,7 @@
     "title": "Kafka 101",
     "date": "12-08-2021",
     "place": "Virtual",
+    "tags": ["Architecture", "DevOps"],
     "descriptionFile": "02-kafka-101.md",
     "externalLinks": [
       {
@@ -119,6 +128,7 @@
     "title": "Scaling Applications Using Micro-Frontends",
     "date": "16-12-2020",
     "place": "Virtual",
+    "tags": ["JavaScript", "Architecture"],
     "descriptionFile": "01-scaling-micro-frontends.md",
     "externalLinks": [
       {
@@ -131,6 +141,7 @@
     "title": "What's up with Platform Engineering",
     "date": "04-11-2020",
     "place": "Bengaluru",
+    "tags": ["DevOps", "Architecture"],
     "description": "I was part of platform team, and there was one question that was constantly asked to us. 'How different are we from devops'. So, in this talk tried to break some myths that surrounds platform engineering.",
     "externalLinks": [
       {
@@ -143,6 +154,7 @@
     "title": "Coroutines in Kotlin",
     "date": "30-05-2019",
     "place": "Chennai",
+    "tags": ["Java"],
     "description": "In this talk, I explain what co-routines are and how can we implement them in Kotlin.",
     "externalLinks": [
       {
@@ -159,6 +171,7 @@
     "title": "Building applications in Micro-frontends way",
     "date": "Jun 27th & 28th, 2018",
     "place": "Munich, Barcelona",
+    "tags": ["JavaScript", "Architecture"],
     "description": "In this talk, we plan to explain some general tech considerations that developers need to be aware of while building a micro-frontends application. This comes from my year-long experience in building a micro-frontends application in a geographically distributed team. I will share some approaches and practices that worked for us and things that were learned from them!\n\n",
     "externalLinks": [
       {
@@ -171,6 +184,7 @@
     "title": "Micro Frontends with React and Redux",
     "date": "26-05-2018",
     "place": "Berlin",
+    "tags": ["JavaScript", "Architecture"],
     "description": "This is a talk I presented as part of Dev day Berlin along with my colleagues. This talk is based on our practical insights into micro frontends using React and Redux. We will discuss the differences between this technique and micro-services, our approaches in solving the common issues, the advantages it offers and the challenges it brings. ",
     "externalLinks": [
       {
@@ -187,6 +201,7 @@
     "title": "Dealing SOAP in Clojure",
     "date": "14-05-2018",
     "place": "Berlin",
+    "tags": ["Clojure"],
     "description": "This is a talk where i explain, how we did manage to make SOAP calls using Clojure without much complex libraries.",
     "externalLinks": [
       {
@@ -199,6 +214,7 @@
     "title": "My perspective on Tech radar",
     "date": "19-11-2016",
     "place": "Bengaluru",
+    "tags": ["Architecture"],
     "description": "Thoughtworks publishes 2 [tech radars](https://www.thoughtworks.com/radar) every year. This talk is an opinionated take on Tech Radar 2016.",
     "externalLinks": [
       {
@@ -211,6 +227,7 @@
     "title": "Test Driven Development",
     "date": "15-07-2014",
     "place": "Bengaluru",
+    "tags": ["Testing"],
     "description": "This was part of my assignment, when i wanted to onboard a development team with Extreme programming practices. This presentation specifically focusses on the test driven development part.",
     "externalLinks": [
       {
@@ -223,6 +240,7 @@
     "title": "Being a consultant developer",
     "date": "12-01-2014",
     "place": "Johannesburg",
+    "tags": ["Tips & Tricks"],
     "description": "Being a developer is all about writing code. however, being a consultant is way different. We need to make a right decisions, and have excellent communication. This talk helps the developers to jump on to the consultant wagon.",
     "externalLinks": [
       {
@@ -235,6 +253,7 @@
     "title": "Intro to Microservices",
     "date": "24-06-2013",
     "place": "Johannesburg",
+    "tags": ["Architecture"],
     "description": "This is an introductory talk to Microservices that i presented to JoziJUG community. It has a sample app built using dropwizard.",
     "externalLinks": [
       {
