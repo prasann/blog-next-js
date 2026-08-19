@@ -43,7 +43,7 @@ const TopicFilter = ({ tagCounts, activeTag, onSelectTag }: TopicFilterProps) =>
   }, [isOpen]);
 
   const pillClasses = (isActive: boolean) =>
-    `flex-shrink-0 px-4 py-2.5 text-sm font-medium rounded-full border transition-all duration-200 ${
+    `flex-shrink-0 px-4 py-2.5 text-sm font-medium rounded-full border transition-all duration-200 cursor-pointer ${
       isActive
         ? "bg-theme-accent-medium text-theme-text-primary border-theme-accent-medium"
         : "bg-theme-glass-light border-theme-border-medium text-theme-text-secondary hover:border-theme-border-accent-medium hover:text-theme-text-primary"
@@ -54,7 +54,7 @@ const TopicFilter = ({ tagCounts, activeTag, onSelectTag }: TopicFilterProps) =>
       <button
         onClick={() => setIsOpen((open) => !open)}
         aria-expanded={isOpen}
-        className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium bg-theme-glass-light border border-theme-border-medium rounded-xl hover:bg-theme-glass-medium transition-colors duration-200"
+        className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium bg-theme-glass-light border border-theme-border-medium rounded-xl hover:bg-theme-glass-medium transition-colors duration-200 cursor-pointer"
       >
         <FontAwesomeIcon icon={faFilter} className="text-theme-accent" />
         <span>{activeTag ? `Topic: ${activeTag}` : "Filter by topic"}</span>
@@ -65,7 +65,7 @@ const TopicFilter = ({ tagCounts, activeTag, onSelectTag }: TopicFilterProps) =>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 z-30 mt-2 flex w-[min(90vw,24rem)] flex-wrap gap-2 rounded-xl border border-theme-border-medium bg-base-200 p-3 shadow-xl">
+        <div className="absolute left-0 z-30 mt-2 flex w-[min(90vw,24rem)] flex-wrap gap-2 rounded-xl border border-theme-border-medium bg-base-200 p-3 shadow-xl md:left-auto md:right-0">
           <button onClick={() => onSelectTag(null)} className={pillClasses(activeTag === null)}>
             All
           </button>

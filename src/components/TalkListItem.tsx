@@ -142,7 +142,7 @@ const TalkListItem = ({
         </div>
         <button
           onClick={() => setIsExpanded((expanded) => !expanded)}
-          className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-theme-accent-light hover:text-theme-accent transition-colors"
+          className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-theme-accent-light hover:text-theme-accent transition-colors cursor-pointer"
         >
           {isExpanded ? "Show less" : "Show more"}
           <FontAwesomeIcon icon={isExpanded ? faChevronUp : faChevronDown} className="text-[10px]" />
