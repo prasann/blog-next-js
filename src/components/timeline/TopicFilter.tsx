@@ -30,7 +30,7 @@ const TopicFilter = ({ tagCounts, activeTag, onSelectTag }: TopicFilterProps) =>
   const containerRef = useRef<HTMLDivElement>(null);
   const tags = TAG_ORDER.filter((tag) => tagCounts[tag]);
 
-  // Floats over the page instead of pushing content down, so opening it doesn't shift the cadence strip/cards.
+  // Closes the panel on outside click (mobile: inline panel; desktop: floating popover).
   useEffect(() => {
     if (!isOpen) return;
     const handleClickOutside = (event: MouseEvent) => {
@@ -50,7 +50,7 @@ const TopicFilter = ({ tagCounts, activeTag, onSelectTag }: TopicFilterProps) =>
     }`;
 
   return (
-    <div className="relative flex-shrink-0" ref={containerRef}>
+    <div className="relative w-full flex-shrink-0 md:w-auto" ref={containerRef}>
       <button
         onClick={() => setIsOpen((open) => !open)}
         aria-expanded={isOpen}
@@ -65,7 +65,9 @@ const TopicFilter = ({ tagCounts, activeTag, onSelectTag }: TopicFilterProps) =>
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 z-30 mt-2 flex w-[min(90vw,24rem)] flex-wrap gap-2 rounded-xl border border-theme-border-medium bg-base-200 p-3 shadow-xl md:left-auto md:right-0">
+        // Mobile: renders in normal flow (pushes content down), pills scroll horizontally.
+        // Desktop (md+): floats as a popover instead, so it doesn't shift the cadence strip/cards.
+        <div className="mt-3 flex gap-2 overflow-x-auto pb-1 md:absolute md:right-0 md:z-30 md:mt-2 md:w-[24rem] md:flex-wrap md:overflow-visible md:rounded-xl md:border md:border-theme-border-medium md:bg-base-200 md:p-3 md:shadow-xl md:pb-3">
           <button onClick={() => onSelectTag(null)} className={pillClasses(activeTag === null)}>
             All
           </button>
