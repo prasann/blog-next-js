@@ -5,10 +5,12 @@
 export type YearGroup<T> = { year: number; items: T[] };
 
 // Global tag -> count map. A single item can carry multiple tags, so counts can exceed item total.
-export function getTagCounts<T extends { tags: string[] }>(items: T[]): Record<string, number> {
+export function getTagCounts<T extends { tags?: string[] }>(
+  items: T[],
+): Record<string, number> {
   const counts: Record<string, number> = {};
   items.forEach((item) => {
-    item.tags.forEach((tag) => {
+    (item.tags ?? []).forEach((tag) => {
       counts[tag] = (counts[tag] || 0) + 1;
     });
   });
@@ -16,7 +18,9 @@ export function getTagCounts<T extends { tags: string[] }>(items: T[]): Record<s
 }
 
 // Buckets items by year (newest first), preserving each year's incoming order.
-export function groupByYear<T extends { date: string }>(items: T[]): YearGroup<T>[] {
+export function groupByYear<T extends { date: string }>(
+  items: T[],
+): YearGroup<T>[] {
   const groups = new Map<number, T[]>();
   items.forEach((item) => {
     const year = extractYear(item.date);
@@ -30,7 +34,9 @@ export function groupByYear<T extends { date: string }>(items: T[]): YearGroup<T
     .sort((a, b) => b.year - a.year);
 }
 
-export function getYearCounts<T extends { date: string }>(items: T[]): Record<number, number> {
+export function getYearCounts<T extends { date: string }>(
+  items: T[],
+): Record<number, number> {
   const counts: Record<number, number> = {};
   items.forEach((item) => {
     const year = extractYear(item.date);

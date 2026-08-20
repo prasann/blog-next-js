@@ -39,18 +39,13 @@ const Talks = ({ talks, tagCounts, yearCounts }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const allTalks = talksJson;
-  const allTalksWithDescription: Talk[] = [];
-  allTalks.forEach((talk) => {
-    if (talk.descriptionFile) {
-      const talkWithDescription = Object.assign(talk, {
-        descriptionMarkdown: getTalkDescription(talk.descriptionFile),
-      });
-      allTalksWithDescription.push(talkWithDescription);
-    } else {
-      allTalksWithDescription.push(talk);
-    }
-  });
+  const allTalksWithDescription: Talk[] = talksJson.map((talk) => ({
+    ...talk,
+    tags: talk.tags ?? [],
+    ...(talk.descriptionFile
+      ? { descriptionMarkdown: getTalkDescription(talk.descriptionFile) }
+      : {}),
+  }));
   return {
     props: {
       talks: allTalksWithDescription,

@@ -2,8 +2,9 @@ import React from "react";
 import Image from "next/image";
 import { Components } from "react-markdown";
 import CodeBlock from "../CodeBlock";
+import { getImageDimensions } from "../../lib/markdownImage";
 
-const CustomComponentsForMarkdown : Partial<Components> = {
+const CustomComponentsForMarkdown: Partial<Components> = {
   // @ts-ignore
   pre({ children }: any) {
     return <CodeBlock>{children}</CodeBlock>;
@@ -17,10 +18,7 @@ const CustomComponentsForMarkdown : Partial<Components> = {
       const isPriority = image.properties.alt
         ?.toLowerCase()
         .includes("{priority}");
-      const metaWidth = image.properties.alt.match(/{([^}]+)x/);
-      const metaHeight = image.properties.alt.match(/xx([^}]+)}/);
-      const width = metaWidth ? metaWidth[1] : "768";
-      const height = metaHeight ? metaHeight[1] : "432";
+      const { width, height } = getImageDimensions(image.properties.alt);
 
       return (
         <div className="flex justify-center">
@@ -31,7 +29,7 @@ const CustomComponentsForMarkdown : Partial<Components> = {
             className="postImg"
             alt={alt}
             priority={isPriority}
-            style={{objectFit: "contain"}}
+            style={{ objectFit: "contain" }}
           />
         </div>
       );
@@ -48,7 +46,14 @@ const CustomComponentsForMarkdown : Partial<Components> = {
   },
   // @ts-ignore
   a({ href, children }: any) {
-    return <a href={href} className="text-theme-cyan hover:text-theme-cyan-light underline decoration-theme-cyan/50 hover:decoration-theme-cyan-light transition-colors">{children}</a>;
+    return (
+      <a
+        href={href}
+        className="text-theme-cyan hover:text-theme-cyan-light underline decoration-theme-cyan/50 hover:decoration-theme-cyan-light transition-colors"
+      >
+        {children}
+      </a>
+    );
   },
 };
 
