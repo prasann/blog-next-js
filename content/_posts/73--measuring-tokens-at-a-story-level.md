@@ -17,7 +17,7 @@ There was a phase, not so long ago, where nobody counted. You opened Copilot, yo
 
 That phase is quietly ending, and the real motivation is not guilt about spend. It is estimation. We already put an effort estimate on a story before we pick it up. What if we could put a token estimate next to it? 
 
-> "This one looks like a two-pointer, and historically two-pointers in this repo burn about 80k tokens."
+> This one looks like a two-pointer, and historically two-pointers in this repo burn about 80k tokens.
 
 To ever get there, you first need the raw data: how much did each story actually cost? Get that flowing, and the extrapolation becomes a follow-up problem rather than a fantasy. The catch is that the usual dashboards cannot give you the raw data. They tell you totals by model, by day, by user. They do not tell you that story `PROJ-123` cost more than the rest of the sprint combined. That gap is what this post is about: attributing token usage down to the story level, without wrecking anything that already works.
 

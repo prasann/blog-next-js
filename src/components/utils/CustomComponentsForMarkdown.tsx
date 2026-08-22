@@ -38,7 +38,11 @@ const CustomComponentsForMarkdown: Partial<Components> = {
   },
   // @ts-ignore
   blockquote({ children }: any) {
-    return <blockquote className="alert alert-info">{children}</blockquote>;
+    return (
+      <blockquote className="my-6 border-l-4 border-theme-cyan bg-theme-glass-light rounded-r-lg px-5 py-3 italic text-theme-text-secondary">
+        {children}
+      </blockquote>
+    );
   },
   // @ts-ignore
   table({ children }: any) {
