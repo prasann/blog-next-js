@@ -32,7 +32,7 @@ const FeaturedBook = () => {
               className="text-3xl text-theme-accent"
             />
             <h2 className="text-2xl md:text-3xl font-bold gradient-text">
-              I wrote a book
+              Authored
             </h2>
           </div>
 
