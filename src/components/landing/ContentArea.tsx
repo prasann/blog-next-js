@@ -118,10 +118,10 @@ const About = () => {
           <div className="space-y-4 text-theme-text-secondary text-base md:text-xl">
             <ScrollReveal delay={100}>
               <p className="leading-relaxed">
-                I&apos;m an engineer based in Bengaluru, India. For years I led
-                teams building high-performance, large-scale distributed
-                platforms, the kind where correctness, latency, and resilience
-                are non-negotiable.
+                Based in Bengaluru, India, I&apos;ve spent years leading teams
+                that build high-performance, large-scale distributed platforms
+                &mdash; the kind where correctness, latency, and resilience are
+                non-negotiable.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={220}>
