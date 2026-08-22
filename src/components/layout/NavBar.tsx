@@ -56,16 +56,7 @@ const NavBar = () => {
               >
                 About
               </a>
-              <a
-                href="/talks"
-                className={`px-4 py-2 rounded-lg text-lg font-medium transition-all duration-300 ${
-                  isActive("/talks")
-                    ? "bg-blue-500/20 text-blue-300 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
-                    : "text-gray-300 hover:text-blue-400 hover:bg-blue-500/10"
-                }`}
-              >
-                Talks
-              </a>
+              
               <a
                 href="/blog"
                 className={`px-4 py-2 rounded-lg text-lg font-medium transition-all duration-300 ${
@@ -75,6 +66,16 @@ const NavBar = () => {
                 }`}
               >
                 Blog
+              </a>
+              <a
+                href="/talks"
+                className={`px-4 py-2 rounded-lg text-lg font-medium transition-all duration-300 ${
+                  isActive("/talks")
+                    ? "bg-blue-500/20 text-blue-300 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                    : "text-gray-300 hover:text-blue-400 hover:bg-blue-500/10"
+                }`}
+              >
+                Talks
               </a>
             </div>
           </div>

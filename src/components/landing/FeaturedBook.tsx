@@ -24,7 +24,7 @@ const FeaturedBook = () => {
     <div className="relative group">
       <div className="absolute inset-0 bg-linear-to-r from-purple-500/20 via-blue-500/20 to-indigo-500/20 rounded-3xl blur-2xl -z-10 group-hover:blur-xl transition-all duration-500"></div>
 
-      <div className="relative bg-theme-glass-light backdrop-blur-lg border border-theme-border-medium rounded-3xl overflow-hidden hover:border-theme-border-dark transition-all duration-300">
+      <div className="relative bg-slate-900/60 backdrop-blur-lg border border-theme-border-medium rounded-3xl overflow-hidden hover:border-theme-border-dark transition-all duration-300">
         <div className="p-6 md:p-8 lg:p-10">
           <div className="flex items-center gap-3 mb-6">
             <FontAwesomeIcon
@@ -32,11 +32,8 @@ const FeaturedBook = () => {
               className="text-3xl text-theme-accent"
             />
             <h2 className="text-2xl md:text-3xl font-bold gradient-text">
-              Featured Book
+              I wrote a book
             </h2>
-            <span className="ml-auto px-3 py-1 bg-theme-accent/20 text-theme-accent text-sm font-semibold rounded-full border border-theme-accent/40">
-              NEW 📖
-            </span>
           </div>
 
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start">
@@ -72,7 +69,7 @@ const FeaturedBook = () => {
               <h3 className="text-2xl md:text-3xl font-bold text-theme-text-primary">
                 {bookData.title}
               </h3>
-              <p className="text-base md:text-lg text-theme-text-secondary leading-relaxed">
+              <p className="text-base md:text-lg text-theme-text-primary leading-relaxed">
                 {bookData.description}
               </p>
 
