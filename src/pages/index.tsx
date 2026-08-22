@@ -3,6 +3,7 @@ import MetaHeaders from "../components/MetaHeaders";
 import React from "react";
 import { GetStaticProps } from "next";
 import generateMainFeeds from "../lib/feed";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const Home = () => {
   return (
