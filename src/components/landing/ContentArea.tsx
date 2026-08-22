@@ -126,7 +126,7 @@ const About = () => {
             </ScrollReveal>
             <ScrollReveal delay={220}>
               <p className="leading-relaxed">
-                Today my focus is AI/ML engineering. As a Forward Deployed
+                My current focus is AI/ML engineering. As a Forward Deployed
                 Engineer at Microsoft, I work embedded with customers,
                 designing, building, and shipping AI systems against real
                 workloads rather than from a distance. That distributed-systems
