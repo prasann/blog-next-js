@@ -4,13 +4,16 @@ import React from "react";
 import { GetStaticProps } from "next";
 import generateMainFeeds from "../lib/feed";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/next';
+
 
 const Home = () => {
   return (
     <>
       <MetaHeaders />
       <ContentArea />
-      <SpeedInsights/>
+      <SpeedInsights />
+      <Analytics />
     </>
   );
 };
