@@ -10,6 +10,7 @@ const Home = () => {
     <>
       <MetaHeaders />
       <ContentArea />
+      <SpeedInsights/>
     </>
   );
 };
