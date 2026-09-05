@@ -24,7 +24,7 @@ const Blog = ({ allPosts, tagCounts, yearCounts }: Props) => {
       <div className="max-w-6xl mx-auto px-4">
         <TimelineShell
           title="Blog Posts"
-          archiveLeadIn="Writing, notes, and experiments"
+          archiveLeadIn="Notes and experiments"
           items={allPosts}
           tagCounts={tagCounts}
           yearCounts={yearCounts}
