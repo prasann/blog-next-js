@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface LazyEmbedProps {
   src: string;
@@ -39,36 +41,22 @@ const getEmbedInfo = (url: string) => {
 };
 
 const LazyEmbed = ({ src, name }: LazyEmbedProps) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [thumbnailLoaded, setThumbnailLoaded] = useState(false);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const embedInfo = getEmbedInfo(src);
 
   const handleLoadEmbed = () => {
-    setIsLoaded(true);
+    setIsPreviewOpen(true);
   };
 
-  // If user clicked to load, show the iframe
-  if (isLoaded) {
-    return (
-      <div className="iframe-container">
-        <iframe
-          src={src}
-          frameBorder="0"
-          loading="lazy"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
-    );
-  }
-
-  // Show clean preview card
   return (
-    <div
-      className="bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xs border border-white/10 hover:border-blue-500/30 rounded-xl p-6 cursor-pointer group transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]"
-      onClick={handleLoadEmbed}
-    >
-      <div className="flex items-center gap-4">
+    <div>
+      <button
+        type="button"
+        className="w-full text-left bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xs border border-white/10 hover:border-blue-500/30 rounded-xl p-6 cursor-pointer group transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]"
+        onClick={handleLoadEmbed}
+        aria-haspopup="dialog"
+      >
+        <div className="flex items-center gap-4">
         {/* Icon based on type */}
         <div
           className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center ${
@@ -119,13 +107,63 @@ const LazyEmbed = ({ src, name }: LazyEmbedProps) => {
           </div>
         </div>
 
-        {/* Preview button */}
-        <div className="flex-shrink-0">
-          <div className="px-4 py-2 bg-blue-500/20 group-hover:bg-blue-500/30 border border-blue-500/30 group-hover:border-blue-400/50 text-blue-300 group-hover:text-blue-200 rounded-lg text-sm font-medium transition-all">
-            Preview
+          <div className="flex-shrink-0">
+            <span className="px-4 py-2 bg-blue-500/20 group-hover:bg-blue-500/30 border border-blue-500/30 group-hover:border-blue-400/50 text-blue-300 group-hover:text-blue-200 rounded-lg text-sm font-medium transition-all">
+              Preview
+            </span>
           </div>
         </div>
-      </div>
+      </button>
+      {isPreviewOpen && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="preview-title"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              setIsPreviewOpen(false);
+            }
+          }}
+        >
+          <div className="w-full max-w-6xl overflow-hidden rounded-xl border border-theme-border-medium bg-base-200 shadow-2xl">
+            <div className="flex items-center justify-between gap-4 border-b border-theme-border-medium px-4 py-3">
+              <h2 id="preview-title" className="min-w-0 truncate text-base font-semibold text-theme-text-primary">
+                {name}
+              </h2>
+              <div className="flex items-center gap-3">
+                <a
+                  href={src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-theme-accent-light hover:text-theme-accent transition-colors"
+                >
+                  Open in new tab
+                  <FontAwesomeIcon icon={faExternalLinkAlt} />
+                </a>
+                <button
+                  type="button"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-theme-text-muted hover:bg-theme-bg-accent-light hover:text-theme-text-primary transition-colors"
+                  onClick={() => setIsPreviewOpen(false)}
+                  aria-label="Close preview"
+                >
+                  <FontAwesomeIcon icon={faTimes} />
+                </button>
+              </div>
+            </div>
+            <div className="iframe-container">
+              <iframe
+                title={name}
+                src={src}
+                frameBorder="0"
+                loading="lazy"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

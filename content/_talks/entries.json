@@ -1,5 +1,61 @@
 [
   {
+    "title": "Design Thinking for AI Systems",
+    "date": "20-08-2026",
+    "place": "Microsoft Architects",
+    "tags": ["AI/LLM", "Architecture", "Developer Experience"],
+    "description": "A one-hour introduction to designing AI systems, using HVE Core's design-thinking guidance as the baseline and adapting its story for architects. No prerequisites required beyond an open mind to listen and re-learn the basics.",
+    "externalLinks": [
+      {
+        "name": "Deck",
+        "link": "https://drive.google.com/file/d/1Y5U_7v_3EEpLUfZ0ZZreZqOmUu9bOOz-/preview"
+      },
+      {
+        "name": "HVE Core Design Thinking",
+        "link": "https://github.com/microsoft/hve-core/tree/main/docs/design-thinking"
+      }
+    ]
+  },
+  {
+    "title": "Microsoft Agent Tools",
+    "date": "18-06-2026",
+    "place": "Microsoft India FDE Team",
+    "tags": ["AI/LLM", "Developer Experience"],
+    "description": "An overview of agent tools across the Microsoft ecosystem, with guidance on when to use each one and the nuances that distinguish them, including Scout and Cowork.",
+    "externalLinks": [
+      {
+        "name": "Deck",
+        "link": "https://drive.google.com/file/d/1LkeLXwN6taF14GOp3MOkckLP4rhuANhh/preview"
+      }
+    ]
+  },
+  {
+    "title": "Teaching Coding Agents to Explore External Codebases",
+    "date": "26-02-2026",
+    "place": "SE Guild 2026",
+    "tags": ["AI/LLM", "Developer Experience"],
+    "description": "Lightning talk on helping coding agents understand unfamiliar external codebases through effective exploration strategies.",
+    "externalLinks": [
+      {
+        "name": "Deck",
+        "link": "https://drive.google.com/file/d/1mmk4UOSkO-UIywX72MY0d8OWKvpB78AA/preview"
+      }
+    ]
+  },
+  {
+    "title": "Everyone Deserves Their Own Agents",
+    "date": "26-02-2026",
+    "place": "SE Guild 2026",
+    "tags": ["AI/LLM", "Developer Experience"],
+    "description": "Lightning talk on making personal AI agents accessible and useful for everyone.",
+    "externalLinks": [
+      {
+        "name": "Deck",
+        "link": "https://drive.google.com/file/d/1g_oNk43WmOgpdNcPK4fE6x1AQJpZOrJu/preview"
+      }
+    ]
+  },
+  {
     "title": "Accelerating your coding Journey - Guided by Copilot",
     "date": "20-09-2025",
     "place": "Microsoft Office, Bengaluru",

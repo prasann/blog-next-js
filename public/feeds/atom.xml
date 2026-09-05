@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://prasanna.dev</id>
     <title>Random Presence</title>
-    <updated>2026-08-22T06:07:27.351Z</updated>
+    <updated>2026-09-05T10:47:03.809Z</updated>
     <generator>npm feed package</generator>
     <author>
         <name>Prasanna Venkatesan</name>
@@ -25,7 +25,7 @@
 <p>There was a phase, not so long ago, where nobody counted. You opened Copilot, you chatted, you let the agent run for hours, and it was all just part of the magic. Tokens were cheap enough to ignore and interesting enough to spend freely.</p>
 <p>That phase is quietly ending, and the real motivation is not guilt about spend. It is estimation. We already put an effort estimate on a story before we pick it up. What if we could put a token estimate next to it?</p>
 <blockquote>
-<p>&quot;This one looks like a two-pointer, and historically two-pointers in this repo burn about 80k tokens.&quot;</p>
+<p>This one looks like a two-pointer, and historically two-pointers in this repo burn about 80k tokens.</p>
 </blockquote>
 <p>To ever get there, you first need the raw data: how much did each story actually cost? Get that flowing, and the extrapolation becomes a follow-up problem rather than a fantasy. The catch is that the usual dashboards cannot give you the raw data. They tell you totals by model, by day, by user. They do not tell you that story <code>PROJ-123</code> cost more than the rest of the sprint combined. That gap is what this post is about: attributing token usage down to the story level, without wrecking anything that already works.</p>
 <h2>What we already have</h2>
