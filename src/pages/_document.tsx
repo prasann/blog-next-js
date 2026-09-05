@@ -1,33 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { GA_TRACKING_ID } from "../lib/googleTag";
 
-const GoogleAnalytics = () => {
-  const isProduction = true;
-  if (isProduction) {
-    return (
-      <>
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-        />
-        <script
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-          `,
-          }}
-        />
-      </>
-    );
-  }
-  return <></>;
-};
 export default class MyDocument extends Document {
   //TODO: Remove this, and make typography work without cdn
   render() {
@@ -47,16 +19,6 @@ export default class MyDocument extends Document {
           />
 
           <link rel="manifest" href="/manifest.json" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,600;1,400;1,600&display=swap"
-            rel="stylesheet"
-          />
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -69,7 +31,6 @@ export default class MyDocument extends Document {
               `,
             }}
           />
-          <GoogleAnalytics />
         </Head>
         <body>
           <Main />

@@ -43,7 +43,7 @@
 @custom-variant dark (&:where([data-theme="prasanna"], [data-theme="prasanna"] *));
 
 @theme {
-  --font-sans: "Mulish", sans-serif;
+  --font-sans: var(--font-mulish), "Mulish", sans-serif;
   --text-base: 1.125rem;
   --text-base--line-height: 1.6;
   --tracking-heading: 0;

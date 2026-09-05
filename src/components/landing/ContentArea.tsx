@@ -46,6 +46,7 @@ const Picture = () => {
       <div className="absolute inset-0 w-40 md:w-52 lg:w-56 h-44 md:h-60 lg:h-64 bg-linear-to-br from-blue-500/50 via-blue-400/40 to-blue-600/50 rounded-[50%] blur-3xl -z-10 group-hover:blur-2xl group-hover:scale-110 transition-all duration-500"></div>
       <div className="w-40 md:w-52 lg:w-56 h-44 md:h-60 lg:h-64 rounded-[50%] overflow-hidden ring-4 ring-blue-400/40 shadow-2xl shadow-blue-500/30 group-hover:ring-blue-300/60 group-hover:shadow-blue-400/50 transition-all duration-500">
         <Image
+          priority
           placeholder="blur"
           src={ProfileImage}
           alt="Prasanna Nagarajan"
