@@ -25,7 +25,7 @@ const Talks = ({ talks, tagCounts, yearCounts }: Props) => {
       <div className="max-w-6xl mx-auto px-4">
         <TimelineShell
           title="Talks"
-          subtitle="Conference talks, presentations, and speaking engagements"
+          archiveLeadIn="Talks, presentations, and sessions"
           items={talks}
           tagCounts={tagCounts}
           yearCounts={yearCounts}

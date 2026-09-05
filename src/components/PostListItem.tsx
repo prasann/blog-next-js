@@ -19,10 +19,10 @@ const PostListItem = ({
     <div
       key={slug}
       onClick={() => navigateTo(slug)}
-      className="group card bg-base-200/30 hover:bg-base-200/60 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-1 border border-theme-border-light hover:border-theme-border-cyan-light backdrop-blur-xs rounded-2xl h-full"
+      className="group card bg-base-200/30 hover:bg-base-200/60 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-1 border border-theme-border-light hover:border-theme-border-cyan-light backdrop-blur-xs rounded-xl h-full"
     >
-      <div className="card-body p-6">
-        <h2 className="card-title text-xl font-semibold mb-2 gradient-heading group-hover:from-cyan-300 group-hover:via-cyan-400 group-hover:to-cyan-500 transition-all">
+      <div className="card-body p-5">
+        <h2 className="card-title text-lg font-semibold mb-2 gradient-heading group-hover:from-cyan-300 group-hover:via-cyan-400 group-hover:to-cyan-500 transition-all">
           {title}
         </h2>
         {tags.length > 0 && (
@@ -37,10 +37,10 @@ const PostListItem = ({
             ))}
           </div>
         )}
-        <p className="text-theme-text-secondary flex-grow line-clamp-3 mb-4">
+        <p className="text-sm text-theme-text-secondary flex-grow line-clamp-2 mb-3">
           {description}
         </p>
-        <div className="flex flex-row justify-between items-center text-sm text-theme-text-muted pt-4 border-t border-theme-border-light">
+        <div className="flex flex-row justify-between items-center text-sm text-theme-text-muted pt-3 border-t border-theme-border-light">
           <time>{date}</time>
           <span className="flex items-center gap-1">
             <svg

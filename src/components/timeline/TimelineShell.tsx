@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { groupByYear } from "../../lib/timeline";
-import TopicFilter from "./TopicFilter";
 import CadenceStrip from "./CadenceStrip";
 import YearSection from "./YearSection";
 import Reveal from "./Reveal";
@@ -9,7 +8,7 @@ type TimelineItem = { date: string; tags: string[] };
 
 type TimelineShellProps<T extends TimelineItem> = {
   title: string;
-  subtitle: string;
+  archiveLeadIn: string;
   items: T[];
   tagCounts: Record<string, number>;
   yearCounts: Record<number, number>;
@@ -20,7 +19,7 @@ type TimelineShellProps<T extends TimelineItem> = {
 
 function TimelineShell<T extends TimelineItem>({
   title,
-  subtitle,
+  archiveLeadIn,
   items,
   tagCounts,
   yearCounts,
@@ -33,17 +32,33 @@ function TimelineShell<T extends TimelineItem>({
   const sectionRefs = useRef(new Map<number, HTMLElement>());
 
   const allYears = useMemo(
-    () => Object.keys(yearCounts).map(Number).sort((a, b) => b - a),
-    [yearCounts]
+    () =>
+      Object.keys(yearCounts)
+        .map(Number)
+        .sort((a, b) => b - a),
+    [yearCounts],
   );
+  const topics = useMemo(
+    () =>
+      Object.entries(tagCounts).sort(
+        ([, firstCount], [, secondCount]) => secondCount - firstCount,
+      ),
+    [tagCounts],
+  );
+  const totalItems = items.length;
+  const firstYear = allYears.at(-1);
 
   const filteredItems = useMemo(
-    () => (activeTag ? items.filter((item) => item.tags.includes(activeTag)) : items),
-    [items, activeTag]
+    () =>
+      activeTag ? items.filter((item) => item.tags.includes(activeTag)) : items,
+    [items, activeTag],
   );
 
   const yearGroups = useMemo(() => groupByYear(filteredItems), [filteredItems]);
-  const visibleYears = useMemo(() => new Set(yearGroups.map((group) => group.year)), [yearGroups]);
+  const visibleYears = useMemo(
+    () => new Set(yearGroups.map((group) => group.year)),
+    [yearGroups],
+  );
 
   // Jump the highlighted year back to the newest one whenever the topic filter changes.
   useEffect(() => {
@@ -56,31 +71,78 @@ function TimelineShell<T extends TimelineItem>({
       (entries) => {
         const topMostVisible = entries
           .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+          .sort(
+            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
+          )[0];
         if (topMostVisible) {
-          const year = Number((topMostVisible.target as HTMLElement).dataset.year);
+          const year = Number(
+            (topMostVisible.target as HTMLElement).dataset.year,
+          );
           setActiveYear(year);
         }
       },
-      { rootMargin: "-15% 0px -70% 0px", threshold: 0 }
+      { rootMargin: "-15% 0px -70% 0px", threshold: 0 },
     );
     sectionRefs.current.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, [yearGroups]);
 
   const handleSelectYear = (year: number) => {
-    sectionRefs.current.get(year)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    sectionRefs.current
+      .get(year)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
     <div>
-      <div className="mb-4 flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h1 className="gradient-heading text-3xl font-bold md:text-4xl">{title}</h1>
-          <p className="mt-1 text-sm text-theme-text-muted">{subtitle}</p>
+      <div className="mb-5">
+        <div className="max-w-2xl">
+          <h1 className="sr-only">{title}</h1>
+          <p className="text-3xl font-bold leading-tight text-theme-text-primary md:text-4xl">
+            {archiveLeadIn}
+            {firstYear && (
+              <>
+                {" since "}
+                {firstYear}
+              </>
+            )}
+            {" · "}
+            <span className="gradient-heading">
+              {totalItems} {itemLabel}
+            </span>
+          </p>
         </div>
-        <TopicFilter tagCounts={tagCounts} activeTag={activeTag} onSelectTag={setActiveTag} />
       </div>
+      {topics.length > 0 && (
+        <div className="mb-4 flex flex-wrap items-center gap-2 border-t border-theme-border-light pt-3 text-xs">
+          <span className="mr-1 font-semibold uppercase text-theme-text-muted">
+            Explore topics
+          </span>
+          {topics.map(([tag, count]) => (
+            <button
+              key={tag}
+              type="button"
+              onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+              className={`rounded-md border px-2 py-1 transition-colors ${
+                activeTag === tag
+                  ? "border-theme-border-accent-dark bg-theme-bg-accent-medium text-theme-accent-light"
+                  : "border-theme-border-light bg-theme-glass-light text-theme-text-secondary hover:border-theme-border-accent-medium hover:text-theme-accent-light"
+              }`}
+            >
+              {tag} ({count})
+            </button>
+          ))}
+          {activeTag && (
+            <button
+              type="button"
+              onClick={() => setActiveTag(null)}
+              className="px-1 text-theme-accent-light hover:text-theme-accent transition-colors"
+            >
+              Clear
+            </button>
+          )}
+        </div>
+      )}
       <CadenceStrip
         years={allYears}
         yearCounts={yearCounts}
@@ -104,7 +166,11 @@ function TimelineShell<T extends TimelineItem>({
             }}
           >
             {group.items.map((item, index) => (
-              <Reveal key={itemKey(item)} delayMs={(index % 4) * 80} className="h-full">
+              <Reveal
+                key={itemKey(item)}
+                delayMs={(index % 4) * 80}
+                className="h-full"
+              >
                 {renderCard(item)}
               </Reveal>
             ))}

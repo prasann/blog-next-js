@@ -1,7 +1,12 @@
 import Talk, { ExternalLink } from "../types/talk";
 import IconWithText from "./utils/IconWithText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar, faMapMarkerAlt, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCalendar,
+  faMapMarkerAlt,
+  faChevronDown,
+  faChevronUp,
+} from "@fortawesome/free-solid-svg-icons";
 import { getTalkDescription } from "../lib/api";
 import RenderMarkdown from "./RenderMarkdown";
 import GitHubCard from "./GitHubCard";
@@ -81,7 +86,7 @@ const Description = ({
   if (descriptionMarkdown) {
     return <RenderMarkdown content={descriptionMarkdown} />;
   } else {
-    return <div className="text-theme-text-secondary my-4">{description}</div>;
+    return <div className="text-theme-text-secondary my-2">{description}</div>;
   }
 };
 
@@ -97,11 +102,11 @@ const TalkListItem = ({
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="bg-base-200/30 backdrop-blur-xs border border-theme-border-medium rounded-2xl overflow-hidden hover:border-theme-border-accent-medium transition-all duration-300 h-full flex flex-col">
-      <div className="p-6 flex-1">
-        <h2 className="text-2xl font-bold mb-3 gradient-heading">{title}</h2>
+    <div className="bg-base-200/30 backdrop-blur-xs border border-theme-border-medium rounded-xl overflow-hidden hover:border-theme-border-accent-medium transition-all duration-300 h-full flex flex-col">
+      <div className="p-5 flex-1">
+        <h2 className="text-lg font-bold mb-2 gradient-heading">{title}</h2>
         {tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-4">
+          <div className="flex flex-wrap gap-1.5 mb-3">
             {tags.map((tag) => (
               <span
                 key={tag}
@@ -112,7 +117,7 @@ const TalkListItem = ({
             ))}
           </div>
         )}
-        <div className="flex flex-wrap gap-4 mb-4 text-sm text-theme-text-muted">
+        <div className="flex flex-wrap gap-3 mb-2 text-sm text-theme-text-muted">
           <div className="flex items-center gap-2">
             <FontAwesomeIcon icon={faCalendar} className="text-theme-accent" />
             <span>{date}</span>
@@ -128,7 +133,7 @@ const TalkListItem = ({
         <div className="relative">
           <div
             className={`text-theme-text-secondary text-sm leading-relaxed overflow-hidden transition-[max-height] duration-300 ${
-              isExpanded ? "max-h-[999px]" : "max-h-16"
+              isExpanded ? "max-h-[999px]" : "max-h-10"
             }`}
           >
             <Description
@@ -137,7 +142,7 @@ const TalkListItem = ({
             />
           </div>
           {!isExpanded && (
-            <div className="absolute bottom-0 left-0 right-0 h-6 bg-linear-to-t from-base-200/80 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-5 bg-linear-to-t from-base-200/80 to-transparent pointer-events-none" />
           )}
         </div>
         <button
@@ -145,10 +150,13 @@ const TalkListItem = ({
           className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-theme-accent-light hover:text-theme-accent transition-colors cursor-pointer"
         >
           {isExpanded ? "Show less" : "Show more"}
-          <FontAwesomeIcon icon={isExpanded ? faChevronUp : faChevronDown} className="text-[10px]" />
+          <FontAwesomeIcon
+            icon={isExpanded ? faChevronUp : faChevronDown}
+            className="text-[10px]"
+          />
         </button>
       </div>
-      {externalLinks && externalLinks.length > 0 && (
+      {isExpanded && externalLinks && externalLinks.length > 0 && (
         <div className="border-t border-theme-border-medium p-4 bg-theme-glass-light">
           <div className="flex flex-wrap gap-2">
             {externalLinks.map((link, index) => (
