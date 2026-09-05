@@ -96,7 +96,7 @@ function TimelineShell<T extends TimelineItem>({
   return (
     <div>
       <div className="mb-5">
-        <div className="max-w-2xl">
+        <div>
           <h1 className="sr-only">{title}</h1>
           <p className="text-3xl font-bold leading-tight text-theme-text-primary md:text-4xl">
             {archiveLeadIn}
