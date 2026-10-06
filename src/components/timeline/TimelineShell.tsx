@@ -45,7 +45,6 @@ function TimelineShell<T extends TimelineItem>({
       ),
     [tagCounts],
   );
-  const totalItems = items.length;
   const firstYear = allYears.at(-1);
 
   const filteredItems = useMemo(
@@ -106,10 +105,6 @@ function TimelineShell<T extends TimelineItem>({
                 {firstYear}
               </>
             )}
-            {" · "}
-            <span className="gradient-heading">
-              {totalItems} {itemLabel}
-            </span>
           </p>
         </div>
       </div>
