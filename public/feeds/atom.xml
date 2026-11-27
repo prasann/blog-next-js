@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://prasanna.dev</id>
     <title>Random Presence</title>
-    <updated>2026-10-06T10:54:56.492Z</updated>
+    <updated>2026-11-27T12:20:21.472Z</updated>
     <generator>npm feed package</generator>
     <author>
         <name>Prasanna Venkatesan</name>
@@ -15,6 +15,45 @@
     <logo>https://prasanna.dev/assets/logo.png</logo>
     <icon>https://prasanna.dev/assets/favicons/favicon-32x32.png</icon>
     <rights>Copyright - Prasanna</rights>
+    <entry>
+        <title type="html"><![CDATA[Beyond Copilot metrics: understanding how I work]]></title>
+        <id>https://prasanna.dev/posts/beyond-copilot-metrics-understanding-how-i-work</id>
+        <link href="https://prasanna.dev/posts/beyond-copilot-metrics-understanding-how-i-work"/>
+        <updated>2026-11-26T18:30:00.000Z</updated>
+        <summary type="html"><![CDATA[Token counts told me what I spent, not what to change. So I rebuilt my Copilot dashboard around qualitative feedback from Chronicle.]]></summary>
+        <content type="html"><![CDATA[<p>In <a href="https://www.prasanna.dev/posts/measuring-tokens-at-a-story-level">my previous post</a>, I wanted to know how many tokens a story cost. I built a dashboard with breakdowns by story, model and session, plus charts showing usage over time. It looked good.</p>
+<p><mark>The dashboard had so many numbers I didn't know what to make of them. Eventually, I stopped looking.</mark></p>
+<p>A high token count could mean the problem was genuinely hard, or that my prompt was vague and the agent spent half the session going in circles. I couldn't tell from the chart. The dashboard was also slow, with several joins just to piece things together. Between worktrees, parallel agents and the Copilot desktop app, treating a branch as a story was becoming a stretch too.</p>
+<p>So I removed those charts and reworked the setup around a different question: what could I improve about the way I work with Copilot? For that, <mark>qualitative feedback has been more useful to me than usage totals.</mark> A suggestion about how I plan a task or check the result gives me something to try, even when it doesn't come with a number.</p>
+<p>The work was in making that feedback part of the setup rather than another report I'd forget to request. I built a worker around reports from <a href="https://docs.github.com/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle">Chronicle</a>, a Copilot CLI command that analyses your session history. The worker validates the reports before publishing them and puts the suggestions where I can read them alongside usage. I still wanted the numbers, but as context for my decisions. One of the first tips caught a habit I'd been repeating without noticing; more on that at the end.</p>
+<p><img src="/assets/posts/images/chronicle-workflow/visual-3-feedback-loop-dark.svg" alt="Work with Copilot, reflect with Chronicle, choose a habit, and look for recurring themes {800xx626}"></p>
+<h2>Making reflection a regular part of the setup</h2>
+<p>GitHub Copilot CLI has a <code>/chronicle</code> command that can look through session history and offer tips. The local session store includes VS Code Agent Host and Copilot desktop sessions, so it covers the places where I work. I use two reports: tips for suggestions grouped into themes such as verification and prompt clarity, and standup for a summary of what was completed, what's planned for today and what's still open.</p>
+<pre><code class="language-bash">copilot -p &quot;/chronicle tips&quot;
+copilot -p &quot;/chronicle standup&quot;
+</code></pre>
+<p>I've wrapped those calls in a worker and configured a daily job. The first manual run published 14 items, which I verified through the dashboard queries. <strong>It's still a working pilot:</strong> I need to check scheduled execution and spend a few weeks with the results before I can say whether the recurring themes are useful.</p>
+<h2>Two paths into the dashboard</h2>
+<p>I ended up bringing back a smaller telemetry view alongside the coaching reports. Usage and coaching answer different questions, so they run independently and meet in Grafana; the token counts don't feed the coach.</p>
+<p><img src="/assets/posts/images/chronicle-workflow/visual-1-two-lanes-dark.svg" alt="Independent telemetry and Chronicle coaching paths meet in Grafana {1640xx950}"></p>
+<p>For coaching, Chronicle does the reflection inside Copilot's own service. My worker sends the two short reports, roughly 1-2 KB each, to my Azure OpenAI deployment to turn them into structured dashboard items. It doesn't export full conversations to that deployment, but the reports do contain information derived from my sessions. That distinction matters: <strong>this path sends more than telemetry metadata off my machine.</strong></p>
+<p>The normalization request uses <code>store: false</code> and a strict JSON schema. Reports containing known secret patterns are stopped before that call, and the resulting items are checked for disallowed content such as local paths and code fences. If validation fails, nothing from that run is published to Log Analytics.</p>
+<p>Chronicle does the session assessment, so I didn't need my own transcript-analysis pipeline. It isn't free, though: each run is capped at 30 AI credits, and the first one used about 10. So my coach for moving beyond metrics has a meter of its own.</p>
+<p>The telemetry side is simpler. Usage is grouped by project only when a session can be matched exactly; anything else shows up as <code>unattributed</code> rather than being guessed. Raw paths are filtered out, but session IDs and project names can still leave my machine. It's metadata only, but not anonymous.</p>
+<h2>What I look at now</h2>
+<p>A row of headline token counts sits at the top, but the coaching panels come right after: the latest tips and standup, then recurring themes.</p>
+<p><img src="/assets/posts/images/chronicle-workflow/grafana-dashboard-mock.png" alt="Illustrative Grafana dashboard with headline token counts, Chronicle tips and standup, recurring tip themes and project usage {1600xx2600}"></p>
+<p><em>Illustrative dashboard: the projects, tips and numbers shown here are fictional.</em></p>
+<p><mark>The standup panel helps me catch up.</mark> With agents running in parallel across repos and worktrees, it's easy to lose track of what actually got done. Chronicle's standup pulls yesterday's sessions from every repo into one list, with each item tagged with its repository. That's a picture of my day the token charts never gave me, and I don't have to open each repo to piece it together.</p>
+<p>If verification keeps coming up, that gives me a reason to look at how I'm checking the agent's work. I don't want to read too much into the count itself, though; <strong>fewer tips on a theme wouldn't prove I'd improved.</strong></p>
+<p>The detailed usage panels sit underneath. Tokens and AI units (AIUs) are counted without double-counting overlapping work, and a missing AIU shows as unavailable rather than zero. There's also a dollar estimate, but it rests on an assumption I haven't verified, so I don't treat it as my bill.</p>
+<h2>One example of feedback I could act on</h2>
+<p>One Chronicle tip pointed out repeated UI/UX back-and-forth in the Android app I'm working on. My usual routine was to ask the agent to finish a feature, deploy it to my phone, and see how it felt. I'd have feedback, take a screenshot, transfer it to my computer, and explain what I wanted changed. Because it was an Android app, that felt like the normal way to work. I hadn't recognised how many rounds I was spending on changes that could have been settled earlier.</p>
+<p>After that, <strong>I asked for a simple HTML prototype first.</strong> I could check the look and feel before asking the agent to implement the feature, without waiting for another build on my phone just to react to a design choice. I still needed to test the Android app, but that first round of feedback was much quicker. Obvious in hindsight; I hadn't noticed it until Chronicle pointed it out.</p>
+<p>That's one example of why I put the effort into this setup. Token counts still help me understand usage, but feedback about my own working habits gives me something I can act on. I don't expect every tip to be useful. <mark>I'd rather spend time considering a suggestion than trying to infer what went wrong from a token spike.</mark></p>
+<p>You don't need any of my setup to start. If you use Copilot CLI, run <code>/chronicle tips</code> and see what it says about how you work. Everything else I built just makes sure I keep asking. If you want that part too, the code and setup are in <a href="https://github.com/prasann/copilot-otel">copilot-otel</a>.</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[How Many Tokens Did That Story Cost?]]></title>
         <id>https://prasanna.dev/posts/measuring-tokens-at-a-story-level</id>
@@ -36,7 +75,7 @@
 <p><a href="https://learn.microsoft.com/en-us/azure/managed-grafana/grafana-opentelemetry-app-insights">Official docs</a></p>
 </li>
 <li>
-<p>Here is <a href="https://github.com/prasann/copilot-otel/blob/main/docs/github-copilot-otel-setup-guide.md">my setup plan</a> give it to your agents and get the job done.</p>
+<p>Here is <a href="https://github.com/prasann/copilot-otel/blob/archive/story-token-blog/docs/github-copilot-otel-setup-guide.md">my setup plan</a> give it to your agents and get the job done.</p>
 </li>
 </ol>
 <p>The whole pipeline is just four boxes: Copilot points at a local collector, the collector forwards to App Insights, and Grafana reads it back.</p>
@@ -69,7 +108,7 @@ branch_id=$(git -C &quot;$CWD&quot; symbolic-ref --short HEAD 2&gt;/dev/null)
 <p>That JSON shape is the entire contract between the two halves of the system. The hook produces it, the backend consumes it.</p>
 <p>Opting out is trivial too: since every tag comes from this one event, not emitting it (a shell flag, a machine-wide file, or a per-repo marker) simply leaves that work untagged, and the token totals stay intact.</p>
 <p>The full design, including the correlation-key discussion and why we join in App Insights rather than pushing a second Grafana datasource, is written up here:</p>
-<p><a href="https://github.com/prasann/copilot-otel/blob/main/docs/session-story-attribution-plan.md">Attribution design</a></p>
+<p><a href="https://github.com/prasann/copilot-otel/blob/archive/story-token-blog/docs/session-story-attribution-plan.md">Attribution design</a></p>
 <p>It is the same pipeline as before, with one box bolted on. The hook rides the exact same collector, so nothing about the baseline changes.</p>
 <p><img src="/assets/posts/images/story-tokens/custom-tags.png" alt="Pipeline with the mapping hook added" title="The same pipeline, now with the session-to-story hook feeding the collector"></p>
 <h2>Joining it back together</h2>
@@ -98,13 +137,13 @@ customMetrics
 <p>That query drives a single panel: tokens per story, biggest spender at the top. That is the whole payoff, one screen that finally answers where the tokens went.</p>
 <p><img src="/assets/posts/images/story-tokens/story-level-grafana.png" alt="Tokens per story in Grafana" title="Tokens grouped by story, biggest first"></p>
 <p>You do not have to build it by hand. Here is the dashboard JSON I use. Import it, point it at your Azure Monitor data source, and you are done:</p>
-<p><a href="https://github.com/prasann/copilot-otel/blob/main/dashboards/branch-spend-grafana.json">Story-level dashboard JSON</a></p>
+<p><a href="https://github.com/prasann/copilot-otel/blob/archive/story-token-blog/dashboards/branch-spend-grafana.json">Story-level dashboard JSON</a></p>
 <h2>Wrapping up</h2>
 <p>The whole thing rests on one decision: do not modify what Copilot already emits. Let it keep sending clean, standard telemetry. Ship one tiny mapping event alongside it from a hook, and do the tagging as a join at query time instead of a stamp at collection time. That one move is what makes concurrent projects work, what makes opt-out trivial, and what keeps the base metrics honest.</p>
 <p>If you want to try it, start with the setup guide to get telemetry flowing, then add the hook and the join:</p>
 <ul>
-<li>Copilot OpenTelemetry setup: <a href="https://github.com/prasann/copilot-otel/blob/main/docs/github-copilot-otel-setup-guide.md">github-copilot-otel-setup-guide.md</a></li>
-<li>Session-to-story attribution design: <a href="https://github.com/prasann/copilot-otel/blob/main/docs/session-story-attribution-plan.md">session-story-attribution-plan.md</a></li>
+<li>Copilot OpenTelemetry setup: <a href="https://github.com/prasann/copilot-otel/blob/archive/story-token-blog/docs/github-copilot-otel-setup-guide.md">github-copilot-otel-setup-guide.md</a></li>
+<li>Session-to-story attribution design: <a href="https://github.com/prasann/copilot-otel/blob/archive/story-token-blog/docs/session-story-attribution-plan.md">session-story-attribution-plan.md</a></li>
 <li>The emitter hook script: <a href="https://github.com/prasann/agent-box/blob/main/vscode-prompts/.github/hooks/scripts/emit-mapping.sh">emit-mapping.sh</a></li>
 </ul>
 <p>Now when someone asks how many tokens that story cost, you have an actual answer instead of a shrug.</p>
