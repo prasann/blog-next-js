@@ -29,7 +29,7 @@ The setup is not exotic. It is a local OpenTelemetry collector in Docker, a conn
 
 1. [Official docs](https://learn.microsoft.com/en-us/azure/managed-grafana/grafana-opentelemetry-app-insights)
 
-2. Here is [my setup plan](https://github.com/prasann/copilot-otel/blob/main/docs/github-copilot-otel-setup-guide.md) give it to your agents and get the job done.
+2. Here is [my setup plan](https://github.com/prasann/copilot-otel/blob/archive/story-token-blog/docs/github-copilot-otel-setup-guide.md) give it to your agents and get the job done.
 
 The whole pipeline is just four boxes: Copilot points at a local collector, the collector forwards to App Insights, and Grafana reads it back.
 
@@ -84,7 +84,7 @@ Opting out is trivial too: since every tag comes from this one event, not emitti
 
 The full design, including the correlation-key discussion and why we join in App Insights rather than pushing a second Grafana datasource, is written up here:
 
-[Attribution design](https://github.com/prasann/copilot-otel/blob/main/docs/session-story-attribution-plan.md)
+[Attribution design](https://github.com/prasann/copilot-otel/blob/archive/story-token-blog/docs/session-story-attribution-plan.md)
 
 It is the same pipeline as before, with one box bolted on. The hook rides the exact same collector, so nothing about the baseline changes.
 
@@ -126,7 +126,7 @@ That query drives a single panel: tokens per story, biggest spender at the top. 
 
 You do not have to build it by hand. Here is the dashboard JSON I use. Import it, point it at your Azure Monitor data source, and you are done:
 
-[Story-level dashboard JSON](https://github.com/prasann/copilot-otel/blob/main/dashboards/branch-spend-grafana.json)
+[Story-level dashboard JSON](https://github.com/prasann/copilot-otel/blob/archive/story-token-blog/dashboards/branch-spend-grafana.json)
 
 ## Wrapping up
 
@@ -134,8 +134,8 @@ The whole thing rests on one decision: do not modify what Copilot already emits.
 
 If you want to try it, start with the setup guide to get telemetry flowing, then add the hook and the join:
 
-- Copilot OpenTelemetry setup: [github-copilot-otel-setup-guide.md](https://github.com/prasann/copilot-otel/blob/main/docs/github-copilot-otel-setup-guide.md)
-- Session-to-story attribution design: [session-story-attribution-plan.md](https://github.com/prasann/copilot-otel/blob/main/docs/session-story-attribution-plan.md)
+- Copilot OpenTelemetry setup: [github-copilot-otel-setup-guide.md](https://github.com/prasann/copilot-otel/blob/archive/story-token-blog/docs/github-copilot-otel-setup-guide.md)
+- Session-to-story attribution design: [session-story-attribution-plan.md](https://github.com/prasann/copilot-otel/blob/archive/story-token-blog/docs/session-story-attribution-plan.md)
 - The emitter hook script: [emit-mapping.sh](https://github.com/prasann/agent-box/blob/main/vscode-prompts/.github/hooks/scripts/emit-mapping.sh)
 
 Now when someone asks how many tokens that story cost, you have an actual answer instead of a shrug.
