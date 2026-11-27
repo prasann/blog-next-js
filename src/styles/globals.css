@@ -151,6 +151,11 @@
   .gradient-heading {
     @apply bg-linear-to-r from-blue-400 via-cyan-400 to-cyan-500 bg-clip-text text-transparent;
   }
+
+  /* Coloured emphasis for key lines, written as inline <mark> in post content */
+  .prose mark {
+    @apply bg-transparent font-semibold text-theme-accent-light;
+  }
 }
 
 /* Keep iframe container for embedded content */

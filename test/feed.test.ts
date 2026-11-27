@@ -21,6 +21,15 @@ describe("makeItem", () => {
     expect(result.description).toBe(postData.description);
     expect(result.content).toContain(postData.content);
   });
+
+  it("renders <mark> highlights but keeps other raw HTML escaped", () => {
+    const result = makeItem({
+      ...postData,
+      content: "<mark>Key line</mark> and a <tag> node",
+    });
+    expect(result.content).toContain("<mark>Key line</mark>");
+    expect(result.content).toContain("&lt;tag&gt;");
+  });
 });
 
 describe("formatStringToDate", () => {

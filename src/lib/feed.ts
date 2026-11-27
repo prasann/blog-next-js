@@ -12,6 +12,13 @@ function normalizeGeneratedContent(content: string): string {
   return content.replace(/[\t ]+$/gm, "");
 }
 
+// Raw HTML stays escaped in the feed; only the <mark> highlight is let through.
+function renderContent(content: string): string {
+  return markdown
+    .render(content)
+    .replace(/&lt;(\/?)mark&gt;/g, "<$1mark>");
+}
+
 function buildFeed(): Feed {
   return new Feed({
     title: "Random Presence",
@@ -51,7 +58,7 @@ export function makeItem(postData: Post): Item {
     id: url,
     date: formatStringToDate(postData.date),
     description: postData.description,
-    content: markdown.render(postData.content),
+    content: renderContent(postData.content),
   };
 }
 
