@@ -5,7 +5,7 @@
 // Usage: npm run check-blog-tags
 const fs = require("fs");
 const path = require("path");
-const matter = require("gray-matter");
+const parseFrontmatter = require("../src/lib/frontmatter");
 
 const postsDir = path.join(__dirname, "../content/_posts");
 
@@ -72,7 +72,7 @@ fs.readdirSync(postsDir).forEach((fileName) => {
   const slug = fileNameToSlug(fileName);
   if (MANUAL_OVERRIDE_SLUGS.has(slug)) return;
 
-  const { data } = matter(fs.readFileSync(path.join(postsDir, fileName), "utf8"));
+  const { data } = parseFrontmatter(fs.readFileSync(path.join(postsDir, fileName), "utf8"));
   const rawTags = (data.category || "")
     .split(",")
     .map((raw) => raw.trim().toLowerCase())

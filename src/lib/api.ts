@@ -1,6 +1,6 @@
 import fs from "fs";
 import { join } from "path";
-import matter from "gray-matter";
+import parseFrontmatter from "./frontmatter";
 import Post from "../types/post";
 import { format, parse, compareDesc } from 'date-fns'
 
@@ -94,7 +94,7 @@ export function getPostByFileName(
 ): Post {
   const fullPath = join(postsDirectory, `${fileName}`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+  const { data, content } = parseFrontmatter(fileContents);
   const post: Post = <Post>{};
   post.slug = fileNameToSlug(fileName);
   post.title = data.title;
@@ -136,7 +136,7 @@ export function getPostBySlug(slug: string): Post {
 export function getTalkDescription(fileName: string) {
   const fullPath = join(talksDirectory, `${fileName}`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { content } = matter(fileContents);
+  const { content } = parseFrontmatter(fileContents);
   return content;
 }
 

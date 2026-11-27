@@ -2,6 +2,14 @@
 
 Updating more readme.
 
+Post and talk frontmatter supports YAML (default) and JSON. JavaScript frontmatter
+is rejected by the shared parser used by the site and the tag-check script.
+
+The dependency override for `@tailwindcss/typography` keeps its pinned selector
+parser on the patched 6.x release line. The `glob` and `test-exclude` overrides
+keep Jest's globbing dependencies on patched releases until their upstream
+dependency ranges catch up.
+
 Pages
 
 [x] Landing page
